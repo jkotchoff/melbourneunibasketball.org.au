@@ -9,5 +9,8 @@ require 'machinist/active_record'
 #   end
 
 NewsItem.blueprint do
-  # Attributes here
+  title          { "Post #{sn}" }
+  author         { "Author #{sn}" }
+  synopsis       { "Synopsis #{sn}" }
+  created_at     { Time.now }
 end

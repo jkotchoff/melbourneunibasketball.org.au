@@ -1,0 +1,32 @@
+.brand{
+  width: 180px;
+  position:absolute;
+  left:7px;
+  top:-7px;
+  z-index:9999;
+}
+.brand div{
+  font-size:12px;
+  font-weight:bold;
+  line-height:120%;
+  margin-top:10px;
+}
+.brand, .brand:visited{
+  color:black
+}
+.brand:hover{
+  background-color:transparent;
+  text-decoration:none;
+}
+.brand img {
+  float:left;
+  margin-right:7px;
+}
+
+.navbar .container{
+  margin-left:180px;
+}
+
+.nav{
+  margin-left:110px;
+}

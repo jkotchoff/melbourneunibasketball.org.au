@@ -1,0 +1,8 @@
+%ul.unstyled
+  - @archived_years.each do |archived_year|
+    %li
+      = link_to "#{archived_year} News Items", archived_news_path(archived_year: archived_year)
+
+- if @archived_year
+  %h1== News from #{@archived_year}:
+  = render partial: 'news_items', locals: {news_items: @news_items}

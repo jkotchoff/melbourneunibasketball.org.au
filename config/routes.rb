@@ -4,6 +4,8 @@ Melbourneunibasketball::Application.routes.draw do
   end
   match 'admin' => 'admin/news_items#index'
 
+  match 'news' => 'news#archived', :as => :archived_news
+
   root :to => 'news#index'
 
 
