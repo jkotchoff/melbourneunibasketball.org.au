@@ -1,22 +1,26 @@
-= form_for [:admin, @news_item] do |f|
+= form_for [:admin, @news_item], :html => { :class => 'form-horizontal' } do |f|
   - if @news_item.errors.any?
     #error_explanation
       %h2= "#{pluralize(@news_item.errors.count, "error")} prohibited this news_item from being saved:"
       %ul
         - @news_item.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :author
-    = f.text_field :author
-  .field
-    = f.label :synopsis
-    = f.text_area :synopsis
-  .field
-    = f.label :article
-    = f.text_area :article
-  .actions
-    = f.submit 'Save'
+  .control-group
+    = f.label :title, :class => 'control-label'
+    .controls
+      = f.text_field :title, :class => 'text_field'
+  .control-group
+    = f.label :author, :class => 'control-label'
+    .controls
+      = f.text_field :author, :class => 'text_field'
+  .control-group
+    = f.label :synopsis, :class => 'control-label'
+    .controls
+      = f.text_area :synopsis, :class => 'text_area'
+  .control-group
+    = f.label :article, :class => 'control-label'
+    .controls
+      = f.text_area :article, :class => 'text_area'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_news_items_path, :class => 'btn'

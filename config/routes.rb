@@ -2,6 +2,7 @@ Melbourneunibasketball::Application.routes.draw do
   namespace :admin do
     resources :news_items
   end
+  match 'admin' => 'admin/news_items#index'
 
   root :to => 'news#index'
 
