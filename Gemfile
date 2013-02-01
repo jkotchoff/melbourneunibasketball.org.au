@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'haml'
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'pg'
 gem 'unicorn'
@@ -28,7 +28,7 @@ group :test do
   gem "faker", ">= 0.3.1" 
   gem "fakeweb", ">= 1.3.0" 
   gem "launchy", ">= 0.4.0"
-  gem "machinist", "~> 1.0.6"
+  gem 'machinist', '>= 2.0.0.beta2'
 end
 
 group :test, :development do
