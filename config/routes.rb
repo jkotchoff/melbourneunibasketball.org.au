@@ -6,6 +6,11 @@ Melbourneunibasketball::Application.routes.draw do
 
   match 'news' => 'news#archived', :as => :archived_news
 
+  match 'contact' => 'contact#index', :as => :contact
+  match 'contact/join_the_club' => 'contact#join_the_club', :as => :join_the_club
+  match 'contact/documents_and_forms' => 'contact#documents_and_forms', :as => :documents_and_forms
+  match 'contact/links' => 'contact#links', :as => :links
+
   root :to => 'news#index'
 
 
