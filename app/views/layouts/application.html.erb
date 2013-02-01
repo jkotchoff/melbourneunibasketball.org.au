@@ -49,9 +49,9 @@
             <li class="dropdown-submenu">
               <a tabindex="-1" href="#">Contact Us</a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Join the club!", join_the_club_path %></li>
-                <li><%= link_to "Documents and forms", documents_and_forms_path %></li>
-                <li><%= link_to "Links", links_path %></li>
+                <% @contact_links.each_pair do |page_title, link| %>
+                  <li><%= link_to page_title, link %></li>
+                <% end %>
               </ul>
             </li>
           </ul>
@@ -61,8 +61,18 @@
   </div>
 
   <div class="row">
-    <div class="span10"><%= yield %></div>
-    <div class="span2">TODO: lach's mum quiz</div>
+    <div class="span10">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      
+      <%= yield %>
+    </div>
+    <div class="span2">
+      <%= link_to "Administer Site", admin_path, :class => 'btn btn-mini btn-danger' %>
+      
+      <br/><br/></br/>
+      TODO: lach's mum quiz, link to google docs</div>
   </div>
 </div>
 

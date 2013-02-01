@@ -1,8 +1,9 @@
 Melbourneunibasketball::Application.routes.draw do
   namespace :admin do
+    resources :pages
     resources :news_items
   end
-  match 'admin' => 'admin/news_items#index'
+  match 'admin' => 'admin/pages#index'
 
   match 'news' => 'news#archived', :as => :archived_news
 

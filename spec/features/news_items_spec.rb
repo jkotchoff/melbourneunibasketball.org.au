@@ -7,9 +7,9 @@ feature "NewsItems" do
       fill_in "Title", :with => "Melbourne Ballers win Warrnambool Tournament"
       fill_in "Author", :with => "smoke"
       fill_in "Synopsis", :with => "Several retired MUBC players banded together to win the 2013 Warrnambool Mens A and A Reserve grades"
-      fill_in "Article", :with => "Several retired MUBC players banded together to win the 2013 Warrnambool Mens A and A Reserve grades. Smoke, beef, chop, mad, wronghole and air canada stitched up the opposition as a warmup for the return of TML."
-      click_button "Save"
-      page.should have_content("News item was successfully created.")
+      fill_in "Content", :with => "Several retired MUBC players banded together to win the 2013 Warrnambool Mens A and A Reserve grades. Smoke, beef, chop, mad, wronghole and air canada stitched up the opposition as a warmup for the return of TML."
+      click_button "Create News item"
+      page.should have_content("News Item was successfully created.")
       page.should have_content("Melbourne Ballers win Warrnambool Tournament")
     }.should change(NewsItem, :count).by(1)
   end

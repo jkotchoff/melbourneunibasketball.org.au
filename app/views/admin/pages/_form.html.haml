@@ -1,0 +1,27 @@
+= form_for [:admin, @page], :html => { :class => 'form-horizontal' } do |f|
+  - if @page.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
+      %ul
+        - @page.errors.full_messages.each do |msg|
+          %li= msg
+
+  .control-group
+    = f.label :title, :class => 'control-label'
+    .controls
+      = f.text_field :title, :class => 'text_field'
+  .control-group
+    = f.label :author, :class => 'control-label'
+    .controls
+      = f.text_field :author, :class => 'text_field'
+  .control-group
+    = f.label :synopsis, :class => 'control-label'
+    .controls
+      = f.text_area :synopsis, :class => 'text_area', rows: 3
+  .control-group
+    = f.label :content, :class => 'control-label'
+    .controls
+      = f.text_area :content, :class => 'text_area'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_pages_path, :class => 'btn'

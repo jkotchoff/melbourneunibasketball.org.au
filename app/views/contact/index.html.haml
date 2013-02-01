@@ -1,7 +1,5 @@
 %ul
-  %li
-    = link_to "Join the club!", join_the_club_path
-  %li
-    = link_to "Documents and forms", documents_and_forms_path
-  %li
-    = link_to "Links", links_path
+  - @contact_pages.each do |page|
+    %li
+      = link_to page.title, @contact_links[page.title]
+      %p= page.synopsis

@@ -13,11 +13,13 @@
 
 ActiveRecord::Schema.define(:version => 20130201003158) do
 
-  create_table "news_items", :force => true do |t|
+  create_table "pages", :force => true do |t|
+    t.string   "type"
     t.string   "title"
     t.string   "author"
     t.text     "synopsis"
-    t.text     "article"
+    t.text     "content"
+    t.string   "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
