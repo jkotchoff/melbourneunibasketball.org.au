@@ -1,0 +1,12 @@
+defaults: &defaults
+  adapter: postgresql
+  host: localhost
+  encoding: utf8
+
+development:
+  database: melbourneunibasketball_development
+  <<: *defaults
+
+test:
+  database: melbourneunibasketball_test
+  <<: *defaults
