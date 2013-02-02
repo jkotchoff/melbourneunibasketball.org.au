@@ -1,4 +1,4 @@
-class Admin::NewsItemsController < Admin::PagesController
+class Admin::NewsItemsController < Admin::BaseController
   def new
     @page = NewsItem.new
   end

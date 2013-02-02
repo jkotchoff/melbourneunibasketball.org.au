@@ -7,9 +7,27 @@ Melbourneunibasketball::Application.routes.draw do
 
   match 'news' => 'news#archived', :as => :archived_news
 
+  match 'about' => 'about#index', :as => :about
+  match 'about/about_the_club' => 'about#about_the_club', :as => :about_the_club
+  match 'about/competition_titles' => 'about#competition_titles', :as => :competition_titles
+  match 'about/representative_mvps' => 'about#representative_mvps', :as => :representative_mvps
+  match 'about/team_mvps' => 'about#team_mvps', :as => :team_mvps
+  match 'about/most_improved_players' => 'about#most_improved_players', :as => :most_improved_players
+  match 'about/best_first_year_players' => 'about#best_first_year_players', :as => :best_first_year_players
+  match 'about/coaches_awards' => 'about#coaches_awards', :as => :coaches_awards
+  match 'about/bigv_league_awards' => 'about#bigv_league_awards', :as => :bigv_league_awards
+  match 'about/bigv_seasons' => 'about#bigv_seasons', :as => :bigv_seasons
+  match 'about/blues_awards' => 'about#blues_awards', :as => :blues_awards
+  match 'about/green_and_gold_winners' => 'about#green_and_gold_winners', :as => :green_and_gold_winners
+  match 'about/committee' => 'about#committee', :as => :committee
+  match 'about/social_awards' => 'about#social_awards', :as => :social_awards
+  match 'about/distinguished_service_awards' => 'about#distinguished_service_awards', :as => :distinguished_service_awards
+  match 'about/life_members' => 'about#life_members', :as => :life_members
+
   match 'contact' => 'contact#index', :as => :contact
   match 'contact/join_the_club' => 'contact#join_the_club', :as => :join_the_club
   match 'contact/documents_and_forms' => 'contact#documents_and_forms', :as => :documents_and_forms
+  match 'contact/uniforms' => 'contact#uniforms', :as => :uniforms
   match 'contact/links' => 'contact#links', :as => :links
 
   root :to => 'news#index'

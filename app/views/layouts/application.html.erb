@@ -42,8 +42,18 @@
               </ul>
             </li>
             <li><%= link_to "Event Calendar", '/' %></li>
-            <li><%= link_to "About MUBC", '/' %></li>
+
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#">About MUBC</a>
+              <ul class="dropdown-menu">
+                <% @about_links.each_pair do |page_title, link| %>
+                  <li><%= link_to page_title, link %></li>
+                <% end %>
+              </ul>
+            </li>
+
 <!--
+            <li><%= link_to "About MUBC", '/' %></li>
             <li><%= link_to "Contact Us", '/' %></li>
 -->
             <li class="dropdown-submenu">
