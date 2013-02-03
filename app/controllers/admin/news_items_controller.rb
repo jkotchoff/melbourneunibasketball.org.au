@@ -1,4 +1,4 @@
-class Admin::NewsItemsController < Admin::BaseController
+class Admin::NewsItemsController < Admin::PagesController
   def new
     @page = NewsItem.new
   end
@@ -14,4 +14,20 @@ class Admin::NewsItemsController < Admin::BaseController
       end
     end
   end
+
+  def update
+    @page = NewsItem.find(params[:id])
+
+    respond_to do |format|
+      if @page.update_attributes(params[:news_item])
+        format.html { redirect_to admin_page_path(@page), notice: 'News Item was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @page.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
 end

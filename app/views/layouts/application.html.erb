@@ -71,18 +71,18 @@
   </div>
 
   <div class="row">
-    <div class="span10">
+    <div class="span8">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
       
       <%= yield %>
     </div>
-    <div class="span2">
+    <div class="span4">
       <%= link_to "Administer Site", admin_path, :class => 'btn btn-mini btn-danger' %>
       
-      <br/><br/></br/>
-      TODO: lach's mum quiz, link to google docs</div>
+      <%= @sidebar.content.html_safe %>
+    </div>
   </div>
 </div>
 

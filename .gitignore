@@ -12,6 +12,7 @@ capybara-*.html
 /db/development_structure.sql
 /db/structure.sql
 /public/system/*
+/public/uploads/*
 /coverage/
 /spec/tmp/*
 **.orig

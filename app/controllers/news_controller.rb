@@ -1,7 +1,8 @@
 class NewsController < ApplicationController
   # GET /
   def index
-    @news_items = NewsItem.all
+    @news_items = NewsItem.order('created_at DESC').first(8)
+    @sidebar = Page.find_by_title(Page::PANEL_HOME_SIDEBAR)
 
     respond_to do |format|
       format.html # index.html.haml

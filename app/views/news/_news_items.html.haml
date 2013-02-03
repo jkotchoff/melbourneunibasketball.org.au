@@ -1,7 +1,12 @@
 %ul.unstyled
   - news_items.each do |news_item|
-    %li
+    %li.news_item
+      - if news_item.image?
+        .news_image
+          = image_tag news_item.image_url(:thumbnail)
       %h5= news_item.title
-      .muted== #{news_item.created_at.to_s(:month_day_year)} - submitted by #{news_item.author}
       = news_item.synopsis
-      %td= link_to news_item.id, [:admin, news_item]
+      - unless news_item.content.blank?
+        %br
+        = link_to 'Read Full Article', '#' 
+      .muted== #{news_item.created_at.to_s(:month_day_year)} - submitted by #{news_item.author}

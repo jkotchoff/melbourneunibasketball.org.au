@@ -33,8 +33,52 @@ NewsItem.create!(author: 'smoke', title: 'Corporate Games win', synopsis: "Andy'
   Page::CONTACT_DOCUMENTS_AND_FORMS => "Club Specific Documents and Forms (eg. the membership form)",
   Page::CONTACT_UNIFORMS => "Uniform ordering guide for MUBC playing shorts, singlets and club hoodies",
   Page::CONTACT_LINKS => "Web links relevant to club members"
-  
+
 }.each_pair do |page_title, synopsis|
   Page.create!(title: page_title, synopsis: synopsis, content: "TODO: administrate!")
 end
 
+Page.create!(
+  title: Page::PANEL_HOME_SIDEBAR, 
+  synopsis: "Content for the sidebar on the homepage", 
+  content: %Q{
+      <p>
+        <b>Game Fixtures:</b>
+        <ul class="unstyled">
+          <li><a href="#">CYMS A Women 1 (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS A Women 2 (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS A Women 3 (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS B Women (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS C Women (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS A Men (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS A Reserve Men (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS B Men (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS C Men (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS D Men (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS E Men (Sundays, MSAC)</a></li>
+          <li><a href="#">CYMS G Men (Sundays, MSAC)</a></li>
+          <li><a href="#">Spartan League B Women (Tuesdays, MSAC)</a></li>
+          <li><a href="#">Spartan League A Men (Tuesdays, MSAC)</a></li>
+          <li><a href="#">MMBL Women (Wednesday, Melbourne)</a></li>
+          <li><a href="#">VBHBA A Men (Thursdays, MSAC)</a></li>
+          <li><a href="#">Big V Div 1 Men (Saturdays, Victoria)</a></li>
+          <li><a href="#">Big V Div 2 Women (Saturdays, Victoria)</a></li>
+        </ul>
+      </p>  
+      
+      <p>
+        <b>Training Times:</b><br/>
+        Domestic Women:<br/> 11am-12:30pm, Saturdays<br/><br/>
+
+        Domestic Men (grades A-B):<br/>9am-11am, Saturdays<br/><br/>
+
+        Domestic Men (grades C-G):<br/>11am-12:30pm, Saturdays<br/><br/>
+        
+        Big V Men:<br/> 8pm-10pm, Mondays &amp; Thursdays<br/><br/>
+        Big V Women:<br/> 6:30pm-8:30pm, Mondays &amp; Thursdays<br/><br/>
+        
+        * All training is held at the Melbourne Uni Sports Center
+      </p>  
+    
+  }
+)

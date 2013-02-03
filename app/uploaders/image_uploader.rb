@@ -1,15 +1,24 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
-  include Cloudinary::CarrierWave
-
-  version :standard do
-    process :resize_to_fill => [470, 470, :north]
-  end
-  
-  version :thumbnail do
-    process :resize_to_fit => [150, 150]
-  end     
+  # For now - testing
+  storage :file
+  include CarrierWave::MiniMagick
+ 
+    def store_dir
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
+    
+#    include Cloudinary::CarrierWave
+    version :standard do
+      process :resize_to_fill => [470, 470]
+#      process :resize_to_fill => [470, 470, :north]
+    end
+    
+    version :thumbnail do
+      process :resize_to_fit => [150, 150]
+#      process :resize_to_fit => [150, 150]
+    end     
 
 
   # Include RMagick or MiniMagick support:
@@ -17,7 +26,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  # include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:

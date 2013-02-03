@@ -39,6 +39,7 @@ group :test do
 end
 
 group :test, :development do
+  gem "mini_magick"
   gem "rspec-rails", ">= 2.5"
   gem 'debugger'
 end

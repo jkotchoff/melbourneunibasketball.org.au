@@ -3,7 +3,7 @@ class Admin::PagesController < Admin::BaseController
   # GET /admin/pages.json
   def index
     @pages = Page.where(type: nil)
-    @news_items = NewsItem.all
+    @news_items = NewsItem.order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
