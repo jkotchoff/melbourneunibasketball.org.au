@@ -1,3 +1,5 @@
-%h1= @page.title
+- unless @page.title == Page::EVENT_CALENDAR
+  %h1
+    = @page.title
 
 .content= @page.content

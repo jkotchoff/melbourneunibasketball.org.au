@@ -1,13 +1,19 @@
 class AboutController < ApplicationController
+  before_filter :load_sidebar
+  
   # GET /
   def index
-    # @contact_pages = Page.where("title in (?)", @contact_links.keys)
-  end
-  
-  def about_the_club
     render_page(Page::ABOUT_THE_CLUB)
   end
 
+  def big_v
+    render_page(Page::BIG_V)
+  end
+
+  def sponsors
+    render_page(Page::SPONSORS)
+  end
+  
   def competition_titles
     render_page(Page::AWARDS_TITLES)
   end
@@ -63,4 +69,9 @@ class AboutController < ApplicationController
   def life_members
     render_page(Page::AWARDS_LIFERS)
   end
+  
+  protected
+    def load_sidebar
+      @left_sidebar = "sidebars/about"
+    end
 end

@@ -1,13 +1,11 @@
 class ContactController < ApplicationController
+  before_filter :load_sidebar
+
   # GET /
   def index
-    @contact_pages = Page.where("title in (?)", @contact_links.keys)
-  end
-  
-  def join_the_club
     render_page(Page::CONTACT_JOIN_THE_CLUB)
   end
-
+  
   def documents_and_forms
     render_page(Page::CONTACT_DOCUMENTS_AND_FORMS)
   end
@@ -19,4 +17,9 @@ class ContactController < ApplicationController
   def links
     render_page(Page::CONTACT_LINKS)
   end
+
+  protected
+    def load_sidebar
+      @left_sidebar = "sidebars/contact"
+    end
 end

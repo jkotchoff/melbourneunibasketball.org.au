@@ -1,3 +1,4 @@
+body{background-image: url("/assets/logo_bg.png"); background-attachment:fixed; background-repeat:no-repeat}
 .brand{
   width: 180px;
   position:absolute;
@@ -11,10 +12,11 @@
   line-height:120%;
   margin-top:10px;
 }
-.brand, .brand:visited{
-  color:black
+a.brand, a.brand:visited{
+  color:white
 }
 .brand:hover{
+  color:blue;
   background-color:transparent;
   text-decoration:none;
 }
@@ -27,8 +29,8 @@
   margin-left:180px;
 }
 
-.nav{
-  margin-left:110px;
+#topnav{
+  margin-left:200px;
 }
 #page_content{height:280px;}
 .controls input, .controls textarea{width:100%}

@@ -11,80 +11,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-<div class="container">
-  <div class="navbar navbar-fixed-top">
-  <a class="brand" href="/">
-    <%= image_tag "mubc_logo.gif" %>
-    <div>
-      Melbourne<br/>
-      University<br/>
-      Basketball<br/>
-      Club
-    </div>
-  </a>
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li class="dropdown-submenu">
-              <a tabindex="-1" href="#">News</a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Latest News (homepage)", root_path %></li>
-                <li><%= link_to "News Archive", archived_news_path %></li>
-                <!--TODO: li><%= link_to "2011", '/' %></li-->
-              </ul>
-            </li>
-            <li><%= link_to "Event Calendar", '/' %></li>
-
-            <li class="dropdown-submenu">
-              <a tabindex="-1" href="#">About MUBC</a>
-              <ul class="dropdown-menu">
-                <% @about_links.each_pair do |page_title, link| %>
-                  <li><%= link_to page_title, link %></li>
-                <% end %>
-              </ul>
-            </li>
-
-<!--
-            <li><%= link_to "About MUBC", '/' %></li>
-            <li><%= link_to "Contact Us", '/' %></li>
--->
-            <li class="dropdown-submenu">
-              <a tabindex="-1" href="#">Contact Us</a>
-              <ul class="dropdown-menu">
-                <% @contact_links.each_pair do |page_title, link| %>
-                  <li><%= link_to page_title, link %></li>
-                <% end %>
-              </ul>
-            </li>
-          </ul>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">
+              <%= image_tag "mubc_logo.png" %>
+              <div>
+                Melbourne<br/>
+                University<br/>
+                Basketball<br/>
+                Club
+              </div>
+          
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav" id="topnav">
+              <li class="<%= "active" if params[:action] == 'archived' %>"><%= link_to "News Archive", archived_news_path %></li>
+              <li class="<%= "active" if params[:action] == 'event_calendar' %>"><%= link_to "Event Calendar", event_calendar_path %></li>
+              <li class="<%= "active" if params[:controller] == 'about' %>"><%= link_to "About MUBC", about_path %></li>
+              <li class="<%= "active" if params[:controller] == 'contact' %>"><%= link_to "Join The Club", contact_path %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="span8">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      
-      <%= yield %>
-    </div>
-    <div class="span4">
-      <%= link_to "Administer Site", admin_path, :class => 'btn btn-mini btn-danger' %>
-      
-      <%= @sidebar.content.html_safe %>
-    </div>
-  </div>
-</div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <% if @left_sidebar %>
+          <div class="span3">
+            <div class="well sidebar-nav">
+              <%= render :partial => @left_sidebar %>
+            </div><!--/.well -->
+          </div><!--/span-->
+        <% end %>
+        <div class="span9">
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          <% end %>
+          
+          <%= yield %>
+        </div><!--/span-->
+        <% if @right_sidebar %>
+          <div class="span3">
+            <div class="well sidebar-nav">
+            <%= link_to "Administer Site", admin_path, :class => 'btn btn-mini btn-danger' %>
+            
+            <%= @right_sidebar.content.html_safe %>
+            </div>
+          </div>
+        <% end %>
+        </div><!--/row-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Melbourne University Basketball Club <%= Date.today.year %></p>
+      </footer>
+
+    </div><!--/.fluid-container-->
 
 </body>
 </html>

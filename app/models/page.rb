@@ -10,13 +10,17 @@ class Page < ActiveRecord::Base
   # config/routes.rb
   # app/controllers/application_controller
   
+  EVENT_CALENDAR                  = "Event Calendar"
+
   ABOUT_THE_CLUB                  = "About The Club"
+  BIG_V                           = "Big V Program"
+  SPONSORS                        = "Sponsors"
   
   AWARDS_TITLES                   = "Competition Titles"
   AWARDS_REPRESENTATIVE_MVPS      = "Representative MVP's"
   AWARDS_TEAM_MVPS                = "Team MVP's"
-  AWARDS_MOST_IMPROVED_PLAYERS    = "Most Improved Player"
-  AWARDS_BEST_FIRST_YEAR_PLAYERS  = "Best First Year Player"
+  AWARDS_MOST_IMPROVED_PLAYERS    = "Most Improved Players"
+  AWARDS_BEST_FIRST_YEAR_PLAYERS  = "Best First Year Players"
   AWARDS_COACHES_AWARDS           = "Coaches Awards"
 
   AWARDS_BIGV_LEAGUE              = "Big V League Awards"
@@ -25,7 +29,7 @@ class Page < ActiveRecord::Base
   AWARDS_BLUES                    = "University Games Blues"
   AWARDS_GREEN_AND_GOLD           = "University Games Green and Gold"
   
-  AWARDS_COMMITTEE                = "MUBC Executive Committee Members"
+  AWARDS_COMMITTEE                = "Executive Committee Members"
   AWARDS_SOCIAL                   = "Social Performers of the year"
   AWARDS_DISTINGUISHED_SERVICE    = "Distinguished Service Award Winners"
   AWARDS_LIFERS                   = "Life Members"

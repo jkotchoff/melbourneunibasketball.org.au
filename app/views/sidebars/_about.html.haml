@@ -1,0 +1,40 @@
+%ul.nav.nav-list
+  %li{class: ('active' if params[:action] == 'index')}
+    = link_to Page::ABOUT_THE_CLUB, about_path
+  %li{class: ('active' if params[:action] == 'big_v')}
+    = link_to Page::BIG_V, big_v_path
+  %li{class: ('active' if params[:action] == 'sponsors')}
+    = link_to Page::SPONSORS, sponsors_path
+  %li.nav-header Major Results & Player Titles
+  %li{class: ('active' if params[:action] == 'competition_titles')}
+    = link_to Page::AWARDS_TITLES, competition_titles_path
+  %li{class: ('active' if params[:action] == 'representative_mvps')}
+    = link_to Page::AWARDS_REPRESENTATIVE_MVPS, representative_mvps_path
+  %li{class: ('active' if params[:action] == 'team_mvps')}
+    = link_to Page::AWARDS_TEAM_MVPS, team_mvps_path
+  %li{class: ('active' if params[:action] == 'most_improved_players')}
+    = link_to Page::AWARDS_MOST_IMPROVED_PLAYERS, most_improved_players_path
+  %li{class: ('active' if params[:action] == 'best_first_year_players')}
+    = link_to Page::AWARDS_BEST_FIRST_YEAR_PLAYERS, best_first_year_players_path
+  %li{class: ('active' if params[:action] == 'coaches_awards')}
+    = link_to Page::AWARDS_COACHES_AWARDS, coaches_awards_path
+  %li.nav-header Big V
+  %li{class: ('active' if params[:action] == 'bigv_league_awards')}
+    = link_to "League Awards", bigv_league_awards_path
+  %li{class: ('active' if params[:action] == 'bigv_seasons')}
+    = link_to "Season Results", bigv_seasons_path
+  %li.nav-header University Games
+  %li{class: ('active' if params[:action] == 'blues_awards')}
+    = link_to "Blues Winners", blues_awards_path
+  %li{class: ('active' if params[:action] == 'green_and_gold_winners')}
+    = link_to "Green & Gold", green_and_gold_winners_path
+  %li.nav-header Club Awards
+  %li{class: ('active' if params[:action] == 'committee')}
+    = link_to Page::AWARDS_COMMITTEE, committee_path
+  %li{class: ('active' if params[:action] == 'social_awards')}
+    = link_to Page::AWARDS_SOCIAL, social_awards_path
+  %li{class: ('active' if params[:action] == 'distinguished_service_awards')}
+    = link_to Page::AWARDS_DISTINGUISHED_SERVICE, distinguished_service_awards_path
+  %li{class: ('active' if params[:action] == 'life_members')}
+    = link_to Page::AWARDS_LIFERS, life_members_path
+    

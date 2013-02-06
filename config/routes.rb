@@ -7,8 +7,11 @@ Melbourneunibasketball::Application.routes.draw do
 
   match 'news' => 'news#archived', :as => :archived_news
 
+  match 'event_calendar' => 'news#event_calendar', :as => :event_calendar
+
   match 'about' => 'about#index', :as => :about
-  match 'about/about_the_club' => 'about#about_the_club', :as => :about_the_club
+  match 'about/bigv' => 'about#big_v', :as => :big_v
+  match 'about/sponsors' => 'about#sponsors', :as => :sponsors
   match 'about/competition_titles' => 'about#competition_titles', :as => :competition_titles
   match 'about/representative_mvps' => 'about#representative_mvps', :as => :representative_mvps
   match 'about/team_mvps' => 'about#team_mvps', :as => :team_mvps
@@ -24,10 +27,11 @@ Melbourneunibasketball::Application.routes.draw do
   match 'about/distinguished_service_awards' => 'about#distinguished_service_awards', :as => :distinguished_service_awards
   match 'about/life_members' => 'about#life_members', :as => :life_members
 
-  match 'contact' => 'contact#index', :as => :contact
-  match 'contact/join_the_club' => 'contact#join_the_club', :as => :join_the_club
-  match 'contact/documents_and_forms' => 'contact#documents_and_forms', :as => :documents_and_forms
-  match 'contact/uniforms' => 'contact#uniforms', :as => :uniforms
+  match 'join_the_club' => 'contact#index', :as => :contact
+  match 'join_the_club/documents_and_forms' => 'contact#documents_and_forms', :as => :documents_and_forms
+  match 'join_the_club/uniforms' => 'contact#uniforms', :as => :uniforms
+  
+  #TODO:
   match 'contact/links' => 'contact#links', :as => :links
 
   root :to => 'news#index'

@@ -11,8 +11,12 @@ NewsItem.create!(author: 'smoke', title: 'Albury win', synopsis: 'MUBC men win a
 NewsItem.create!(author: 'smoke', title: 'Corporate Games win', synopsis: "Andy's Army win Corporate Games 2011", created_at: DateTime.parse("October 1, 2011"))
 
 {
+  Page::EVENT_CALENDAR => "Event Calendar",
   
   Page::ABOUT_THE_CLUB => "Find out why MUBC is a great place to play basketball",
+  Page::BIG_V => "Melbourne Uni have both a mens and a womens representantive Big V program for elite players",
+  Page::SPONSORS => "Big props to all our fantastic sponsors!",
+
   
   Page::AWARDS_TITLES => "Team Lists for Premierships & Runner Up finishes (VBL, University Games, MMBL, Sunday Night MSAC, Tournaments)",
   Page::AWARDS_REPRESENTATIVE_MVPS => "Male & Female players of the year in our top Mens and Womens teams",
@@ -42,43 +46,41 @@ Page.create!(
   title: Page::PANEL_HOME_SIDEBAR, 
   synopsis: "Content for the sidebar on the homepage", 
   content: %Q{
-      <p>
-        <b>Game Fixtures:</b>
+      <p style="margin-top:10px; margin-bottom:0px;">
+        <b>Season Fixtures</b>
         <ul class="unstyled">
-          <li><a href="#">CYMS A Women 1 (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS A Women 2 (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS A Women 3 (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS B Women (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS C Women (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS A Men (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS A Reserve Men (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS B Men (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS C Men (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS D Men (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS E Men (Sundays, MSAC)</a></li>
-          <li><a href="#">CYMS G Men (Sundays, MSAC)</a></li>
-          <li><a href="#">Spartan League B Women (Tuesdays, MSAC)</a></li>
-          <li><a href="#">Spartan League A Men (Tuesdays, MSAC)</a></li>
-          <li><a href="#">MMBL Women (Wednesday, Melbourne)</a></li>
-          <li><a href="#">VBHBA A Men (Thursdays, MSAC)</a></li>
-          <li><a href="#">Big V Div 1 Men (Saturdays, Victoria)</a></li>
-          <li><a href="#">Big V Div 2 Women (Saturdays, Victoria)</a></li>
+          <li><a href="#"><div class="muted">Big V (Saturdays, Victoria)</div>Div 1 Men</a></li>
+          <li><a href="#">Div 2 Women</a><br/><br/></li>
+          <li><a href="#"><div class="muted">CYMS (Sundays, MSAC)</div>A Women 1</a></li>
+          <li><a href="#">A Women 2</a></li>
+          <li><a href="#">A Women 3</a></li>
+          <li><a href="#">B Women</a></li>
+          <li><a href="#">C Women</a></li>
+          <li><a href="#">A Men</a></li>
+          <li><a href="#">A Reserve Men</a></li>
+          <li><a href="#">B Men</a></li>
+          <li><a href="#">C Men</a></li>
+          <li><a href="#">D Men</a></li>
+          <li><a href="#">E Men</a></li>
+          <li><a href="#">G Men</a><br/><br/></li>
+          <li><a href="#"><div class="muted">Spartan League (Tuesdays, MSAC)</div>Spartan League B Women</a></li>
+          <li><a href="#">Spartan League A Men</a><br/><br/></li>
+          <li><a href="#"><div class="muted">MMBL (Wednesdays, Melbourne)</div>Div 1 Women</a><br/><br/></li>
+          <li><a href="#"><div class="muted">VBHBA (Thursdays, MSAC)</div>A Men</a></li>
         </ul>
-      </p>  
-      
-      <p>
-        <b>Training Times:</b><br/>
-        Domestic Women:<br/> 11am-12:30pm, Saturdays<br/><br/>
+      </p>
+      <p style="margin-top:10px; margin-bottom:0px;">
+        <b>Training Times</b><br/>
+        <div class="muted">Domestic Women</div>Saturdays, 11am-12:30pm<br/><br/>
 
-        Domestic Men (grades A-B):<br/>9am-11am, Saturdays<br/><br/>
+        <div class="muted">Domestic Men (grades A-B)</div>Saturdays, 9am-11am<br/><br/>
 
-        Domestic Men (grades C-G):<br/>11am-12:30pm, Saturdays<br/><br/>
+        <div class="muted">Domestic Men (grades C-G)</div>Saturdays, 11am-12:30pm<br/><br/>
         
-        Big V Men:<br/> 8pm-10pm, Mondays &amp; Thursdays<br/><br/>
-        Big V Women:<br/> 6:30pm-8:30pm, Mondays &amp; Thursdays<br/><br/>
+        <div class="muted">Big V Men</div> Mondays &amp; Thursdays, 8pm-10pm<br/><br/>
+        <div class="muted">Big V Women</div> Mondays &amp; Thursdays, 6:30pm-8:30pm<br/><br/>
         
-        * All training is held at the Melbourne Uni Sports Center
+        <div class="muted">* All training is held at the Melbourne Uni Sports Center</div>
       </p>  
-    
   }
 )

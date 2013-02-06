@@ -1,0 +1,7 @@
+%ul.nav.nav-list
+  %li{class: ('active' if params[:action] == 'index')}
+    = link_to Page::CONTACT_JOIN_THE_CLUB, contact_path
+  %li{class: ('active' if params[:action] == 'uniforms')}
+    = link_to Page::CONTACT_UNIFORMS, uniforms_path
+  %li{class: ('active' if params[:action] == 'documents_and_forms')}
+    = link_to Page::CONTACT_DOCUMENTS_AND_FORMS, documents_and_forms_path

@@ -1,6 +1,6 @@
 class Admin::NewsItemsController < Admin::PagesController
   def new
-    @page = NewsItem.new
+    @page = NewsItem.new(author: "the black angels")
   end
   
   def create
