@@ -11,7 +11,7 @@
       %th= model_class.human_attribute_name(:author)
       %th= model_class.human_attribute_name(:synopsis)
       %th Created
-      %th=t '.actions', :default => t("helpers.actions")
+      %th{width:100}=t '.actions', :default => t("helpers.actions")
   %tbody
     - @news_items.each do |page|
       %tr

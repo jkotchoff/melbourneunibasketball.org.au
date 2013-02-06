@@ -15,6 +15,9 @@
         /%td= link_to page.id, [:admin, page]
         %td= link_to page.title, [:admin, page]
         %td= truncate(page.synopsis, length: 50)
-        %td= page.updated_at.to_s(:month_day_year)
+        %td
+          = page.updated_at.to_s(:month_day_year)
+          - if page.author?
+            == (#{page.author})
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_page_path(page), :class => 'btn btn-mini'

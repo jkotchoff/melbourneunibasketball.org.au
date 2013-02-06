@@ -247,7 +247,7 @@ Page.create!(
 
         <td>-</td>
         <td>-</td>
-        <td>Scott Cuffe, Jason Kotchoff, Matthew Hillbrich, Raef Ackhurst, Ben Barnett, Brendan Green, Joel Berry</td>
+        <td>Scott Cuffe, Jason Kotchoff, Matthew Hillbrich, Raef Akehurst, Ben Barnett, Brendan Green, Joel Berry</td>
       </tr>
       <tr> 
         <td>2004</td>
