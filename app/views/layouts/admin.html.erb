@@ -13,8 +13,6 @@
 </head>
 <body>
 
-<div class="container">
-
   <a class="brand" href="/">
     <%= image_tag "mubc_logo.gif" %>
     <div>
@@ -24,17 +22,21 @@
       Club
     </div>
   </a>
+  
+  <h1 style="position:absolute; top: 0; text-align:center; width:100%">Website Admin</h1>
 
-  <div class="row">
-    <div class="span12">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row-fluid">
       <%= yield %>
     </div>
   </div>
-</div>
 
 </body>
 </html>

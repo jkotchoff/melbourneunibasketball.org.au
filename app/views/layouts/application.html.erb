@@ -27,7 +27,6 @@
                 Basketball<br/>
                 Club
               </div>
-          
           </a>
           <div class="nav-collapse collapse">
             <ul class="nav" id="topnav">
@@ -60,9 +59,7 @@
         <% if @right_sidebar %>
           <div class="span3">
             <div class="well sidebar-nav">
-            <%= link_to "Administer Site", admin_path, :class => 'btn btn-mini btn-danger' %>
-            
-            <%= @right_sidebar.content.html_safe %>
+              <%= @right_sidebar.content.html_safe %>
             </div>
           </div>
         <% end %>
@@ -72,6 +69,7 @@
       <hr>
 
       <footer>
+        <%= link_to "Administer Site", admin_path, :class => 'btn btn-mini btn-danger right' %>
         <p>&copy; Melbourne University Basketball Club <%= Date.today.year %></p>
       </footer>
 

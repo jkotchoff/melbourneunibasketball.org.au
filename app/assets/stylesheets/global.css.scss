@@ -1,5 +1,7 @@
 body{background-image: url("/assets/logo_bg.png"); background-attachment:fixed; background-repeat:no-repeat}
+footer{margin: 0 15px}
 .clear{clear:both}
+.right{float:right; margin-left:15px}
 .brand{
   width: 180px;
   position:absolute;
@@ -40,6 +42,7 @@ a.brand, a.brand:visited{
 .news_image{float:left; margin-right:15px}
 .page_image{float:right; margin-left:15px}
 
+#bigv_champs{position:absolute; top:50px; right:10px;}
 
 /* Sortable tables from http://www.kryogenix.org/code/browser/sorttable/ */
 table.sortable a.sortheader {

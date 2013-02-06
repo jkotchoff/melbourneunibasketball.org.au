@@ -404,7 +404,7 @@ Page.create!(
         <td>Runners Up</td>
         <td>-</td>
         <td>Matt Rafton</td>
-        <td>Mike Woolrich, Raef Akehurst, Lach Strong, Tommy Sim, Vlade Angelovski...</td>
+        <td>Mike Woolrich, Raef Akehurst, Lach Strong, Tommy Sim, Vlade Angelovski, Karl Edwards, Toby Wallace-Crabbe, Mayur</td>
       </tr>
 
       <tr> 
