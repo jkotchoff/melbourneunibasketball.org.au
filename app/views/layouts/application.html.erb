@@ -31,7 +31,7 @@
           </a>
           <div class="nav-collapse collapse">
             <ul class="nav" id="topnav">
-              <li class="<%= "active" if params[:action] == 'archived' %>"><%= link_to "News Archive", archived_news_path %></li>
+              <li class="<%= "active" if params[:controller] == 'news' and !['index', 'event_calendar'].index(params[:action]) %>"><%= link_to "News Archive", archived_news_path %></li>
               <li class="<%= "active" if params[:action] == 'event_calendar' %>"><%= link_to "Event Calendar", event_calendar_path %></li>
               <li class="<%= "active" if params[:controller] == 'about' %>"><%= link_to "About MUBC", about_path %></li>
               <li class="<%= "active" if params[:controller] == 'contact' %>"><%= link_to "Join The Club", contact_path %></li>

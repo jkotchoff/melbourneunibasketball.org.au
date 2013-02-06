@@ -11,4 +11,15 @@
     = @page.content.html_safe
   - else
     = @page.synopsis
-  
+
+%p.clear
+  .muted
+    - if @page.class == NewsItem
+      = @page.created_at.to_s(:month_day_year)
+      - if @page.author?
+        == - submitted by #{@page.author}
+    - else
+      This page was last updated
+      - if @page.author?
+        == by #{@page.author}
+      == on #{@page.updated_at.to_s(:month_day_year)}
