@@ -44,13 +44,12 @@
       %b The Content field is optional and creates a dedicated page for this content. 
       %br
       Use only if one paragraph and a photo is not sufficient (such as for a tournament report)
-      %br
-      eg. 
-      %em For all you scrawny enthusiasts out there with a sports center gym membership and a cupboard full of protein powder, the secret behind the boys success is in fact, the fabled and elusive Baylor program. Yes indeed, this is the one and only workout program that teleported Aaron Bruce's skinny ass into the atlassian monster of Texas NCAA circa 2007
   .control-group
     = f.label :content, :class => 'control-label'
     .controls
-      = f.text_area :content, :class => 'text_area', rows: 1
+      = f.text_area :content, :class => 'text_area tinymce', rows: 10
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_pages_path, :class => 'btn'
+
+= tinymce

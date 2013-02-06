@@ -17,6 +17,11 @@ class NewsController < ApplicationController
     @left_sidebar = "sidebars/news"
   end
 
+  def news_item
+    @page = Page.find(params[:article])
+    render "pages/show"
+  end
+
   def event_calendar
     render_page(Page::EVENT_CALENDAR)
   end

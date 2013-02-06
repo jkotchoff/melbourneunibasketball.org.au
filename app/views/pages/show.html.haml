@@ -1,5 +1,14 @@
-- unless @page.title == Page::EVENT_CALENDAR
+- if @page.class == NewsItem
   %h1
     = @page.title
 
-.content= @page.content
+.content
+  - if @page.image?
+    .page_image
+      = image_tag @page.image_url(:standard)
+
+  - if @page.content
+    = @page.content.html_safe
+  - else
+    = @page.synopsis
+  

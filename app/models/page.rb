@@ -37,7 +37,6 @@ class Page < ActiveRecord::Base
   CONTACT_JOIN_THE_CLUB           = "Join the Club"
   CONTACT_DOCUMENTS_AND_FORMS     = "Documents and Forms"
   CONTACT_UNIFORMS                = "Uniforms"
-  CONTACT_LINKS                   = "Web Links"
 
   PANEL_HOME_SIDEBAR              = "Home Side Panel"
 

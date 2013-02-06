@@ -3,10 +3,13 @@
     %li.news_item
       - if news_item.image?
         .news_image
-          = image_tag news_item.image_url(:thumbnail)
+          - if news_item.content.blank?
+            = image_tag news_item.image_url(:thumbnail)
+          - else
+            = link_to image_tag(news_item.image_url(:thumbnail)), article_path(news_item.id) 
       %h5= news_item.title
       = news_item.synopsis
       - unless news_item.content.blank?
         %br
-        = link_to 'Read Full Article', '#' 
+        = link_to 'Read Full Article', article_path(news_item.id) 
       .muted== #{news_item.created_at.to_s(:month_day_year)} - submitted by #{news_item.author}

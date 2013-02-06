@@ -69,7 +69,7 @@ class AboutController < ApplicationController
   def life_members
     render_page(Page::AWARDS_LIFERS)
   end
-  
+
   protected
     def load_sidebar
       @left_sidebar = "sidebars/about"

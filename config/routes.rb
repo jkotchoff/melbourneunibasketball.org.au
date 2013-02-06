@@ -6,6 +6,7 @@ Melbourneunibasketball::Application.routes.draw do
   match 'admin' => 'admin/pages#index'
 
   match 'news' => 'news#archived', :as => :archived_news
+  match 'news/:article' => 'news#news_item', :as => :article
 
   match 'event_calendar' => 'news#event_calendar', :as => :event_calendar
 
@@ -31,9 +32,6 @@ Melbourneunibasketball::Application.routes.draw do
   match 'join_the_club/documents_and_forms' => 'contact#documents_and_forms', :as => :documents_and_forms
   match 'join_the_club/uniforms' => 'contact#uniforms', :as => :uniforms
   
-  #TODO:
-  match 'contact/links' => 'contact#links', :as => :links
-
   root :to => 'news#index'
 
 

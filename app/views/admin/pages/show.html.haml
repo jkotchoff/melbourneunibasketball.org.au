@@ -24,7 +24,7 @@
 %p
   %strong= model_class.human_attribute_name(:content) + ':'
   %br
-  = @page.content
+  = @page.content.html_safe
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), admin_pages_path, :class => 'btn'

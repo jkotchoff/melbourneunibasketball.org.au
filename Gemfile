@@ -6,7 +6,9 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'mini_magick'
 gem 'pg'
+gem 'tinymce-rails'
 gem 'unicorn'
 
 
@@ -39,7 +41,6 @@ group :test do
 end
 
 group :test, :development do
-  gem "mini_magick"
   gem "rspec-rails", ">= 2.5"
   gem 'debugger'
 end
