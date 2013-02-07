@@ -33,7 +33,7 @@
               <li class="<%= "active" if params[:controller] == 'news' and !['index', 'event_calendar'].index(params[:action]) %>"><%= link_to "News Archive", archived_news_path %></li>
               <li class="<%= "active" if params[:action] == 'event_calendar' %>"><%= link_to "Event Calendar", event_calendar_path %></li>
               <li class="<%= "active" if params[:controller] == 'about' %>"><%= link_to "About MUBC", about_path %></li>
-              <li class="<%= "active" if params[:controller] == 'contact' %>"><%= link_to "Join The Club", contact_path %></li>
+              <li class="<%= "active" if params[:controller] == 'contact' %>"><%= link_to "Membership", membership_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -49,7 +49,7 @@
             </div><!--/.well -->
           </div><!--/span-->
         <% end %>
-        <div class="span9">
+        <div class="span<%= (@left_sidebar or @right_sidebar) ? 9 : 12 %>">
           <% flash.each do |name, msg| %>
             <%= content_tag :div, msg, :id => "flash_#{name}" %>
           <% end %>

@@ -1,0 +1,33 @@
+= form_for @member, :url => membership_checkout_path, :html => { :class => 'form-horizontal' } do |f|
+  .row
+    .span6
+      .control-group
+        = f.label :given_name, :class => 'control-label'
+        .controls
+          = f.text_field :given_name, :class => 'text_field'
+    .span6
+      .control-group
+        = f.label :family_name, :class => 'control-label'
+        .controls
+          = f.text_field :family_name, :class => 'text_field'
+
+  .row
+    .span6
+      /TODO: http://dan.doezema.com/2012/03/twitter-bootstrap-radio-button-form-inputs/
+      .control-group
+        = f.label :gender, :class => 'control-label'
+        .controls.btn-group{"data-toggle-name" => "is_private", "data-toggle" => "buttons-radio"}
+          %button{:type => "button", :value => "0", :class => "btn", "data-toggle" => "button"} Male
+          %button{:type => "button", :value => "0", :class => "btn", "data-toggle" => "button"} Female
+
+  .row
+    .span12
+      .control-group
+        = f.label :eligibility, :class => 'control-label'
+        .controls.group
+          = select_tag "eligibility", eligibility_options
+
+
+  .form-actions
+    = f.submit "Take me to Paypal", :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_pages_path, :class => 'btn'

@@ -3,8 +3,31 @@ Melbourneunibasketball::Application.routes.draw do
     resources :pages
     resources :news_items
   end
+
   match 'admin' => 'admin/pages#index'
 
+  resources :members, only: [:new, :create] do
+    member do
+      get 'review_paypal_payment'
+      get 'thankyou'
+    end
+  end
+
+  match 'members' => 'members#new'
+  match 'membership' => 'members#new', :as => :membership
+
+=begin
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+
+  match 'membership' => 'members#new', :as => :membership_fees
+  #match 'membership_checkout' => 'paypal_express#create', :as => :membership_checkout
+  match 'membership_review' => 'paypal_express#review', :as => :membership_review
+  match 'membership_thankyou' => 'paypal_express#thankyou', :as => :membership_thankyou
+=end
   match 'news' => 'news#archived', :as => :archived_news
   match 'news/:article' => 'news#news_item', :as => :article
 
@@ -28,9 +51,9 @@ Melbourneunibasketball::Application.routes.draw do
   match 'about/distinguished_service_awards' => 'about#distinguished_service_awards', :as => :distinguished_service_awards
   match 'about/life_members' => 'about#life_members', :as => :life_members
 
-  match 'join_the_club' => 'contact#index', :as => :contact
-  match 'join_the_club/documents_and_forms' => 'contact#documents_and_forms', :as => :documents_and_forms
-  match 'join_the_club/uniforms' => 'contact#uniforms', :as => :uniforms
+  match 'membership' => 'paypal_express#membership_fees', :as => :membership
+  match 'membership/documents_and_forms' => 'contact#documents_and_forms', :as => :documents_and_forms
+  match 'membership/uniforms' => 'contact#uniforms', :as => :uniforms
   
   root :to => 'news#index'
 

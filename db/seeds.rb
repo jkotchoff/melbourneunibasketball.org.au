@@ -45,6 +45,12 @@ Page.create!(
   title: Page::PANEL_HOME_SIDEBAR, 
   synopsis: "Content for the sidebar on the homepage", 
   content: %Q{
+      <p>
+        <b>Social Media</b><br/>
+        <a href="http://www.facebook.com/melbourneuniversitybasketballclub">MUBC on Facebook</a><br/>
+        <a href="http://www.twitter.com/MUBCBlackAngels">MUBC on Twitter</a><br/>
+        <a href="http://www.instagram.com/MelbourneUniBasketball">MUBC on Instagram</a>
+      </p>
       <p style="margin-top:10px; margin-bottom:0px;">
         <b>Season Fixtures</b>
         <ul class="unstyled">

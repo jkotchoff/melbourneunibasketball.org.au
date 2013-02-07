@@ -14,3 +14,7 @@ NewsItem.blueprint do
   synopsis       { "Synopsis #{sn}" }
   created_at     { Time.now }
 end
+
+Member.blueprint do
+  # Attributes here
+end

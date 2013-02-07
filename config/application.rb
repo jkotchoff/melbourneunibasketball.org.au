@@ -61,6 +61,13 @@ module Melbourneunibasketball
       g.test_framework :rspec  
       g.fixture_replacement :machinist
     end
+    
+    unless Rails.env.production?
+      # Force ActiveMerchant into test mode
+      config.after_initialize do
+        ActiveMerchant::Billing::Base.mode = :test
+      end      
+    end
 
 
     # Version of your assets, change this if you want to expire all your assets
