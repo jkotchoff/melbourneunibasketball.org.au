@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20130206053035) do
     t.string   "eligibility_clause"
     t.string   "eligibility_justification"
     t.string   "payment_method"
+    t.string   "paypal_token"
     t.boolean  "representative_player",              :default => false
     t.integer  "year"
     t.string   "given_name"
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130206053035) do
     t.string   "your_existing_mubc_singlet_numbers"
     t.text     "how_did_you_hear_about_the_club"
     t.integer  "amount_paid"
+    t.boolean  "payment_confirmed",                  :default => false
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
   end

@@ -1,5 +1,5 @@
 = form_for @member, :html => { :class => 'form-horizontal' } do |f|
-  #membership_steps.row{style: 'display:'}
+  #membership_steps.row
     .span12
       .form-actions{style: 'padding-left:0'}
         %ul.payment_steps#paypal_instructions
@@ -27,25 +27,28 @@
         prohibited this application from progressing. 
         %br
         Please fill in the highlighted fields.
+
+
+  = button_tag :populate, id: 'populate_fields'
+
   .row
     .span6
       .control-group
         = f.label :eligibility_clause, :class => 'control-label'
         .controls.group
-          = select_tag "eligibility_clause", eligibility_options
+          = f.select :eligibility_clause, eligibility_options
     .span6
       .control-group
         = f.label :eligibility_justification, :class => 'control-label', id: 'eligibility_justification_label', style: ("display:none" unless @member.eligibility_clause?)
         .controls
           = f.text_field :eligibility_justification, :class => 'text_field', style: ("display:none" unless @member.eligibility_clause?)
-    = f.hidden_field :eligibility_clause
 
   #membership_form{style: 'display:'}
     .row
       .span9
         .control-group
           = f.label "Payment Method", :class => 'control-label'
-          .controls.group
+          .controls.group#payment_controls
             %label{for: "member_payment_method_paypal"}
               = f.radio_button :payment_method, :paypal
               == Paypal #{image_tag("https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg", size: '160x55')}
@@ -54,12 +57,11 @@
               = f.radio_button :payment_method, :bank_transfer
               == Australian bank transfer
             .muted For this option, you will be presented with MUBC's bank account details immediately after you have submitted this form. You will be required to transfer funds straight away.
-      /= f.hidden_field :payment_type
       #membership_fee.span3
         == Membership fee: 
         %h1#membership_fee_dollars $-1
         #membership_breakdown.muted
-        /.muted ie. $110 for an eligible non-student, $20 surcharge for playing MMBL or Big V, $10 surcharge for missing the april 31th deadline
+      = f.hidden_field :amount_paid
   
     .row
       .span12
@@ -99,7 +101,7 @@
         .control-group
           = f.label :gender, :class => 'control-label'
           .controls.btn-group{"data-toggle-name" => "member[gender]", "data-toggle" => "buttons-radio"}
-            %button{:type => "button", :value => "Male", :class => "btn", "data-toggle" => "button"} Male
+            %button#gender_male{:type => "button", :value => "Male", :class => "btn", "data-toggle" => "button"} Male
             %button{:type => "button", :value => "Female", :class => "btn", "data-toggle" => "button"} Female
           = f.hidden_field :gender
       .span6
@@ -142,5 +144,5 @@
     .muted * Even if you are an existing member from last year, we require you to fill out all the fields again so that your details can be kept up to date.
   
     .form-actions
-      = f.submit "Take me to Paypal", :class => 'btn btn-primary'
+      = f.submit "Submit", :class => 'btn btn-primary', id: 'submit_button'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_pages_path, :class => 'btn'

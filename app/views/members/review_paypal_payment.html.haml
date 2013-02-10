@@ -1,33 +1,25 @@
-= form_for @member, :url => membership_checkout_path, :html => { :class => 'form-horizontal' } do |f|
-  .row
-    .span6
-      .control-group
-        = f.label :given_name, :class => 'control-label'
-        .controls
-          = f.text_field :given_name, :class => 'text_field'
-    .span6
-      .control-group
-        = f.label :family_name, :class => 'control-label'
-        .controls
-          = f.text_field :family_name, :class => 'text_field'
-
-  .row
-    .span6
-      /TODO: http://dan.doezema.com/2012/03/twitter-bootstrap-radio-button-form-inputs/
-      .control-group
-        = f.label :gender, :class => 'control-label'
-        .controls.btn-group{"data-toggle-name" => "is_private", "data-toggle" => "buttons-radio"}
-          %button{:type => "button", :value => "0", :class => "btn", "data-toggle" => "button"} Male
-          %button{:type => "button", :value => "0", :class => "btn", "data-toggle" => "button"} Female
-
-  .row
-    .span12
-      .control-group
-        = f.label :eligibility, :class => 'control-label'
-        .controls.group
-          = select_tag "eligibility", eligibility_options
-
-
-  .form-actions
-    = f.submit "Take me to Paypal", :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_pages_path, :class => 'btn'
+= form_for @member, as: :member, url: confirm_paypal_purchase_member(@member), :html => { :class => 'form-horizontal' } do |f|
+  .confirmation{style: "margin-left:50px"}
+    #membership_steps.row
+      .span12
+        .form-actions{style: 'padding-left:0'}
+          %ul.payment_steps#paypal_instructions
+            %li
+              %em Step 1:
+              Enter Your Membership Details
+            %li
+              %em Step 2:
+              Create or Login to your Paypal Account
+            %li.selected
+              %em Step 3:
+              Confirm Payment
+    
+    .row
+      .span12
+        %p
+          Great stuff, you're almost there!
+        %p
+          If you're happy with the details below, go ahead and hit the 'Confirm Payment' button to complete the transaction.
+  
+        .form-actions
+          = f.submit "Submit", :class => 'btn btn-primary', id: 'submit_button'

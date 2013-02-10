@@ -8,8 +8,8 @@ module PaypalExpressHelper
       :shipping => 0,
       :handling => 0,
       :tax =>      0,
-      :allow_note =>  true,
-      :items => [{ name: "MUBC Annual Membership - 2012", number: 1, quantity: 1, amount: to_cents(total) }],
+      :allow_note =>  false,
+      :items => [{ name: "MUBC Annual Membership - #{Date.today.year}", number: 1, quantity: 1, amount: to_cents(total) }],
     }
   end
 =begin 
@@ -29,10 +29,11 @@ module PaypalExpressHelper
   end
 =end 
   def to_cents(money)
-    (money*100).round
+    (money.to_f*100).round
   end
   
   def eligibility_options
+    selected = params[:member][:eligibility_clause] rescue nil
     options_for_select({ 
       'None' => '', 
       'Enrolled Melbourne Uni Student' => 'enrolled_student_mu', 
@@ -45,6 +46,6 @@ module PaypalExpressHelper
       "Immediate family of current student or eligible non student" => "immediate_family",
       "MUBC Life member" => 'life_member',
       "Eligible under Director's discretion" => 'directors_discretion',
-    }, params[:eligibility])
+    }, selected)
   end
 end

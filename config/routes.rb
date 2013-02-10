@@ -6,28 +6,24 @@ Melbourneunibasketball::Application.routes.draw do
 
   match 'admin' => 'admin/pages#index'
 
-  resources :members, only: [:new, :create] do
+  resources :members, only: [:index, :new, :create] do
     member do
+      get 'mubc_account_details'
+      get 'confirm_paypal_purchase'
+    end
+    
+    collection do
       get 'review_paypal_payment'
       get 'thankyou'
     end
   end
 
-  match 'members' => 'members#new'
-  match 'membership' => 'members#new', :as => :membership
+  match 'members' => 'members#index'
+  match 'membership' => 'members#new'
+  match 'members/join_the_club' => 'members#new', :as => :join_the_club
+  match 'members/documents_and_forms' => 'members#documents_and_forms', :as => :documents_and_forms
+  match 'members/uniforms' => 'members#uniforms', :as => :uniforms
 
-=begin
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-
-  match 'membership' => 'members#new', :as => :membership_fees
-  #match 'membership_checkout' => 'paypal_express#create', :as => :membership_checkout
-  match 'membership_review' => 'paypal_express#review', :as => :membership_review
-  match 'membership_thankyou' => 'paypal_express#thankyou', :as => :membership_thankyou
-=end
   match 'news' => 'news#archived', :as => :archived_news
   match 'news/:article' => 'news#news_item', :as => :article
 
@@ -50,10 +46,6 @@ Melbourneunibasketball::Application.routes.draw do
   match 'about/social_awards' => 'about#social_awards', :as => :social_awards
   match 'about/distinguished_service_awards' => 'about#distinguished_service_awards', :as => :distinguished_service_awards
   match 'about/life_members' => 'about#life_members', :as => :life_members
-
-  match 'membership' => 'paypal_express#membership_fees', :as => :membership
-  match 'membership/documents_and_forms' => 'contact#documents_and_forms', :as => :documents_and_forms
-  match 'membership/uniforms' => 'contact#uniforms', :as => :uniforms
   
   root :to => 'news#index'
 

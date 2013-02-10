@@ -1,6 +1,8 @@
 %ul.nav.nav-list
   %li{class: ('active' if params[:action] == 'index')}
-    = link_to Page::CONTACT_JOIN_THE_CLUB, contact_path
+    = link_to "MUBC Membership", members_path
+  %li{class: ('active' if params[:action] == 'new')}
+    = link_to "Join the Club", join_the_club_path
   %li{class: ('active' if params[:action] == 'uniforms')}
     = link_to Page::CONTACT_UNIFORMS, uniforms_path
   %li{class: ('active' if params[:action] == 'documents_and_forms')}

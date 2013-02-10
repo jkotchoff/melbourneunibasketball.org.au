@@ -1,5 +1,5 @@
 body{background-image: url("/assets/logo_bg.png"); background-attachment:fixed; background-repeat:no-repeat}
-h5{margin:0px}
+h4, h5{margin:0px}
 footer{margin: 0 15px}
 .clear{clear:both}
 .right{float:right; margin-left:15px}
@@ -40,7 +40,8 @@ a.brand, a.brand:visited{
 .controls input[type='text'], .controls textarea{width:100%}
 
 .news_item{clear:both; padding-top:27px}
-.news_image{float:left; margin-right:15px}
+.news_item h4{margin-bottom:7px;}
+.news_image{float:right; margin-left:15px;}
 .page_image{float:right; margin-left:15px}
 
 #bigv_champs{position:absolute; top:50px; right:10px;}
@@ -50,6 +51,10 @@ a.brand, a.brand:visited{
 .payment_steps li{float:left; padding-right: 30px;}
 .payment_steps li.selected{font-weight:bold}
 #membership_fee{background-color:#eee; border-radius:7px; padding:10px;}
+
+/* Membership BSB details */
+.confirmation #membership_fee{ margin-right:15px }
+.confirmation .control-label{padding-top:0px}
 
 /* Sortable tables from http://www.kryogenix.org/code/browser/sorttable/ */
 table.sortable a.sortheader {

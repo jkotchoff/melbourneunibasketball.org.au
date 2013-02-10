@@ -14,15 +14,53 @@ rebuild_price = ->
     else
       fee_breakdown.push('$' + non_student_fee + ' for an eligible non-student')
       cost += non_student_fee
-  if $('#member_representative_player').val() == '1'
+  if $('#member_representative_player').val() == 'true'
     fee_breakdown.push('$' + representative_fee + ' surcharge for playing in a representative grade')
     cost += representative_fee
   $('#membership_fee_dollars').text "$" + cost
+  $('#member_amount_paid').val(cost)
   if cost != -1 and fee_breakdown.length > 1
      $('#membership_breakdown').text "ie. " + fee_breakdown.join(', ')
   else
      $('#membership_breakdown').text ""
 
+rebuild_eligibility_clause = ->
+  if ["life_member", "deferred_student", ""].indexOf($('#member_eligibility_clause').val()) >= 0
+    $('#member_eligibility_justification').hide()
+    $('#eligibility_justification_label').hide()
+  else
+    $('#eligibility_justification_label').show() 
+    $('#member_eligibility_justification').show()
+    switch $('#member_eligibility_clause').val()
+      when "enrolled_student_mu"
+        $('#eligibility_justification_label').text("Student number")
+      when "enrolled_student_elsewhere"
+        $('#eligibility_justification_label').text("Institution name")
+      when "university_graduate"
+        $('#eligibility_justification_label').text('University, Degree and Final Year')
+      when "university_staff"
+        $('#eligibility_justification_label').text('Department')
+      when "working_on_site"
+        $('#eligibility_justification_label').text('Employed by')
+      when "college_affiliation"
+        $('#eligibility_justification_label').text('College')
+      when "immediate_family"
+        $('#eligibility_justification_label').text('Eligible Family Member\'s name')
+      when "directors_discretion"
+        $('#eligibility_justification_label').text('Director\'s name and justification')
+    if !$('#member_eligibility_justification').val()
+      $('#member_eligibility_justification').focus()
+
+rebuild_steps = (button_value) ->        
+  if button_value == 'paypal'
+    $('#bank_transfer_instructions').hide()
+    $('#paypal_instructions').show()
+    $('#submit_button').val('Take me to Paypal')
+  else if button_value == 'bank_transfer'
+    $('#paypal_instructions').hide()
+    $('#bank_transfer_instructions').show()
+    $('#submit_button').val('Submit')
+        
 jQuery ($) ->
   $("div.btn-group").each ->
     group = $(this)
@@ -45,40 +83,27 @@ jQuery ($) ->
           rebuild_price()
       button.addClass "active"  if button.val() is hidden.val()
 
-  $('#member_payment_method_paypal').bind 'click', ->
-    $('#bank_transfer_instructions').hide()
-    $('#paypal_instructions').show()
+  rebuild_steps jQuery("#payment_controls input:checked").val()
+  $('#payment_controls input:radio').change ->
+    rebuild_steps $(this).val()
 
-  $('#member_payment_method_bank_transfer').bind 'click', ->
-    $('#paypal_instructions').hide()
-    $('#bank_transfer_instructions').show()
-
-  $('#eligibility_clause').change ->
+  rebuild_eligibility_clause()
+  
+  $('#member_eligibility_clause').change ->
     rebuild_price()
-    $('#membership_steps, #membership_form').show()
-    $('#member_eligibility_justification').show()
-    $('#eligibility_justification').val $(this).val() 
-    $('#eligibility_justification_label').show() 
-    if ["life_member", "deferred_student", ""].indexOf($(this).val()) >= 0
-      $('#member_eligibility_justification').hide()
-      $('#eligibility_justification_label').hide()
-    else
-      switch $(this).val()
-        when "enrolled_student_mu"
-          $('#eligibility_justification_label').text("Student number")
-        when "enrolled_student_elsewhere"
-          $('#eligibility_justification_label').text("Institution name")
-        when "university_graduate"
-          $('#eligibility_justification_label').text('University, Degree and Final Year')
-        when "university_staff"
-          $('#eligibility_justification_label').text('Department')
-        when "working_on_site"
-          $('#eligibility_justification_label').text('Employed by')
-        when "college_affiliation"
-          $('#eligibility_justification_label').text('College')
-        when "immediate_family"
-          $('#eligibility_justification_label').text('Eligible Family Member\'s name')
-        when "directors_discretion"
-          $('#eligibility_justification_label').text('Director\'s name and justification')
-      #TODO: $('#eligibility_justification_label').focus()
-          
+    rebuild_eligibility_clause()
+
+  $('#populate_fields').bind "click", ->
+    $('#member_eligibility_clause').val('university_graduate')
+    $('#member_eligibility_justification').show().val('RMIT')
+    $('#member_given_name').val('John')
+    $('#member_family_name').val('Smith')
+    $('#member_email').val('someone@somewhere.com')
+    $('#member_postal_address').val('1 Tin Alley lane, Melbourne University, Carlton 3004')
+    $('#gender_male').click()
+    $('#member_date_of_birth').val('01/01/2013')
+    $('#member_phone_number_mobile').val('0400 123 456')
+    $('#member_phone_number_other').val('9310 0123')
+    rebuild_price()
+    false
+    

@@ -4,6 +4,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :eligibility_clause
       t.string :eligibility_justification
       t.string :payment_method
+      t.string :paypal_token
       t.boolean :representative_player, default: false
       t.integer :year
       t.string :given_name
@@ -19,7 +20,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :your_existing_mubc_singlet_numbers
       t.text :how_did_you_hear_about_the_club
       t.integer :amount_paid
-
+      t.boolean :payment_confirmed, default: false
       t.timestamps
     end
   end

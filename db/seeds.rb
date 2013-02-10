@@ -33,7 +33,7 @@ NewsItem.create!(author: 'smoke', title: 'Corporate Games win', synopsis: "Andy'
   Page::AWARDS_DISTINGUISHED_SERVICE => "An annual award for noteworthy contribution to the club",
   Page::AWARDS_LIFERS => "For exemplary contribution to MUBC",
 
-  Page::CONTACT_JOIN_THE_CLUB => "Join Melbourne University Basketball Club",
+  Page::CONTACT_JOIN_THE_CLUB => "MUBC Membership",
   Page::CONTACT_DOCUMENTS_AND_FORMS => "Club Specific Documents and Forms (eg. the membership form)",
   Page::CONTACT_UNIFORMS => "Uniform ordering guide for MUBC playing shorts, singlets and club hoodies"
 
@@ -46,10 +46,10 @@ Page.create!(
   synopsis: "Content for the sidebar on the homepage", 
   content: %Q{
       <p>
-        <b>Social Media</b><br/>
-        <a href="http://www.facebook.com/melbourneuniversitybasketballclub">MUBC on Facebook</a><br/>
-        <a href="http://www.twitter.com/MUBCBlackAngels">MUBC on Twitter</a><br/>
-        <a href="http://www.instagram.com/MelbourneUniBasketball">MUBC on Instagram</a>
+        <b>Upcoming Events</b><br/>
+        March 1-4: <a href="http://www.twitter.com/MUBCBlackAngels">O-Week booth</a><br/>
+        March 8-11: <a href="http://www.facebook.com/melbourneuniversitybasketballclub">Ballarat Tournament</a><br/>
+        March 15: <a href="http://www.instagram.com/MelbourneUniBasketball">Big V Double-header</a>
       </p>
       <p style="margin-top:10px; margin-bottom:0px;">
         <b>Season Fixtures</b>
@@ -73,6 +73,12 @@ Page.create!(
           <li><a href="#"><div class="muted">MMBL (Wednesdays, Melbourne)</div>Div 1 Women</a><br/><br/></li>
           <li><a href="#"><div class="muted">VBHBA (Thursdays, MSAC)</div>A Men</a></li>
         </ul>
+      </p>
+      <p>
+        <b>Social Media</b><br/>
+        <a href="http://www.facebook.com/melbourneuniversitybasketballclub">MUBC on Facebook</a><br/>
+        <a href="http://www.twitter.com/MUBCBlackAngels">MUBC on Twitter</a><br/>
+        <a href="http://www.instagram.com/MelbourneUniBasketball">MUBC on Instagram</a>
       </p>
       <p style="margin-top:10px; margin-bottom:0px;">
         <b>Training Times</b><br/>

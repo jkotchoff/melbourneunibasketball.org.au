@@ -33,7 +33,7 @@
               <li class="<%= "active" if params[:controller] == 'news' and !['index', 'event_calendar'].index(params[:action]) %>"><%= link_to "News Archive", archived_news_path %></li>
               <li class="<%= "active" if params[:action] == 'event_calendar' %>"><%= link_to "Event Calendar", event_calendar_path %></li>
               <li class="<%= "active" if params[:controller] == 'about' %>"><%= link_to "About MUBC", about_path %></li>
-              <li class="<%= "active" if params[:controller] == 'contact' %>"><%= link_to "Membership", membership_path %></li>
+              <li class="<%= "active" if params[:controller] == 'members' %>"><%= link_to "Membership", members_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
