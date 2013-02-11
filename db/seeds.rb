@@ -96,6 +96,42 @@ Page.create!(
   }
 )
 
+Page.find_by_title(Page::CONTACT_JOIN_THE_CLUB).update_attributes(:content => %Q{
+  <p>MUBC is a fun place to play basketball, and party!</p>
+  <p>As Australia's largest senior domestic basketball club, MUBC offers opportunities to pursue an elite or casual playing career in a non-junior program.</p>
+  <p>There are numerous eligibility clauses in regard to Membership.</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <div align="center"><a class="btn btn-danger" style="padding: 14px 36px; font-size: 250%;" href="../../../membership">Join The Club</a>&nbsp;</div>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+})
+
+Page.find_by_title(Page::EVENT_CALENDAR).update_attributes(:content => %Q{
+  <table border="1" cellpadding="3">
+  <tbody>
+  <tr valign="top">
+  <td><strong>January 2013</strong></td>
+  <td><strong>23rd-25th</strong><br />O-Week</td>
+  </tr>
+  <tr valign="top">
+  <td><strong>Febuary</strong></td>
+  <td><strong>23rd-25th</strong><br />Table in North Court and demonstration</td>
+  </tr>
+  <tr valign="top">
+  <td>&nbsp;<strong>March</strong></td>
+  <td><strong>8th-11th</strong><br />Ballarat Tournament<br /><br /><strong>11th-13th</strong><br />Big V Tournament&nbsp;</td>
+  </tr>
+  <tr valign="top">
+  <td>&nbsp;<strong>April</strong></td>
+  <td><strong>8th</strong><br />Pub Crawl<br /><br /><strong>15th</strong><br />Annual General Meeting<br /><br /><strong>20th</strong><br />Big V Double Header</td>
+  </tr>
+  </tbody>
+  </table>
+})
+
+
 Page.create!(
   title: Page::AWARDS_TITLES, 
   synopsis: "Team Lists for Premierships & Runner Up finishes (VBL, University Games, MMBL, Sunday Night MSAC, Tournaments)", 

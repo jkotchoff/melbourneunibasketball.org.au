@@ -1,25 +1,25 @@
-body{background-image: url("/assets/logo_bg.png"); background-attachment:fixed; background-repeat:no-repeat}
 h4, h5{margin:0px}
 footer{margin: 0 15px}
 .clear{clear:both}
 .right{float:right; margin-left:15px}
-.brand{
+.logo_brand{
   width: 180px;
   position:absolute;
   left:7px;
-  top:-7px;
+  top:0px;
   z-index:9999;
+  padding: 0;
 }
-.brand div{
+.logo_brand div{
   font-size:12px;
   font-weight:bold;
   line-height:120%;
   margin-top:10px;
 }
-a.brand, a.brand:visited{
+a.logo_brand, a.logo_brand:visited{
   color:white
 }
-.brand:hover{
+.logo_brand:hover{
   color:blue;
   background-color:transparent;
   text-decoration:none;
@@ -33,9 +33,6 @@ a.brand, a.brand:visited{
   margin-left:180px;
 }
 
-#topnav{
-  margin-left:200px;
-}
 #page_content{height:280px;}
 .controls input[type='text'], .controls textarea{width:100%}
 
@@ -44,7 +41,7 @@ a.brand, a.brand:visited{
 .news_image{float:right; margin-left:15px;}
 .page_image{float:right; margin-left:15px}
 
-#bigv_champs{position:absolute; top:50px; right:10px;}
+#bigv_champs{position:absolute; top:30px; right:10px; text-align:right; text-shadow: 0px -1px #000; color: #999}
 
 /* Membership form page */
 .payment_steps{list-style-type:none;}
@@ -85,3 +82,12 @@ th {
 #flash_notice{margin-bottom:35px;color:#006600;border:1px solid #006600;}
 #flash_notice{background-color:#99ff77}
 #flash_error{color:#cc0000;border:1px solid #cc0000;background-color:#f3caca}
+
+/* navbar styling */
+@media (min-width: 700px)  {
+  #topnav{margin-left:200px; border-left: 1px solid #333; border-right: 1px solid #000}
+  #topnav li{border-left: 1px solid #000; border-right: 1px solid #333}
+}
+@media (max-width: 700px)  {
+  #topnav{margin-top:30px;}
+}
