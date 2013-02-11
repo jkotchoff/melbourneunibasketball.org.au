@@ -12,7 +12,9 @@ class Member < ActiveRecord::Base
   #      validates_presence_of :how_did_you_hear_about_the_club if :new_member?
 
   def reference
-    "%03d" % id
+    # my HSBC account has an 18 character limit on beneficiary reference notes
+    no = "%03d" % id 
+    "MUBC#{no} #{given_name.chars.first} #{family_name}".first(18) 
   end
 
 end
