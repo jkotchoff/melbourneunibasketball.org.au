@@ -1,0 +1,24 @@
+.confirmation{style: "margin-left:50px"}
+  #membership_steps.row
+    .span12
+      .form-actions{style: 'padding-left:0'}
+        %ul.payment_steps#bank_transfer_instructions
+          %li
+            %em Step 1:
+            Enter Your Membership Details
+          %li
+            %em Step 2:
+            Create or Login to your Paypal Account
+          %li.selected
+            %em Step 3:
+            Confirm Payment
+  
+  .row
+    .span12
+      %p
+        == Great stuff #{@member.given_name}, your $#{@member.amount_paid} Paypal payment has been processed and you are now a full member for #{Date.today.year}.
+      %p
+        See you at training!
+  
+  
+  /= render partial: 'membership', locals: {member: @member}

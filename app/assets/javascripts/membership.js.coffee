@@ -5,7 +5,7 @@ representative_fee = 20
 rebuild_price = ->
   cost = 0
   fee_breakdown = []
-  switch $("#eligibility_clause").val()
+  switch $("#member_eligibility_clause").val()
     when ""
       cost = -1
     when "enrolled_student_mu"
@@ -19,10 +19,14 @@ rebuild_price = ->
     cost += representative_fee
   $('#membership_fee_dollars').text "$" + cost
   $('#member_amount_paid').val(cost)
-  if cost != -1 and fee_breakdown.length > 1
-     $('#membership_breakdown').text "ie. " + fee_breakdown.join(', ')
+  if cost != -1
+    $('#membership_fee').show()
+    if fee_breakdown.length > 1
+      $('#membership_breakdown').text "ie. " + fee_breakdown.join(', ')
+    else
+      $('#membership_breakdown').text ""
   else
-     $('#membership_breakdown').text ""
+     $('#membership_fee').hide()
 
 rebuild_eligibility_clause = ->
   if ["life_member", "deferred_student", ""].indexOf($('#member_eligibility_clause').val()) >= 0
@@ -53,12 +57,12 @@ rebuild_eligibility_clause = ->
 
 rebuild_steps = (button_value) ->        
   if button_value == 'paypal'
-    $('#bank_transfer_instructions').hide()
+    $('#bank_transfer_instructions, #email_row, #postal_address_row').hide()
     $('#paypal_instructions').show()
     $('#submit_button').val('Take me to Paypal')
   else if button_value == 'bank_transfer'
     $('#paypal_instructions').hide()
-    $('#bank_transfer_instructions').show()
+    $('#bank_transfer_instructions, #email_row, #postal_address_row').show()
     $('#submit_button').val('Submit')
         
 jQuery ($) ->
@@ -88,10 +92,11 @@ jQuery ($) ->
     rebuild_steps $(this).val()
 
   rebuild_eligibility_clause()
+  rebuild_price()
   
   $('#member_eligibility_clause').change ->
-    rebuild_price()
     rebuild_eligibility_clause()
+    rebuild_price()
 
   $('#populate_fields').bind "click", ->
     $('#member_eligibility_clause').val('university_graduate')
@@ -106,4 +111,9 @@ jQuery ($) ->
     $('#member_phone_number_other').val('9310 0123')
     rebuild_price()
     false
+
+  # Disable forms onsubmit
+  $('form').bind "submit", ->
+    $('#submit_button').val("Loading..").attr('disabled','disabled')
+    true
     

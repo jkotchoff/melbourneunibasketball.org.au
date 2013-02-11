@@ -9,12 +9,12 @@ Melbourneunibasketball::Application.routes.draw do
   resources :members, only: [:index, :new, :create] do
     member do
       get 'mubc_account_details'
-      get 'confirm_paypal_purchase'
+      post 'confirm_paypal_purchase'
+      get 'thankyou'
     end
     
     collection do
       get 'review_paypal_payment'
-      get 'thankyou'
     end
   end
 

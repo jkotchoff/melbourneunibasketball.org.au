@@ -1,13 +1,17 @@
 %ul.unstyled
-  - news_items.each do |news_item|
+  - news_items.each_with_index do |news_item, i|
     %li.news_item
-      %h4= news_item.title
+      %h4
+        - if news_item.content.blank?
+          = news_item.title
+        - else
+          = link_to news_item.title, article_path(news_item.id) 
       - if news_item.image?
-        .news_image
+        .news_image{class: (i % 2 == 0 ? 'news_image_right' : 'news_image_left')}
           - if news_item.content.blank?
-            = image_tag news_item.image_url(:standard)
+            = link_to image_tag(news_item.image_url(:thumbnail)), news_item.image_url
           - else
-            = link_to image_tag(news_item.image_url(:standard)), article_path(news_item.id) 
+            = link_to image_tag(news_item.image_url(:thumbnail)), article_path(news_item.id) 
       .muted== #{news_item.created_at.to_s(:month_day_year)} - submitted by #{news_item.author}
       %br
       = news_item.synopsis

@@ -1,45 +1,51 @@
-.confirmation{style: "margin-left:50px"}
-  #membership_steps.row
-    .span12
-      .form-actions{style: 'padding-left:0'}
-        %ul.payment_steps#bank_transfer_instructions
-          %li
-            %em Step 1:
-            Enter Your Membership Details
-          %li.selected
-            %em Step 2:
-            Make a bank transfer to MUBC's account
+.container-fluid
+  .row-fluid
+    .span8
+      .confirmation{style: "margin-left:50px"}
+        #membership_steps.row
+          .span12
+            .form-actions{style: 'padding-left:0'}
+              %ul.payment_steps#bank_transfer_instructions
+                %li
+                  %em Step 1:
+                  Enter Your Membership Details
+                %li.selected
+                  %em Step 2:
+                  Make a bank transfer to MUBC's account
+        
+        .row
+          .span12
+            %p
+              Great stuff, you're almost there!
+            %p
+              All you need to do now is make this bank transfer in the next 24 hours:
+            
+            #membership_fee.form-horizontal
+              .control-group
+                %label.control-label Amount Due:
+                .controls
+                  %b== $#{@member.amount_paid}
+              .control-group
+                %label.control-label Account Name:
+                .controls
+                  %b Melbourne University Basketball Club
+              .control-group
+                %label.control-label BSB:
+                .controls
+                  %b 133314
+              .control-group
+                %label.control-label Account Number:
+                .controls
+                  %b 65444564654
+              .control-group
+                %label.control-label 
+                  %sup *
+                  Reference
+                .controls
+                  %b== MUBC#{@member.reference} #{@member.given_name.chars.first} #{@member.family_name}
+          
+          .muted * Use this 'Reference' entry in the 'reference' field of your bank transfer so we know where your money is coming from.
+        
+        
+        /= render partial: 'membership', locals: {member: @member}
   
-  .row
-    .span12
-      %p
-        Great stuff, you're almost there!
-      %p
-        All you need to do now is make this bank transfer in the next 24 hours:
-      
-      #membership_fee.span8.form-horizontal
-        .control-group
-          %label.control-label Amount Due:
-          .controls
-            %b== $#{@member.amount_paid}
-        .control-group
-          %label.control-label Account Name:
-          .controls
-            %b Melbourne University Basketball Club
-        .control-group
-          %label.control-label BSB:
-          .controls
-            %b 133314
-        .control-group
-          %label.control-label Account Number:
-          .controls
-            %b 65444564654
-        .control-group
-          %label.control-label Reference *:
-          .controls
-            %b== MUBC#{@member.reference} #{@member.given_name.chars.first} #{@member.family_name}
-      
-      .muted * Use this 'Reference' entry in the 'reference' field of your bank transfer so we know where your money is coming from.
-  
-  
-  /= render partial: 'membership', locals: {member: @member}

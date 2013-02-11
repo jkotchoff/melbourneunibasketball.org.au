@@ -42,7 +42,7 @@
             </div><!--/.well -->
           </div><!--/span-->
         <% end %>
-        <div class="span<%= (@left_sidebar or @right_sidebar) ? 9 : 12 %>">
+        <div class="span<%= (@left_sidebar or @right_sidebar) ? 9 : 12 %>" style="padding-top:20px;">
           <% flash.each do |name, msg| %>
             <%= content_tag :div, msg, :id => "flash_#{name}" %>
           <% end %>
@@ -63,7 +63,16 @@
 
       <footer class="muted">
         <%= link_to "Administer Site", admin_path, :class => 'right' %>
-        <p>&copy; Melbourne University Basketball Club <%= Date.today.year %></p>
+        <p>
+          &copy; Melbourne University Basketball Club <%= Date.today.year %>.
+          <% if @page %>
+            This page was last updated
+            <% if @page.author? %>
+              by <%= @page.author%>
+            <% end %>
+            on <%= @page.updated_at.to_s(:month_day_year) %>.
+          <% end %>
+        </p>
         <p>This page, its contents and style, are the responsibility of the author and do not necessarily represent the views, policies or opinions of The University of Melbourne.</p>
       </footer>
 

@@ -4,6 +4,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :eligibility_clause
       t.string :eligibility_justification
       t.string :payment_method
+      t.string :paypal_payer_id
       t.string :paypal_token
       t.boolean :representative_player, default: false
       t.integer :year
@@ -14,7 +15,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :phone_number_mobile
       t.string :phone_number_other
       t.string :email
-      t.datetime :date_of_birth
+      t.date :date_of_birth
       t.string :gender
       t.boolean :new_member, default: true
       t.string :your_existing_mubc_singlet_numbers
