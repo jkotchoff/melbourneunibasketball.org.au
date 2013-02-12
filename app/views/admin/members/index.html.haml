@@ -1,0 +1,40 @@
+= link_to "Download CSV Export", csv_export_admin_members_path, :class => 'btn btn-primary right', style: 'margin-top:30px'
+
+.page-header
+  %h3 Members for #{Date.today.year}
+%table.table.table-striped
+  %thead
+    %tr
+      %th Joined
+      %th Name
+      %th Contact
+      %th Age/Gender
+      %th Uniform(s)
+      %th Actions
+  %tbody
+    - @members.each do |member|
+      %tr
+        %td
+          = member.created_at.to_s(:abbr_month_day_year)
+          .muted
+            == $#{member.amount_paid}
+            - if member.payment_method == 'paypal'
+              Paypal
+            - else
+              Bank Transfer
+        %td= link_to member.name, [:admin, member]
+        %td
+          em:
+          = link_to member.email, "mailto:#{member.email}" 
+          %br
+          ph:
+          == #{member.phone_number_mobile} / #{member.phone_number_other}
+        %td
+          = member.age_and_gender
+          - if member.new_member?
+            .muted New Member
+        %td= member.your_existing_mubc_singlet_numbers
+        %td
+          = link_to "Edit", edit_admin_member_path(member), :class => 'btn btn-mini'
+          /= link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, member], :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          

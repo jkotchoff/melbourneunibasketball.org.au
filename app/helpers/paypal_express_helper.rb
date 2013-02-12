@@ -49,7 +49,7 @@ module PaypalExpressHelper
   end
   
   def membership_details
-    %w{ given_name family_name eligibility_clause eligibility_justification representative_player gender date_of_birth phone_number_mobile phone_number_other new_member your_existing_mubc_singlet_numbers how_did_you_hear_about_the_club }
+    %w{ given_name family_name eligibility_clause eligibility_justification gender date_of_birth phone_number_mobile phone_number_other new_member your_existing_mubc_singlet_numbers how_did_you_hear_about_the_club }
   end
 
   def member_field(field_name)
@@ -61,7 +61,7 @@ module PaypalExpressHelper
   end
   
   def eligibility_options
-    selected = params[:member][:eligibility_clause] rescue nil
+    selected = (@member)? @member.eligibility_clause : params[:member][:eligibility_clause] rescue nil
     options_for_select({ 
       'None' => '', 
       'Enrolled Melbourne Uni Student' => 'enrolled_student_mu', 

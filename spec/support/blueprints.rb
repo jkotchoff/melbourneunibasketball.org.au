@@ -16,5 +16,13 @@ NewsItem.blueprint do
 end
 
 Member.blueprint do
-  # Attributes here
+  eligibility_clause     { "life_member" }
+  payment_method         { "paypal" }
+  given_name             { "John" }
+  family_name            { "Smith" }
+  gender                 { "Male" }
+  date_of_birth          { "01/04/1990" }
+  phone_number_mobile    { "0411 123 456" }
+  phone_number_other     { "9600 1234" }
+  amount_paid            { "110" }
 end

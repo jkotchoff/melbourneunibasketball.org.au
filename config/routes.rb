@@ -2,6 +2,16 @@ Melbourneunibasketball::Application.routes.draw do
   namespace :admin do
     resources :pages
     resources :news_items
+    resources :members do
+      member do
+        get 'acknowledge_payment'
+      end
+      
+      collection do
+        get 'pending'
+        get 'csv_export'
+      end
+    end
   end
 
   match 'admin' => 'admin/pages#index'

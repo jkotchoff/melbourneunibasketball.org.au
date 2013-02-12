@@ -1,0 +1,60 @@
+.page-header
+  %h3 Pending Membership applications for #{Date.today.year}
+.muted
+  %p This list specifies members who have filled in a membership form for this year but have not been confirmed as having paid up yet. 
+  %p 
+    For these applications, if they resubmit the membership form again or choose not to join the club, this record can be removed using the
+    %b Destroy
+    button.
+  %p 
+    If the refence specifies 
+    %b Paypal
+    under the Amount column, that means their Paypal transaction was incomplete. In this case, a club officer needs to follow them up directly for payment. 
+  %p 
+    Otherwise, the club secretary should check the club bank account on a weekly basis for transfers with the reference's and amounts below. If a transfer is confirmed, click the 
+    %b Acknowledge Payment
+    button. If cash is received by a club representative officer, the member can also be endorsed using this
+    %b Acknowledge Payment
+    button.
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Reference
+      %th Amount
+      %th Name
+      %th Contact
+      %th Age/Gender
+      %th Eligibility
+      %th Actions
+  %tbody
+    - @unpaid_members.each do |member|
+      %tr
+        %td
+          = member.reference
+          .muted= member.created_at.to_s(:abbr_month_day_year)
+        %td
+          == $#{member.amount_paid}
+          %br
+          - if member.payment_method == 'paypal'
+            Paypal
+          - else
+            Bank Transfer
+        %td= link_to member.name, [:admin, member]
+        %td
+          em:
+          = link_to member.email, "mailto:#{member.email}" 
+          %br
+          ph:
+          == #{member.phone_number_mobile} / #{member.phone_number_other}
+        %td
+          = member.age_and_gender
+          - if member.new_member?
+            .muted New Member
+        %td
+          = member.eligibility_clause
+          .muted= member.eligibility_justification
+        %td
+          = link_to "Acknowledge Payment", acknowledge_payment_admin_member_path(member), :class => 'payment_acknowledgement btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, member], :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          

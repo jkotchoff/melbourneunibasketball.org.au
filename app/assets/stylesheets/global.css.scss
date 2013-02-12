@@ -24,6 +24,7 @@ h4 a:hover{
   text-decoration:none
 }
 
+a:not(.btn) { color: #7a43b6 }
 a.logo_brand, a.logo_brand:visited{
   color:white
 }
@@ -60,10 +61,10 @@ a.logo_brand, a.logo_brand:visited{
 .payment_steps li{float:left; padding-right: 30px;}
 .payment_steps li.selected{font-weight:bold}
 
-#membership_fee .controls{margin-bottom: 20px; background-color:#eee; border-radius:7px; padding:10px;}
+#account_transfer_details, #membership_fee .controls{margin-bottom: 20px; background-color:#eee; border-radius:7px; padding:10px;}
 
 /* Membership BSB details */
-.confirmation #membership_fee{ margin-right:15px }
+#account_transfer_details{ margin-right:15px }
 .confirmation .control-label{padding-top:0px}
 
 /* Sortable tables from http://www.kryogenix.org/code/browser/sorttable/ */

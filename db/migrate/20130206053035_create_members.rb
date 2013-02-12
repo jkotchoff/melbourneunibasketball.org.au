@@ -6,12 +6,9 @@ class CreateMembers < ActiveRecord::Migration
       t.string :payment_method
       t.string :paypal_payer_id
       t.string :paypal_token
-      t.boolean :representative_player, default: false
-      t.integer :year
       t.string :given_name
       t.string :family_name
       t.string :postal_address
-      t.integer :postcode
       t.string :phone_number_mobile
       t.string :phone_number_other
       t.string :email
@@ -22,6 +19,8 @@ class CreateMembers < ActiveRecord::Migration
       t.text :how_did_you_hear_about_the_club
       t.integer :amount_paid
       t.boolean :payment_confirmed, default: false
+      t.string :payment_acknowledgement
+      t.string :photo
       t.timestamps
     end
   end

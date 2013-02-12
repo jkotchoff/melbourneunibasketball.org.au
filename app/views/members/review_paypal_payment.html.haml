@@ -38,28 +38,27 @@
                 = f.label :amount_due, :class => 'control-label'
                 .controls
                   %strong== $#{@member.amount_paid}
-          .row
-            .span12
+
               .control-group
                 = f.label :email, :class => 'control-label'
                 .controls
                   = f.text_field :email, :class => 'text_field'
-          .row
-            .span12
+
               .control-group
                 = f.label :postal_address, :class => 'control-label'
                 .controls
                   = f.text_area :postal_address, :class => 'text_area', rows: 3
       
-          - membership_details.each do |attr|
-            .row
-              .span12
+              .control-group
+                = f.label :photo, :class => 'control-label'
+                .controls
+                  = image_tag @member.photo_url(:thumbnail)
+
+              - membership_details.each do |attr|
                 .control-group
                   = f.label attr, :class => 'control-label'
                   .controls
                     %input{type: 'text', class: 'text_field', disabled: 'disabled', value: member_field(attr)}
         
-          .row
-            .span12
               .form-actions
                 = f.submit "Confirm Payment", :class => 'btn btn-primary', id: 'submit_button'

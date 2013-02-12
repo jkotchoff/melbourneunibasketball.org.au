@@ -39,6 +39,7 @@ group :test do
   gem "fakeweb", ">= 1.3.0" 
   gem "launchy", ">= 0.4.0"
   gem 'machinist', '>= 2.0.0.beta2'
+  gem "timecop", "~> 0.3.5"
 end
 
 group :test, :development do

@@ -35,15 +35,13 @@
         = f.label :eligibility_clause, :class => 'control-label'
         .controls.group
           = f.select :eligibility_clause, eligibility_options
-  .row
-    .span12
+
       .control-group
         = f.label :eligibility_justification, :class => 'control-label', id: 'eligibility_justification_label', style: ("display:none" unless @member.eligibility_clause?)
         .controls
           = f.text_field :eligibility_justification, :class => 'text_field', style: ("display:none" unless @member.eligibility_clause?)
 
-  .row
-    .span12
+
       .control-group
         = f.label "Payment Method", :class => 'control-label'
         .controls.group#payment_controls
@@ -56,53 +54,40 @@
             == Australian bank transfer
           .muted For this option, you will be presented with MUBC's bank account details immediately after you have submitted this form. You will be required to transfer funds straight away.
 
-  .row#membership_fee{style: 'display:none'}
-    .span12
-      .control-group
+      .control-group#membership_fee{style: 'display:none'}
         .controls
           == Membership fee: 
           %h1#membership_fee_dollars $-1
           #membership_breakdown.muted
           = f.hidden_field :amount_paid
   
-  .row
-    .span12
-      .control-group
-        = f.label "Playing Big V or MMBL", :class => 'control-label'
-        .controls.btn-group{"data-toggle-name" => "member[representative_player]", "data-toggle" => "buttons-radio"}
-          %button#representative_button{:type => "button", :value => "true", :class => "btn", "data-toggle" => "button"} Yes
-          %button#non_representative_button{:type => "button", :value => "false", :class => "btn", "data-toggle" => "button"} No
-        = f.hidden_field :representative_player
+      /.control-group
+      /  = f.label "Playing Big V or MMBL", :class => 'control-label'
+      /  .controls.btn-group{"data-toggle-name" => "member[representative_player]", "data-toggle" => "buttons-radio"}
+      /    %button#representative_button{:type => "button", :value => "true", :class => "btn", "data-toggle" => "button"} Yes
+      /    %button#non_representative_button{:type => "button", :value => "false", :class => "btn", "data-toggle" => "button"} No
+      /  = f.hidden_field :representative_player
 
-  .row
-    .span12
       .control-group
         = f.label :given_name, :class => 'control-label'
         .controls
           = f.text_field :given_name, :class => 'text_field'
-  .row
-    .span12
+
       .control-group
         = f.label :family_name, :class => 'control-label'
         .controls
           = f.text_field :family_name, :class => 'text_field'
 
-  #email_row.row
-    .span12
-      .control-group
+      .control-group#email_row
         = f.label :email, :class => 'control-label'
         .controls
           = f.text_field :email, :class => 'text_field'
   
-  #postal_address_row.row
-    .span12
-      .control-group
+      .control-group#postal_address_row
         = f.label :postal_address, :class => 'control-label'
         .controls
           = f.text_area :postal_address, :class => 'text_area', rows: 3
 
-  .row
-    .span12
       .control-group
         = f.label :gender, :class => 'control-label'
         .controls.btn-group{"data-toggle-name" => "member[gender]", "data-toggle" => "buttons-radio"}
@@ -110,53 +95,54 @@
           %button{:type => "button", :value => "Female", :class => "btn", "data-toggle" => "button"} Female
         = f.hidden_field :gender
 
-  .row
-    .span12
       .control-group
         = f.label :date_of_birth, :class => 'control-label'
         .controls
           = f.text_field :date_of_birth, :class => 'text_field', placeholder: "dd/mm/yyyy"
 
-  .row
-    .span12
       .control-group
         = f.label :phone_number_mobile, "Phone Number", :class => 'control-label'
         .controls
           = f.text_field :phone_number_mobile, :class => 'text_field'
 
-  .row
-    .span12
       .control-group
         = f.label :phone_number_other, "Emergency Contact Phone Number", :class => 'control-label'
         .controls
           = f.text_field :phone_number_other, :class => 'text_field'
 
-  .row
-    .span12
       .control-group
         = f.label :new_member, :class => 'control-label'
         .controls.btn-group{"data-toggle-name" => "member[new_member]", "data-toggle" => "buttons-radio"}
           %button#is_new_member{:type => "button", :value => "true", :class => "btn", "data-toggle" => "button"} Yes
           %button#existing_member{:type => "button", :value => "false", :class => "btn", "data-toggle" => "button"} No
         = f.hidden_field :new_member
-    #singlet_numbers{style: ("display:none" if @member.new_member)}
-      .control-group
+    
+      .control-group#singlet_numbers{style: ("display:none" if @member.new_member)}
         = f.label :your_existing_mubc_singlet_numbers, :class => 'control-label'
         .controls
           = f.text_field :your_existing_mubc_singlet_numbers, :class => 'text_field', placeholder: "eg. 4, 13"
-    #introductory_source{style: ("display:none" if !@member.new_member)}
-      .control-group
+    
+      .control-group#introductory_source{style: ("display:none" if !@member.new_member)}
         = f.label :how_did_you_hear_about_the_club, :class => 'control-label'
         .controls
           = f.text_area :how_did_you_hear_about_the_club, :class => 'text_area', rows: 3
+
+
+      .control-group
+        = f.label :photo, :class => 'control-label'
+        .controls
+          = f.hidden_field(:photo_cache)
+          = f.file_field(:photo)
+
 
   .muted * Even if you are an existing member from last year, we require you to fill out all the fields again so that your details can be kept up to date.
 
   .form-actions
     = f.submit "Submit", :class => 'btn btn-primary', id: 'submit_button'
 
-  %br
-  %br
-  %br
-  = button_tag :populate, id: 'populate_fields'
+  - if Rails.env.development?
+    %br
+    %br
+    %br
+    = button_tag :populate, id: 'populate_fields'
 

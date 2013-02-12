@@ -78,7 +78,7 @@ class MembersController < ApplicationController
     purchase = @gateway.purchase total_as_cents, purchase_params
  
     if purchase.success?
-      # you might want to destroy your cart here if you have a shopping cart 
+      @member.update_attributes(payment_confirmed: true, payment_acknowledgement: "Payment submitted via Paypal")
       redirect_to thankyou_member_path, flash: {notice: "Payment processed successfully"}
     else
       notice = "Woops. Something went wrong while we were trying to complete the purchase with Paypal. Btw, here's what Paypal said: #{purchase.message}"

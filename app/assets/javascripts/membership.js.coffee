@@ -1,6 +1,6 @@
 student_fee = 70
-non_student_fee = 110
-representative_fee = 20
+non_student_fee = 130
+#representative_fee = 20
 
 rebuild_price = ->
   cost = 0
@@ -8,15 +8,18 @@ rebuild_price = ->
   switch $("#member_eligibility_clause").val()
     when ""
       cost = -1
+    when "life_member"
+      cost = 0
+      $('#member_payment_method_bank_transfer').click()
     when "enrolled_student_mu"
       fee_breakdown.push('$' + student_fee + ' for a Melbourne Uni student')
       cost += student_fee
     else
       fee_breakdown.push('$' + non_student_fee + ' for an eligible non-student')
       cost += non_student_fee
-  if $('#member_representative_player').val() == 'true'
-    fee_breakdown.push('$' + representative_fee + ' surcharge for playing in a representative grade')
-    cost += representative_fee
+  #if $('#member_representative_player').val() == 'true'
+  #  fee_breakdown.push('$' + representative_fee + ' surcharge for playing in a representative grade')
+  #  cost += representative_fee
   $('#membership_fee_dollars').text "$" + cost
   $('#member_amount_paid').val(cost)
   if cost != -1
@@ -106,7 +109,7 @@ jQuery ($) ->
     $('#member_email').val('someone@somewhere.com')
     $('#member_postal_address').val('1 Tin Alley lane, Melbourne University, Carlton 3004')
     $('#gender_male').click()
-    $('#member_date_of_birth').val('01/01/2013')
+    $('#member_date_of_birth').val('01/01/1990')
     $('#member_phone_number_mobile').val('0400 123 456')
     $('#member_phone_number_other').val('9310 0123')
     rebuild_price()

@@ -1,6 +1,6 @@
 - model_class = Page
 .page-header
-  %h3 Pages
+  %h3 Page Admin
 %table.table.table-striped
   %thead
     %tr
@@ -16,7 +16,7 @@
         %td= link_to page.title, [:admin, page]
         %td= truncate(page.synopsis, length: 50)
         %td
-          = page.updated_at.to_s(:month_day_year)
+          = page.updated_at.to_s(:abbr_month_day_year)
           - if page.author?
             == (#{page.author})
         %td
