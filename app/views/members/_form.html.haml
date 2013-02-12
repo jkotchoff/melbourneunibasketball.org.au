@@ -1,4 +1,8 @@
 = form_for @member, :html => { id: 'membership_form', :class => 'form-horizontal' } do |f|
+  = hidden_field_tag "annual_student_fee", Member::STUDENT_FEE, { :id => "annual_student_fee" }
+  = hidden_field_tag "annual_non_student_fee", Member::NON_STUDENT_FEE, { :id => "annual_non_student_fee" }
+  = hidden_field_tag "late_fee", Member.late_fee, { :id => "late_fee" }
+
   #membership_steps.row
     .span12
       .form-actions{style: 'padding-left:0'}
@@ -127,13 +131,16 @@
         .controls
           = f.text_area :how_did_you_hear_about_the_club, :class => 'text_area', rows: 3
 
-
       .control-group
-        = f.label :photo, :class => 'control-label'
+        = f.label :portrait_photo, :class => 'control-label'
         .controls
           = f.hidden_field(:photo_cache)
           = f.file_field(:photo)
 
+      .control-group
+        = f.label :terms_of_membership, :class => 'control-label'
+        .controls
+          %textarea.text_area{rows: 7, disabled: 'disabled'}~ Member.disclaimer 
 
   .muted * Even if you are an existing member from last year, we require you to fill out all the fields again so that your details can be kept up to date.
 

@@ -21,12 +21,11 @@
 
 %h4 Membership Cost
 %p
-  == For period 1 January #{Date.today.year} - 31 December #{Date.today.year}:
+  == For period #{Member.club_year_start.to_s(:month_day_year)} - #{Member.club_year_end.to_s(:month_day_year)}
 %p
-  $70 annually for Melbourne University Students
+  == $#{Member::STUDENT_FEE} annually for Melbourne University Students
 %p
-  $110 annually for eligible non-students
-%p
-  +$20 surcharge if playing MMBL or Big V
-  .muted A $10 late fee applies if fees are paid after April 31st
+  == $#{Member::NON_STUDENT_FEE} annually for eligible non-students
+%p.muted 
+  == A $#{Member::LATE_FEE} late fee applies if fees are paid after April 31st
 

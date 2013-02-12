@@ -1,8 +1,10 @@
-student_fee = 70
-non_student_fee = 130
 #representative_fee = 20
 
 rebuild_price = ->
+  student_fee     = parseInt($('#annual_student_fee').val())
+  non_student_fee = parseInt($('#annual_non_student_fee').val())
+  late_fee        = parseInt($('#late_fee').val())
+
   cost = 0
   fee_breakdown = []
   switch $("#member_eligibility_clause").val()
@@ -17,6 +19,9 @@ rebuild_price = ->
     else
       fee_breakdown.push('$' + non_student_fee + ' for an eligible non-student')
       cost += non_student_fee
+  if cost > 0 && late_fee > 0
+    fee_breakdown.push('$' + late_fee + ' administrative surcharge for late payment (after April 1st)')
+    cost += late_fee
   #if $('#member_representative_player').val() == 'true'
   #  fee_breakdown.push('$' + representative_fee + ' surcharge for playing in a representative grade')
   #  cost += representative_fee

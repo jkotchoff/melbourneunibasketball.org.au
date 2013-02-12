@@ -49,10 +49,11 @@
                 .controls
                   = f.text_area :postal_address, :class => 'text_area', rows: 3
       
-              .control-group
-                = f.label :photo, :class => 'control-label'
-                .controls
-                  = image_tag @member.photo_url(:thumbnail)
+              - if @member.photo?
+                .control-group
+                  = f.label :photo, :class => 'control-label'
+                  .controls
+                    = image_tag @member.photo_url(:thumbnail)
 
               - membership_details.each do |attr|
                 .control-group
