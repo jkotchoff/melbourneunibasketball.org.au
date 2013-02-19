@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+
+  view:
+    inline_help:
+      news_item:
+        title_hint: "The Title is used as the page/article heading\n\neg.\nUnigames Men win 2012 Silver, Women take home Bronze"
+        synopsis_hint: "The Synopsis field is a one paragraph overview\n\neg.\n'After fielding numerous queries from bemused big V spectators regarding the the roid-raged physically monstrostastic guns and lateral deceptiveness of norto, sunda, mase & crew and following complete domination of the Mens Big V in 09/10, it's time to let the cat out of the bag and even up the playing field with the Baylor Weights program!!"
+        content_hint: "The Content field is optional and creates a dedicated page for this content.\n\nUse only if one paragraph and a photo is not sufficient (such as for a tournament report)"

@@ -6,15 +6,18 @@
         - @page.errors.full_messages.each do |msg|
           %li= msg
           
-  .muted 
-    %b The Title is used as the page/article heading
-    %br 
-    eg. 
-    %em "Unigames Men win 2012 Silver, Women take home Bronze"
-  .control-group
-    = f.label :title, :class => 'control-label'
-    .controls
-      = f.text_field :title, :class => 'text_field'
+  .row
+    .span5
+      .control-group
+        = f.label :title, :class => 'control-label', data: { help: t('view.inline_help.news_item.title_hint') }
+        .controls
+          = f.text_field :title, :class => 'text_field'
+    .span7
+      .control-group
+        = f.label :created_at, "Written", :class => 'control-label'
+        .controls
+          = f.date_select :created_at, {include_blank: false, :order => [:day, :month, :year], :use_short_month => true, :start_year => 1945, :end_year => Time.now.year, :datetime_separator => ""}, { class: 'page_created_at' }
+
 
   .row
     .span5
@@ -29,25 +32,15 @@
         .controls
           = f.text_field :author, :class => 'text_field'
 
-  .muted 
-    %b The Synopsis field is a one paragraph overview 
-    %br
-    eg.
-    %em "After fielding numerous queries from bemused big V spectators regarding the the roid-raged physically monstrostastic guns and lateral deceptiveness of norto, sunda, mase & crew and following complete domination of the Mens Big V in 09/10, it's time to let the cat out of the bag and even up the playing field with the Baylor Weights program!!"
   .control-group
-    = f.label :synopsis, :class => 'control-label'
+    = f.label :synopsis, :class => 'control-label', data: { help: t('view.inline_help.news_item.synopsis_hint') }
     .controls
       = f.text_area :synopsis, :class => 'text_area', rows: 3
       
-  - if @page.class == NewsItem
-    .muted 
-      %b The Content field is optional and creates a dedicated page for this content. 
-      %br
-      Use only if one paragraph and a photo is not sufficient (such as for a tournament report)
   .control-group
-    = f.label :content, :class => 'control-label'
+    = f.label :content, "Content", :class => 'control-label', data: ({ help: t('view.inline_help.news_item.content_hint') } if @page.class == NewsItem)
     .controls
-      = f.text_area :content, :class => 'text_area tinymce', rows: 10
+      = f.text_area :content, :class => 'text_area tinymce', rows: 3
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_pages_path, :class => 'btn'

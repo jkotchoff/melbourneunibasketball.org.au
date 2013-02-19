@@ -1,3 +1,18 @@
 // Place all the styles related to the admin/news_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+select.page_created_at{width: 70px}
+
+.tooltip {
+  position:absolute;
+  padding:10px;
+  color:#EEE;
+  background:rgba(0,0,0,0.6);
+  text-align:center;
+  z-index:9999;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  behavior: url(/PIE.htc);
+  max-width:500px;
+}
