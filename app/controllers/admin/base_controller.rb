@@ -8,8 +8,8 @@ class Admin::BaseController < ApplicationController
   private
 
     def require_superadmin
-      authenticate_or_request_with_http_basic("TVfeeds Admin") do |user, password|
-        APP_CONFIG['admin_username'] == user && APP_CONFIG['admin_password'] == password
+      authenticate_or_request_with_http_basic("MUBC Admin") do |user, password|
+        ENV['ADMIN_USERNAME'] == user && ENV['ADMIN_PASSWORD'] == password
       end
     end
   

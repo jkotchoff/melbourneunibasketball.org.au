@@ -3,22 +3,36 @@
 class ImageUploader < CarrierWave::Uploader::Base
   # For now - testing
   storage :file
-  include CarrierWave::MiniMagick
+  
+  if Rails.env.production? or Rails.env.staging?
+    include Cloudinary::CarrierWave
+
+    version :standard do
+      process :resize_to_fill => [470, 470, :north]
+    end
+
+    version :thumbnail do
+      process :resize_to_fit => [250, 250, :north]
+    end     
+
+
+  else        
+
+    include CarrierWave::MiniMagick
  
     def store_dir
       "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     end
     
-#    include Cloudinary::CarrierWave
     version :standard do
       process :resize_to_fit => [470, 470]
-#      process :resize_to_fill => [470, 470, :north]
     end
 
     version :thumbnail do
       process :resize_to_fit => [250, 250]
-#      process :resize_to_fit => [250, 250, :north]
     end     
+
+  end
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
