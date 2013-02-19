@@ -4,14 +4,17 @@ gem 'rails', '3.2.11'
 
 gem 'activemerchant'
 gem 'carrierwave'
+gem 'carrierwave_backgrounder'
 gem 'cloudinary'
+gem 'delayed_job_active_record'
+gem 'daemons'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'pg'
 gem 'tinymce-rails'
 gem 'unicorn'
-
+gem "workless", "~> 1.1.1"
 
 # Gems used only for assets and not required
 # in production environments by default.

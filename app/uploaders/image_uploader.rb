@@ -1,9 +1,8 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
-  # For now - testing
-  storage :file
-  
+  include ::CarrierWave::Backgrounder::Delay
+
   if Rails.env.production? or Rails.env.staging?
     include Cloudinary::CarrierWave
 
@@ -17,7 +16,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
 
   else        
-
+    storage :file
+  
     include CarrierWave::MiniMagick
  
     def store_dir

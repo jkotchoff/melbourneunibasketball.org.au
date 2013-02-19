@@ -4,6 +4,7 @@ class Page < ActiveRecord::Base
   validates_presence_of :title
 
   mount_uploader :image, ImageUploader
+  process_in_background :image
   
   # If you add something here, be sure to also modify:
   # db/seeds.rb

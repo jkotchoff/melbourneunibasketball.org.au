@@ -14,6 +14,7 @@ class Member < ActiveRecord::Base
   attr_accessor :terms_of_membership
 
   mount_uploader :photo, PhotoUploader
+  process_in_background :photo
 
   scope :current, lambda{ where("created_at >= ? and created_at < ?", self.club_year_start, (Date.today + 1.day))}
   scope :paid, where(payment_confirmed: true).order('family_name ASC')

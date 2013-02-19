@@ -15,11 +15,14 @@
   %br
   = @page.synopsis
 
-- unless @page.image.blank?
+- if @page.image
   %p
     %strong= model_class.human_attribute_name(:image) + ':'
     %br
-    = image_tag(@page.image_url(:standard))
+    - if @page.image_processing?
+      Processing (refresh this page to check if uploaded)
+    - else
+      = image_tag(@page.image_url(:standard))
 
 %p
   %strong= model_class.human_attribute_name(:content) + ':'

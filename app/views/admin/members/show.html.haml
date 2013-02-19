@@ -4,7 +4,12 @@
 
 - if @member.photo?
   %p
-    = image_tag @member.photo_url(:thumbnail)
+    %strong= model_class.human_attribute_name(:photo) + ':'
+    %br
+    - if @member.photo_processing?
+      Processing (refresh this page to check if uploaded)
+    - else   
+      = image_tag @member.photo_url(:thumbnail)
 
 %p
   %strong= model_class.human_attribute_name(:eligibility_clause) + ':'
