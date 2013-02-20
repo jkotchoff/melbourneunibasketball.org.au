@@ -11,7 +11,7 @@
       .control-group
         = f.label :title, :class => 'control-label', data: { help: t('view.inline_help.news_item.title_hint') }
         .controls
-          = f.text_field :title, :class => 'text_field'
+          = f.text_field :title, :class => 'text_field', disabled: ('disabled' if @page.class != NewsItem) 
     .span7
       .control-group
         = f.label :created_at, "Written", :class => 'control-label'
