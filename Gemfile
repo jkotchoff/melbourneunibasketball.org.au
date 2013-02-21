@@ -34,6 +34,9 @@ end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
+group :production do
+  gem 'newrelic_rpm'
+end
 
 group :test do
   gem "capybara", ">= 1.0.0"
