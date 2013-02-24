@@ -1,4 +1,10 @@
 - if @page.class == NewsItem
+  = link_to "Home", root_path
+  &gt;
+  = link_to @page.year, archived_news_for_year_path(@page.year)
+  &gt;
+  News Item
+    
   %h2
     = @page.title
   .muted

@@ -37,7 +37,8 @@ Melbourneunibasketball::Application.routes.draw do
   match 'members/uniforms' => 'members#uniforms', :as => :uniforms
 
   match 'news' => 'news#archived', :as => :archived_news
-  match 'news/:article' => 'news#news_item', :as => :article
+  match 'news/:archived_year' => 'news#archived', :as => :archived_news_for_year
+  match 'news/:year/:article' => 'news#news_item', :as => :article
 
   match 'event_calendar' => 'news#event_calendar', :as => :event_calendar
 

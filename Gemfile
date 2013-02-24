@@ -8,6 +8,7 @@ gem 'carrierwave_backgrounder'
 gem 'cloudinary'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem "friendly_id", "~> 4.0.9"
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'mini_magick'

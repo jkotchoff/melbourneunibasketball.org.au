@@ -8,8 +8,13 @@ class Page < ActiveRecord::Base
   process_in_background :image
   
   has_many :content_images, dependent: :destroy
+
+  delegate :year, to: :created_at
   
   after_update :prune_images
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   
   # If you add something here, be sure to also modify:
   # db/seeds.rb
