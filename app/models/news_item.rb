@@ -7,4 +7,8 @@ class NewsItem < Page
     # Postgres-specific, refer: http://stackoverflow.com/questions/6942986/how-to-find-distinct-years-from-a-table-with-multiple-years-in-rails
     self.select("distinct(extract(year from created_at))").collect(&:date_part).collect(&:to_i).sort.reverse
   end
+  
+  def has_page?
+    !content.blank?
+  end
 end

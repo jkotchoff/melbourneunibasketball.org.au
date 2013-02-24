@@ -1,8 +1,9 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :synopsis, :content, :created_at, :author, :image, :image_cache, :remove_image
+  attr_accessible :title, :synopsis, :content, :created_at, :author, :image, :image_cache, :remove_image, :pdf, :remove_pdf
 
   validates_presence_of :title
 
+  mount_uploader :pdf, PdfUploader
   mount_uploader :image, ImageUploader
   process_in_background :image
   
@@ -47,7 +48,7 @@ class Page < ActiveRecord::Base
 
   def prune_images
     content_images.each do |image|
-      image.destroy unless image.image? and content.index(image.image_url(:standard)) 
+      image.destroy unless image.image? and (content.index(image.image_url(:standard)) or content.index(image.image_url(:thumbnail)) or content.index(image.image_url))
     end
   end
 

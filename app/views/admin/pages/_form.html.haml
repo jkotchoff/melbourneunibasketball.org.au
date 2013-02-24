@@ -18,6 +18,10 @@
         .controls
           = f.date_select :created_at, {include_blank: false, :order => [:day, :month, :year], :use_short_month => true, :start_year => 1945, :end_year => Time.now.year, :datetime_separator => ""}, { class: 'page_created_at' }
 
+  .control-group
+    = f.label :author, :class => 'control-label'
+    .controls
+      = f.text_field :author, :class => 'text_field'
 
   .row
     .span5
@@ -38,9 +42,15 @@
 
     .span7
       .control-group
-        = f.label :author, :class => 'control-label'
+        = f.label :pdf, :class => 'control-label'
         .controls
-          = f.text_field :author, :class => 'text_field'
+          = f.file_field(:pdf)
+          - if @page.pdf?
+            = link_to "Download", @page.pdf_url
+            %br
+            %label{for: 'news_item_remove_image'} 
+              = f.check_box :remove_pdf
+              Delete?
 
   .control-group
     = f.label :synopsis, :class => 'control-label', data: { help: t('view.inline_help.news_item.synopsis_hint') }

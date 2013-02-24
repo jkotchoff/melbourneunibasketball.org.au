@@ -2,19 +2,26 @@
   - news_items.each_with_index do |news_item, i|
     %li.news_item
       %h4
-        - if news_item.content.blank?
-          = news_item.title
-        - else
+        - if news_item.has_page?
           = link_to news_item.title, article_path(news_item.id) 
+        - else
+          = news_item.title
       - if news_item.image?
         .news_image{class: (i % 2 == 0 ? 'news_image_right' : 'news_image_left')}
           - if news_item.content.blank?
             = link_to image_tag(news_item.image_url(:thumbnail)), news_item.image_url
           - else
             = link_to image_tag(news_item.image_url(:thumbnail)), article_path(news_item.id) 
+      - if news_item.pdf? and !news_item.has_page?
+        .news_image_left
+          = link_to news_item.pdf_url do
+            = image_tag('pdf_icon.png', id: 'pdf')
+            %br
+            Click here to download 
+
       .muted== #{news_item.created_at.to_s(:month_day_year)} - submitted by #{news_item.author}
       %br
       = news_item.synopsis
-      - unless news_item.content.blank?
+      - if news_item.has_page?
         %br
-        = link_to 'Read Full Article', article_path(news_item.id) 
+        = link_to 'Read Full Article', article_path(news_item.id)

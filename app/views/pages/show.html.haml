@@ -12,6 +12,12 @@
   - if @page.image?
     .page_image
       = link_to image_tag(@page.image_url(:standard)), @page.image_url
+  - if @page.pdf?
+    .page_pdf
+      = link_to @page.pdf_url do
+        = image_tag('pdf_icon.png', id: 'pdf')
+        %br
+        Click here to download 
   - if @page.content
     = @page.content.html_safe
   - else
@@ -19,4 +25,6 @@
 
   - if @page.class == NewsItem
     %p.clear
+      %br
+      %br
       = render :partial => 'pages/facebook_comments'
