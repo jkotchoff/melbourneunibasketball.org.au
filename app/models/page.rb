@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :synopsis, :content, :created_at, :author, :image, :image_cache
-  
+  attr_accessible :title, :synopsis, :content, :created_at, :author, :image, :image_cache, :remove_image
+
   validates_presence_of :title
 
   mount_uploader :image, ImageUploader

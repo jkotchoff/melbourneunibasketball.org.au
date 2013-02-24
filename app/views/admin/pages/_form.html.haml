@@ -26,6 +26,16 @@
         .controls
           = f.hidden_field(:image_cache)
           = f.file_field(:image)
+          - if @page.image?
+            - if @page.image_processing?
+              Processing (refresh this page to check if uploaded)
+            - else
+              = image_tag(@page.image_url(:thumbnail))
+              %br
+              %label{for: 'news_item_remove_image'} 
+                = f.check_box :remove_image
+                Delete?
+
     .span7
       .control-group
         = f.label :author, :class => 'control-label'
