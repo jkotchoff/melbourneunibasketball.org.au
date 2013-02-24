@@ -7,7 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     include Cloudinary::CarrierWave
 
     version :standard do
-      process :resize_and_pad => [470, 470, :north]
+      process :resize_to_fit => [470, 470, :north]
     end
 
     version :thumbnail do
@@ -25,7 +25,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
     
     version :standard do
-      process :resize_and_pad => [470, 470]
+      process :resize_to_fit => [470, 470]
     end
 
     version :thumbnail do
