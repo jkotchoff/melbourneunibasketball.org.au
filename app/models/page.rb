@@ -4,10 +4,9 @@ class Page < ActiveRecord::Base
   validates_presence_of :title
 
   mount_uploader :pdf, PdfUploader
-  mount_uploader :image, ImageUploader
-  process_in_background :image
   
   has_many :content_images, dependent: :destroy
+  #TODO: process_in_background :content_images
 
   delegate :year, to: :created_at
   
@@ -50,6 +49,14 @@ class Page < ActiveRecord::Base
   CONTACT_UNIFORMS                = "Uniforms"
 
   PANEL_HOME_SIDEBAR              = "Home Side Panel"
+
+  def summary_image
+    content_images.first.try(:image)
+  end
+  
+  def summary_image?
+    !!summary_image
+  end
 
   def prune_images
     content_images.each do |image|

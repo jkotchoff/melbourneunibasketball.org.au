@@ -24,23 +24,7 @@
       = f.text_field :author, :class => 'text_field'
 
   .row
-    .span5
-      .control-group
-        = f.label :image, :class => 'control-label'
-        .controls
-          = f.hidden_field(:image_cache)
-          = f.file_field(:image)
-          - if @page.image?
-            - if @page.image_processing?
-              Processing (refresh this page to check if uploaded)
-            - else
-              = image_tag(@page.image_url(:thumbnail))
-              %br
-              %label{for: 'news_item_remove_image'} 
-                = f.check_box :remove_image
-                Delete?
-
-    .span7
+    .span12
       .control-group
         = f.label :pdf, :class => 'control-label'
         .controls
@@ -52,10 +36,11 @@
               = f.check_box :remove_pdf
               Delete?
 
-  .control-group
-    = f.label :synopsis, :class => 'control-label', data: { help: t('view.inline_help.news_item.synopsis_hint') }
-    .controls
-      = f.text_area :synopsis, :class => 'text_area', rows: 3
+  - unless @page.class == NewsItem
+    .control-group
+      = f.label :synopsis, :class => 'control-label', data: { help: t('view.inline_help.news_item.synopsis_hint') }
+      .controls
+        = f.text_area :synopsis, :class => 'text_area', rows: 3
       
   .control-group
     = f.label :content, "Content", :class => 'control-label', data: ({ help: t('view.inline_help.news_item.content_hint') } if @page.class == NewsItem)

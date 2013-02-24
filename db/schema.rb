@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224112346) do
+ActiveRecord::Schema.define(:version => 20130224215447) do
 
   create_table "content_images", :force => true do |t|
     t.integer "page_id"
@@ -67,10 +67,8 @@ ActiveRecord::Schema.define(:version => 20130224112346) do
     t.string   "author"
     t.text     "synopsis"
     t.text     "content"
-    t.string   "image"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.boolean  "image_processing"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "pdf"
     t.string   "slug"
   end

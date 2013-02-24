@@ -15,9 +15,6 @@
     %br
 
 .content
-  - if @page.image?
-    .page_image
-      = link_to image_tag(@page.image_url(:standard)), @page.image_url
   - if @page.pdf?
     .page_pdf
       = link_to @page.pdf_url do

@@ -6,12 +6,12 @@
           = link_to news_item.title, article_path(news_item.year, news_item) 
         - else
           = news_item.title
-      - if news_item.image?
+      - if news_item.summary_image?
         .news_image{class: (i % 2 == 0 ? 'news_image_right' : 'news_image_left')}
           - if news_item.content.blank?
-            = link_to image_tag(news_item.image_url(:thumbnail)), news_item.image_url
+            = link_to image_tag(news_item.summary_image.url(:thumbnail)), news_item.summary_image.url
           - else
-            = link_to image_tag(news_item.image_url(:thumbnail)), article_path(news_item.year, news_item) 
+            = link_to image_tag(news_item.summary_image.url(:thumbnail)), article_path(news_item.year, news_item) 
       - if news_item.pdf? and !news_item.has_page?
         .news_image_left
           = link_to news_item.pdf_url do
@@ -21,7 +21,7 @@
 
       .muted== #{news_item.created_at.to_s(:month_day_year)} - submitted by #{news_item.author}
       %br
-      = news_item.synopsis
+      = news_item.summary.try(:html_safe)
       - if news_item.has_page?
         %br
         = link_to 'Read Full Article', article_path(news_item.year, news_item)

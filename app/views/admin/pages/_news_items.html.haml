@@ -9,7 +9,7 @@
       /%th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:author)
-      %th= model_class.human_attribute_name(:synopsis)
+      %th Summary
       %th Created
       %th{width:100}=t '.actions', :default => t("helpers.actions")
   %tbody
@@ -18,7 +18,7 @@
         /%td= link_to page.id, [:admin, page]
         %td= link_to page.title, [:admin, page]
         %td= page.author
-        %td= truncate(page.synopsis, length: 50)
+        %td= truncate(page.summary, length: 50)
         %td= page.created_at.to_s(:abbr_month_day_year)
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_page_path(page), :class => 'btn btn-mini'
