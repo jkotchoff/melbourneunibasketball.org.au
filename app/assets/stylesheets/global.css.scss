@@ -24,6 +24,8 @@ h4 a:hover{
   text-decoration:none
 }
 
+.content img{ float: right; margin-left: 15px; margin-bottom:15px;}
+
 a:not(.btn) { color: #7a43b6 }
 a.logo_brand, a.logo_brand:visited{
   color:white
@@ -42,7 +44,7 @@ a.logo_brand, a.logo_brand:visited{
   margin-left:180px;
 }
 
-#page_content{height:280px;}
+#news_item_content, #page_content{height:380px;}
 .controls input[type='text'], .controls textarea{width:100%}
 
 .form-actions{margin-top:0px}

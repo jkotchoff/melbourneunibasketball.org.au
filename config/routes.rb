@@ -28,6 +28,8 @@ Melbourneunibasketball::Application.routes.draw do
     end
   end
 
+  post '/tinymce_assets' => 'admin/tinymce_assets#create'
+
   match 'members' => 'members#index'
   match 'membership' => 'members#new'
   match 'members/join_the_club' => 'members#new', :as => :join_the_club

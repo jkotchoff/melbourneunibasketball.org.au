@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'pg'
 gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload', '~> 3.5.6.3'
 gem 'unicorn'
 gem "workless", "~> 1.1.1"
 

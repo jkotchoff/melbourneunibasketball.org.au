@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219193837) do
+ActiveRecord::Schema.define(:version => 20130224044421) do
+
+  create_table "content_images", :force => true do |t|
+    t.integer "page_id"
+    t.string  "image"
+    t.date    "created_at"
+  end
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

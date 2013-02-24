@@ -6,6 +6,10 @@ class Page < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   process_in_background :image
   
+  has_many :content_images, dependent: :destroy
+  
+  after_update :prune_images
+  
   # If you add something here, be sure to also modify:
   # db/seeds.rb
   # config/routes.rb
@@ -40,5 +44,11 @@ class Page < ActiveRecord::Base
   CONTACT_UNIFORMS                = "Uniforms"
 
   PANEL_HOME_SIDEBAR              = "Home Side Panel"
+
+  def prune_images
+    content_images.each do |image|
+      image.destroy unless image.image? and content.index(image.image_url(:standard)) 
+    end
+  end
 
 end

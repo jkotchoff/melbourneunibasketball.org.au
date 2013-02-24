@@ -1,8 +1,9 @@
 theme_advanced_toolbar_location: top
 theme_advanced_toolbar_align: left
-theme_advanced_buttons1: 'bold,italic,separator,link,unlink,separator,bullist,sub,sup'
+theme_advanced_buttons1: 'bold,italic,separator,link,unlink,separator,bullist,separator,sub,sup,separator,uploadimage'
 theme_advanced_buttons2: 'table,separator,code'
 theme_advanced_buttons2_add:
   - tablecontrols
 plugins:
   - table
+  - uploadimage
