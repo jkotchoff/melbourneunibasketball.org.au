@@ -24,7 +24,7 @@
     - else
       = image_tag(@page.image_url(:standard))
 
-%p
+.content
   %strong= model_class.human_attribute_name(:content) + ':'
   %br
   = @page.content.html_safe
