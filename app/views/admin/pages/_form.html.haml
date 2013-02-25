@@ -14,19 +14,19 @@
           = f.text_field :title, :class => 'text_field', disabled: ('disabled' if @page.class != NewsItem) 
     .span7
       .control-group
-        = f.label :created_at, "Written", :class => 'control-label'
+        = f.label :created_at, "Written", :class => 'control-label', data: { help: t('view.inline_help.news_item.written_hint') }
         .controls
           = f.date_select :created_at, {include_blank: false, :order => [:day, :month, :year], :use_short_month => true, :start_year => 1945, :end_year => Time.now.year, :datetime_separator => ""}, { class: 'page_created_at' }
 
   .control-group
-    = f.label :author, :class => 'control-label'
+    = f.label :author, :class => 'control-label', data: { help: t('view.inline_help.news_item.author_hint') }
     .controls
       = f.text_field :author, :class => 'text_field'
 
   .row
     .span12
       .control-group
-        = f.label :pdf, :class => 'control-label'
+        = f.label :pdf, :class => 'control-label', data: { help: t('view.inline_help.news_item.pdf_hint') }
         .controls
           = f.file_field(:pdf)
           - if @page.pdf?

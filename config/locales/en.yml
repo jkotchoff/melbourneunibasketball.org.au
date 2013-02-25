@@ -7,6 +7,8 @@ en:
   view:
     inline_help:
       news_item:
+        pdf_hint: "If you upload a PDF to this article, you can still write a recap about the PDF in the 'Content' field but you don't need to upload any images"
+        author_hint: "The original author of this content eg. 'John Campbell'"
+        written_hint: "Try and get this date as close to this articles original date as possible. It is used to categorise the article in the appropriate section of the news archive"
         title_hint: "The Title is used as the page/article heading\n\neg.\nUnigames Men win 2012 Silver, Women take home Bronze"
-        synopsis_hint: "The Synopsis field is a one paragraph overview\n\neg.\n'After fielding numerous queries from bemused big V spectators regarding the the roid-raged physically monstrostastic guns and lateral deceptiveness of norto, sunda, mase & crew and following complete domination of the Mens Big V in 09/10, it's time to let the cat out of the bag and even up the playing field with the Baylor Weights program!!"
-        content_hint: "The Content field is optional and creates a dedicated page for this content.\n\nUse only if one paragraph and a photo is not sufficient (such as for a tournament report).\n\n If you are uploading any photos into the content field, upload them at the top of this field and they will be automatically formatted to sit to the right of your textual content."
+        content_hint: "If the content field contains more than 255 characters of text, the content will link through to it's own dedicated page (otherwise it will be listed just as a news item).\n\n If you are uploading any photos into the content field, save it first, open it up again for editing, upload them at the top of this field and they will be automatically formatted to sit to the right of your textual content."
