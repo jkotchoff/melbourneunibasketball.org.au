@@ -62,6 +62,7 @@ module Melbourneunibasketball
       g.fixture_replacement :machinist
     end
     
+    #TODO: add staging environment so that staging can have paypal=test
     unless Rails.env.production?
       # Force ActiveMerchant into test mode
       config.after_initialize do

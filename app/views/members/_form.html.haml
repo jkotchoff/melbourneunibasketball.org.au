@@ -49,14 +49,15 @@
       .control-group
         = f.label "Payment Method", :class => 'control-label'
         .controls.group#payment_controls
-          %label{for: "member_payment_method_paypal"}
-            = f.radio_button :payment_method, :paypal
-            == Paypal #{image_tag("https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg", size: '160x55')}
-          %br
           %label{for: "member_payment_method_bank_transfer"}
             = f.radio_button :payment_method, :bank_transfer
             == Australian bank transfer
-          .muted For this option, you will be presented with MUBC's bank account details immediately after you have submitted this form. You will be required to transfer funds within 24 hours.
+          .muted For this option, you will be presented with MUBC's bank account details immediately after you have submitted this form. You will be required to transfer funds within 24 hours
+          %br
+          %label{for: "member_payment_method_paypal"}
+            = f.radio_button :payment_method, :paypal
+            == Paypal #{image_tag("https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg", size: '160x55')}
+          .muted This option will allow you to pay via credit card or a Paypal account if a bank transfer is not convenient. Paypal receive a 3% commission out of these payments to the club so our preference is that you pay with an Australian bank transfer. 
 
       .control-group#membership_fee{style: 'display:none'}
         .controls

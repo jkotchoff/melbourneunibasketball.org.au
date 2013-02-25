@@ -15,6 +15,7 @@ class Admin::MembersController < Admin::BaseController
   def acknowledge_payment
     @member = Member.find(params[:id])
     @member.update_attributes(payment_confirmed: true, payment_acknowledgement: params[:payment_acknowledgement])
+    MemberMailer.signup_notification(@member).deliver
     redirect_to pending_admin_members_path, flash: {notice: "Payment acknowledged for #{@member.name}"}
   end
 

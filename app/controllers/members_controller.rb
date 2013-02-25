@@ -19,7 +19,7 @@ class MembersController < ApplicationController
  
   def new
     @member = Member.new
-    @member.payment_method = :paypal
+    @member.payment_method = :bank_transfer
   end
  
   def create
@@ -33,6 +33,7 @@ class MembersController < ApplicationController
         @member.save
         redirect_to @gateway.redirect_url_for(setup_response.token)
       else
+        MemberMailer.bank_transfer_notification(@member).deliver
         redirect_to mubc_account_details_member_path(@member)
       end
     else
@@ -78,6 +79,7 @@ class MembersController < ApplicationController
     purchase = @gateway.purchase total_as_cents, purchase_params
  
     if purchase.success?
+      MemberMailer.signup_notification(@member).deliver
       @member.update_attributes(payment_confirmed: true, payment_acknowledgement: "Payment submitted via Paypal")
       redirect_to thankyou_member_path, flash: {notice: "Payment processed successfully"}
     else
