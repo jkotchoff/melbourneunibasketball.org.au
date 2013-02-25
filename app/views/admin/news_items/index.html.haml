@@ -3,6 +3,15 @@
 - model_class = NewsItem
 .page-header
   %h3 News Item Admin
+
+  - @archived_years.each_with_index do |archived_year, i|
+    - if archived_year == @archived_year
+      = archived_year
+    - else
+      = link_to archived_year, admin_news_items_path(archived_year: archived_year)
+    - if i < @archived_years.length - 1
+      |
+
 %table.table.table-striped
   %thead
     %tr

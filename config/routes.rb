@@ -14,7 +14,7 @@ Melbourneunibasketball::Application.routes.draw do
     end
   end
 
-  match 'admin' => 'admin/pages#index'
+  match 'admin' => 'admin/news_items#index'
 
   resources :members, only: [:index, :new, :create] do
     member do

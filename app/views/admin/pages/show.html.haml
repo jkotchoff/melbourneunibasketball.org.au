@@ -1,6 +1,4 @@
 - model_class = Page
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
 
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
@@ -33,6 +31,7 @@
   = @page.content.html_safe
 
 .form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), admin_pages_path, :class => 'btn'
+  - back_link = (@page.class == NewsItem) ? admin_news_items_path : admin_pages_path
+  = link_to t('.back', :default => t("helpers.links.back")), back_link, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_page_path(@page), :class => 'btn'
   = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, @page], :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

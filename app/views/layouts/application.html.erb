@@ -64,7 +64,16 @@
       <hr>
 
       <footer class="muted">
-        <%= link_to "Administer Site", admin_path, :class => 'right' %>
+        <div class="right">
+          <% if @page %>
+           Administer
+            <%= link_to "Page", edit_admin_page_path(@page) %>
+            |
+            <%= link_to "Site", admin_path %>
+          <% else %>
+            <%= link_to "Administer Site", admin_path %>
+          <% end %>
+        </div>
         <p>
           &copy; Melbourne University Basketball Club <%= Date.today.year %>.
           <% if @page %>

@@ -26,7 +26,8 @@
         <div class="nav-collapse collapse">
           <ul class="nav" id="topnav">
             <% controller_name = params[:controller].split("/").last %>
-            <li class="<%= "active" if %w{pages news_items}.index(controller_name) %>"><%= link_to "Pages & News Admin", admin_path %></li>
+            <li class="<%= "active" if controller_name == 'news_items' %>"><%= link_to "News Admin", admin_news_items_path %></li>
+            <li class="<%= "active" if controller_name == 'pages' %>"><%= link_to "Pages Admin", admin_pages_path %></li>
             <li class="<%= "active" if controller_name == 'members' and params[:action] != 'pending' %>"><%= link_to "Members Admin", admin_members_path %></li>
             <li class="<%= "active" if controller_name == 'members' and params[:action] == 'pending' %>"><%= link_to "Pending Member Applications", pending_admin_members_path %></li>
           </ul>
