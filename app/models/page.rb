@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :synopsis, :content, :created_at, :author, :image, :image_cache, :remove_image, :pdf, :remove_pdf
+  attr_accessible :title, :synopsis, :content, :created_at, :author, :pdf, :remove_pdf
 
   validates_presence_of :title
 
