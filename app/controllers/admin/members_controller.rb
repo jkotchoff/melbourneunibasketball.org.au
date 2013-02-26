@@ -1,4 +1,7 @@
 class Admin::MembersController < Admin::BaseController
+  
+  before_filter :require_superadmin
+  
   def index
     @members = Member.current.paid
   end
