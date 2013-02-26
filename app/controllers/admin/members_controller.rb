@@ -1,6 +1,6 @@
 class Admin::MembersController < Admin::BaseController
   
-  before_filter :require_superadmin
+  before_filter :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy]
   
   def index
     @members = Member.current.paid
