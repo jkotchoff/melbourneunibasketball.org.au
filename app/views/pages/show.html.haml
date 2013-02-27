@@ -17,7 +17,7 @@
 .content
   - if @page.pdf?
     .page_pdf
-      = link_to @page.pdf_url do
+      = link_to @page.pdf_url, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{@page.title}']);"} do
         = image_tag('pdf_icon.png', id: 'pdf')
         %br
         Click here to download 

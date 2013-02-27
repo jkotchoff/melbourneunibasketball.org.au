@@ -14,7 +14,7 @@
             = link_to image_tag(news_item.summary_image.url(:thumbnail)), article_path(news_item.year, news_item) 
       - if news_item.pdf? and !news_item.has_page?
         .news_image_left
-          = link_to news_item.pdf_url do
+          = link_to news_item.pdf_url, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{news_item.title}']);"} do
             = image_tag('pdf_icon.png', id: 'pdf')
             %br
             Click here to download 
