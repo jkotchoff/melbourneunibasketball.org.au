@@ -36,6 +36,7 @@ class Page < ActiveRecord::Base
   AWARDS_BIGV_LEAGUE              = "Big V League Awards"
   AWARDS_BIGV_SEASON              = "Big V Season Results"
   
+  UNIGAMES_TEAMS                  = "University Games Teams"
   AWARDS_BLUES                    = "University Games Blues"
   AWARDS_GREEN_AND_GOLD           = "University Games Green and Gold"
   

@@ -54,6 +54,10 @@ class AboutController < ApplicationController
     render_page(Page::AWARDS_GREEN_AND_GOLD)
   end
   
+  def unigames_teams
+    render_page(Page::UNIGAMES_TEAMS)
+  end
+  
   def committee
     render_page(Page::AWARDS_COMMITTEE)
   end

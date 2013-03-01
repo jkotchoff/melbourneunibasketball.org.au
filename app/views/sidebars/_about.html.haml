@@ -24,6 +24,10 @@
   %li{class: ('active' if params[:action] == 'bigv_seasons')}
     = link_to "Season Results", bigv_seasons_path
   %li.nav-header University Games
+
+  %li{class: ('active' if params[:action] == 'unigames_teams')}
+    = link_to "Unigames Teams", unigames_teams_path
+
   %li{class: ('active' if params[:action] == 'blues_awards')}
     = link_to "Blues Winners", blues_awards_path
   %li{class: ('active' if params[:action] == 'green_and_gold_winners')}

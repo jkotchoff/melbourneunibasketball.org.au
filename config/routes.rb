@@ -53,6 +53,7 @@ Melbourneunibasketball::Application.routes.draw do
   match 'about/coaches_awards' => 'about#coaches_awards', :as => :coaches_awards
   match 'about/bigv_league_awards' => 'about#bigv_league_awards', :as => :bigv_league_awards
   match 'about/bigv_seasons' => 'about#bigv_seasons', :as => :bigv_seasons
+  match 'about/unigames_teams' => 'about#unigames_teams', :as => :unigames_teams
   match 'about/blues_awards' => 'about#blues_awards', :as => :blues_awards
   match 'about/green_and_gold_winners' => 'about#green_and_gold_winners', :as => :green_and_gold_winners
   match 'about/committee' => 'about#committee', :as => :committee
