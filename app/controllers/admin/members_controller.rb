@@ -7,11 +7,11 @@ class Admin::MembersController < Admin::BaseController
     @member_count = @members.length
     males = @members.select{|m| m.gender == "Male"}
     females = @members.select{|m| m.gender == "Female"}
-    @males_percentage = (males.length / @member_count.to_f * 100).to_i
-    @females_percentage = (females.length / @member_count.to_f * 100).to_i
-    @average_age = @members.collect(&:age).mean
-    @average_male_age = males.collect(&:age).mean
-    @average_female_age = females.collect(&:age).mean
+    @males_percentage = (males.length / @member_count.to_f * 100).to_i rescue 0
+    @females_percentage = (females.length / @member_count.to_f * 100).to_i rescue 0
+    @average_age = @members.collect(&:age).mean rescue "N/A"
+    @average_male_age = males.collect(&:age).mean rescue "N/A"
+    @average_female_age = females.collect(&:age).mean rescue "N/A"
     @total_money_collected = @members.collect(&:amount_paid).sum
   end
   
