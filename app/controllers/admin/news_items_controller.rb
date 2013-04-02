@@ -3,6 +3,7 @@ class Admin::NewsItemsController < Admin::PagesController
     @archived_year = (params[:archived_year] || Date.today.year).to_i
     @archived_years = NewsItem.archived_years
     @news_items = NewsItem.for_year(@archived_year)
+    @sticky_news_items = NewsItem.sticky
   end
 
   def new

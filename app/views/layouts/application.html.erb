@@ -51,7 +51,27 @@
           
           <%= yield %>
         </div><!--/span-->
+
         <% if @right_sidebar %>
+<!--        TODO:
+          <%if @right_sidebar.title == Page::PANEL_HOME_SIDEBAR %>
+            <div class="span3">
+              <div class="well sidebar-nav">
+                <b>Sticky News Items:</b><br/>
+                <% NewsItem.sticky.each do |page| %>
+                  <%= link_to page.title, article_path(page.year, page) %><br/><br/>
+                <% end %>
+              </div>
+  
+              <div class="well sidebar-nav">
+                <b>Recently Updated Pages:</b><br/>
+                <% Page.order('updated_at DESC').first(5).each do |page| %>
+                  <%= page.updated_at.to_s(:abbr_month_day_year) %>: <%= page.title %><br/><br/>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+-->
           <div class="span3">
             <div class="well sidebar-nav">
               <%= @right_sidebar.content.html_safe %>

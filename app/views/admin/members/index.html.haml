@@ -2,6 +2,16 @@
 
 .page-header
   %h3 Members for #{Date.today.year}
+  
+== Members: #{@member_count} 
+%span.muted (Male: #{@males_percentage}%, Female: #{@females_percentage}%)
+%br 
+== Average Age: #{@average_age} 
+%span.muted (Males: #{@average_male_age}, Female: #{@average_female_age})
+%br 
+Total money collected: 
+%b== #{number_to_currency(@total_money_collected)}
+
 %table.table.table-striped
   %thead
     %tr

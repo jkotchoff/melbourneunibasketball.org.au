@@ -1,6 +1,8 @@
 - if @page.class == NewsItem
   = link_to "Home", root_path
   &gt;
+  = link_to "News", archived_news_path
+  &gt;
   = link_to @page.year, archived_news_for_year_path(@page.year)
   &gt;
   News Item

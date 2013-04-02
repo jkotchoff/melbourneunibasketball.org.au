@@ -3,7 +3,16 @@ class Admin::MembersController < Admin::BaseController
   before_filter :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy]
   
   def index
-    @members = Member.current.paid
+    @members = Member.current.paid.order(:given_name)
+    @member_count = @members.length
+    males = @members.select{|m| m.gender == "Male"}
+    females = @members.select{|m| m.gender == "Female"}
+    @males_percentage = (males.length / @member_count.to_f * 100).to_i
+    @females_percentage = (females.length / @member_count.to_f * 100).to_i
+    @average_age = @members.collect(&:age).mean
+    @average_male_age = males.collect(&:age).mean
+    @average_female_age = females.collect(&:age).mean
+    @total_money_collected = @members.collect(&:amount_paid).sum
   end
   
   def pending

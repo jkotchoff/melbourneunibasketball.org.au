@@ -35,6 +35,12 @@
             %label{for: 'news_item_remove_image'} 
               = f.check_box :remove_pdf
               Delete?
+  .row
+    .span12
+      .control-group
+        = f.label :sticky, "Sticky?", :class => 'control-label'
+        .controls
+          = f.check_box :sticky
 
   - unless @page.class == NewsItem
     .control-group

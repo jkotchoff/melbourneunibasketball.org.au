@@ -24,6 +24,7 @@ class Member < ActiveRecord::Base
   STUDENT_FEE = 70
   NON_STUDENT_FEE = 130
   LATE_FEE = 10
+  
 
   # MUBC memberships are taken from jan 1 and should be valid until March 31 the following year  
   def self.club_year_start
@@ -46,13 +47,20 @@ class Member < ActiveRecord::Base
     end
   end
 
-  # Late fees are applicable if membership is paid for after April 1st
+  # Late fees are applicable if membership is paid for after April 13th
+  def self.late_fee_cutoff
+    Date.new(Date.today.year, 4, 13)
+  end
+
   def self.late_fee
-    (Date.today > Date.new(Date.today.year, 4, 1)) ? LATE_FEE : 0 
+    (Date.today > self.late_fee_cutoff) ? LATE_FEE : 0 
+  end
+
+  def age
+    Date.today.year - date_of_birth.year
   end
 
   def age_and_gender
-    age = Date.today.year - date_of_birth.year
     "#{age}yo #{gender.downcase}"
   end
   

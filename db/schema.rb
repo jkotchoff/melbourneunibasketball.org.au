@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224215447) do
+ActiveRecord::Schema.define(:version => 20130314220037) do
 
   create_table "content_images", :force => true do |t|
     t.integer "page_id"
@@ -71,8 +71,10 @@ ActiveRecord::Schema.define(:version => 20130224215447) do
     t.datetime "updated_at", :null => false
     t.string   "pdf"
     t.string   "slug"
+    t.boolean  "sticky"
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
+  add_index "pages", ["sticky"], :name => "index_pages_on_sticky"
 
 end
