@@ -18,3 +18,19 @@ $ heroku config:add PAYPAL_PASSWORD="..."
 $ heroku config:add PAYPAL_SIGNATURE="..."
 $ heroku config:add ADMIN_USERNAME="..."
 $ heroku config:add ADMIN_PASSWORD="..."
+
+TODO: 
+- add 'date_payment_acknowledged' data to CSV spreadsheet
+- changing email addresses in admin is setting amount paid to $0
+- fix signup form to make email address mandatory
+- fix signup form for IE8
+- add filesize to PDF links
+- add recent facebook comments widget on homepage
+- make the homepage news items links work
+- add a 'more articles' link at the bottom of the homepage news
+- add a 'recently updated pages' table to the homepage
+- move 'upcoming events' into a new bar on the homepage
+- add an extra panel that links to 'sticky' articles (eg. tournaments, newsletters)
+- add sponsors to the homepage
+- add a 'favourite articles' link section to the homepage eg. http://espn.go.com/espn/story/_/page/Michael-Jordan/michael-jordan-not-left-building 
+- face detection: https://devcenter.heroku.com/articles/cloudinary ?
