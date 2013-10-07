@@ -34,3 +34,5 @@ TODO:
 - add sponsors to the homepage
 - add a 'favourite articles' link section to the homepage eg. http://espn.go.com/espn/story/_/page/Michael-Jordan/michael-jordan-not-left-building 
 - face detection: https://devcenter.heroku.com/articles/cloudinary ?
+- Have life members automatically renewed each year (or some variation of this).
+- The $10 late fee be removed for the summer season. So, for example, people who sign up after 1 August don't pay the late fee
