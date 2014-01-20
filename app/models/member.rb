@@ -6,7 +6,7 @@ class Member < ActiveRecord::Base
                   :amount_paid, :payment_confirmed, :photo, :photo_cache, :payment_acknowledgement
                   
   validates_presence_of :eligibility_clause, :payment_method, :given_name, :family_name, :gender, \
-                  :date_of_birth, :phone_number_mobile, :phone_number_other, :amount_paid
+                  :email, :date_of_birth, :phone_number_mobile, :phone_number_other, :amount_paid
 
   #TODO: validates_presence_of :eligibility_justification unless lambda{|m| ["life_member", "deferred_student", ""].index(m.eligibility_clause)}
   #      validates_presence_of :how_did_you_hear_about_the_club if :new_member?
