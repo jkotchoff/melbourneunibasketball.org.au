@@ -24,9 +24,10 @@ Total money collected:
       %th Actions
   %tbody
     = render partial: 'list', locals: {members: @members}
-    %tr
-      %td{colspan: 7}
-        %br
-        %br
-        %h4== Expiring on April 1st, #{Date.today.year}:
-    = render partial: 'list', locals: {members: @expiring_members}
+    - if @expiring_members.present?
+      %tr
+        %td{colspan: 7}
+          %br
+          %br
+          %h4== Expiring on April 1st, #{Date.today.year}:
+      = render partial: 'list', locals: {members: @expiring_members}

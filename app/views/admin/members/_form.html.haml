@@ -40,7 +40,7 @@
       .control-group
         = f.label :date_of_birth, :class => 'control-label'
         .controls
-          = f.date_select :date_of_birth, :class => 'date_select'
+          = f.date_select :date_of_birth, start_year: Time.now.year - 100, end_year: Time.now.year - 15, :class => 'date_select'
       .control-group
         = f.label :gender, :class => 'control-label'
         .controls

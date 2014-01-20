@@ -63,7 +63,8 @@ class Member < ActiveRecord::Base
   end
 
   def age
-    Date.today.year - date_of_birth.year
+    now = Time.now.utc.to_date
+    now.year - date_of_birth.year - (date_of_birth.to_date.change(:year => now.year) > now ? 1 : 0)
   end
 
   def age_and_gender
