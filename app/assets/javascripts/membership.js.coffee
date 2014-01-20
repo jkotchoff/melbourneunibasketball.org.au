@@ -77,6 +77,12 @@ jQuery ($) ->
   if($("#admin_member_form").length > 0)
     return
 
+  $("#photo_link").bind "click", ->
+    $(".member_photo").each ->
+      this.src = $(this).attr('url')
+    false
+
+
   if(navigator.appName.indexOf("Internet Explorer")!=-1)
     $("#ie_warning").show()
 
