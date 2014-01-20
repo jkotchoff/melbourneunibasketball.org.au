@@ -27,5 +27,5 @@
 %p
   == $#{Member::NON_STUDENT_FEE} for eligible non-students
 %p.muted 
-  == A $#{Member::LATE_FEE} late fee applies if fees are paid after #{Member.late_fee_cutoff.strftime("%b %d")}
+  == A $#{Member::LATE_FEE} late fee applies if fees are not paid before #{Member.late_fee_cutoff.strftime("%b %d")}
 
