@@ -1,15 +1,16 @@
-%p
-  %b 
-    Note: this form doesn't work on older versions of internet explorer which we are in the process of fixing. 
-%p
-  %b 
-    If you are having trouble submitting it, try a different web browser
-    eg.
-    = link_to "https://www.google.com/intl/en/chrome/browser/", "https://www.google.com/intl/en/chrome/browser/"
-    or
-    = link_to "http://www.mozilla.org/en-US/firefox/new/", "http://www.mozilla.org/en-US/firefox/new/" 
-%br
-%br
+#ie_warning{style: "display:none"}
+  %p
+    %b 
+      Note: this form doesn't work on older versions of internet explorer which we are in the process of fixing. 
+  %p
+    %b 
+      If you are having trouble submitting it, try a different web browser
+      eg.
+      = link_to "https://www.google.com/intl/en/chrome/browser/", "https://www.google.com/intl/en/chrome/browser/"
+      or
+      = link_to "http://www.mozilla.org/en-US/firefox/new/", "http://www.mozilla.org/en-US/firefox/new/" 
+  %br
+  %br
 
 = form_for @member, :html => { id: 'membership_form', :class => 'form-horizontal' } do |f|
   = hidden_field_tag "annual_student_fee", Member::STUDENT_FEE, { :id => "annual_student_fee" }

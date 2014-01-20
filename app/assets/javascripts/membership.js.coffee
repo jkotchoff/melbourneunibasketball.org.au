@@ -77,6 +77,9 @@ jQuery ($) ->
   if($("#admin_member_form").length > 0)
     return
 
+  if(navigator.appName.indexOf("Internet Explorer")!=-1)
+    $("#ie_warning").show()
+
   $("div.btn-group").each ->
     group = $(this)
     form = group.parents("form").eq(0)
