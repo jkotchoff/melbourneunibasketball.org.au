@@ -17,6 +17,8 @@ class Member < ActiveRecord::Base
   process_in_background :photo
 
   scope :current, lambda{ where("created_at >= ? and created_at < ?", self.club_year_start, (Date.today + 1.day))}
+  scope :not_expiring_soon, lambda{ current.paid.where("created_at >= ?", Date.today.beginning_of_year) }  
+  scope :expiring_soon, lambda{ current.paid.where("created_at < ?", Date.today.beginning_of_year) }  
   scope :paid, where(payment_confirmed: true).order('family_name ASC')
   scope :unpaid, where(payment_confirmed: false).order('created_at ASC')
   

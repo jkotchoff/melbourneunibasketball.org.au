@@ -17,38 +17,16 @@ Total money collected:
     %tr
       %th Joined
       %th Name
+      %th
       %th Contact
       %th Age/Gender
       %th Uniform(s)
       %th Actions
   %tbody
-    - @members.each do |member|
-      %tr
-        %td
-          = member.created_at.to_s(:abbr_month_day_year)
-          .muted
-            == $#{member.amount_paid}
-            - if member.payment_method == 'paypal'
-              Paypal
-            - else
-              Bank Transfer
-        %td= link_to member.name, [:admin, member]
-        %td
-          - if member.photo?
-            = image_tag "#{member.gender.downcase}.png", onmouseover: "this.style.cursor='pointer'", onclick: "this.src = '#{member.photo.url}'"
-        %td
-          em:
-          = link_to member.email, "mailto:#{member.email}" 
-          %br
-          ph:
-          == #{member.phone_number_mobile} / #{member.phone_number_other}
-        %td
-          = member.age_and_gender
-          - if member.new_member?
-            .muted New Member
-        %td= member.your_existing_mubc_singlet_numbers
-        %td
-          - if cookies[:superadmin].present?
-            = link_to "Edit", edit_admin_member_path(member), :class => 'btn btn-mini'
-            /= link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, member], :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-            
+    = render partial: 'list', locals: {members: @members}
+    %tr
+      %td{colspan: 7}
+        %br
+        %br
+        %h4== Expiring on April 1st, #{Date.today.year}:
+    = render partial: 'list', locals: {members: @expiring_members}

@@ -3,7 +3,8 @@ class Admin::MembersController < Admin::BaseController
   before_filter :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy]
   
   def index
-    @members = Member.current.paid.order(:given_name)
+    @members = Member.not_expiring_soon.order(:given_name)
+    @expiring_members = Member.expiring_soon.order(:given_name)
     @member_count = @members.length
     males = @members.select{|m| m.gender == "Male"}
     females = @members.select{|m| m.gender == "Female"}
