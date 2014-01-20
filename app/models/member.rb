@@ -51,9 +51,13 @@ class Member < ActiveRecord::Base
   def self.late_fee_cutoff
     Date.new(Date.today.year, 4, 13)
   end
+  
+  def self.winter_season_start
+    Date.new(Date.today.year, 8, 1)
+  end
 
   def self.late_fee
-    (Date.today > self.late_fee_cutoff) ? LATE_FEE : 0 
+    (Date.today > self.late_fee_cutoff and Date.today < self.winter_season_start) ? LATE_FEE : 0 
   end
 
   def age

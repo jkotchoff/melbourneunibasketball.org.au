@@ -20,8 +20,6 @@ $ heroku config:add ADMIN_USERNAME="..."
 $ heroku config:add ADMIN_PASSWORD="..."
 
 TODO: 
-- add 'date_payment_acknowledged' data to CSV spreadsheet
-- changing email addresses in admin is setting amount paid to $0
 - fix signup form to make email address mandatory
 - fix signup form for IE8
 - add filesize to PDF links
@@ -35,4 +33,7 @@ TODO:
 - add a 'favourite articles' link section to the homepage eg. http://espn.go.com/espn/story/_/page/Michael-Jordan/michael-jordan-not-left-building 
 - face detection: https://devcenter.heroku.com/articles/cloudinary ?
 - Have life members automatically renewed each year (or some variation of this).
-- The $10 late fee be removed for the summer season. So, for example, people who sign up after 1 August don't pay the late fee
+
+DONE - add 'date_payment_acknowledged' data to CSV spreadsheet
+DONE - changing email addresses in admin is setting amount paid to $0
+DONE - The $10 late fee be removed for the summer season. So, for example, people who sign up after 1 August don't pay the late fee

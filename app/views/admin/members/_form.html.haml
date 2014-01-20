@@ -1,6 +1,6 @@
 .row
   .span6
-    = form_for [:admin, @member], :html => { :class => 'form-horizontal' } do |f|
+    = form_for [:admin, @member], :html => { :class => 'form-horizontal', id: "admin_member_form" } do |f|
       .control-group
         = f.label :eligibility_clause, :class => 'control-label'
         .controls

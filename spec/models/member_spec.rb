@@ -15,6 +15,8 @@ describe Member do
     let(:jan_31_2013){ Date.new(2013,  1, 31) }
     let(:mar_31_2013){ Date.new(2013,  3, 31) }
     let(:dec_31_2013){ Date.new(2013, 12, 31) }
+    let(:jan_31_2014){ Date.new(2014,  1, 31) }
+    let(:apr_1_2014 ){ Date.new(2014,  4,  1) }
 
     let!(:jan_31_2012_member){ Member.make!(created_at: jan_31_2012) }
     let!(:mar_31_2012_member){ Member.make!(created_at: mar_31_2012) }
@@ -22,6 +24,7 @@ describe Member do
     let!(:jan_31_2013_member){ Member.make!(created_at: jan_31_2013) }
     let!(:mar_31_2013_member){ Member.make!(created_at: mar_31_2013) }
     let!(:dec_31_2013_member){ Member.make!(created_at: dec_31_2013) }
+    let!(:jan_31_2014_member){ Member.make!(created_at: jan_31_2014) }
 
     it "returns members who are paid up for the current MUBC year" do
       Timecop.freeze(jan_31_2012) do
@@ -46,6 +49,10 @@ describe Member do
 
       Timecop.freeze(dec_31_2013) do
         Member.current.should == [jan_31_2013_member, mar_31_2013_member, dec_31_2013_member]
+      end
+
+      Timecop.freeze(apr_1_2014) do
+        Member.current.should == [jan_31_2014_member]
       end
     end
   end

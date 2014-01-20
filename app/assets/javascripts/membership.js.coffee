@@ -74,6 +74,9 @@ rebuild_steps = (button_value) ->
     $('#submit_button').val('Submit')
         
 jQuery ($) ->
+  if($("#admin_member_form").length > 0)
+    return
+
   $("div.btn-group").each ->
     group = $(this)
     form = group.parents("form").eq(0)
