@@ -11,7 +11,7 @@
     %td= link_to member.name, [:admin, member]
     %td
       - if member.photo?
-        = image_tag "#{member.gender.downcase}.png", onmouseover: "this.style.cursor='pointer'", onclick: "this.src = '#{member.photo.url}'"
+        = image_tag "#{member.gender.downcase}.png", width: 35, height: 35, onmouseover: "this.style.cursor='pointer'", onclick: "this.src = '#{member.photo.url}'"
     %td
       em:
       = link_to member.email, "mailto:#{member.email}" 
