@@ -27,6 +27,13 @@ class Member < ActiveRecord::Base
   NON_STUDENT_FEE = 130
   LATE_FEE = 10
   
+  def self.new_membership_club_year_start
+    jan_1_this_year = Date.new(Date.today.year, 1, 1)
+  end
+
+  def self.new_membership_club_year_end
+    mar_31_next_year = Date.new(Date.today.year + 1, 1, 31)
+  end
 
   # MUBC memberships are taken from jan 1 and should be valid until March 31 the following year  
   def self.club_year_start
