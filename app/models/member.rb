@@ -32,7 +32,7 @@ class Member < ActiveRecord::Base
   end
 
   def self.new_membership_club_year_end
-    mar_31_next_year = Date.new(Date.today.year + 1, 1, 31)
+    mar_31_next_year = Date.new(Date.today.year + 1, 3, 31)
   end
 
   # MUBC memberships are taken from jan 1 and should be valid until March 31 the following year  
@@ -48,7 +48,7 @@ class Member < ActiveRecord::Base
 
   def self.club_year_end
     mar_31_this_year = Date.new(Date.today.year, 3, 31)
-    mar_31_next_year = Date.new(Date.today.year + 1, 1, 31)
+    mar_31_next_year = Date.new(Date.today.year + 1, 3, 31)
     if Date.today < mar_31_this_year
       return mar_31_this_year
     else
