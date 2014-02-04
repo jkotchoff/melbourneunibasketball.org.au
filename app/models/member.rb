@@ -92,7 +92,7 @@ class Member < ActiveRecord::Base
     %Q{
 I agree to abide by the rules and regulations pertaining at all times to the use of University sports facilities, services and equipment.
 
-I agree to abide by the Constitution of Melbourne University Basketball Club (MUBC) Inc. for the period #{self.club_year_start.to_s(:month_day_year)} to #{self.club_year_end.to_s(:month_day_year)}.
+I agree to abide by the Constitution of Melbourne University Basketball Club (MUBC) Inc. for the period #{self.new_membership_club_year_start.to_s(:month_day_year)} to #{self.new_membership_club_year_end.to_s(:month_day_year)}.
 
 I understand that in the circumstance where a MUBC Inc team at a domestic, representative or tournament level receives a walkover fine for non-attendance at a game for any reason other than incorrect advice from the relevant association, the sole responsibility for the payment of that fine is held by that MUBC Inc. team. I am liable for any irresponsible behaviour leading to damage or loss of funds to the club by individuals or teams.
 
