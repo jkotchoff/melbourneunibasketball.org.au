@@ -1,0 +1,10 @@
+%h1 Dribbling Balls
+%p 
+  Dribbling Balls is MUBC's official newsletter. Throughout the clubs history, it has been published whenever there has been a willing editor. If you are able to write for new editions of Dribbling Balls, we would love to welcome your contribution. Please direct enquiries to
+  = mail_to "president@melbourneunibasketball.org.au", "the club president", encode: "javascript"
+
+%br
+%br
+
+.dribbling_balls
+  = render partial: 'news_items', locals: {news_items: @newsletters}

@@ -30,18 +30,18 @@
         %td= truncate(page.summary, length: 50)
         %td= page.created_at.to_s(:abbr_month_day_year)
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_page_path(page), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, page], :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          = link_to "Edit", edit_admin_page_path(page), :class => 'btn btn-mini'
+          = link_to "Destroy", [:admin, page], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
 
-%h3 Sticky News Items
-%table.table.table-striped
-  %thead
-    %tr
-      %th Title
-      %th Actions
-  %tbody
-    - @sticky_news_items.each do |page|
-      %tr
-        %td= link_to page.title, [:admin, page]
-        %td= link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_page_path(page), :class => 'btn btn-mini'
+/%h3 Sticky News Items
+/%table.table.table-striped
+/  %thead
+/    %tr
+/      %th Title
+/      %th Actions
+/  %tbody
+/    - @sticky_news_items.each do |page|
+/      %tr
+/        %td= link_to page.title, [:admin, page]
+/        %td= link_to t('.edit', :default => "Edit", edit_admin_page_path(page), :class => 'btn btn-mini'
       

@@ -20,4 +20,4 @@
           - if page.author?
             == (#{page.author})
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_page_path(page), :class => 'btn btn-mini'
+          = link_to "Edit", edit_admin_page_path(page), :class => 'btn btn-mini'

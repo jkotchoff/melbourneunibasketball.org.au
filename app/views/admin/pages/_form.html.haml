@@ -26,21 +26,25 @@
   .row
     .span12
       .control-group
-        = f.label :pdf, :class => 'control-label', data: { help: t('view.inline_help.news_item.pdf_hint') }
-        .controls
-          = f.file_field(:pdf)
-          - if @page.pdf?
-            = link_to "Download", @page.pdf_url
-            %br
-            %label{for: 'news_item_remove_image'} 
-              = f.check_box :remove_pdf
-              Delete?
+        - if @page.dribbling_balls_link.present?
+          .controls
+            = f.text_field :dribbling_balls_link, :class => 'text_field'
+        - else
+          = f.label :pdf, :class => 'control-label', data: { help: t('view.inline_help.news_item.pdf_hint') }
+          .controls
+            = f.file_field(:pdf)
+            - if @page.pdf?
+              = link_to "Download", @page.pdf_url
+              %br
+              %label{for: 'news_item_remove_image'} 
+                = f.check_box :remove_pdf
+                Delete?
   .row
-    .span12
-      .control-group
-        = f.label :sticky, "Sticky?", :class => 'control-label'
-        .controls
-          = f.check_box :sticky
+    /.span12
+    /  .control-group
+    /    = f.label :sticky, "Sticky?", :class => 'control-label'
+    /    .controls
+    /      = f.check_box :sticky
 
   - unless @page.class == NewsItem
     .control-group
@@ -54,6 +58,6 @@
       = f.text_area :content, :class => 'text_area tinymce', rows: 3
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_pages_path, :class => 'btn'
+    = link_to "Cancel", admin_pages_path, :class => 'btn'
 
 = tinymce uploadimage_hint: @page.id

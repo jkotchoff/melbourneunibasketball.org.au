@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314220037) do
+ActiveRecord::Schema.define(:version => 20150216095218) do
 
   create_table "content_images", :force => true do |t|
     t.integer "page_id"
@@ -67,11 +67,12 @@ ActiveRecord::Schema.define(:version => 20130314220037) do
     t.string   "author"
     t.text     "synopsis"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "pdf"
     t.string   "slug"
     t.boolean  "sticky"
+    t.string   "dribbling_balls_link"
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true

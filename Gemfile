@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
+ruby '2.1.0'
 
 gem 'activemerchant'
 gem 'carrierwave'
@@ -13,7 +14,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'pg'
-gem 'tinymce-rails'
+gem 'tinymce-rails', '~> 3.5.8'
 gem 'tinymce-rails-imageupload', '~> 3.5.6.3'
 gem 'unicorn'
 gem "workless", "~> 1.1.1"
@@ -52,7 +53,7 @@ end
 
 group :test, :development do
   gem "rspec-rails", ">= 2.5"
-  gem 'debugger'
+  gem 'byebug'
 end
 
 group :development do

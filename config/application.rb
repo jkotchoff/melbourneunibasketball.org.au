@@ -58,7 +58,7 @@ module Melbourneunibasketball
 
     config.generators do |g|
       # g.template_engine :haml
-      g.test_framework :rspec  
+      g.test_framework :rspec, fixture: false  
       g.fixture_replacement :machinist
     end
     
