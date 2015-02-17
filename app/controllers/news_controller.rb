@@ -18,7 +18,7 @@ class NewsController < ApplicationController
   end
   
   def dribbling_balls
-    @newsletters = NewsItem.dribbling_balls
+    @newsletters = NewsItem.dribbling_balls.order('created_at DESC')
   end
 
   def news_item
