@@ -16,6 +16,10 @@ class NewsController < ApplicationController
     @news_items = NewsItem.for_year(@archived_year)
     @left_sidebar = "sidebars/news"
   end
+  
+  def dribbling_balls
+    @newsletters = NewsItem.dribbling_balls
+  end
 
   def news_item
     @page = Page.find(params[:article])

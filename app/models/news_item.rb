@@ -2,6 +2,7 @@ class NewsItem < Page
   validates_presence_of :author
   
   scope :for_year, lambda {|year| where("created_at >= ? and created_at <= ?", "#{year}0101", "#{year}1231").order('created_at DESC')}
+  scope :dribbling_balls, where("dribbling_balls_link is not null")
   scope :sticky, where("sticky = true")
 
   include ActionView::Helpers::TextHelper

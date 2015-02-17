@@ -21,6 +21,7 @@ Member.blueprint do
   given_name             { "John" }
   family_name            { "Smith" }
   gender                 { "Male" }
+  email                  { "someone@somewhere.com" }
   date_of_birth          { "01/04/1990" }
   phone_number_mobile    { "0411 123 456" }
   phone_number_other     { "9600 1234" }
