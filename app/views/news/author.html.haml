@@ -1,0 +1,10 @@
+%h1
+  Articles by
+  %em= @author
+%p 
+  == #{@author} has published #{@news_items.count} articles dating between #{@date_from} and #{@date_to}
+
+%br
+%br
+
+= render partial: 'news_items', locals: {news_items: @news_items}

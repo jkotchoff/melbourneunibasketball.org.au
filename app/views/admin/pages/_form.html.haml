@@ -29,16 +29,16 @@
         - if @page.dribbling_balls_link.present?
           .controls
             = f.text_field :dribbling_balls_link, :class => 'text_field'
-        - else
-          = f.label :pdf, :class => 'control-label', data: { help: t('view.inline_help.news_item.pdf_hint') }
-          .controls
-            = f.file_field(:pdf)
-            - if @page.pdf?
-              = link_to "Download", @page.pdf_url
-              %br
-              %label{for: 'news_item_remove_image'} 
-                = f.check_box :remove_pdf
-                Delete?
+        /- else
+        /  = f.label :pdf, :class => 'control-label', data: { help: t('view.inline_help.news_item.pdf_hint') }
+        /  .controls
+        /    = f.file_field(:pdf)
+        /    - if @page.pdf?
+        /      = link_to "Download", @page.pdf_url
+        /      %br
+        /      %label{for: 'news_item_remove_image'} 
+        /        = f.check_box :remove_pdf
+        /        Delete?
   .row
     /.span12
     /  .control-group

@@ -12,7 +12,8 @@
   .muted
     = @page.created_at.to_s(:month_day_year)
     - if @page.author?
-      == - submitted by #{@page.author}
+      == - submitted by 
+      = link_to(@page.author, author_path(@page.author))
     %br
     %br
 
@@ -24,7 +25,7 @@
         %br
         Click here to download 
   - if @page.content
-    = @page.content.html_safe
+    = content_html_with_linked_images(@page)
   - else
     = @page.synopsis
 

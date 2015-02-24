@@ -2,10 +2,7 @@
   - news_items.each_with_index do |news_item, i|
     %li.news_item
       %h4
-        - if news_item.has_page?
-          = link_to news_item.title, article_path(news_item.year, news_item) 
-        - else
-          = news_item.title
+        = link_to news_item.title, article_path(news_item.year, news_item) 
       - if news_item.summary_image?
         .news_image{class: (i % 2 == 0 ? 'news_image_right' : 'news_image_left')}
           - if news_item.content.blank?
@@ -19,7 +16,11 @@
             %br
             Click here to download 
 
-      .muted== #{news_item.created_at.to_s(:month_day_year)} - submitted by #{news_item.author}
+      .muted
+        = news_item.created_at.to_s(:month_day_year)
+        - unless news_item.author.blank?
+          == - submitted by 
+          = link_to(news_item.author, author_path(news_item.author))
       %br
       = news_item.summary.try(:html_safe)
       - if news_item.has_page?

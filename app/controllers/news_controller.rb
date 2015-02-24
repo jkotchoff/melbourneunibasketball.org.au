@@ -17,6 +17,13 @@ class NewsController < ApplicationController
     @left_sidebar = "sidebars/news"
   end
   
+  def author
+    @author = params[:author]
+    @news_items = NewsItem.where("lower(author) = ?", @author.downcase).order('created_at DESC')
+    @date_from = @news_items.last.created_at.to_s(:year) rescue '-'
+    @date_to = @news_items.first.created_at.to_s(:year) rescue '-'
+  end
+  
   def dribbling_balls
     @newsletters = NewsItem.dribbling_balls.order('created_at DESC')
   end

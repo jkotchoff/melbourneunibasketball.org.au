@@ -39,6 +39,7 @@ Melbourneunibasketball::Application.routes.draw do
   match 'news' => 'news#archived', :as => :archived_news
   match 'news/:archived_year' => 'news#archived', :as => :archived_news_for_year
   match 'news/:year/:article' => 'news#news_item', :as => :article
+  match 'authors/:author' => 'news#author', :as => :author
   
   match 'dribbling_balls_newsletter' => 'news#dribbling_balls', as: :dribbling_balls
 

@@ -13,6 +13,7 @@ gem "friendly_id", "~> 4.0.9"
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'mini_magick'
+gem 'nokogiri'
 gem 'pg'
 gem 'tinymce-rails', '~> 3.5.8'
 gem 'tinymce-rails-imageupload', '~> 3.5.6.3'
