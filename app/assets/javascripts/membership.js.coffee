@@ -65,12 +65,12 @@ rebuild_eligibility_clause = ->
 
 rebuild_steps = (button_value) ->        
   if button_value == 'paypal'
-    $('#bank_transfer_instructions, #email_row, #postal_address_row').hide()
+    $('#bank_transfer_instructions, #postal_address_row').hide()
     $('#paypal_instructions').show()
     $('#submit_button').val('Take me to Paypal')
   else if button_value == 'bank_transfer'
     $('#paypal_instructions').hide()
-    $('#bank_transfer_instructions, #email_row, #postal_address_row').show()
+    $('#bank_transfer_instructions, #postal_address_row').show()
     $('#submit_button').val('Submit')
         
 jQuery ($) ->

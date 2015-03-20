@@ -57,7 +57,6 @@ class MembersController < ApplicationController
     @member = Member.find_by_paypal_token(params[:token])
     gateway_response = @gateway.details_for(params[:token])
     @member.postal_address = gateway_response.address.values_at("company", "address1", "address2", "city", "state", "country", "zip").reject(&:blank?).join(", ")
-    @member.email = gateway_response.email
     @member.paypal_token = gateway_response.token
     @member.paypal_payer_id = gateway_response.payer_id
     @member.save
@@ -71,7 +70,6 @@ class MembersController < ApplicationController
   def confirm_paypal_purchase
     @member = Member.find(params[:id])
     @member.update_attributes(
-      email: params[:member][:email],
       postal_address: params[:member][:postal_address]
     )
  

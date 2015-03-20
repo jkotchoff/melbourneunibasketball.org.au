@@ -35,7 +35,6 @@ feature "Paypal" do
       click_button 'gender_male'
       click_button 'Submit'
       find_field('Postal address').value.should == '123 street, somewhere'
-      find_field('Email').value.should == users_email
       first(:button, 'Confirm Payment').click
     }.should change(Member, :count).by(1)
     
