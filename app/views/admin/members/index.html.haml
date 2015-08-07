@@ -1,7 +1,14 @@
 = link_to "Download CSV Export", csv_export_admin_members_path, :class => 'btn btn-primary right', style: 'margin-top:30px'
 
 .page-header
-  %h3 Members for #{Date.today.year}
+  %h3 Members for #{@selected_year}
+
+  .previous_years
+    - @available_membership_years.each do |year|
+      - if year == @selected_year
+        = year
+      - else
+        = link_to year.to_s, admin_members_path(year: year)
   
 == Members: #{@member_count} 
 %span.muted (Male: #{@males_percentage}%, Female: #{@females_percentage}%)

@@ -3,8 +3,9 @@ class Admin::MembersController < Admin::BaseController
   before_filter :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy]
   
   def index
-    @members = Member.not_expiring_soon.order(:given_name)
-    @expiring_members = Member.expiring_soon.order(:given_name)
+    @selected_year = params[:year].present? ? params[:year].to_i : Date.today.year
+    @members = Member.not_expiring_soon(@selected_year).order(:given_name)
+    @expiring_members = Member.expiring_soon(@selected_year).order(:given_name)
     @member_count = @members.length
     males = @members.select{|m| m.gender == "Male"}
     females = @members.select{|m| m.gender == "Female"}
@@ -14,6 +15,7 @@ class Admin::MembersController < Admin::BaseController
     @average_male_age = males.collect(&:age).mean rescue "N/A"
     @average_female_age = females.collect(&:age).mean rescue "N/A"
     @total_money_collected = @members.collect(&:amount_paid).sum
+    @available_membership_years = Member.available_membership_years
   end
   
   def pending

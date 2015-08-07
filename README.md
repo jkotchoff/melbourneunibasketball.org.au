@@ -20,6 +20,8 @@ $ heroku config:add ADMIN_USERNAME="..."
 $ heroku config:add ADMIN_PASSWORD="..."
 
 TODO: 
+- Introduce a 'six month' membership for anyone who signs up after july 1
+- Import: http://web.archive.org/web/20060821203255/http://basketball.musa.net.au/contact/index.php
 - fix signup form to make email address mandatory
 - fix signup form for IE8
 - add filesize to PDF links
@@ -33,6 +35,7 @@ TODO:
 - add a 'favourite articles' link section to the homepage eg. http://espn.go.com/espn/story/_/page/Michael-Jordan/michael-jordan-not-left-building 
 - face detection: https://devcenter.heroku.com/articles/cloudinary ?
 - Have life members automatically renewed each year (or some variation of this).
+NOT DOING - MUSA CAN PAY FOR THIS- Thanks for the membership data, could the club please adjust your online form for next year so current students can indicate whether they are engaged in under or post grad studies
 
 DONE - add 'date_payment_acknowledged' data to CSV spreadsheet
 DONE - changing email addresses in admin is setting amount paid to $0

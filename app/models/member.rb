@@ -16,9 +16,9 @@ class Member < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   process_in_background :photo
 
-  scope :current, lambda{ where("created_at >= ? and created_at < ?", self.club_year_start, (Date.today + 1.day))}
-  scope :not_expiring_soon, lambda{ current.paid.where("created_at >= ?", Date.today.beginning_of_year) }  
-  scope :expiring_soon, lambda{ current.paid.where("created_at < ?", Date.today.beginning_of_year) }  
+  scope :current, lambda{|year| where("created_at >= ? and created_at < ?", self.club_year_start(year), (Date.today + 1.day))}
+  scope :not_expiring_soon, lambda{|year| current(year).paid.where("created_at >= ?", Date.new(year)) }  
+  scope :expiring_soon, lambda{|year| current(year).paid.where("created_at < ?", Date.new(year)) }  
   scope :paid, where(payment_confirmed: true).order('family_name ASC')
   scope :unpaid, where(payment_confirmed: false).order('created_at ASC')
   
@@ -36,13 +36,13 @@ class Member < ActiveRecord::Base
   end
 
   # MUBC memberships are taken from jan 1 and should be valid until March 31 the following year  
-  def self.club_year_start
-    march_31_this_year = Date.new(Date.today.year, 3, 31)
+  def self.club_year_start(year = Date.today.year)
+    march_31_this_year = Date.new(year, 3, 31)
     if Date.today <= march_31_this_year
-      jan_1_last_year = Date.new(Date.today.year - 1, 1, 1)
+      jan_1_last_year = Date.new(year - 1, 1, 1)
       return jan_1_last_year
     end 
-    jan_1_this_year = Date.new(Date.today.year, 1, 1)
+    jan_1_this_year = Date.new(year, 1, 1)
     return jan_1_this_year
   end
 
@@ -67,6 +67,12 @@ class Member < ActiveRecord::Base
 
   def self.late_fee
     (Date.today > self.late_fee_cutoff and Date.today < self.winter_season_start) ? LATE_FEE : 0 
+  end
+  
+  def self.available_membership_years
+    first_membership_year = Member.order(:created_at).pluck(:created_at).first.year
+    this_year = Date.today.year
+    first_membership_year..this_year
   end
 
   def age
