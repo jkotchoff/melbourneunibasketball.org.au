@@ -16,7 +16,7 @@ class Member < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   process_in_background :photo
 
-  scope :for_year, lambda{|year| where("created_at >= ? and created_at < ?", self.club_year_start(year), (Date.today + 1.day))}
+  scope :for_year, lambda{|year| where("created_at >= ? and created_at < ?", self.club_year_start(year), self.club_year_end(year))}
   scope :current, lambda{ for_year(Date.today.year) }
   scope :not_expiring_soon, lambda{|year| for_year(year).paid.where("created_at >= ?", Date.new(year)) }  
   scope :expiring_soon, lambda{|year| for_year(year).paid.where("created_at < ?", Date.new(year)) }  
@@ -69,9 +69,9 @@ class Member < ActiveRecord::Base
     return jan_1_this_year
   end
 
-  def self.club_year_end
-    mar_31_this_year = Date.new(Date.today.year, 3, 31)
-    mar_31_next_year = Date.new(Date.today.year + 1, 3, 31)
+  def self.club_year_end(year = Date.today.year)
+    mar_31_this_year = Date.new(year, 3, 31)
+    mar_31_next_year = Date.new(year + 1, 3, 31)
     if Date.today < mar_31_this_year
       return mar_31_this_year
     else
