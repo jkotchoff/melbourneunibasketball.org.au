@@ -21,11 +21,11 @@
 
 %h4 Membership Cost
 %p
-  == For period #{Member.new_membership_club_year_start.to_s(:month_day_year)} - #{Member.new_membership_club_year_end.to_s(:month_day_year)}
+  == For period #{Member.signup_start_date} - #{Member.new_membership_club_year_end.to_s(:month_day_year)}
 %p
-  == $#{Member::STUDENT_FEE} for Melbourne University Students
+  == $#{Member.student_fee} for Melbourne University Students
 %p
-  == $#{Member::NON_STUDENT_FEE} for eligible non-students
+  == $#{Member.non_student_fee} for eligible non-students
 %p.muted 
   == A $#{Member::LATE_FEE} late fee applies if fees are not paid before #{Member.late_fee_cutoff.strftime("%b %d")}
 

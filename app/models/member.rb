@@ -22,11 +22,33 @@ class Member < ActiveRecord::Base
   scope :expiring_soon, lambda{|year| for_year(year).paid.where("created_at < ?", Date.new(year)) }  
   scope :paid, where(payment_confirmed: true).order('family_name ASC')
   scope :unpaid, where(payment_confirmed: false).order('created_at ASC')
-  
-  #TODO: make this configurable
-  STUDENT_FEE = 70
-  NON_STUDENT_FEE = 130
+
+  # Note, this isn't being applied to winter season signups  
   LATE_FEE = 10
+  
+  def self.student_fee
+    if Date.today >= self.winter_season_start
+      40
+    else
+      70
+    end
+  end
+
+  def self.non_student_fee
+    if Date.today >= self.winter_season_start
+      70
+    else
+      130
+    end
+  end
+  
+  def self.signup_start_date
+    if Date.today >= self.winter_season_start
+      self.winter_season_start.to_s(:month_day_year)
+    else
+      self.new_membership_club_year_start.to_s(:month_day_year)
+    end
+  end
   
   def self.new_membership_club_year_start
     jan_1_this_year = Date.new(Date.today.year, 1, 1)
