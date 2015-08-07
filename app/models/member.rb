@@ -16,9 +16,10 @@ class Member < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   process_in_background :photo
 
-  scope :current, lambda{|year| where("created_at >= ? and created_at < ?", self.club_year_start(year), (Date.today + 1.day))}
-  scope :not_expiring_soon, lambda{|year| current(year).paid.where("created_at >= ?", Date.new(year)) }  
-  scope :expiring_soon, lambda{|year| current(year).paid.where("created_at < ?", Date.new(year)) }  
+  scope :for_year, lambda{|year| where("created_at >= ? and created_at < ?", self.club_year_start(year), (Date.today + 1.day))}
+  scope :current, lambda{ for_year(Date.today.year) }
+  scope :not_expiring_soon, lambda{|year| for_year(year).paid.where("created_at >= ?", Date.new(year)) }  
+  scope :expiring_soon, lambda{|year| for_year(year).paid.where("created_at < ?", Date.new(year)) }  
   scope :paid, where(payment_confirmed: true).order('family_name ASC')
   scope :unpaid, where(payment_confirmed: false).order('created_at ASC')
   
@@ -56,7 +57,7 @@ class Member < ActiveRecord::Base
     end
   end
 
-  # Late fees are applicable if membership is paid for after April 13th
+  # Late fees are applicable if membership is paid for after April 13th and before winter season start (August 1st)
   def self.late_fee_cutoff
     Date.new(Date.today.year, 4, 13)
   end
