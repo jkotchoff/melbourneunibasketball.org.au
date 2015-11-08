@@ -14,6 +14,10 @@ class AboutController < ApplicationController
     render_page(Page::SPONSORS)
   end
   
+  def constitution
+    render_page(Page::CONSTITUTION)
+  end
+  
   def competition_titles
     render_page(Page::AWARDS_TITLES)
   end

@@ -5,6 +5,8 @@
     = link_to Page::BIG_V, big_v_path
   %li{class: ('active' if params[:action] == 'sponsors')}
     = link_to Page::SPONSORS, sponsors_path
+  %li{class: ('active' if params[:action] == 'constitution')}
+    = link_to Page::CONSTITUTION, constitution_path
   %li.nav-header Major Results & Player Titles
   %li{class: ('active' if params[:action] == 'competition_titles')}
     = link_to Page::AWARDS_TITLES, competition_titles_path

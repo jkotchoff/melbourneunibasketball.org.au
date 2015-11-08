@@ -48,6 +48,7 @@ Melbourneunibasketball::Application.routes.draw do
   match 'about' => 'about#index', :as => :about
   match 'about/bigv' => 'about#big_v', :as => :big_v
   match 'about/sponsors' => 'about#sponsors', :as => :sponsors
+  match 'about/constitution' => 'about#constitution', :as => :constitution
   match 'about/competition_titles' => 'about#competition_titles', :as => :competition_titles
   match 'about/representative_mvps' => 'about#representative_mvps', :as => :representative_mvps
   match 'about/team_mvps' => 'about#team_mvps', :as => :team_mvps

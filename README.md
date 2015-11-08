@@ -20,6 +20,7 @@ $ heroku config:add ADMIN_USERNAME="..."
 $ heroku config:add ADMIN_PASSWORD="..."
 
 TODO: 
+- I've actually just had a look at the data on the webpage and it appears to be inflated because 2014 includes a number of sign-ups from 2015. Anything before 1 April has been lumped in with the previous year. 2013 has the same issue. There also appear to be other double-ups, e.g. Raef in 2013.
 - Introduce a 'six month' membership for anyone who signs up after july 1
 - Import: http://web.archive.org/web/20060821203255/http://basketball.musa.net.au/contact/index.php
 - fix signup form to make email address mandatory

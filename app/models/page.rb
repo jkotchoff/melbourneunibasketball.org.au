@@ -25,6 +25,7 @@ class Page < ActiveRecord::Base
   ABOUT_THE_CLUB                  = "About The Club"
   BIG_V                           = "Big V Program"
   SPONSORS                        = "Sponsors"
+  CONSTITUTION                    = "Constitution"
   
   AWARDS_TITLES                   = "Competition Titles"
   AWARDS_REPRESENTATIVE_MVPS      = "Representative MVP's"

@@ -16,6 +16,7 @@ NewsItem.create!(author: 'smoke', title: 'Corporate Games win', synopsis: "Andy'
   Page::ABOUT_THE_CLUB => "Find out why MUBC is a great place to play basketball",
   Page::BIG_V => "Melbourne Uni have both a mens and a womens representantive Big V program for elite players",
   Page::SPONSORS => "Big props to all our fantastic sponsors!",
+  Page::CONSTITUTION => "The constitution of Melbourne University Basketball Club",
 
   
 #  Page::AWARDS_TITLES => "Team Lists for Premierships & Runner Up finishes (VBL, University Games, MMBL, Sunday Night MSAC, Tournaments)",
