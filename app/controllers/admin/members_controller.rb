@@ -1,7 +1,7 @@
 class Admin::MembersController < Admin::BaseController
-  
+
   before_filter :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy]
-  
+
   def index
     @selected_year = params[:year].present? ? params[:year].to_i : Date.today.year
     @members = Member.not_expiring_soon(@selected_year).order(:given_name)
@@ -14,19 +14,19 @@ class Admin::MembersController < Admin::BaseController
     @average_age = @members.collect(&:age).mean rescue "N/A"
     @average_male_age = males.collect(&:age).mean rescue "N/A"
     @average_female_age = females.collect(&:age).mean rescue "N/A"
-    @total_money_collected = @members.collect(&:amount_paid).sum
+    @total_money_collected = Member.funds_raised(@selected_year)
     @available_membership_years = Member.available_membership_years
   end
-  
+
   def pending
     @unpaid_members = Member.current.unpaid
   end
-  
+
   def csv_export
     report_path = MemberDatabase.export_csv
     send_file report_path, :type => 'text/csv; charset=iso-8859-1; header=presen', :disposition => 'attachment'
   end
-  
+
   def acknowledge_payment
     @member = Member.find(params[:id])
     @member.update_attributes(payment_confirmed: true, payment_acknowledgement: params[:payment_acknowledgement])
@@ -47,11 +47,11 @@ class Admin::MembersController < Admin::BaseController
       render action: "edit"
     end
   end
-  
+
   def show
     @member = Member.find(params[:id])
   end
-    
+
   def destroy
     @member = Member.find(params[:id])
     member_name = @member.name

@@ -4,7 +4,7 @@ class Member < ActiveRecord::Base
                   :gender, :date_of_birth, :phone_number_mobile, :phone_number_other,
                   :new_member, :your_existing_mubc_singlet_numbers, :how_did_you_hear_about_the_club,
                   :amount_paid, :payment_confirmed, :photo, :photo_cache, :payment_acknowledgement
-                  
+
   validates_presence_of :eligibility_clause, :payment_method, :given_name, :family_name, :gender, \
                   :email, :date_of_birth, :phone_number_mobile, :phone_number_other, :amount_paid
 
@@ -17,15 +17,20 @@ class Member < ActiveRecord::Base
   process_in_background :photo
 
   scope :for_year, lambda{|year| where("created_at >= ? and created_at < ?", self.club_year_start(year), self.club_year_end(year))}
+  scope :for_calendar_year, lambda{|year| where("created_at >= ? and created_at < ?", DateTime.parse("Jan 1 #{year}"), DateTime.parse("Dec 31 #{year}").end_of_day)}
   scope :current, lambda{ for_year(Date.today.year) }
-  scope :not_expiring_soon, lambda{|year| for_year(year).paid.where("created_at >= ?", Date.new(year)) }  
-  scope :expiring_soon, lambda{|year| for_year(year).paid.where("created_at < ?", Date.new(year)) }  
+  scope :not_expiring_soon, lambda{|year| for_year(year).paid.where("created_at >= ?", Date.new(year)) }
+  scope :expiring_soon, lambda{|year| for_year(year).paid.where("created_at < ?", Date.new(year)) }
   scope :paid, where(payment_confirmed: true).order('family_name ASC')
   scope :unpaid, where(payment_confirmed: false).order('created_at ASC')
 
-  # Note, this isn't being applied to winter season signups  
+  # Note, this isn't being applied to winter season signups
   LATE_FEE = 10
-  
+
+  def self.funds_raised(year = Date.today.year)
+    for_calendar_year(year).sum(&:amount_paid)
+  end
+
   def self.student_fee
     if Date.today >= self.winter_season_start
       40
@@ -41,7 +46,7 @@ class Member < ActiveRecord::Base
       130
     end
   end
-  
+
   def self.signup_start_date
     if Date.today >= self.winter_season_start
       self.winter_season_start.to_s(:month_day_year)
@@ -49,7 +54,7 @@ class Member < ActiveRecord::Base
       self.new_membership_club_year_start.to_s(:month_day_year)
     end
   end
-  
+
   def self.new_membership_club_year_start
     jan_1_this_year = Date.new(Date.today.year, 1, 1)
   end
@@ -58,13 +63,13 @@ class Member < ActiveRecord::Base
     mar_31_next_year = Date.new(Date.today.year + 1, 3, 31)
   end
 
-  # MUBC memberships are taken from jan 1 and should be valid until March 31 the following year  
+  # MUBC memberships are taken from jan 1 and should be valid until March 31 the following year
   def self.club_year_start(year = Date.today.year)
     march_31_this_year = Date.new(year, 3, 31)
     if Date.today <= march_31_this_year
       jan_1_last_year = Date.new(year - 1, 1, 1)
       return jan_1_last_year
-    end 
+    end
     jan_1_this_year = Date.new(year, 1, 1)
     return jan_1_this_year
   end
@@ -83,15 +88,15 @@ class Member < ActiveRecord::Base
   def self.late_fee_cutoff
     Date.new(Date.today.year, 4, 13)
   end
-  
+
   def self.winter_season_start
     Date.new(Date.today.year, 8, 1)
   end
 
   def self.late_fee
-    (Date.today > self.late_fee_cutoff and Date.today < self.winter_season_start) ? LATE_FEE : 0 
+    (Date.today > self.late_fee_cutoff and Date.today < self.winter_season_start) ? LATE_FEE : 0
   end
-  
+
   def self.available_membership_years
     first_membership_year = Member.order(:created_at).pluck(:created_at).first.year
     this_year = Date.today.year
@@ -106,15 +111,15 @@ class Member < ActiveRecord::Base
   def age_and_gender
     "#{age}yo #{gender.downcase}"
   end
-  
+
   def name
     [given_name, family_name].reject(&:blank?).join(" ")
   end
 
   def reference
     # my HSBC account has an 18 character limit on beneficiary reference notes
-    no = "%03d" % id 
-    "MUBC#{no} #{given_name.chars.first} #{family_name}".first(18) 
+    no = "%03d" % id
+    "MUBC#{no} #{given_name.chars.first} #{family_name}".first(18)
   end
 
   def self.disclaimer
@@ -127,15 +132,15 @@ I understand that in the circumstance where a MUBC Inc team at a domestic, repre
 
 I understand that membership fees are non-refundable.
 
-Melbourne University Sports (MUS) are committed to observing the requirements of the Information Privacy Act. 
+Melbourne University Sports (MUS) are committed to observing the requirements of the Information Privacy Act.
 
-We collect your information for the purpose of providing you access to our sporting facilities and services, and it is also retained for the development of a sports alumni at the University of Melbourne. 
+We collect your information for the purpose of providing you access to our sporting facilities and services, and it is also retained for the development of a sports alumni at the University of Melbourne.
 
-By completing this form you consent to MUS using your information for these purposes. 
+By completing this form you consent to MUS using your information for these purposes.
 
-If, in the future you decline to be involved in the MUS sports alumni, you can so advise MUS. 
+If, in the future you decline to be involved in the MUS sports alumni, you can so advise MUS.
 
-You can also contact MUS for a copy of the MUS Privacy Policy, or obtain a copy from www.sports.unimelb.edu.au    
+You can also contact MUS for a copy of the MUS Privacy Policy, or obtain a copy from www.sports.unimelb.edu.au
     }
   end
 end
