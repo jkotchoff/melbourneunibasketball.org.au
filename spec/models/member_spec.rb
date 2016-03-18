@@ -18,18 +18,18 @@ describe Member do
     let(:jan_31_2014){ Date.new(2014,  1, 31) }
     let(:apr_1_2014 ){ Date.new(2014,  4,  1) }
 
-    let!(:jan_31_2012_member){ Member.make!(created_at: jan_31_2012, amount_paid: 130) }
-    let!(:mar_31_2012_member){ Member.make!(created_at: mar_31_2012, amount_paid: 70) }
-    let!(:dec_31_2012_member){ Member.make!(created_at: dec_31_2012, amount_paid: 70) }
-    let!(:jan_31_2013_member){ Member.make!(created_at: jan_31_2013, amount_paid: 130) }
-    let!(:mar_31_2013_member){ Member.make!(created_at: mar_31_2013, amount_paid: 0) }
-    let!(:dec_31_2013_member){ Member.make!(created_at: dec_31_2013, amount_paid: 130) }
-    let!(:jan_31_2014_member){ Member.make!(created_at: jan_31_2014, amount_paid: 130) }
+    let!(:jan_31_2012_member){ Member.make!(created_at: jan_31_2012, payment_confirmed: true, amount_paid: 130) }
+    let!(:mar_31_2012_member){ Member.make!(created_at: mar_31_2012, payment_confirmed: false, amount_paid: 70) }
+    let!(:dec_31_2012_member){ Member.make!(created_at: dec_31_2012, payment_confirmed: true, amount_paid: 70) }
+    let!(:jan_31_2013_member){ Member.make!(created_at: jan_31_2013, payment_confirmed: true, amount_paid: 130) }
+    let!(:mar_31_2013_member){ Member.make!(created_at: mar_31_2013, payment_confirmed: true, amount_paid: 0) }
+    let!(:dec_31_2013_member){ Member.make!(created_at: dec_31_2013, payment_confirmed: true, amount_paid: 130) }
+    let!(:jan_31_2014_member){ Member.make!(created_at: jan_31_2014, payment_confirmed: true, amount_paid: 130) }
 
     describe "#funds_raised(year)" do
       it "sums funds collected from jan 1 - dec 31 for the specified year" do
         Timecop.freeze(mar_31_2012) do
-          expect(Member.funds_raised).to eq 130 + 70 + 70
+          expect(Member.funds_raised).to eq 130 + 70
         end
       end
     end

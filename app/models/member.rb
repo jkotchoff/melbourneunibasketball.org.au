@@ -28,7 +28,7 @@ class Member < ActiveRecord::Base
   LATE_FEE = 10
 
   def self.funds_raised(year = Date.today.year)
-    for_calendar_year(year).sum(&:amount_paid)
+    for_calendar_year(year).paid.sum(&:amount_paid)
   end
 
   def self.student_fee
