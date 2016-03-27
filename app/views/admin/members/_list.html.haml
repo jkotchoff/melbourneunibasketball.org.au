@@ -1,5 +1,5 @@
 - members.each do |member|
-  %tr
+  %tr{class: ("expiring" if expiring)}
     %td
       = member.created_at.to_s(:abbr_month_day_year)
       .muted
@@ -14,7 +14,7 @@
         = image_tag "#{member.gender.downcase}.png", class: "member_photo", url: member.photo.url, onmouseover: "this.style.cursor='pointer'", onclick: "this.src = $(this).attr('url')"
     %td
       em:
-      = link_to member.email, "mailto:#{member.email}" 
+      = link_to member.email, "mailto:#{member.email}"
       %br
       ph:
       == #{member.phone_number_mobile} / #{member.phone_number_other}
@@ -27,4 +27,3 @@
       - if cookies[:superadmin].present?
         = link_to "Edit", edit_admin_member_path(member), :class => 'btn btn-mini'
         /= link_to "Destroy", [:admin, member], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
-        

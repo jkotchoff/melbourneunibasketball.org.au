@@ -9,15 +9,19 @@
         = year
       - else
         = link_to year.to_s, admin_members_path(year: year)
-  
-== Members: #{@member_count} 
+
+== Members: #{@member_count}
 %span.muted (Male: #{@males_percentage}%, Female: #{@females_percentage}%)
-%br 
-== Average Age: #{@average_age} 
+%br
+== Average Age: #{@average_age}
 %span.muted (Males: #{@average_male_age}, Female: #{@average_female_age})
-%br 
-Total money collected: 
+%br
+Total money collected:
 %b== #{number_to_currency(@total_money_collected)}
+
+- if @expiring_members.present?
+  %button.left{onclick: "$('.expiring').show(); $(this).hide();"}
+    Show Expiring?
 
 %table.table.table-striped
   %thead
@@ -31,11 +35,11 @@ Total money collected:
       %th Uniform(s)
       %th Actions
   %tbody
-    = render partial: 'list', locals: {members: @members}
+    = render partial: 'list', locals: {members: @members, expiring: false}
     - if @expiring_members.present?
-      %tr
+      %tr.expiring
         %td{colspan: 7}
           %br
           %br
           %h4== Expiring on April 1st, #{Date.today.year}:
-      = render partial: 'list', locals: {members: @expiring_members}
+      = render partial: 'list', locals: {members: @expiring_members, expiring: true}
