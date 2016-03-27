@@ -20,8 +20,8 @@ class Admin::MembersController < Admin::BaseController
 
   def pending
     unpaid_members = Member.current.unpaid
-    @recent_unpaid_members = unpaid_members.where("created_at >= ?", 2.weeks.ago)
-    @old_unpaid_members = unpaid_members.where("created_at < ?", 2.weeks.ago)
+    @recent_unpaid_members = unpaid_members.where("created_at >= ?", 1.weeks.ago)
+    @old_unpaid_members = unpaid_members.where("created_at < ?", 1.weeks.ago)
   end
 
   def csv_export
