@@ -20,7 +20,7 @@ Total money collected:
 %b== #{number_to_currency(@total_money_collected)}
 
 - if @expiring_members.present?
-  %button.left{onclick: "$('.expiring').show(); $(this).hide();"}
+  %button{margin: '15px', onclick: "$('.expiring').show(); $(this).hide();"}
     Show Expiring?
 
 %table.table.table-striped
@@ -38,7 +38,7 @@ Total money collected:
     = render partial: 'list', locals: {members: @members, expiring: false}
     - if @expiring_members.present?
       %tr.expiring
-        %td{colspan: 7}
+        %td{colspan: 7, display: 'none'}
           %br
           %br
           %h4== Expiring on April 1st, #{Date.today.year}:
