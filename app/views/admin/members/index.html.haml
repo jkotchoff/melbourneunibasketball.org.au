@@ -11,9 +11,6 @@
         = link_to year.to_s, admin_members_path(year: year)
 
 
-- if @expiring_members.present?
-  = link_to_function "Show Expiring", "$('.expiring').show(); $(this).hide();", :class => 'btn btn-primary right'
-
 #stats
   == Members: #{@member_count}
   %span.muted (Male: #{@males_percentage}%, Female: #{@females_percentage}%)
@@ -42,5 +39,7 @@
         %td{colspan: 7, display: 'none'}
           %br
           %br
-          %h4== Expiring on April 1st, #{Date.today.year}:
+          %h4== #{@expiring_members.length} members Expiring on April 1st, #{Date.today.year}:
+          = link_to_function "Show", "$('.expiring').show(); $(this).hide();", :class => 'btn btn-primary right'
+
       = render partial: 'list', locals: {members: @expiring_members, expiring: true}
