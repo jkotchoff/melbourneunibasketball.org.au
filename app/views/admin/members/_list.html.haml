@@ -1,5 +1,5 @@
 - members.each do |member|
-  %tr{style: "display: none", class: ("expiring" if expiring)}
+  %tr{style: ("display: none" if expiring == true), class: ("expiring" if expiring == true)}
     %td
       = member.created_at.to_s(:abbr_month_day_year)
       .muted
