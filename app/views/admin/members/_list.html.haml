@@ -22,6 +22,9 @@
       = member.age_and_gender
       - if member.new_member?
         .muted New Member
+      %br
+      .muted
+        = member.reference
     %td= member.your_existing_mubc_singlet_numbers
     %td
       - if cookies[:superadmin].present?
