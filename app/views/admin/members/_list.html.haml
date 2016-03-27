@@ -20,11 +20,10 @@
       == #{member.phone_number_mobile} / #{member.phone_number_other}
     %td
       = member.age_and_gender
-      - if member.new_member?
-        .muted New Member
-      %br
       .muted
-        = member.reference
+        - if member.new_member?
+          New Member
+        = member.reference(:code)
     %td= member.your_existing_mubc_singlet_numbers
     %td
       - if cookies[:superadmin].present?

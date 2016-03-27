@@ -116,10 +116,15 @@ class Member < ActiveRecord::Base
     [given_name, family_name].reject(&:blank?).join(" ")
   end
 
-  def reference
+  def reference(type = :full)
     # my HSBC account has an 18 character limit on beneficiary reference notes
     no = "%03d" % id
-    "MUBC#{no} #{given_name.chars.first} #{family_name}".first(18)
+    code = "MUBC#{no}"
+    if :code
+      code
+    else
+      "#{code} #{given_name.chars.first} #{family_name}".first(18)
+    end
   end
 
   def self.disclaimer
