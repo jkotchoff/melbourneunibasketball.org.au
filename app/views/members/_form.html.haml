@@ -1,14 +1,14 @@
 #ie_warning{style: "display:none"}
   %p
-    %b 
-      Note: this form doesn't work on older versions of internet explorer which we are in the process of fixing. 
+    %b
+      Note: this form doesn't work on older versions of internet explorer which we are in the process of fixing.
   %p
-    %b 
+    %b
       If you are having trouble submitting it, try a different web browser
       eg.
       = link_to "https://www.google.com/intl/en/chrome/browser/", "https://www.google.com/intl/en/chrome/browser/"
       or
-      = link_to "http://www.mozilla.org/en-US/firefox/new/", "http://www.mozilla.org/en-US/firefox/new/" 
+      = link_to "http://www.mozilla.org/en-US/firefox/new/", "http://www.mozilla.org/en-US/firefox/new/"
   %br
   %br
 
@@ -41,8 +41,8 @@
   - if @member.errors.any?
     #error_explanation
       %h2
-        = pluralize(@member.errors.count, "error") 
-        prohibited this application from progressing. 
+        = pluralize(@member.errors.count, "error")
+        prohibited this application from progressing.
         %br
         Please fill in the highlighted fields.
 
@@ -63,23 +63,26 @@
       .control-group
         = f.label "Payment Method", :class => 'control-label'
         .controls.group#payment_controls
+          %label{for: "member_payment_method_paypal"}
+            = f.radio_button :payment_method, :paypal
+            == Paypal #{image_tag("https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg", size: '160x55')}
+          .muted
+            This option will allow you to pay via credit card or a Paypal account and
+            %b this is the clubs preferred means of payment
+            in order to reduce our administrative overhead.
+          %br
           %label{for: "member_payment_method_bank_transfer"}
             = f.radio_button :payment_method, :bank_transfer
             == Australian bank transfer
           .muted For this option, you will be presented with MUBC's bank account details immediately after you have submitted this form. You will be required to transfer funds within 24 hours
-          %br
-          %label{for: "member_payment_method_paypal"}
-            = f.radio_button :payment_method, :paypal
-            == Paypal #{image_tag("https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg", size: '160x55')}
-          .muted This option will allow you to pay via credit card or a Paypal account if a bank transfer is not convenient. Paypal receive a 3% commission out of these payments to the club so our preference is that you pay with an Australian bank transfer. 
 
       .control-group#membership_fee{style: 'display:none'}
         .controls
-          == Membership fee: 
+          == Membership fee:
           %h1#membership_fee_dollars $-1
           #membership_breakdown.muted
           = f.hidden_field :amount_paid
-  
+
       /.control-group
       /  = f.label "Playing Big V or MMBL", :class => 'control-label'
       /  .controls.btn-group{"data-toggle-name" => "member[representative_player]", "data-toggle" => "buttons-radio"}
@@ -101,7 +104,7 @@
         = f.label :email, :class => 'control-label'
         .controls
           = f.text_field :email, :class => 'text_field'
-  
+
       .control-group#postal_address_row
         = f.label :postal_address, :class => 'control-label'
         .controls
@@ -135,12 +138,12 @@
           %button#is_new_member{:type => "button", :value => "true", :class => "btn", "data-toggle" => "button"} Yes
           %button#existing_member{:type => "button", :value => "false", :class => "btn", "data-toggle" => "button"} No
         = f.hidden_field :new_member
-    
+
       .control-group#singlet_numbers{style: ("display:none" if @member.new_member)}
         = f.label :your_existing_mubc_singlet_numbers, :class => 'control-label'
         .controls
           = f.text_field :your_existing_mubc_singlet_numbers, :class => 'text_field', placeholder: "eg. 4, 13"
-    
+
       .control-group#introductory_source{style: ("display:none" if !@member.new_member)}
         = f.label :how_did_you_hear_about_the_club, :class => 'control-label'
         .controls
@@ -155,7 +158,7 @@
       .control-group
         = f.label :terms_of_membership, :class => 'control-label'
         .controls
-          %textarea.text_area{rows: 7, disabled: 'disabled'}~ Member.disclaimer 
+          %textarea.text_area{rows: 7, disabled: 'disabled'}~ Member.disclaimer
 
   .muted * Even if you are an existing member from last year, we require you to fill out all the fields again so that your details can be kept up to date.
 
