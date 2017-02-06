@@ -29,6 +29,11 @@ class Admin::MembersController < Admin::BaseController
     send_file report_path, :type => 'text/csv; charset=iso-8859-1; header=presen', :disposition => 'attachment'
   end
 
+  def uniforms_export
+    report_path = MemberDatabase.uniforms_csv
+    send_file report_path, :type => 'text/csv; charset=iso-8859-1; header=presen', :disposition => 'attachment'
+  end
+
   def acknowledge_payment
     @member = Member.find(params[:id])
     @member.update_attributes(payment_confirmed: true, payment_acknowledgement: params[:payment_acknowledgement])

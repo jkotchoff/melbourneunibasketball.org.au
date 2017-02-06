@@ -6,10 +6,11 @@ Melbourneunibasketball::Application.routes.draw do
       member do
         get 'acknowledge_payment'
       end
-      
+
       collection do
         get 'pending'
         get 'csv_export'
+        get 'uniforms_export'
       end
     end
   end
@@ -22,7 +23,7 @@ Melbourneunibasketball::Application.routes.draw do
       post 'confirm_paypal_purchase'
       get 'thankyou'
     end
-    
+
     collection do
       get 'review_paypal_payment'
     end
@@ -40,7 +41,7 @@ Melbourneunibasketball::Application.routes.draw do
   match 'news/:archived_year' => 'news#archived', :as => :archived_news_for_year
   match 'news/:year/:article' => 'news#news_item', :as => :article
   match 'authors/:author' => 'news#author', :as => :author
-  
+
   match 'dribbling_balls_newsletter' => 'news#dribbling_balls', as: :dribbling_balls
 
   match 'event_calendar' => 'news#event_calendar', :as => :event_calendar
@@ -64,7 +65,7 @@ Melbourneunibasketball::Application.routes.draw do
   match 'about/social_awards' => 'about#social_awards', :as => :social_awards
   match 'about/distinguished_service_awards' => 'about#distinguished_service_awards', :as => :distinguished_service_awards
   match 'about/life_members' => 'about#life_members', :as => :life_members
-  
+
   root :to => 'news#index'
 
 

@@ -108,6 +108,10 @@ class Member < ActiveRecord::Base
     now.year - date_of_birth.year - (date_of_birth.to_date.change(:year => now.year) > now ? 1 : 0)
   end
 
+  def male?
+    gender.to_s.downcase == "male"
+  end
+
   def age_and_gender
     "#{age}yo #{gender.downcase}"
   end
