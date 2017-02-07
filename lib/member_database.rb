@@ -6,7 +6,7 @@ class MemberDatabase
     months_reported = 12
 
     # https://au.answers.yahoo.com/question/index?qid=20090521061008AAQ5lyM
-    eligible_numbers = [1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25, 30, 31, 32, 33, 34, 35, 40, 41, 42, 43, 44, 45, 50, 52, 52, 53, 54, 55]
+    eligible_numbers = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25, 30, 31, 32, 33, 34, 35, 40, 41, 42, 43, 44, 45, 50, 51, 52, 52, 53, 54, 55]
     CSV.open(filepath, "wb") do |csv|
       current_mens_numbers = {}
       current_womens_numbers = {}
