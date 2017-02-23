@@ -6,13 +6,13 @@
   = link_to @page.year, archived_news_for_year_path(@page.year)
   &gt;
   News Item
-    
+
   %h2
     = @page.title
   .muted
     = @page.created_at.to_s(:month_day_year)
     - if @page.author?
-      == - submitted by 
+      == - submitted by
       = link_to(@page.author, author_path(@page.author))
     %br
     %br
@@ -23,7 +23,13 @@
       = link_to @page.pdf_url, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{@page.title}']);"} do
         = image_tag('pdf_icon.png', id: 'pdf')
         %br
-        Click here to download 
+        Click here to download
+  - elsif @page.dribbling_balls_link?
+    .page_pdf
+      = link_to @page.dribbling_balls_link, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{@page.title}']);"} do
+        = image_tag('pdf_icon.png', id: 'pdf')
+        %br
+        Click here to download
   - if @page.content
     = content_html_with_linked_images(@page)
   - else
