@@ -154,6 +154,11 @@
         .controls
           = f.hidden_field(:photo_cache)
           = f.file_field(:photo)
+          .muted
+            If you are a 
+            %b new member 
+            please upload a portrait photo 
+            so we can regognise you at training and allocate you to a team.
 
       .control-group
         = f.label :terms_of_membership, :class => 'control-label'
