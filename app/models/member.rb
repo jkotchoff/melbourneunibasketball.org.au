@@ -142,8 +142,6 @@ I understand that in the circumstance where a MUBC Inc team at a domestic, repre
 
 I understand that membership fees are non-refundable.
 
-I understand that if my team forfeits a game due to lack of attendance, I am personally liable for a portion of the walkover fee.
-
 Melbourne University Sports (MUS) are committed to observing the requirements of the Information Privacy Act.
 
 We collect your information for the purpose of providing you access to our sporting facilities and services, and it is also retained for the development of a sports alumni at the University of Melbourne.
