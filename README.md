@@ -20,7 +20,8 @@ $ heroku config:add ADMIN_USERNAME="..."
 $ heroku config:add ADMIN_PASSWORD="..."
 
 TODO:
-- adjust the date for which membership prices are reduced? (currently august 1st - Phil sent an email about this on July 19th)
+- Make student number compulsory on the MUBC signups form
+- adjust the date for which membership prices are reduced? (currently august 1st - Phil sent an email about this on July 19th *2016?*
 - make photo upload mandatory for new members
 - show old photos for members
 - show undergraduate / postgrad fields
@@ -66,7 +67,7 @@ Tasks for Waylyn:
 - interview player per week to put in the game day program (include a photo)
 - create an operational document to describe duties
 - upload big v game footage
-- delete old website news articles that is redundant
+- delete old website news articles that are redundant
 - email sponsors one or two updates per year about their exposure
 - update social media with sponsorship details
 - update social media with weekly club news

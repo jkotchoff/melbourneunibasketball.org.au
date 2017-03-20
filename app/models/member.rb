@@ -3,7 +3,8 @@ class Member < ActiveRecord::Base
                   :given_name, :family_name, :email, :postal_address,
                   :gender, :date_of_birth, :phone_number_mobile, :phone_number_other,
                   :new_member, :your_existing_mubc_singlet_numbers, :how_did_you_hear_about_the_club,
-                  :amount_paid, :payment_confirmed, :photo, :photo_cache, :payment_acknowledgement
+                  :amount_paid, :payment_confirmed, :photo, :photo_cache, :payment_acknowledgement,
+                  :international_student, :availability
 
   validates_presence_of :eligibility_clause, :payment_method, :given_name, :family_name, :gender, \
                   :email, :date_of_birth, :phone_number_mobile, :phone_number_other, :amount_paid
@@ -140,6 +141,8 @@ I agree to abide by the Constitution of Melbourne University Basketball Club (MU
 I understand that in the circumstance where a MUBC Inc team at a domestic, representative or tournament level receives a walkover fine for non-attendance at a game for any reason other than incorrect advice from the relevant association, the sole responsibility for the payment of that fine is held by that MUBC Inc. team. I am liable for any irresponsible behaviour leading to damage or loss of funds to the club by individuals or teams.
 
 I understand that membership fees are non-refundable.
+
+I understand that if my team forfeits a game due to lack of attendance, I am personally liable for a portion of the walkover fee.
 
 Melbourne University Sports (MUS) are committed to observing the requirements of the Information Privacy Act.
 
