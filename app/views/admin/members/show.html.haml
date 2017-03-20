@@ -65,6 +65,14 @@
   %br
   = @member.how_did_you_hear_about_the_club
 %p
+  %strong= model_class.human_attribute_name(:international_student) + ':'
+  %br
+  = @member.international_student
+%p
+  %strong Unavailable Dates:
+  %br
+  = @member.availability
+%p
   %strong= model_class.human_attribute_name(:amount_paid) + ':'
   %br
   = @member.amount_paid
