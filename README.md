@@ -20,6 +20,7 @@ $ heroku config:add ADMIN_USERNAME="..."
 $ heroku config:add ADMIN_PASSWORD="..."
 
 TODO:
+- Create a report that lists email addresses of last years members who are not signed up for this year yet
 - Make student number compulsory on the MUBC signups form
 - adjust the date for which membership prices are reduced? (currently august 1st - Phil sent an email about this on July 19th *2016?*
 - make photo upload mandatory for new members
