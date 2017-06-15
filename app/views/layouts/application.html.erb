@@ -21,11 +21,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </a>
           <a class="logo_brand" href="/"><%= image_tag "logo.png" %></a>
           <div class="nav-collapse collapse">
             <ul class="nav" id="topnav">
-              <li class="<%= "active" if params[:controller] == 'news' and !['index', 'event_calendar'].index(params[:action]) %>"><%= link_to "News Archive", archived_news_path %></li>
+              <li class="<%= "active" if params[:action] == 'dribbling_balls' %>"><%= link_to "Newsletters", dribbling_balls_path %></li>
+              <li class="<%= "active" if params[:controller] == 'news' and !['dribbling_balls', 'index', 'event_calendar'].index(params[:action]) %>"><%= link_to "News Archive", archived_news_path %></li>
               <li class="<%= "active" if params[:action] == 'event_calendar' %>"><%= link_to "Event Calendar", event_calendar_path %></li>
               <li class="<%= "active" if params[:controller] == 'about' %>"><%= link_to "About MUBC", about_path %></li>
               <li class="<%= "active" if params[:controller] == 'members' %>"><%= link_to "Membership", members_path %></li>
@@ -48,7 +50,7 @@
           <% flash.each do |name, msg| %>
             <%= content_tag :div, msg, :id => "flash_#{name}" %>
           <% end %>
-          
+
           <%= yield %>
         </div><!--/span-->
 
@@ -62,7 +64,7 @@
                   <%= link_to page.title, article_path(page.year, page) %><br/><br/>
                 <% end %>
               </div>
-  
+
               <div class="well sidebar-nav">
                 <b>Recently Updated Pages:</b><br/>
                 <% Page.order('updated_at DESC').first(5).each do |page| %>
