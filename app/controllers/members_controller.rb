@@ -23,7 +23,7 @@ class MembersController < ApplicationController
   end
 
   def create
-    @member = Member.new(params[:member])
+    @member = Member.new(params[:member].merge(payment_method: "stripe"))
 
     if @member.save
       if @member.payment_method == 'paypal'

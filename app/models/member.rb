@@ -6,13 +6,15 @@ class Member < ActiveRecord::Base
                   :amount_paid, :payment_confirmed, :photo, :photo_cache, :payment_acknowledgement,
                   :international_student, :availability
 
-  validates_presence_of :eligibility_clause, :payment_method, :given_name, :family_name, :gender, \
+  validates_presence_of :eligibility_clause, :given_name, :family_name, :gender, \
                   :email, :date_of_birth, :phone_number_mobile, :phone_number_other, :amount_paid
 
   #TODO: validates_presence_of :eligibility_justification unless lambda{|m| ["life_member", "deferred_student", ""].index(m.eligibility_clause)}
   #      validates_presence_of :how_did_you_hear_about_the_club if :new_member?
 
   attr_accessor :terms_of_membership
+  attr_accessor :card_holder_name, :card_number, :card_expiry_month, :card_expiry_year, :card_cvv
+  attr_accessible :card_holder_name, :card_number, :card_expiry_month, :card_expiry_year, :card_cvv
 
   mount_uploader :photo, PhotoUploader
   process_in_background :photo

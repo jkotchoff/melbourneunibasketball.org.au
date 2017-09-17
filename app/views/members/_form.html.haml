@@ -17,27 +17,6 @@
   = hidden_field_tag "annual_non_student_fee", Member.non_student_fee, { :id => "annual_non_student_fee" }
   = hidden_field_tag "late_fee", Member.late_fee, { :id => "late_fee" }
 
-  #membership_steps.row
-    .span12
-      .form-actions{style: 'padding-left:0'}
-        %ul.payment_steps#paypal_instructions
-          %li.selected
-            %em Step 1:
-            Enter Your Membership Details
-          %li
-            %em Step 2:
-            Create or Login to your Paypal Account
-          %li
-            %em Step 3:
-            Confirm Payment
-        %ul.payment_steps#bank_transfer_instructions{style: 'display:none'}
-          %li.selected
-            %em Step 1:
-            Enter Your Membership Details
-          %li
-            %em Step 2:
-            Make a bank transfer to MUBC's account
-
   - if @member.errors.any?
     #error_explanation
       %h2
@@ -60,22 +39,6 @@
           = f.text_field :eligibility_justification, :class => 'text_field', style: ("display:none" unless @member.eligibility_clause?)
 
 
-      .control-group
-        = f.label "Payment Method", :class => 'control-label'
-        .controls.group#payment_controls
-          %label{for: "member_payment_method_paypal"}
-            = f.radio_button :payment_method, :paypal
-            == Paypal #{image_tag("https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg", size: '160x55')}
-          .muted
-            This option will allow you to pay via credit card or a Paypal account and
-            %b this is the clubs preferred means of payment
-            in order to reduce our administrative overhead.
-          %br
-          %label{for: "member_payment_method_bank_transfer"}
-            = f.radio_button :payment_method, :bank_transfer
-            == Australian bank transfer
-          .muted For this option, you will be presented with MUBC's bank account details immediately after you have submitted this form. You will be required to transfer funds within 24 hours
-
       .control-group#membership_fee{style: 'display:none'}
         .controls
           == Membership fee:
@@ -90,7 +53,31 @@
       /    %button#non_representative_button{:type => "button", :value => "false", :class => "btn", "data-toggle" => "button"} No
       /  = f.hidden_field :representative_player
 
-      .control-group
+      .span12{style: "background-color:#f8efc8; padding-right: 30px; margin-bottom: 30px;"}
+        %h4{style: "margin:12px;"} Payment Details
+
+        .control-group
+          = f.label :card_holder_name, "Name on credit card", :class => 'control-label'
+          .controls
+            = f.text_field :card_holder_name, :placeholder => "Card Holder's Name", :class => 'text_field'
+
+        .control-group
+          = f.label :card_number, "Credit Card Number", :class => 'control-label'
+          .controls
+            = f.text_field :card_number, :placeholder => "Card Number", :class => 'text_field'
+
+        .control-group
+          = f.label :expiry_month, "Expiry", :class => 'control-label'
+          .controls
+            = f.select :card_expiry_month, credit_card_months, {}, {style: "width:90px"}
+            = f.select :card_expiry_year, credit_card_years, {}, {style: "width:90px"}
+
+        .control-group
+          = f.label :card_cvv, "Card CVV", :class => 'control-label'
+          .controls
+            = f.text_field :card_cvv, :placeholder => "Security Code", :class => 'text_field', style: "width:90px"
+
+      .control-group{style: "clear:left; margin-top: 35px;"}
         = f.label :given_name, :class => 'control-label'
         .controls
           = f.text_field :given_name, :class => 'text_field'
@@ -169,9 +156,9 @@
           = f.hidden_field(:photo_cache)
           = f.file_field(:photo)
           .muted
-            If you are a 
-            %b new member 
-            please upload a portrait photo 
+            If you are a
+            %b new member
+            please upload a portrait photo
             so we can recognise you at training and allocate you to a team.
 
       .control-group
@@ -189,4 +176,3 @@
     %br
     %br
     = button_tag :populate, id: 'populate_fields'
-

@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'nokogiri'
 gem 'pg'
+gem 'stripe' # For taking membership payments
 gem 'tinymce-rails', '~> 3.5.8'
 gem 'tinymce-rails-imageupload', '~> 3.5.6.3'
 gem 'unicorn'
@@ -45,10 +46,11 @@ end
 group :test do
   gem "capybara", ">= 1.0.0"
   gem "database_cleaner", "0.5.2"
-  gem "faker", ">= 0.3.1" 
-  gem "fakeweb", ">= 1.3.0" 
+  gem "faker", ">= 0.3.1"
+  gem "fakeweb", ">= 1.3.0"
   gem "launchy", ">= 0.4.0"
   gem 'machinist', '>= 2.0.0.beta2'
+  gem 'stripe-ruby-mock', '~> 2.5.0', :require => 'stripe_mock'
   gem "timecop", "~> 0.3.5"
 end
 
