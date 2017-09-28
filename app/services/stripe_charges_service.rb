@@ -7,14 +7,17 @@ class StripeChargesService
 
   def call
     return true if @member.amount_paid.zero?
-
     Stripe::Charge.create(
       customer: stripe_customer.id,
       source:   stripe_card.id,
       amount:   @member.amount_paid * 100,  # convert to cents
-      description: "Melbourne University Basketball Club membership payment for #{@member.created_at.try(:year) || Date.today.year}.",
+      description: "Melbourne University Basketball Club membership payment for #{Date.today.year}.",
       currency: 'aud'
-    )
+    ).tap do |result|
+      if result
+        @member.payment_confirmed = true
+      end
+    end
   end
 
   def stripe_customer

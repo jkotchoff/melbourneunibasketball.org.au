@@ -50,5 +50,6 @@ feature "Stripe Membership Payment" do
     member.given_name.should == 'Phil'
     member.email.should == users_email
     member.stripe_customer_id.should_not be_nil
+    member.payment_confirmed.should == true
   end
 end
