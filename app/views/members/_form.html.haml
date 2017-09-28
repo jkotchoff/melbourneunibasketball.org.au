@@ -75,10 +75,10 @@
         .control-group
           = f.label :card_cvv, "Card CVV", :class => 'control-label'
           .controls
-            .span6
-              = f.text_field :card_cvv, :placeholder => "Security Code", :class => 'text_field', style: "width:90px"
-            .span6
-              = link_to image_tag("powered_by_stripe.png"), "https://stripe.com", target: '_blank'
+            = f.text_field :card_cvv, :placeholder => "Security Code", :class => 'text_field', style: "width:90px"
+
+        = link_to image_tag("powered_by_stripe.png", style: "float:right; margin:14px;"), "https://stripe.com", target: '_blank'
+        = image_tag("card-brands.png", style: "margin:14px;")
 
       .control-group{style: "clear:left; margin-top: 35px;"}
         = f.label :given_name, :class => 'control-label'
