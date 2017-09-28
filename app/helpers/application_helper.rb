@@ -4,8 +4,8 @@ module ApplicationHelper
     html = Nokogiri::HTML::DocumentFragment.parse(news_item.content)
     news_item.content_images.each do |img|
       # Wrap each image with a link to the original high-def image
-      link_url     = img.image_url(:standard).gsub("http://", "https://")
-      fullsize_url = img.image_url.gsub("http://", "https://")
+      link_url     = img.image_url(:standard, secure: true)
+      fullsize_url = img.image_url(secure: true)
       instances = html.css("img[src='#{link_url}']")
       unless instances.blank?
         instances.wrap("<a href=\"#{fullsize_url}\"></a>")
