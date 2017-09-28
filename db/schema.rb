@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170319233601) do
+ActiveRecord::Schema.define(:version => 20170917033544) do
 
   create_table "content_images", :force => true do |t|
     t.integer "page_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20170319233601) do
     t.boolean  "photo_processing"
     t.boolean  "international_student",              :default => false
     t.string   "availability"
+    t.string   "stripe_customer_id"
   end
 
   create_table "pages", :force => true do |t|

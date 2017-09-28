@@ -5,6 +5,7 @@ feature "Stripe Membership Payment" do
 
   # https://jetruby.com/expertise/integrate-stripe-gem-rails-app/
 
+  let(:april_3_2017){ Date.new(2017, 4, 17) }
   let(:users_email) { 'someone@somewhere.com' }
 
   #TODO: context for student discounts and late payment surcharges
@@ -22,7 +23,6 @@ feature "Stripe Membership Payment" do
       visit join_the_club_path
       select 'University Graduate', from: 'member_eligibility_clause'
 
-      fill_in "Name on credit card", with: "Flash Ash"
       fill_in "Credit Card Number", with: "4242424242424242"
       find(:xpath, "//select[@id='member_card_expiry_month']").set '10'
       find(:xpath, "//select[@id='member_card_expiry_year']").set (Date.today.year + 1).to_s
@@ -37,10 +37,12 @@ feature "Stripe Membership Payment" do
       fill_in "member[phone_number_mobile]", :with => "1800 PISTOLS"
       fill_in "member[phone_number_other]", :with => "1800 ERICA"
       click_button 'gender_male'
-      click_button 'Submit'
-      find_field('Postal address').value.should == '123 street, somewhere'
-      first(:button, 'Confirm Payment').click
+      Timecop.freeze(april_3_2017) {
+        click_button 'Submit'
+      }
     }.should change(Member, :count).by(1)
+
+    page.should have_content("Great stuff Phil, your $110 payment has been processed and you are now a full member for 2017.")
 
     user_matches = Member.where(email: users_email)
     user_matches.count.should == 1
@@ -48,6 +50,5 @@ feature "Stripe Membership Payment" do
     member.given_name.should == 'Phil'
     member.email.should == users_email
     member.stripe_customer_id.should_not be_nil
-
   end
 end

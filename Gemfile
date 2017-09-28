@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 ruby '2.1.7'
 
-gem 'activemerchant'
 gem 'carrierwave'
 gem 'carrierwave_backgrounder'
 gem 'cloudinary'
@@ -55,6 +54,7 @@ group :test do
 end
 
 group :test, :development do
+  gem 'awesome_print'
   gem "rspec-rails", ">= 2.5"
   gem 'byebug'
 end

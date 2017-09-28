@@ -16,7 +16,7 @@ module Melbourneunibasketball
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W( #{::Rails.root.to_s}/lib )
+    config.autoload_paths += %W( #{::Rails.root.to_s}/lib  )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -58,16 +58,15 @@ module Melbourneunibasketball
 
     config.generators do |g|
       # g.template_engine :haml
-      g.test_framework :rspec, fixture: false  
+      g.test_framework :rspec, fixture: false
       g.fixture_replacement :machinist
     end
-    
+
     #TODO: add staging environment so that staging can have paypal=test
     unless Rails.env.production?
       # Force ActiveMerchant into test mode
       config.after_initialize do
-        ActiveMerchant::Billing::Base.mode = :test
-      end      
+      end
     end
 
     config.assets.initialize_on_precompile = false

@@ -13,8 +13,10 @@ class Member < ActiveRecord::Base
   #      validates_presence_of :how_did_you_hear_about_the_club if :new_member?
 
   attr_accessor :terms_of_membership
-  attr_accessor :card_holder_name, :card_number, :card_expiry_month, :card_expiry_year, :card_cvv
-  attr_accessible :card_holder_name, :card_number, :card_expiry_month, :card_expiry_year, :card_cvv
+  attr_accessor :card_number, :card_expiry_month, :card_expiry_year, :card_cvv
+  attr_accessible :card_number, :card_expiry_month, :card_expiry_year, :card_cvv
+  attr_accessible :stripe_customer_id
+  validate :credit_card_details
 
   mount_uploader :photo, PhotoUploader
   process_in_background :photo
@@ -29,6 +31,15 @@ class Member < ActiveRecord::Base
 
   # Note, this isn't being applied to winter season signups
   LATE_FEE = 10
+
+  def credit_card_details
+    if new_record? && !Rails.env.test? && amount_paid > 0
+      errors.add(:card_number) if card_number.blank?
+      errors.add(:card_expiry_month) if card_expiry_month.blank?
+      errors.add(:card_expiry_year) if card_expiry_year.blank?
+      errors.add(:card_cvv) if card_cvv.blank?
+    end
+  end
 
   def self.funds_raised(year = Date.today.year)
     for_calendar_year(year).paid.sum(&:amount_paid)
