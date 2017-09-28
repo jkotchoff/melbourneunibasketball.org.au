@@ -12,6 +12,7 @@ class StripeChargesService
       customer: stripe_customer.id,
       source:   stripe_card.id,
       amount:   @member.amount_paid * 100,  # convert to cents
+      description: "Melbourne University Basketball Club membership payment for #{@member.created_at.try(:year) || Date.today.year}.",
       currency: 'aud'
     )
   end
