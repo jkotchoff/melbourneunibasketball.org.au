@@ -21,12 +21,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </a>
           <a class="logo_brand" href="/"><%= image_tag "logo.png" %></a>
           <div class="nav-collapse collapse">
             <ul class="nav" id="topnav">
-              <li class="<%= "active" if params[:action] == 'dribbling_balls' %>"><%= link_to "Newsletters", dribbling_balls_path %></li>
               <li class="<%= "active" if params[:controller] == 'news' and !['dribbling_balls', 'index', 'event_calendar'].index(params[:action]) %>"><%= link_to "News Archive", archived_news_path %></li>
               <li class="<%= "active" if params[:action] == 'event_calendar' %>"><%= link_to "Event Calendar", event_calendar_path %></li>
               <li class="<%= "active" if params[:controller] == 'about' %>"><%= link_to "About MUBC", about_path %></li>
