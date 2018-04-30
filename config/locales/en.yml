@@ -4,6 +4,11 @@
 en:
   hello: "Hello world"
 
+  activerecord:
+    attributes:
+      member:
+        gender: "Competition"
+
   view:
     inline_help:
       news_item:

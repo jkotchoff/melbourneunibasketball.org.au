@@ -101,10 +101,10 @@
           = f.text_area :postal_address, :class => 'text_area', rows: 3
 
       .control-group
-        = f.label :gender, :class => 'control-label'
+        = f.label :gender, "Competition", :class => 'control-label'
         .controls.btn-group{"data-toggle-name" => "member[gender]", "data-toggle" => "buttons-radio"}
-          %button#gender_male{:type => "button", :value => "Male", :class => "btn", "data-toggle" => "button"} Male
-          %button{:type => "button", :value => "Female", :class => "btn", "data-toggle" => "button"} Female
+          %button#gender_male{:type => "button", :value => "Male", :class => "btn", "data-toggle" => "button"} Men
+          %button{:type => "button", :value => "Female", :class => "btn", "data-toggle" => "button"} Women
         = f.hidden_field :gender
 
       .control-group
