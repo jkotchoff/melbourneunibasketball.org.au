@@ -1,6 +1,4 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :synopsis, :content, :created_at, :author, :pdf, :remove_pdf, :sticky, :dribbling_balls_link
-
   validates_presence_of :title
 
   mount_uploader :pdf, PdfUploader

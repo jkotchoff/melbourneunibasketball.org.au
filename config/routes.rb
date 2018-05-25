@@ -1,4 +1,7 @@
-Melbourneunibasketball::Application.routes.draw do
+#Melbourneunibasketball::Application.routes.draw do
+Rails.application.routes.draw do
+  # http://guides.rubyonrails.org/routing.html
+
   namespace :admin do
     resources :pages
     resources :news_items
@@ -15,7 +18,7 @@ Melbourneunibasketball::Application.routes.draw do
     end
   end
 
-  match 'admin' => 'admin/news_items#index'
+  match 'admin' => 'admin/news_items#index', via: [:get]
 
   resources :members, only: [:index, :new, :create] do
     member do
@@ -31,42 +34,42 @@ Melbourneunibasketball::Application.routes.draw do
 
   post '/tinymce_assets' => 'admin/tinymce_assets#create'
 
-  match 'members' => 'members#index'
-  match 'membership' => 'members#new'
-  match 'members/join_the_club' => 'members#new', :as => :join_the_club
-  match 'members/documents_and_forms' => 'members#documents_and_forms', :as => :documents_and_forms
-  match 'members/uniforms' => 'members#uniforms', :as => :uniforms
+#  match 'members' => 'members#index', via: [:get]
+  match 'membership' => 'members#new', via: [:get]
+  match 'members/join_the_club' => 'members#new', :as => :join_the_club, via: [:get]
+  match 'members/documents_and_forms' => 'members#documents_and_forms', :as => :documents_and_forms, via: [:get]
+  match 'members/uniforms' => 'members#uniforms', :as => :uniforms, via: [:get]
 
-  match 'news' => 'news#archived', :as => :archived_news
-  match 'news/:archived_year' => 'news#archived', :as => :archived_news_for_year
-  match 'news/:year/:article' => 'news#news_item', :as => :article
-  match 'authors/:author' => 'news#author', :as => :author
+  match 'news' => 'news#archived', :as => :archived_news, via: [:get]
+  match 'news/:archived_year' => 'news#archived', :as => :archived_news_for_year, via: [:get]
+  match 'news/:year/:article' => 'news#news_item', :as => :article, via: [:get]
+  match 'authors/:author' => 'news#author', :as => :author, via: [:get]
 
-  match 'dribbling_balls_newsletter' => 'news#dribbling_balls', as: :dribbling_balls
+  match 'dribbling_balls_newsletter' => 'news#dribbling_balls', as: :dribbling_balls, via: [:get]
 
-  match 'event_calendar' => 'news#event_calendar', :as => :event_calendar
+  match 'event_calendar' => 'news#event_calendar', :as => :event_calendar, via: [:get]
 
-  match 'about' => 'about#index', :as => :about
-  match 'about/bigv' => 'about#big_v', :as => :big_v
-  match 'about/sponsors' => 'about#sponsors', :as => :sponsors
-  match 'about/constitution' => 'about#constitution', :as => :constitution
-  match 'about/competition_titles' => 'about#competition_titles', :as => :competition_titles
-  match 'about/representative_mvps' => 'about#representative_mvps', :as => :representative_mvps
-  match 'about/team_mvps' => 'about#team_mvps', :as => :team_mvps
-  match 'about/most_improved_players' => 'about#most_improved_players', :as => :most_improved_players
-  match 'about/best_first_year_players' => 'about#best_first_year_players', :as => :best_first_year_players
-  match 'about/coaches_awards' => 'about#coaches_awards', :as => :coaches_awards
-  match 'about/bigv_league_awards' => 'about#bigv_league_awards', :as => :bigv_league_awards
-  match 'about/bigv_seasons' => 'about#bigv_seasons', :as => :bigv_seasons
-  match 'about/unigames_teams' => 'about#unigames_teams', :as => :unigames_teams
-  match 'about/blues_awards' => 'about#blues_awards', :as => :blues_awards
-  match 'about/green_and_gold_winners' => 'about#green_and_gold_winners', :as => :green_and_gold_winners
-  match 'about/committee' => 'about#committee', :as => :committee
-  match 'about/social_awards' => 'about#social_awards', :as => :social_awards
-  match 'about/distinguished_service_awards' => 'about#distinguished_service_awards', :as => :distinguished_service_awards
-  match 'about/life_members' => 'about#life_members', :as => :life_members
+  match 'about' => 'about#index', :as => :about, via: [:get]
+  match 'about/bigv' => 'about#big_v', :as => :big_v, via: [:get]
+  match 'about/sponsors' => 'about#sponsors', :as => :sponsors, via: [:get]
+  match 'about/constitution' => 'about#constitution', :as => :constitution, via: [:get]
+  match 'about/competition_titles' => 'about#competition_titles', :as => :competition_titles, via: [:get]
+  match 'about/representative_mvps' => 'about#representative_mvps', :as => :representative_mvps, via: [:get]
+  match 'about/team_mvps' => 'about#team_mvps', :as => :team_mvps, via: [:get]
+  match 'about/most_improved_players' => 'about#most_improved_players', :as => :most_improved_players, via: [:get]
+  match 'about/best_first_year_players' => 'about#best_first_year_players', :as => :best_first_year_players, via: [:get]
+  match 'about/coaches_awards' => 'about#coaches_awards', :as => :coaches_awards, via: [:get]
+  match 'about/bigv_league_awards' => 'about#bigv_league_awards', :as => :bigv_league_awards, via: [:get]
+  match 'about/bigv_seasons' => 'about#bigv_seasons', :as => :bigv_seasons, via: [:get]
+  match 'about/unigames_teams' => 'about#unigames_teams', :as => :unigames_teams, via: [:get]
+  match 'about/blues_awards' => 'about#blues_awards', :as => :blues_awards, via: [:get]
+  match 'about/green_and_gold_winners' => 'about#green_and_gold_winners', :as => :green_and_gold_winners, via: [:get]
+  match 'about/committee' => 'about#committee', :as => :committee, via: [:get]
+  match 'about/social_awards' => 'about#social_awards', :as => :social_awards, via: [:get]
+  match 'about/distinguished_service_awards' => 'about#distinguished_service_awards', :as => :distinguished_service_awards, via: [:get]
+  match 'about/life_members' => 'about#life_members', :as => :life_members, via: [:get]
 
-  root :to => 'news#index'
+  root :to => 'news#index', via: [:get]
 
 
   # The priority is based upon order of creation:

@@ -12,26 +12,29 @@ class ImageUploader < CarrierWave::Uploader::Base
 
     version :thumbnail do
       process :resize_to_fit => [250, 250, :north]
-    end     
+    end
 
 
-  else        
+  else
     storage :file
-  
+
     include CarrierWave::MiniMagick
- 
+
     def store_dir
       "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     end
-    
+
     version :standard do
       process :resize_to_fit => [470, 470]
     end
 
     version :thumbnail do
       process :resize_to_fit => [250, 250]
-    end     
+    end
 
+    def default_url
+       asset_path(store_dir)
+    end
   end
 
   # Include RMagick or MiniMagick support:
@@ -39,7 +42,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  include Sprockets::Helpers::RailsHelper
+  # include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:

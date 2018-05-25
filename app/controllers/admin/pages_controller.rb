@@ -13,7 +13,7 @@ class Admin::PagesController < Admin::BaseController
   # GET /admin/pages/1
   # GET /admin/pages/1.json
   def show
-    @page = Page.find(params[:id])
+    @page = Page.find(page_params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class Admin::PagesController < Admin::BaseController
   # All the static pages are seeded in db/seeds.rb
   # and all the news item pages (ie. dynamic content)
   # are created from the NewsItemsController
-  
+
   # GET /admin/pages/new
   # GET /admin/pages/new.json
   def new
@@ -38,13 +38,13 @@ class Admin::PagesController < Admin::BaseController
 =end
   # GET /admin/pages/1/edit
   def edit
-    @page = Page.find(params[:id])
+    @page = Page.find(page_params[:id])
   end
 
   # POST /admin/pages
   # POST /admin/pages.json
   def create
-    @page = Page.new(params[:page])
+    @page = Page.new(page_params[:page])
 
     respond_to do |format|
       if @page.save
@@ -60,10 +60,10 @@ class Admin::PagesController < Admin::BaseController
   # PUT /admin/pages/1
   # PUT /admin/pages/1.json
   def update
-    @page = Page.find(params[:id])
+    @page = Page.find(page_params[:id])
 
     respond_to do |format|
-      if @page.update_attributes(params[:page])
+      if @page.update_attributes(page_params[:page])
         format.html { redirect_to [:admin, @page], notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
@@ -76,7 +76,7 @@ class Admin::PagesController < Admin::BaseController
   # DELETE /admin/pages/1
   # DELETE /admin/pages/1.json
   def destroy
-    @page = Page.find(params[:id])
+    @page = Page.find(page_params[:id])
     @page.destroy
 
     respond_to do |format|
@@ -84,4 +84,24 @@ class Admin::PagesController < Admin::BaseController
       format.json { head :no_content }
     end
   end
+
+private
+  def page_params
+    page_params.require(:page).permit(
+      :title,
+      :synopsis,
+      :content,
+      :created_at,
+      :author,
+      :pdf,
+      :remove_pdf,
+      :sticky,
+      :dribbling_balls_link,
+      :pdf,
+      {
+        content_images: []
+      }
+    )
+  end
+
 end

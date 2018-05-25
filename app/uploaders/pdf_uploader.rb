@@ -5,11 +5,15 @@ class PdfUploader < CarrierWave::Uploader::Base
 
   if Rails.env.production? or Rails.env.staging?
     include Cloudinary::CarrierWave
-  else        
+  else
     storage :file
-  
+
     def store_dir
       "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
+
+    def default_url
+      asset_path(store_dir)
     end
   end
 
@@ -18,7 +22,7 @@ class PdfUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  include Sprockets::Helpers::RailsHelper
+  #include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
