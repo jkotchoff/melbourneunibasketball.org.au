@@ -16,6 +16,7 @@ gem 'listen'
 gem 'mini_magick'
 gem 'nokogiri'
 gem 'pg'
+gem 'puma'                        # Heroku's recommended web server
 gem 'stripe' # For taking membership payments
 gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload'
