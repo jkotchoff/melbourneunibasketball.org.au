@@ -6,6 +6,16 @@ GIT
       carrierwave (>= 0.5, < 2.0)
       mime-types (~> 2.99)
 
+GIT
+  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
+  revision: c236286b7d6e73affa1597f62fd51e9dbd268f1c
+  specs:
+    twitter-bootstrap-rails (4.0.0)
+      actionpack (~> 5.0, >= 5.0.1)
+      execjs (~> 2.7)
+      less-rails (~> 2.8, >= 2.8.0)
+      railties (~> 5.0, >= 5.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -150,7 +160,6 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
-    libv8 (3.16.14.19)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -216,7 +225,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    ref (2.0.0)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -271,9 +279,6 @@ GEM
       stripe (>= 2.0.3)
     syntax (1.2.2)
     temple (0.8.0)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -283,11 +288,6 @@ GEM
     tinymce-rails-imageupload (3.5.8.6)
       railties (>= 3.1)
       tinymce-rails (~> 3.5.8.1)
-    twitter-bootstrap-rails (4.0.0)
-      actionpack (~> 5.0, >= 5.0.1)
-      execjs (~> 2.7)
-      less-rails (~> 2.8, >= 2.8.0)
-      railties (~> 5.0, >= 5.0.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.10)
@@ -332,7 +332,6 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   launchy
-  less-rails
   listen
   machinist (>= 2.0.0.beta2)
   mini_magick
@@ -345,11 +344,10 @@ DEPENDENCIES
   stripe
   stripe-ruby-mock (>= 2.5.0)
   syntax
-  therubyracer
   timecop
   tinymce-rails
   tinymce-rails-imageupload
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails!
   uglifier
   unicorn
   workless
