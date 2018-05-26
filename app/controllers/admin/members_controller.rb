@@ -1,6 +1,6 @@
 class Admin::MembersController < Admin::BaseController
 
-  before_filter :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy]
+  before_action :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy]
 
   def index
     @selected_year = params[:year].present? ? params[:year].to_i : Date.today.year

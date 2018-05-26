@@ -1,11 +1,11 @@
 class ContactController < ApplicationController
-  before_filter :load_sidebar
+  before_action :load_sidebar
 
   # GET /
   def index
     render_page(Page::CONTACT_JOIN_THE_CLUB)
   end
-  
+
   def documents_and_forms
     render_page(Page::CONTACT_DOCUMENTS_AND_FORMS)
   end

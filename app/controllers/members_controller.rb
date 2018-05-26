@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_filter :load_sidebar
+  before_action :load_sidebar
 
   def index
     render_page(Page::CONTACT_JOIN_THE_CLUB)
