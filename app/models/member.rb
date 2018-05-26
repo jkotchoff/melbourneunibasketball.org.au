@@ -17,8 +17,8 @@ class Member < ActiveRecord::Base
   scope :current, lambda{ for_year(Date.today.year) }
   scope :not_expiring_soon, lambda{|year| for_year(year).paid.where("created_at >= ?", Date.new(year)) }
   scope :expiring_soon, lambda{|year| for_year(year).paid.where("created_at < ?", Date.new(year)) }
-  scope :paid, where(payment_confirmed: true).order('family_name ASC')
-  scope :unpaid, where(payment_confirmed: false).order('created_at DESC')
+  scope :paid, -> { where(payment_confirmed: true).order('family_name ASC') }
+  scope :unpaid, -> { where(payment_confirmed: false).order('created_at DESC') }
 
   # Note, this isn't being applied to winter season signups
   LATE_FEE = 10
