@@ -1,11 +1,4 @@
 class Member < ActiveRecord::Base
-  attr_accessible :eligibility_clause, :eligibility_justification, :payment_method, \
-                  :given_name, :family_name, :email, :postal_address,
-                  :gender, :date_of_birth, :phone_number_mobile, :phone_number_other,
-                  :new_member, :your_existing_mubc_singlet_numbers, :how_did_you_hear_about_the_club,
-                  :amount_paid, :payment_confirmed, :photo, :photo_cache, :payment_acknowledgement,
-                  :international_student, :availability
-
   validates_presence_of :eligibility_clause, :given_name, :family_name, :gender, \
                   :email, :date_of_birth, :phone_number_mobile, :phone_number_other, :amount_paid
 
@@ -14,8 +7,6 @@ class Member < ActiveRecord::Base
 
   attr_accessor :terms_of_membership
   attr_accessor :card_number, :card_expiry_month, :card_expiry_year, :card_cvv
-  attr_accessible :card_number, :card_expiry_month, :card_expiry_year, :card_cvv
-  attr_accessible :stripe_customer_id
   validate :credit_card_details
 
   mount_uploader :photo, PhotoUploader

@@ -19,7 +19,6 @@ gem 'pg'
 gem 'stripe' # For taking membership payments
 gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload'
-gem 'unicorn'
 gem "workless"
 gem 'attr_encrypted'
 gem 'blind_index'
