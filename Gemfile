@@ -24,6 +24,10 @@ gem "workless"
 gem 'attr_encrypted'
 gem 'blind_index'
 
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -34,10 +38,6 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier'
-
-  gem "therubyracer"
-  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-  gem "twitter-bootstrap-rails"
 end
 
 # To use ActiveModel has_secure_password
