@@ -15,7 +15,7 @@ module Melbourneunibasketball
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-#    config.autoload_paths += %W( #{::Rails.root.to_s}/lib  )
+    config.eager_load_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
     config.filter_parameters += [:password]
     config.generators do |g|
       # g.template_engine :haml
