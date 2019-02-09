@@ -155,6 +155,8 @@ I understand that in the circumstance where a MUBC Inc team at a domestic, repre
 
 I understand that membership fees are non-refundable.
 
+I consent that I may be photographed and that photograph's of me may be used in the MUBC newsletter or MUBC social media accounts. 
+
 Melbourne University Sports (MUS) are committed to observing the requirements of the Information Privacy Act.
 
 We collect your information for the purpose of providing you access to our sporting facilities and services, and it is also retained for the development of a sports alumni at the University of Melbourne.
