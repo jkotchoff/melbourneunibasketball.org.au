@@ -8,7 +8,7 @@
   %li Resident, member or staff of University's affiliated colleges and halls of residence.
   %li Leave of absence and deferred students of Melbourne University
   %li Immediate family of current students or eligible non-students (Siblings, parents, partners & children)
-  %li Life member or honorary member
+  %li Life member, committee member or honorary member
 
 %h4 Membership Entitlements
 %p All (paid-up) members of MUBC are entitled to:
@@ -26,6 +26,5 @@
   == $#{Member.student_fee} for Melbourne University Students
 %p
   == $#{Member.non_student_fee} for eligible non-students
-%p.muted 
+%p.muted
   == A $#{Member::LATE_FEE} late fee applies if fees are not paid before #{Member.late_fee_cutoff.strftime("%b %d")}
-

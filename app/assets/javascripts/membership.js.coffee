@@ -10,6 +10,9 @@ rebuild_price = ->
   switch $("#member_eligibility_clause").val()
     when ""
       cost = -1
+    when "committee_member"
+      cost = 0
+      $('#member_payment_method_bank_transfer').click()
     when "life_member"
       cost = 0
       $('#member_payment_method_bank_transfer').click()
@@ -37,11 +40,11 @@ rebuild_price = ->
      $('#membership_fee').hide()
 
 rebuild_eligibility_clause = ->
-  if ["life_member", "deferred_student", ""].indexOf($('#member_eligibility_clause').val()) >= 0
+  if ["life_member", "committee_member", "deferred_student", ""].indexOf($('#member_eligibility_clause').val()) >= 0
     $('#member_eligibility_justification').hide()
     $('#eligibility_justification_label').hide()
   else
-    $('#eligibility_justification_label').show() 
+    $('#eligibility_justification_label').show()
     $('#member_eligibility_justification').show()
     switch $('#member_eligibility_clause').val()
       when "enrolled_student_mu"
@@ -63,7 +66,7 @@ rebuild_eligibility_clause = ->
     if !$('#member_eligibility_justification').val()
       $('#member_eligibility_justification').focus()
 
-rebuild_steps = (button_value) ->        
+rebuild_steps = (button_value) ->
   if button_value == 'paypal'
     $('#bank_transfer_instructions, #postal_address_row').hide()
     $('#paypal_instructions').show()
@@ -72,7 +75,7 @@ rebuild_steps = (button_value) ->
     $('#paypal_instructions').hide()
     $('#bank_transfer_instructions, #postal_address_row').show()
     $('#submit_button').val('Submit')
-        
+
 jQuery ($) ->
   if($("#admin_member_form").length > 0)
     return
@@ -113,7 +116,7 @@ jQuery ($) ->
 
   rebuild_eligibility_clause()
   rebuild_price()
-  
+
   $('#member_eligibility_clause').change ->
     rebuild_eligibility_clause()
     rebuild_price()
@@ -136,4 +139,3 @@ jQuery ($) ->
   $('form').bind "submit", ->
     $('#submit_button').val("Loading..").attr('disabled','disabled')
     true
-    
