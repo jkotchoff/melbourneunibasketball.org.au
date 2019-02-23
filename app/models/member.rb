@@ -146,17 +146,17 @@ I understand that in the circumstance where a MUBC Inc team at a domestic, repre
 
 I understand that membership fees are non-refundable.
 
-I consent that I may be photographed and that photograph's of me may be used in the MUBC newsletter or MUBC social media accounts. 
+I consent that I may be photographed and that photograph's of me may be used in the MUBC newsletter or MUBC social media accounts.
 
-Melbourne University Sports (MUS) are committed to observing the requirements of the Information Privacy Act.
+The Information you have provided in this Club Membership Form will be used by MU Sport to facilitate your access to, and useof, MU Sport facilities and services through the relevant MU Sport Club with which you are a member. MU Sport may also use this information for its internal planning purposes and the development of a ‘sports alumni’ at the University. By completing this form, you provide your consent to the University using your information for these purposes. The University must comply with the Privacy and Data Protection Act 2014 (VIC) when collecting, using, disclosing and managing personal information. You may access the University’s policy at http://www.unimelb.edu.au/governance/compliance/privacy and privacy queries may be directed to privacy-officer@unimelb.edu.au
 
-We collect your information for the purpose of providing you access to our sporting facilities and services, and it is also retained for the development of a sports alumni at the University of Melbourne.
+I acknowledge that MU Sport seeks to provide an environment that encourages the positive values of respect, fairness, responsibility and safety.I have read and understood, and agree to comply with, all applicable University or MU Sport policies and procedures which are set out at http://www.sport.unimelb.edu.au/clubresources and will obey the reasonable instructions of MU Sport and Club activity facilitators or instructors as relevant to my Club. I understand that if I:
+a) Engage in activities that bring MU Sport and/or the University into disrepute or that are illegal;
+b) Intentionally misuse or cause damage to MU Sport assets or property;
+c) Engage in a serious misuse of Club funds or misappropriation of Club funds; or
+d) Engage in a serious breach of a University or MU Sport policy
 
-By completing this form you consent to MUS using your information for these purposes.
-
-If, in the future you decline to be involved in the MUS sports alumni, you can so advise MUS.
-
-You can also contact MUS for a copy of the MUS Privacy Policy, or obtain a copy from www.sports.unimelb.edu.au
+That MU Sport may act against me to suspend or terminate my membership, and in the event that I am a University staff member or student, that MU Sport reserves the right to take further disciplinary action under the relevant University statutes, regulations, policies and procedures.
     }
   end
 end
