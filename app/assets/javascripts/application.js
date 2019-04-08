@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require popper
+//= require bootstrap-sprockets
 //= require tinymce-jquery
 //= require_tree .

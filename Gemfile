@@ -4,6 +4,7 @@ gem 'rails', '5.2.0'
 ruby '2.4.2'
 
 gem 'bootsnap', require: false
+gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave'
 gem 'carrierwave_backgrounder', :github => 'lardawge/carrierwave_backgrounder'
 gem 'cloudinary'
@@ -23,8 +24,6 @@ gem 'tinymce-rails-imageupload'
 gem "workless"
 gem 'attr_encrypted'
 gem 'blind_index'
-
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

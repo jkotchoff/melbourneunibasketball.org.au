@@ -6,16 +6,6 @@ GIT
       carrierwave (>= 0.5, < 2.0)
       mime-types (~> 2.99)
 
-GIT
-  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 98e3c2aabfbecd0bb2baa1faf979828fb1011f3e
-  specs:
-    twitter-bootstrap-rails (4.0.0)
-      actionpack (~> 5.0, >= 5.0.1)
-      execjs (~> 2.7)
-      less-rails (~> 3.0, >= 3.0.0)
-      railties (~> 5.0, >= 5.0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -65,12 +55,18 @@ GEM
     arel (9.0.0)
     attr_encrypted (3.1.0)
       encryptor (~> 3.0.0)
+    autoprefixer-rails (9.5.1)
+      execjs
     awesome_print (1.8.0)
     aws_cf_signer (0.1.3)
     blind_index (0.3.4)
       activesupport (>= 4.2)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
+    bootstrap (4.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.13.2)
@@ -95,7 +91,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    commonjs (0.2.7)
     concurrent-ruby (1.1.4)
     connection_pool (2.2.2)
     crass (1.0.4)
@@ -125,7 +120,6 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    grease (0.3.1)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -155,14 +149,6 @@ GEM
       thor (>= 0.14, < 2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
-    less-rails (3.0.0)
-      actionpack (>= 4.0)
-      grease
-      less (~> 2.6.0)
-      sprockets (> 2, < 4)
-      tilt
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -197,6 +183,7 @@ GEM
     platform-api (2.2.0)
       heroics (~> 0.0.25)
       moneta (~> 1.0.0)
+    popper_js (1.14.5)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -268,6 +255,15 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.0.1)
+      ffi (~> 1.9)
+      rake
+    sassc-rails (2.1.0)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     session (3.2.0)
     sexp_processor (4.11.0)
     sprockets (3.7.2)
@@ -321,6 +317,7 @@ DEPENDENCIES
   awesome_print
   blind_index
   bootsnap
+  bootstrap (~> 4.3.1)
   byebug
   capybara
   carrierwave
@@ -352,7 +349,6 @@ DEPENDENCIES
   timecop
   tinymce-rails
   tinymce-rails-imageupload
-  twitter-bootstrap-rails!
   uglifier
   workless
 
@@ -360,4 +356,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.16.2
+   2.0.1
