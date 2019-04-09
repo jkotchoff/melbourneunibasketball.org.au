@@ -1,47 +1,48 @@
-= link_to "Create a News Item", new_admin_news_item_path, :class => 'btn btn-primary right', style: 'margin-top:30px'
+.container
+  = link_to "Create a News Item", new_admin_news_item_path, :class => 'btn btn-primary right', style: 'margin-top:30px'
 
-- model_class = NewsItem
-.page-header
-  %h3 News Item Admin
+  - model_class = NewsItem
+  .pb-2.mt-2.mb-4.border-bottom
+    %h3 News Item Admin
 
-  - @archived_years.each_with_index do |archived_year, i|
-    - if archived_year == @archived_year
-      = archived_year
-    - else
-      = link_to archived_year, admin_news_items_path(archived_year: archived_year)
-    - if i < @archived_years.length - 1
-      |
+    - @archived_years.each_with_index do |archived_year, i|
+      - if archived_year == @archived_year
+        = archived_year
+      - else
+        = link_to archived_year, admin_news_items_path(archived_year: archived_year)
+      - if i < @archived_years.length - 1
+        |
 
-%table.table.table-striped
-  %thead
-    %tr
-      /%th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:title)
-      %th= model_class.human_attribute_name(:author)
-      %th Summary
-      %th Created
-      %th{width:100}=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @news_items.each do |page|
+  %table.table.table-striped
+    %thead
       %tr
-        /%td= link_to page.id, [:admin, page]
-        %td= link_to page.title, [:admin, page]
-        %td= page.author
-        %td= truncate(page.summary, length: 50)
-        %td= page.created_at.to_s(:abbr_month_day_year)
-        %td
-          = link_to "Edit", edit_admin_page_path(page), :class => 'btn btn-mini'
-          = link_to "Destroy", [:admin, page], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+        /%th= model_class.human_attribute_name(:id)
+        %th= model_class.human_attribute_name(:title)
+        %th= model_class.human_attribute_name(:author)
+        %th Summary
+        %th Created
+        %th{width:100}=t '.actions', :default => t("helpers.actions")
+    %tbody
+      - @news_items.each do |page|
+        %tr
+          /%td= link_to page.id, [:admin, page]
+          %td= link_to page.title, [:admin, page]
+          %td= page.author
+          %td= truncate(page.summary, length: 50)
+          %td= page.created_at.to_s(:abbr_month_day_year)
+          %td
+            = link_to "Edit", edit_admin_page_path(page), :class => 'btn btn-primary btn-mini'
+            = link_to "Destroy", [:admin, page], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
 
-/%h3 Sticky News Items
-/%table.table.table-striped
-/  %thead
-/    %tr
-/      %th Title
-/      %th Actions
-/  %tbody
-/    - @sticky_news_items.each do |page|
-/      %tr
-/        %td= link_to page.title, [:admin, page]
-/        %td= link_to t('.edit', :default => "Edit", edit_admin_page_path(page), :class => 'btn btn-mini'
-      
+  /%h3 Sticky News Items
+  /%table.table.table-striped
+  /  %thead
+  /    %tr
+  /      %th Title
+  /      %th Actions
+  /  %tbody
+  /    - @sticky_news_items.each do |page|
+  /      %tr
+  /        %td= link_to page.title, [:admin, page]
+  /        %td= link_to t('.edit', :default => "Edit", edit_admin_page_path(page), :class => 'btn btn-mini'
+

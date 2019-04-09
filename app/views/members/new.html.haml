@@ -1,7 +1,6 @@
-.container-fluid
-  .row-fluid
-    .span7
-      = render partial: 'form'
-  
-    .span5{style:'padding-left:14px;'}
-      = render partial: 'eligibility_entitlements_cost'
+.row
+  .col-md-7
+    = render partial: 'form'
+
+  .col-md-5
+    = render partial: 'eligibility_entitlements_cost'

@@ -10,4 +10,29 @@
  *
  */
 
+$white: #FFFFFF;
+$primary: #24292e;
+$navbar-padding-y: 0;
+$navbar-brand-padding-y: 0;
+$navbar-dark-color: rgba($white, 1);
+$navbar-dark-hover-color: rgba($white, .5);
+$navbar-dark-active-color: $white;
+$navbar-dark-disabled-color: rgba($white, .25);
+$navbar-dark-toggler-icon-bg: str-replace(url("data:image/svg+xml,%3csvg viewbox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='m4 7h22m4 15h22m4 23h22'/%3e%3c/svg%3e"), "#", "%23");
+$navbar-dark-toggler-border-color: rgba($white, .1);
+$card-columns-count: 4;
+$font-size-base: 0.8rem;
+
 @import "bootstrap";
+
+@import "blocks/navbar";
+@import "blocks/instagram-widget";
+@import "blocks/youtube-widget";
+@import "blocks/date-select";
+@import "blocks/tooltip";
+@import "blocks/alerts";
+
+body {
+  padding-top: 110px;
+}
+

@@ -1,4 +1,4 @@
-  <script type="text/javascript">
+<script type="text/javascript">
   var channelID = "UCtjTdUQ0XS2hXz-4SzHKsgg";
   $.getJSON('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3D'+channelID, function(data) {
     for(i = 0; i < 3 && i < data.items.length; i++){
@@ -11,21 +11,27 @@
       $("#video_caption_" + i).text(title);
     }
   });
-  </script>
+</script>
 
-<div style="clear:both; padding-top: 30px;">
-  <a href="https://www.youtube.com/channel/UCtjTdUQ0XS2hXz-4SzHKsgg" style="float:left; margin:0 3px 3px 0; height:20px; width:20px;"><img src="https://s3.amazonaws.com/mubc/icon_youtube.png"/></a>
-  <a href="https://www.youtube.com/channel/UCtjTdUQ0XS2hXz-4SzHKsgg"><b>melbourneunibasketball</b></a> youtube:
-  <div class="row-fluid" style="margin-top:10px;">
-    <div class="span4">
-      <iframe id="youtube_video_0" width="300" height="170" frameborder="0" allowfullscreen></iframe>
-      <br/>
-      <em id="video_caption_0"></em>
+<div class="row mt-5">
+  <div class="col-sm-12">
+    <div class="youtube-widget">
+      <a href="https://www.youtube.com/channel/UCtjTdUQ0XS2hXz-4SzHKsgg" class="youtube-widget__link">
+        <img src="https://s3.amazonaws.com/mubc/icon_youtube.png" alt="" class="youtube-widget__icon" />
+        melbourneunibasketball youtube:
+      </a>
     </div>
-    <div class="span4">
-      <iframe id="youtube_video_1" width="300" height="170" frameborder="0" allowfullscreen></iframe>
-      <br/>
-      <em id="video_caption_1"></em>
-    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <iframe id="youtube_video_0" width="300" height="170" frameborder="0" allowfullscreen></iframe>
+    <br/>
+    <em id="video_caption_0"></em>
+  </div>
+  <div class="col-md-4">
+    <iframe id="youtube_video_1" width="300" height="170" frameborder="0" allowfullscreen></iframe>
+    <br/>
+    <em id="video_caption_1"></em>
   </div>
 </div>

@@ -1,44 +1,44 @@
-- if @page.class == NewsItem
+- if @current_page.class == NewsItem
   = link_to "Home", root_path
   &gt;
-  - if @page.dribbling_balls_link?
+  - if @current_page.dribbling_balls_link?
     = link_to "Dribbling Balls", dribbling_balls_path
   - else
     = link_to "News", archived_news_path
     &gt;
-    = link_to @page.year, archived_news_for_year_path(@page.year)
+    = link_to @current_page.year, archived_news_for_year_path(@current_page.year)
   &gt;
   News Item
 
   %h2
-    = @page.title
-  .muted
-    = @page.created_at.to_s(:month_day_year)
-    - if @page.author?
+    = @current_page.title
+  .text-muted
+    = @current_page.created_at.to_s(:month_day_year)
+    - if @current_page.author?
       == - submitted by
-      = link_to(@page.author, author_path(@page.author))
+      = link_to(@current_page.author, author_path(@current_page.author))
     %br
     %br
 
 .content
-  - if @page.pdf?
+  - if @current_page.pdf?
     .page_pdf
-      = link_to @page.pdf_url, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{@page.title}']);"} do
+      = link_to @current_page.pdf_url, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{@current_page.title}']);"} do
         = image_tag('pdf_icon.png', id: 'pdf')
         %br
         Click here to download
-  - elsif @page.dribbling_balls_link?
+  - elsif @current_page.dribbling_balls_link?
     .page_pdf
-      = link_to @page.dribbling_balls_link, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{@page.title}']);"} do
+      = link_to @current_page.dribbling_balls_link, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{@current_page.title}']);"} do
         = image_tag('pdf_icon.png', id: 'pdf')
         %br
         Click here to download
-  - if @page.content
-    = content_html_with_linked_images(@page)
+  - if @current_page.content
+    = content_html_with_linked_images(@current_page)
   - else
-    = @page.synopsis
+    = @current_page.synopsis
 
-  - if @page.class == NewsItem
+  - if @current_page.class == NewsItem
     %p.clear
       %br
       %br

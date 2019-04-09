@@ -1,74 +1,73 @@
-.row
-  .span6
-    = form_for [:admin, @member], :html => { :class => 'form-horizontal', id: "admin_member_form" } do |f|
-      .control-group
-        = f.label :eligibility_clause, :class => 'control-label'
-        .controls
-          = f.select :eligibility_clause, eligibility_options
-      .control-group
-        = f.label :eligibility_justification, :class => 'control-label'
-        .controls
-          = f.text_field :eligibility_justification, :class => 'text_field'
-      .control-group
-        = f.label :payment_method, :class => 'control-label'
-        .controls
-          = f.text_field :payment_method, :class => 'text_field'
-      .control-group
-        = f.label :given_name, :class => 'control-label'
-        .controls
-          = f.text_field :given_name, :class => 'text_field'
-      .control-group
-        = f.label :family_name, :class => 'control-label'
-        .controls
-          = f.text_field :family_name, :class => 'text_field'
-      .control-group
-        = f.label :postal_address, :class => 'control-label'
-        .controls
-          = f.text_area :postal_address, :class => 'text_area', rows: 3
-      .control-group
-        = f.label :phone_number_mobile, :class => 'control-label'
-        .controls
-          = f.text_field :phone_number_mobile, :class => 'text_field'
-      .control-group
-        = f.label "Emergency Contact Phone Number", :class => 'control-label'
-        .controls
-          = f.text_field :phone_number_other, :class => 'text_field'
-      .control-group
-        = f.label :email, :class => 'control-label'
-        .controls
-          = f.text_field :email, :class => 'text_field'
-      .control-group
-        = f.label :date_of_birth, :class => 'control-label'
-        .controls
-          = f.date_select :date_of_birth, start_year: Time.now.year - 100, end_year: Time.now.year - 15, :class => 'date_select'
-      .control-group
-        = f.label :gender, :class => 'control-label'
-        .controls
-          = f.text_field :gender, :class => 'text_field'
-      .control-group
-        = f.label :new_member, :class => 'control-label'
-        .controls
-          = f.check_box :new_member, :class => 'check_box'
-      .control-group
-        = f.label :your_existing_mubc_singlet_numbers, :class => 'control-label'
-        .controls
-          = f.text_field :your_existing_mubc_singlet_numbers, :class => 'text_field', placeholder: "eg. 4, 13"
-      .control-group
-        = f.label :how_did_you_hear_about_the_club, :class => 'control-label'
-        .controls
-          = f.text_area :how_did_you_hear_about_the_club, :class => 'text_area', rows: 3
-      .control-group
-        = f.label :amount_paid, :class => 'control-label'
-        .controls
-          = f.number_field :amount_paid, :class => 'number_field'
-      .control-group
-        = f.label :payment_confirmed, :class => 'control-label'
-        .controls
-          = f.check_box :payment_confirmed, :class => 'check_box'
-      .control-group
-        = f.label :payment_acknowledgement, :class => 'control-label'
-        .controls
-          = f.text_field :payment_acknowledgement, :class => 'text_field'
-      .form-actions
-        = f.submit nil, :class => 'btn btn-primary'
-        = link_to "Cancel", admin_members_path, :class => 'btn'
+= form_for [:admin, @member], :html => { :class => 'form-horizontal', id: "admin_member_form" } do |f|
+  .form-group.row
+    = f.label :eligibility_clause, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.select :eligibility_clause, eligibility_options, {}, class: 'form-control'
+  .form-group.row
+    = f.label :eligibility_justification, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :eligibility_justification, :class => 'form-control'
+  .form-group.row
+    = f.label :payment_method, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :payment_method, :class => 'form-control'
+  .form-group.row
+    = f.label :given_name, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :given_name, :class => 'form-control'
+  .form-group.row
+    = f.label :family_name, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :family_name, :class => 'form-control'
+  .form-group.row
+    = f.label :postal_address, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_area :postal_address, :class => 'form-control', rows: 3
+  .form-group.row
+    = f.label :phone_number_mobile, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :phone_number_mobile, :class => 'form-control'
+  .form-group.row
+    = f.label "Emergency Contact Phone Number", :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :phone_number_other, :class => 'form-control'
+  .form-group.row
+    = f.label :email, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :email, :class => 'form-control'
+  .form-group.row
+    = f.label :date_of_birth, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      .date-select
+        = f.date_select :date_of_birth, {start_year: Time.now.year - 100, end_year: Time.now.year - 15}, :class => 'form-control'
+  .form-group.row
+    = f.label :gender, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :gender, :class => 'form-control'
+  .form-group.row
+    = f.label :new_member, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.check_box :new_member, :class => 'check_box'
+  .form-group.row
+    = f.label :your_existing_mubc_singlet_numbers, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :your_existing_mubc_singlet_numbers, :class => 'form-control', placeholder: "eg. 4, 13"
+  .form-group.row
+    = f.label :how_did_you_hear_about_the_club, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_area :how_did_you_hear_about_the_club, :class => 'form-control', rows: 3
+  .form-group.row
+    = f.label :amount_paid, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.number_field :amount_paid, :class => 'form-control'
+  .form-group.row
+    = f.label :payment_confirmed, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.check_box :payment_confirmed, :class => 'check_box'
+  .form-group.row
+    = f.label :payment_acknowledgement, :class => 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :payment_acknowledgement, :class => 'form-control'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to "Cancel", admin_members_path, :class => 'btn btn-secondary'

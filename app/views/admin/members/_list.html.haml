@@ -2,7 +2,7 @@
   %tr{style: ("display: none" if expiring == true), class: ("expiring" if expiring == true)}
     %td
       = member.created_at.to_s(:abbr_month_day_year)
-      .muted
+      .text-muted
         == $#{member.amount_paid}
         - if member.payment_method == 'paypal'
           Paypal
@@ -20,12 +20,12 @@
       == #{member.phone_number_mobile} / #{member.phone_number_other}
     %td
       = member.age_and_gender
-      .muted
+      .text-muted
         - if member.new_member?
           New Member
         = member.reference(:code)
     %td= member.your_existing_mubc_singlet_numbers
     %td
       - if cookies[:superadmin].present?
-        = link_to "Edit", edit_admin_member_path(member), :class => 'btn btn-mini'
+        = link_to "Edit", edit_admin_member_path(member), :class => 'btn btn-primary btn-mini'
         /= link_to "Destroy", [:admin, member], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'

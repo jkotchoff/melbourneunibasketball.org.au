@@ -2,13 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def render_page(title)
-    @page = Page.find_by_title(title)
+    @current_page = Page.find_by_title(title)
     render "pages/show"
   end
 
 private
   def member_params
-    page_member_params.require(:page).permit(
+    params.require(:member).permit(
       :eligibility_clause, :eligibility_justification, :payment_method,
       :given_name, :family_name, :email, :postal_address,
       :gender, :date_of_birth, :phone_number_mobile, :phone_number_other,

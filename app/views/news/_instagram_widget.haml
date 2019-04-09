@@ -1,0 +1,7 @@
+.instagram-widget
+  %a.instagram-widget__link(href="http://instagram.com/melbourneunibasketball")
+    %img.instagram-widget__icon(src="https://s3.amazonaws.com/mubc/icon_instagram.png")
+    @melbourneunibasketball instagram:
+
+  = javascript_include_tag "https://cdn.lightwidget.com/widgets/lightwidget.js"
+  %iframe.lightwidget-widget{:allowtransparency => "true", :scrolling => "no", :src => "//lightwidget.com/widgets/dc856125fb0a549985a200618b29e3ab.html", :style => "width: 100%; border: 0; overflow: hidden;"}

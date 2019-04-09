@@ -1,6 +1,5 @@
-%ul.nav.nav-list
-  %li
-    = link_to "Dribbling Balls Newsletters", dribbling_balls_path
-  - @archived_years.each do |archived_year|
-    %li{class: ('active' if archived_year == @archived_year)}
-      = link_to "#{archived_year} News Items", archived_news_for_year_path(archived_year)
+.card
+  .list-group.list-group-flush
+    = link_to "Dribbling Balls Newsletters", dribbling_balls_path, class: 'list-group-item list-group-item-action'
+    - @archived_years.each do |archived_year|
+      = link_to "#{archived_year} News Items", archived_news_for_year_path(archived_year), class: ['list-group-item list-group-item-action', ('active' if archived_year == @archived_year)]

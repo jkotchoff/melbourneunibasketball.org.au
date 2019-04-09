@@ -19,7 +19,7 @@ class MembersController < ApplicationController
   end
 
   def create
-    @member = Member.new(member_params[:member].merge(payment_method: "stripe"))
+    @member = Member.new(member_params.merge(payment_method: "stripe"))
     stripe_service = StripeChargesService.new(@member)
     if @member.valid? && stripe_service.call
       @member.save
@@ -33,14 +33,14 @@ class MembersController < ApplicationController
   end
 
   def mubc_account_details
-    @member = Member.find(member_params[:id])
+    @member = Member.find(params[:id])
     if @member.payment_confirmed?
       redirect_to membership_path, flash: {error: "Whoops.. Seems like this member is already paid up. We wouldn't want to charge them twice!"}
     end
   end
 
   def thankyou
-    @member = Member.find(member_params[:id])
+    @member = Member.find(params[:id])
   end
 
 private

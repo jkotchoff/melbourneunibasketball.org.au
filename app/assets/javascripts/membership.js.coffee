@@ -94,10 +94,10 @@ jQuery ($) ->
     form = group.parents("form").eq(0)
     name = group.attr("data-toggle-name")
     hidden = $("input[name=\"" + name + "\"]", form)
-    $("button", group).each ->
+    $(".btn", group).each ->
       button = $(this)
       button.bind "click", ->
-        hidden.val $(this).val()
+        hidden.val $(this).find('input').val()
         if($(this).attr('id') == 'existing_member')
           $("#introductory_source").hide()
           $("#singlet_numbers").show()
@@ -108,7 +108,6 @@ jQuery ($) ->
           rebuild_price()
         else if($(this).attr('id') == 'non_representative_button')
           rebuild_price()
-      button.addClass "active"  if button.val() is hidden.val()
 
   rebuild_steps jQuery("#payment_controls input:checked").val()
   $('#payment_controls input:radio').change ->

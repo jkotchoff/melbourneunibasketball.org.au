@@ -26,5 +26,5 @@
   == $#{Member.student_fee} for Melbourne University Students
 %p
   == $#{Member.non_student_fee} for eligible non-students
-%p.muted
+%p.text-muted
   == A $#{Member::LATE_FEE} late fee applies if fees are not paid before #{Member.late_fee_cutoff.strftime("%b %d")}

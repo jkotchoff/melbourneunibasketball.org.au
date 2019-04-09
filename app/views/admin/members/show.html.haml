@@ -1,95 +1,96 @@
-- model_class = Member
-.page-header
-  %h1=@member.name
+.container
+  - model_class = Member
+  .pb-2.mt-2.mb-4.border-bottom
+    %h1=@member.name
 
-- if @member.photo?
+  - if @member.photo?
+    %p
+      %strong= model_class.human_attribute_name(:photo) + ':'
+      %br
+      = image_tag @member.photo_url(:thumbnail)
+
   %p
-    %strong= model_class.human_attribute_name(:photo) + ':'
+    %strong= model_class.human_attribute_name(:eligibility_clause) + ':'
     %br
-    = image_tag @member.photo_url(:thumbnail)
+    = @member.eligibility_clause
+  %p
+    %strong= model_class.human_attribute_name(:eligibility_justification) + ':'
+    %br
+    = @member.eligibility_justification
+  %p
+    %strong= model_class.human_attribute_name(:payment_method) + ':'
+    %br
+    = @member.payment_method
+  %p
+    %strong= model_class.human_attribute_name(:given_name) + ':'
+    %br
+    = @member.given_name
+  %p
+    %strong= model_class.human_attribute_name(:family_name) + ':'
+    %br
+    = @member.family_name
+  %p
+    %strong= model_class.human_attribute_name(:postal_address) + ':'
+    %br
+    = @member.postal_address
+  %p
+    %strong= model_class.human_attribute_name(:phone_number_mobile) + ':'
+    %br
+    = @member.phone_number_mobile
+  %p
+    %strong= model_class.human_attribute_name(:phone_number_other) + ':'
+    %br
+    = @member.phone_number_other
+  %p
+    %strong= model_class.human_attribute_name(:email) + ':'
+    %br
+    = @member.email
+  %p
+    %strong= model_class.human_attribute_name(:date_of_birth) + ':'
+    %br
+    = @member.date_of_birth
+  %p
+    %strong= model_class.human_attribute_name(:gender) + ':'
+    %br
+    = @member.gender
+  %p
+    %strong= model_class.human_attribute_name(:new_member) + ':'
+    %br
+    = @member.new_member
+  %p
+    %strong= model_class.human_attribute_name(:your_existing_mubc_singlet_numbers) + ':'
+    %br
+    = @member.your_existing_mubc_singlet_numbers
+  %p
+    %strong= model_class.human_attribute_name(:how_did_you_hear_about_the_club) + ':'
+    %br
+    = @member.how_did_you_hear_about_the_club
+  %p
+    %strong= model_class.human_attribute_name(:international_student) + ':'
+    %br
+    = @member.international_student
+  %p
+    %strong Unavailable Dates:
+    %br
+    = @member.availability
+  %p
+    %strong= model_class.human_attribute_name(:amount_paid) + ':'
+    %br
+    = @member.amount_paid
+  %p
+    %strong= model_class.human_attribute_name(:payment_confirmed) + ':'
+    %br
+    = @member.payment_confirmed
+  %p
+    %strong= model_class.human_attribute_name(:payment_acknowledgement) + ':'
+    %br
+    = @member.payment_acknowledgement
+  %p
+    %strong Payment reference
+    %br
+    = @member.reference
 
-%p
-  %strong= model_class.human_attribute_name(:eligibility_clause) + ':'
-  %br
-  = @member.eligibility_clause
-%p
-  %strong= model_class.human_attribute_name(:eligibility_justification) + ':'
-  %br
-  = @member.eligibility_justification
-%p
-  %strong= model_class.human_attribute_name(:payment_method) + ':'
-  %br
-  = @member.payment_method
-%p
-  %strong= model_class.human_attribute_name(:given_name) + ':'
-  %br
-  = @member.given_name
-%p
-  %strong= model_class.human_attribute_name(:family_name) + ':'
-  %br
-  = @member.family_name
-%p
-  %strong= model_class.human_attribute_name(:postal_address) + ':'
-  %br
-  = @member.postal_address
-%p
-  %strong= model_class.human_attribute_name(:phone_number_mobile) + ':'
-  %br
-  = @member.phone_number_mobile
-%p
-  %strong= model_class.human_attribute_name(:phone_number_other) + ':'
-  %br
-  = @member.phone_number_other
-%p
-  %strong= model_class.human_attribute_name(:email) + ':'
-  %br
-  = @member.email
-%p
-  %strong= model_class.human_attribute_name(:date_of_birth) + ':'
-  %br
-  = @member.date_of_birth
-%p
-  %strong= model_class.human_attribute_name(:gender) + ':'
-  %br
-  = @member.gender
-%p
-  %strong= model_class.human_attribute_name(:new_member) + ':'
-  %br
-  = @member.new_member
-%p
-  %strong= model_class.human_attribute_name(:your_existing_mubc_singlet_numbers) + ':'
-  %br
-  = @member.your_existing_mubc_singlet_numbers
-%p
-  %strong= model_class.human_attribute_name(:how_did_you_hear_about_the_club) + ':'
-  %br
-  = @member.how_did_you_hear_about_the_club
-%p
-  %strong= model_class.human_attribute_name(:international_student) + ':'
-  %br
-  = @member.international_student
-%p
-  %strong Unavailable Dates:
-  %br
-  = @member.availability
-%p
-  %strong= model_class.human_attribute_name(:amount_paid) + ':'
-  %br
-  = @member.amount_paid
-%p
-  %strong= model_class.human_attribute_name(:payment_confirmed) + ':'
-  %br
-  = @member.payment_confirmed
-%p
-  %strong= model_class.human_attribute_name(:payment_acknowledgement) + ':'
-  %br
-  = @member.payment_acknowledgement
-%p
-  %strong Payment reference
-  %br
-  = @member.reference
-
-.form-actions
-  = link_to "Back", admin_members_path, :class => 'btn'
-  = link_to "Edit", edit_admin_member_path(@member), :class => 'btn'
-  /= link_to "Destroy", [:admin, @member], :method => "delete", :data => { :confirm => t('.confirm', :default => 'Are you sure?' }, :class => 'btn btn-danger'
+  .form-actions
+    = link_to "Back", admin_members_path, :class => 'btn btn-secondary'
+    = link_to "Edit", edit_admin_member_path(@member), :class => 'btn btn-secondary'
+    /= link_to "Destroy", [:admin, @member], :method => "delete", :data => { :confirm => t('.confirm', :default => 'Are you sure?' }, :class => 'btn btn-danger'

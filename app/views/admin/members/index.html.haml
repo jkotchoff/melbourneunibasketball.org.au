@@ -1,46 +1,47 @@
-= link_to "Download CSV Export", csv_export_admin_members_path, :class => 'btn btn-primary right', style: 'margin-top:30px'
-= link_to "Download Uniforms Report", uniforms_export_admin_members_path, :class => 'btn btn-primary right', style: 'margin-top:30px'
+.container
+  = link_to "Download CSV Export", csv_export_admin_members_path, :class => 'btn btn-primary right', style: 'margin-top:30px'
+  = link_to "Download Uniforms Report", uniforms_export_admin_members_path, :class => 'btn btn-primary right', style: 'margin-top:30px'
 
-.page-header
-  %h3 Members for #{@selected_year}
+  .pb-2.mt-2.mb-4.border-bottom
+    %h3 Members for #{@selected_year}
 
-  .previous_years
-    - @available_membership_years.each do |year|
-      - if year == @selected_year
-        = year
-      - else
-        = link_to year.to_s, admin_members_path(year: year)
+    .previous_years
+      - @available_membership_years.each do |year|
+        - if year == @selected_year
+          = year
+        - else
+          = link_to year.to_s, admin_members_path(year: year)
 
 
-#stats
-  == Members: #{@member_count}
-  %span.muted (Male: #{@males_percentage}%, Female: #{@females_percentage}%)
-  %br
-  == Average Age: #{@average_age}
-  %span.muted (Males: #{@average_male_age}, Female: #{@average_female_age})
-  %br
-  Total money collected:
-  %b== #{number_to_currency(@total_money_collected)}
+  #stats
+    == Members: #{@member_count}
+    %span.text-muted (Male: #{@males_percentage}%, Female: #{@females_percentage}%)
+    %br
+    == Average Age: #{@average_age}
+    %span.text-muted (Males: #{@average_male_age}, Female: #{@average_female_age})
+    %br
+    Total money collected:
+    %b== #{number_to_currency(@total_money_collected)}
 
-%table.table.table-striped
-  %thead
-    %tr
-      %th Joined
-      %th Name
-      %th
-        %a#photo_link{href: "#"} Photo
-      %th Contact
-      %th Age/Gender
-      %th Uniform(s)
-      %th Actions
-  %tbody
-    = render partial: 'list', locals: {members: @members, expiring: false}
-    - if @expiring_members.present?
-      %tr.expiring
-        %td{colspan: 7, display: 'none'}
-          %br
-          %br
-          %h4== #{@expiring_members.length} members Expiring on April 1st, #{Date.today.year}:
-          = link_to_function "Show", "$('.expiring').show(); $(this).hide();", :class => 'btn btn-primary right'
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Joined
+        %th Name
+        %th
+          %a#photo_link{href: "#"} Photo
+        %th Contact
+        %th Age/Gender
+        %th Uniform(s)
+        %th Actions
+    %tbody
+      = render partial: 'list', locals: {members: @members, expiring: false}
+      - if @expiring_members.present?
+        %tr.expiring
+          %td{colspan: 7, display: 'none'}
+            %br
+            %br
+            %h4== #{@expiring_members.length} members Expiring on April 1st, #{Date.today.year}:
+            = link_to_function "Show", "$('.expiring').show(); $(this).hide();", :class => 'btn btn-primary right'
 
-      = render partial: 'list', locals: {members: @expiring_members, expiring: true}
+        = render partial: 'list', locals: {members: @expiring_members, expiring: true}

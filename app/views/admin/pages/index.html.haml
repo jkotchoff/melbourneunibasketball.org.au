@@ -1,23 +1,24 @@
-- model_class = Page
-.page-header
-  %h3 Page Admin
-%table.table.table-striped
-  %thead
-    %tr
-      /%th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:title)
-      %th= model_class.human_attribute_name(:synopsis)
-      %th Updated
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @pages.each do |page|
+.container
+  - model_class = Page
+  .pb-2.mt-2.mb-4.border-bottom
+    %h3 Page Admin
+  %table.table.table-striped
+    %thead
       %tr
-        /%td= link_to page.id, [:admin, page]
-        %td= link_to page.title, [:admin, page]
-        %td= truncate(page.synopsis, length: 50)
-        %td
-          = page.updated_at.to_s(:abbr_month_day_year)
-          - if page.author?
-            == (#{page.author})
-        %td
-          = link_to "Edit", edit_admin_page_path(page), :class => 'btn btn-mini'
+        /%th= model_class.human_attribute_name(:id)
+        %th= model_class.human_attribute_name(:title)
+        %th= model_class.human_attribute_name(:synopsis)
+        %th Updated
+        %th=t '.actions', :default => t("helpers.actions")
+    %tbody
+      - @pages.each do |page|
+        %tr
+          /%td= link_to page.id, [:admin, page]
+          %td= link_to page.title, [:admin, page]
+          %td= truncate(page.synopsis, length: 50)
+          %td
+            = page.updated_at.to_s(:abbr_month_day_year)
+            - if page.author?
+              == (#{page.author})
+          %td
+            = link_to "Edit", edit_admin_page_path(page), :class => 'btn btn-mini btn-primary'

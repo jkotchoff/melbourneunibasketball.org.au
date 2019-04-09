@@ -1,4 +1,5 @@
-- model_class = Page
-.page-header
-  %h1=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human, :default => "Edit #{model_class.model_name.human}")
-= render :partial => "form"
+.container
+  - model_class = Page
+  .pb-2.mt-2.mb-4.border-bottom
+    %h1=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human, :default => "Edit #{model_class.model_name.human}")
+  = render :partial => "form"

@@ -1,6 +1,4 @@
 <% if @sponsorship_page.present? %>
-  <div style="margin-top:10px; margin-bottom: 20px;">
-    <div class="muted" style="margin-bottom:7px;">Please take a moment to consider visiting some of MUBC's valued sponsors:</em></div>
+  <div class="text-muted small">Please take a moment to consider visiting some of MUBC's valued sponsors:</div>
     <%= @sponsorship_page.content.html_safe %>
-  </div>
 <% end %>

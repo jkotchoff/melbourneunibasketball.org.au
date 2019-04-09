@@ -1,7 +1,6 @@
 class Admin::BaseController < ApplicationController
-  layout        "admin"
-
   before_action :require_admin
+  before_action :set_admin
 
   newrelic_ignore if defined?(NewRelic)
 
@@ -21,4 +20,7 @@ class Admin::BaseController < ApplicationController
       render text: 'unauthorised - only the superadmin account can access this' and return false unless cookies[:superadmin].present?
     end
 
+  def set_admin
+    @admin = true
+  end
 end

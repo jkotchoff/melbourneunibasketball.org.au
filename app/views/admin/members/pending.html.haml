@@ -1,29 +1,30 @@
-.page-header
-  %h3 Pending Membership applications for #{Date.today.year}
-.muted
-  %p This list specifies members who have filled in a membership form for this year but have not been confirmed as having paid up yet.
-  %p
-    For these applications, if they resubmit the membership form again or choose not to join the club, this record can be removed using the
-    %b Destroy
-    button.
-  %p
-    If the refence specifies
-    %b Paypal
-    under the Amount column, that means their Paypal transaction was incomplete. In this case, a club officer needs to follow them up directly for payment.
-  %p
-    Otherwise, the club secretary should check the club bank account on a weekly basis for transfers with the reference's and amounts below. If a transfer is confirmed, click the
-    %b Acknowledge Payment
-    button. If cash is received by a club representative officer, the member can also be endorsed using this
-    %b Acknowledge Payment
-    button.
+.container
+  .pb-2.mt-2.mb-4.border-bottom
+    %h3 Pending Membership applications for #{Date.today.year}
+  .text-muted
+    %p This list specifies members who have filled in a membership form for this year but have not been confirmed as having paid up yet.
+    %p
+      For these applications, if they resubmit the membership form again or choose not to join the club, this record can be removed using the
+      %b Destroy
+      button.
+    %p
+      If the refence specifies
+      %b Paypal
+      under the Amount column, that means their Paypal transaction was incomplete. In this case, a club officer needs to follow them up directly for payment.
+    %p
+      Otherwise, the club secretary should check the club bank account on a weekly basis for transfers with the reference's and amounts below. If a transfer is confirmed, click the
+      %b Acknowledge Payment
+      button. If cash is received by a club representative officer, the member can also be endorsed using this
+      %b Acknowledge Payment
+      button.
 
-%h3 Recent signups
-= render partial: "pending", locals: { unpaid_members: @recent_unpaid_members }
+  %h3 Recent signups
+  = render partial: "pending", locals: { unpaid_members: @recent_unpaid_members }
 
-- if @old_unpaid_members.present?
-  %br
-  %br
-  %h3 Older transactions (> 1 week)
-  = link_to_function "Show", "$('#older_transactions').show(); $(this).hide();", :class => 'btn btn-primary'
-  #older_transactions{style: "display:none"}
-    = render partial: "pending", locals: { unpaid_members: @old_unpaid_members }
+  - if @old_unpaid_members.present?
+    %br
+    %br
+    %h3 Older transactions (> 1 week)
+    = link_to_function "Show", "$('#older_transactions').show(); $(this).hide();", :class => 'btn btn-primary'
+    #older_transactions{style: "display:none"}
+      = render partial: "pending", locals: { unpaid_members: @old_unpaid_members }

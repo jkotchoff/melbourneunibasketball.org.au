@@ -13,7 +13,7 @@ class Admin::PagesController < Admin::BaseController
   # GET /admin/pages/1
   # GET /admin/pages/1.json
   def show
-    @page = Page.find(page_params[:id])
+    @page = Page.friendly.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,13 +38,13 @@ class Admin::PagesController < Admin::BaseController
 =end
   # GET /admin/pages/1/edit
   def edit
-    @page = Page.find(page_params[:id])
+    @page = Page.friendly.find(params[:id])
   end
 
   # POST /admin/pages
   # POST /admin/pages.json
   def create
-    @page = Page.new(page_params[:page])
+    @page = Page.new
 
     respond_to do |format|
       if @page.save
@@ -60,10 +60,10 @@ class Admin::PagesController < Admin::BaseController
   # PUT /admin/pages/1
   # PUT /admin/pages/1.json
   def update
-    @page = Page.find(page_params[:id])
+    @page = Page.friendly.find(params[:id])
 
     respond_to do |format|
-      if @page.update_attributes(page_params[:page])
+      if @page.update_attributes(page_params)
         format.html { redirect_to [:admin, @page], notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
@@ -76,7 +76,7 @@ class Admin::PagesController < Admin::BaseController
   # DELETE /admin/pages/1
   # DELETE /admin/pages/1.json
   def destroy
-    @page = Page.find(page_params[:id])
+    @page = Page.friendly.find(params[:id])
     @page.destroy
 
     respond_to do |format|
@@ -87,7 +87,7 @@ class Admin::PagesController < Admin::BaseController
 
 private
   def page_params
-    page_params.require(:page).permit(
+    params.require(:page).permit(
       :title,
       :synopsis,
       :content,

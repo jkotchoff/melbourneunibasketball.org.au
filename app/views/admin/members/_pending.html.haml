@@ -13,7 +13,7 @@
       %tr
         %td
           = member.reference
-          .muted= member.created_at.to_s(:abbr_month_day_year)
+          .text-muted= member.created_at.to_s(:abbr_month_day_year)
         %td
           == $#{member.amount_paid}
           %br
@@ -31,11 +31,11 @@
         %td
           = member.age_and_gender
           - if member.new_member?
-            .muted New Member
+            .text-muted New Member
         %td
           = member.eligibility_clause
-          .muted= member.eligibility_justification
+          .text-muted= member.eligibility_justification
         %td
           - if cookies[:superadmin].present?
-            = link_to "Acknowledge Payment", acknowledge_payment_admin_member_path(member), :class => 'payment_acknowledgement btn btn-mini'
+            = link_to "Acknowledge Payment", acknowledge_payment_admin_member_path(member), :class => 'payment_acknowledgement btn btn-primary btn-mini'
             = link_to "Destroy", [:admin, member], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'

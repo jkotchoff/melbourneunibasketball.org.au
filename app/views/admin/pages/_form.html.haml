@@ -5,59 +5,42 @@
       %ul
         - @page.errors.full_messages.each do |msg|
           %li= msg
-          
-  .row
-    .span5
-      .control-group
-        = f.label :title, :class => 'control-label', data: { help: t('view.inline_help.news_item.title_hint') }
-        .controls
-          = f.text_field :title, :class => 'text_field', disabled: ('disabled' if @page.class != NewsItem) 
-    .span7
-      .control-group
-        = f.label :created_at, "Written", :class => 'control-label', data: { help: t('view.inline_help.news_item.written_hint') }
-        .controls
-          = f.date_select :created_at, {include_blank: false, :order => [:day, :month, :year], :use_short_month => true, :start_year => 1945, :end_year => Time.now.year, :datetime_separator => ""}, { class: 'page_created_at' }
 
-  .control-group
-    = f.label :author, :class => 'control-label', data: { help: t('view.inline_help.news_item.author_hint') }
-    .controls
-      = f.text_field :author, :class => 'text_field'
+  .form-group.row
+    = f.label :title, :class => 'col-sm-3 col-form-label', data: { help: t('view.inline_help.news_item.title_hint') }
+    .col-sm-9
+      = f.text_field :title, :class => 'form-control', disabled: ('disabled' if @page.class != NewsItem)
 
-  .row
-    .span12
-      .control-group
-        - if @page.dribbling_balls_link.present?
-          .controls
-            = f.text_field :dribbling_balls_link, :class => 'text_field'
-        /- else
-        /  = f.label :pdf, :class => 'control-label', data: { help: t('view.inline_help.news_item.pdf_hint') }
-        /  .controls
-        /    = f.file_field(:pdf)
-        /    - if @page.pdf?
-        /      = link_to "Download", @page.pdf_url
-        /      %br
-        /      %label{for: 'news_item_remove_image'} 
-        /        = f.check_box :remove_pdf
-        /        Delete?
-  .row
-    /.span12
-    /  .control-group
-    /    = f.label :sticky, "Sticky?", :class => 'control-label'
-    /    .controls
-    /      = f.check_box :sticky
+  .form-group.row
+    = f.label :created_at, "Written", :class => 'col-sm-3 col-form-label', data: { help: t('view.inline_help.news_item.written_hint') }
+    .col-sm-9
+      .date-select
+        = f.date_select :created_at, {include_blank: false, :order => [:day, :month, :year], :use_short_month => true, :start_year => 1945, :end_year => Time.now.year, :datetime_separator => ""}, { class: 'form-control' }
+
+  .form-group.row
+    = f.label :author, :class => 'col-sm-3 col-form-label', data: { help: t('view.inline_help.news_item.author_hint') }
+    .col-sm-9
+      = f.text_field :author, :class => 'form-control'
+
+  - if @page.dribbling_balls_link.present?
+    .form-group.row
+      = f.label :dribbling_balls_link, :class => 'col-sm-3 col-form-label'
+      .col-sm-9
+        = f.text_field :dribbling_balls_link, :class => 'form-control'
 
   - unless @page.class == NewsItem
-    .control-group
-      = f.label :synopsis, :class => 'control-label', data: { help: t('view.inline_help.news_item.synopsis_hint') }
-      .controls
-        = f.text_area :synopsis, :class => 'text_area', rows: 3
-      
-  .control-group
-    = f.label :content, "Content", :class => 'control-label', data: ({ help: t('view.inline_help.news_item.content_hint') } if @page.class == NewsItem)
-    .controls
-      = f.text_area :content, :class => 'text_area tinymce', rows: 3
+    .form-group.row
+      = f.label :synopsis, :class => 'col-sm-3 col-form-label', data: { help: t('view.inline_help.news_item.synopsis_hint') }
+      .col-sm-9
+        = f.text_area :synopsis, :class => 'form-control', rows: 3
+
+  .form-group.row
+    = f.label :content, "Content", :class => 'col-sm-3 col-form-label', data: ({ help: t('view.inline_help.news_item.content_hint') } if @page.class == NewsItem)
+    .col-sm-9
+      = f.text_area :content, :class => 'form-control tinymce', rows: 3
+
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to "Cancel", admin_pages_path, :class => 'btn'
+    = link_to "Cancel", admin_pages_path, :class => 'btn btn-secondary'
 
 = tinymce uploadimage_hint: @page.id

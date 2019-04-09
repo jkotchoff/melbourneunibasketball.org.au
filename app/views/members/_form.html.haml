@@ -12,7 +12,7 @@
   %br
   %br
 
-= form_for @member, :html => { id: 'membership_form', :class => 'form-horizontal' } do |f|
+= form_for @member, :html => { id: 'membership_form' } do |f|
   = hidden_field_tag "annual_student_fee", Member.student_fee, { :id => "annual_student_fee" }
   = hidden_field_tag "annual_non_student_fee", Member.non_student_fee, { :id => "annual_non_student_fee" }
   = hidden_field_tag "late_fee", Member.late_fee, { :id => "late_fee" }
@@ -25,151 +25,151 @@
         %br
         Please fill in the highlighted fields.
 
+  .form-group.row
+    = f.label :eligibility_clause, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.select :eligibility_clause, eligibility_options, {}, class: 'form-control'
 
-  .row
-    .span12
-      .control-group
-        = f.label :eligibility_clause, :class => 'control-label'
-        .controls.group
-          = f.select :eligibility_clause, eligibility_options
+  .form-group.row#member_eligibility_justification{style: 'display: none'}
+    = f.label :eligibility_justification, id: 'eligibility_justification_label', style: ("display:none" unless @member.eligibility_clause? || true), class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :eligibility_justification, :class => 'form-control', style: ("display:none" unless @member.eligibility_clause? || true)
 
-      .control-group
-        = f.label :eligibility_justification, :class => 'control-label', id: 'eligibility_justification_label', style: ("display:none" unless @member.eligibility_clause?)
-        .controls
-          = f.text_field :eligibility_justification, :class => 'text_field', style: ("display:none" unless @member.eligibility_clause?)
+  .form-group.row#membership_fee{style: 'display:none'}
+    = f.label :membership_fee, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      %h1#membership_fee_dollars $-1
+      #membership_breakdown.text-muted
+      = f.hidden_field :amount_paid
 
+  .card.mb-3
+    .card-header{style: 'background-color: #f8efc8'}
+      Payment Details
+    .card-body{style: 'background-color: #f8efc8'}
 
-      .control-group#membership_fee{style: 'display:none'}
-        .controls
-          == Membership fee:
-          %h1#membership_fee_dollars $-1
-          #membership_breakdown.muted
-          = f.hidden_field :amount_paid
+      .form-group.row
+        = f.label :card_number, "Credit Card Number", class: 'col-sm-3 col-form-label'
+        .col-sm-9
+          = f.text_field :card_number, :placeholder => "Card Number", :class => 'form-control'
 
-      /.control-group
-      /  = f.label "Playing Big V or MMBL", :class => 'control-label'
-      /  .controls.btn-group{"data-toggle-name" => "member[representative_player]", "data-toggle" => "buttons-radio"}
-      /    %button#representative_button{:type => "button", :value => "true", :class => "btn", "data-toggle" => "button"} Yes
-      /    %button#non_representative_button{:type => "button", :value => "false", :class => "btn", "data-toggle" => "button"} No
-      /  = f.hidden_field :representative_player
+      .form-group.row
+        = f.label :expiry_month, "Expiry", class: 'col-sm-3 col-form-label'
+        .col-sm-3
+          = f.select :card_expiry_month, credit_card_months, {}, class: 'form-control'
+        .col-sm-3
+          = f.select :card_expiry_year, credit_card_years, {}, class: 'form-control'
 
-      .span12{style: "background-color:#f8efc8; padding-right: 30px; margin-bottom: 30px;"}
-        %h4{style: "margin:12px;"} Payment Details
+      .form-group.row
+        = f.label :card_cvv, "Card CVV", class: 'col-sm-3 col-form-label'
+        .col-sm-9
+          = f.text_field :card_cvv, :placeholder => "Security Code", :class => 'form-control'
 
-        /.control-group
-        /  = f.label :card_holder_name, "Name on credit card", :class => 'control-label'
-        /  .controls
-        /    = f.text_field :card_holder_name, :placeholder => "Card Holder's Name", :class => 'text_field'
+      .d-flex.justify-content-between
+        = image_tag("card-brands.png")
+        = link_to image_tag("powered_by_stripe.png"), "https://stripe.com", target: '_blank'
 
-        .control-group
-          = f.label :card_number, "Credit Card Number", :class => 'control-label'
-          .controls
-            = f.text_field :card_number, :placeholder => "Card Number", :class => 'text_field'
+  .form-group.row
+    = f.label :given_name, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :given_name, :class => 'form-control'
 
-        .control-group
-          = f.label :expiry_month, "Expiry", :class => 'control-label'
-          .controls
-            = f.select :card_expiry_month, credit_card_months, {}, {style: "width:90px"}
-            = f.select :card_expiry_year, credit_card_years, {}, {style: "width:90px"}
+  .form-group.row
+    = f.label :family_name, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :family_name, :class => 'form-control'
 
-        .control-group
-          = f.label :card_cvv, "Card CVV", :class => 'control-label'
-          .controls
-            = f.text_field :card_cvv, :placeholder => "Security Code", :class => 'text_field', style: "width:90px"
+  .form-group.row#email_row
+    = f.label :email, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :email, :class => 'form-control'
 
-        = link_to image_tag("powered_by_stripe.png", style: "float:right; margin:14px;"), "https://stripe.com", target: '_blank'
-        = image_tag("card-brands.png", style: "margin:14px;")
+  .form-group.row#postal_address_row
+    = f.label :postal_address, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_area :postal_address, :class => 'form-control', rows: 3
 
-      .control-group{style: "clear:left; margin-top: 35px;"}
-        = f.label :given_name, :class => 'control-label'
-        .controls
-          = f.text_field :given_name, :class => 'text_field'
+  .form-group.row
+    = f.label :gender, "Competition", class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      .btn-group.btn-group-toggle{"data-toggle-name" => "member[gender]", "data-toggle" => "buttons"}
+        %label.btn.btn-secondary
+          = f.radio_button :gender, "Male"
+          Men
+        %label.btn.btn-secondary
+          = f.radio_button :gender, "Female"
+          Women
 
-      .control-group
-        = f.label :family_name, :class => 'control-label'
-        .controls
-          = f.text_field :family_name, :class => 'text_field'
+  .form-group.row
+    = f.label :date_of_birth, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :date_of_birth, :class => 'form-control', placeholder: "dd/mm/yyyy"
 
-      .control-group#email_row
-        = f.label :email, :class => 'control-label'
-        .controls
-          = f.text_field :email, :class => 'text_field'
+  .form-group.row
+    = f.label :phone_number_mobile, "Phone Number", class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :phone_number_mobile, :class => 'form-control'
 
-      .control-group#postal_address_row
-        = f.label :postal_address, :class => 'control-label'
-        .controls
-          = f.text_area :postal_address, :class => 'text_area', rows: 3
+  .form-group.row
+    = f.label :phone_number_other, "Emergency Contact Phone Number", class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :phone_number_other, :class => 'form-control'
 
-      .control-group
-        = f.label :gender, "Competition", :class => 'control-label'
-        .controls.btn-group{"data-toggle-name" => "member[gender]", "data-toggle" => "buttons-radio"}
-          %button#gender_male{:type => "button", :value => "Male", :class => "btn", "data-toggle" => "button"} Men
-          %button{:type => "button", :value => "Female", :class => "btn", "data-toggle" => "button"} Women
-        = f.hidden_field :gender
+  .form-group.row
+    = f.label :new_member, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      .btn-group.btn-group-toggle{"data-toggle-name" => "member[new_member]", "data-toggle" => "buttons"}
+        %label.btn.btn-secondary#is_new_member
+          = f.radio_button :new_member, "true"
+          Yes
+        %label.btn.btn-secondary#existing_member
+          = f.radio_button :new_member, "false"
+          No
 
-      .control-group
-        = f.label :date_of_birth, :class => 'control-label'
-        .controls
-          = f.text_field :date_of_birth, :class => 'text_field', placeholder: "dd/mm/yyyy"
+  .form-group.row#singlet_numbers{style: ("display:none" if @member.new_member)}
+    = f.label :your_existing_mubc_singlet_numbers, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_field :your_existing_mubc_singlet_numbers, :class => 'form-control', placeholder: "eg. 4, 13"
 
-      .control-group
-        = f.label :phone_number_mobile, "Phone Number", :class => 'control-label'
-        .controls
-          = f.text_field :phone_number_mobile, :class => 'text_field'
+  .form-group.row#introductory_source{style: ("display:none" if !@member.new_member)}
+    = f.label :how_did_you_hear_about_the_club, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_area :how_did_you_hear_about_the_club, :class => 'form-control', rows: 3
 
-      .control-group
-        = f.label :phone_number_other, "Emergency Contact Phone Number", :class => 'control-label'
-        .controls
-          = f.text_field :phone_number_other, :class => 'text_field'
+  .form-group.row
+    = f.label :international_student, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      .btn-group.btn-group-toggle{"data-toggle-name" => "member[international_student]", "data-toggle" => "buttons"}
+        %label.btn.btn-secondary
+          = f.radio_button :international_student, "true"
+          Yes
+        %label.btn.btn-secondary
+          = f.radio_button :international_student, "false"
+          No
 
-      .control-group
-        = f.label :new_member, :class => 'control-label'
-        .controls.btn-group{"data-toggle-name" => "member[new_member]", "data-toggle" => "buttons-radio"}
-          %button#is_new_member{:type => "button", :value => "true", :class => "btn", "data-toggle" => "button"} Yes
-          %button#existing_member{:type => "button", :value => "false", :class => "btn", "data-toggle" => "button"} No
-        = f.hidden_field :new_member
+  .form-group.row
+    = f.label :availability, "Unavailable Dates", class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.text_area :availability, :class => 'form-control', rows: 3, placeholder: "eg. Overseas from June 1-14th and November 30-Feb 2nd and unavailable April 30th, June 3rd and November 16th"
+      .text-muted
+        We need to know well in advance in as much detail as possible when you will and won't be available to play Sunday night basketball so that we can place you in an appropriate team. The Seasons run year round from mid-january until mid-december.
 
-      .control-group#singlet_numbers{style: ("display:none" if @member.new_member)}
-        = f.label :your_existing_mubc_singlet_numbers, :class => 'control-label'
-        .controls
-          = f.text_field :your_existing_mubc_singlet_numbers, :class => 'text_field', placeholder: "eg. 4, 13"
+  .form-group.row
+    = f.label :portrait_photo, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      = f.hidden_field(:photo_cache)
+      = f.file_field(:photo)
+      .text-muted
+        If you are a
+        %b new member
+        please upload a portrait photo
+        so we can recognise you at training and allocate you to a team.
 
-      .control-group#introductory_source{style: ("display:none" if !@member.new_member)}
-        = f.label :how_did_you_hear_about_the_club, :class => 'control-label'
-        .controls
-          = f.text_area :how_did_you_hear_about_the_club, :class => 'text_area', rows: 3
+  .form-group.row
+    = f.label :terms_of_membership, class: 'col-sm-3 col-form-label'
+    .col-sm-9
+      %textarea.form-control{rows: 7, disabled: 'disabled'}~ Member.disclaimer
 
-      .control-group
-        = f.label :international_student, :class => 'control-label'
-        .controls.btn-group{"data-toggle-name" => "member[international_student]", "data-toggle" => "buttons-radio"}
-          %button{:type => "button", :value => "true", :class => "btn", "data-toggle" => "button"} Yes
-          %button{:type => "button", :value => "false", :class => "btn", "data-toggle" => "button"} No
-        = f.hidden_field :international_student
-
-      .control-group
-        = f.label :availability, "Unavailable Dates", :class => 'control-label'
-        .controls
-          = f.text_area :availability, :class => 'text_area', rows: 3, placeholder: "eg. Overseas from June 1-14th and November 30-Feb 2nd and unavailable April 30th, June 3rd and November 16th"
-          .muted
-            We need to know well in advance in as much detail as possible when you will and won't be available to play Sunday night basketball so that we can place you in an appropriate team. The Seasons run year round from mid-january until mid-december.
-
-      .control-group
-        = f.label :portrait_photo, :class => 'control-label'
-        .controls
-          = f.hidden_field(:photo_cache)
-          = f.file_field(:photo)
-          .muted
-            If you are a
-            %b new member
-            please upload a portrait photo
-            so we can recognise you at training and allocate you to a team.
-
-      .control-group
-        = f.label :terms_of_membership, :class => 'control-label'
-        .controls
-          %textarea.text_area{rows: 7, disabled: 'disabled'}~ Member.disclaimer
-
-  .muted * Even if you are an existing member from last year, we require you to fill out all the fields again so that your details can be kept up to date.
+  .text-muted * Even if you are an existing member from last year, we require you to fill out all the fields again so that your details can be kept up to date.
 
   .form-actions
     = f.submit "Submit", :class => 'btn btn-primary', id: 'submit_button'

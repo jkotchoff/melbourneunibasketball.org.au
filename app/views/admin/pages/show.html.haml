@@ -1,37 +1,38 @@
-- model_class = Page
+.container
+  - model_class = Page
 
-%p
-  %strong= model_class.human_attribute_name(:title) + ':'
-  %br
-  = @page.title
-%p
-  %strong= model_class.human_attribute_name(:author) + ':'
-  %br
-  = @page.author
-%p
-  %strong= model_class.human_attribute_name(:synopsis) + ':'
-  %br 
-  = @page.synopsis
-
-- if @page.summary_image?
   %p
-    %strong Summary Image:
+    %strong= model_class.human_attribute_name(:title) + ':'
     %br
-    = image_tag(@page.summary_image.url(:thumbnail))
-
-- if @page.pdf?
+    = @page.title
   %p
-    %strong PDF:
+    %strong= model_class.human_attribute_name(:author) + ':'
     %br
-    = link_to "Click here to download", @page.pdf_url
+    = @page.author
+  %p
+    %strong= model_class.human_attribute_name(:synopsis) + ':'
+    %br
+    = @page.synopsis
 
-.content
-  %strong= model_class.human_attribute_name(:content) + ':'
-  %br
-  = @page.content.html_safe
+  - if @page.summary_image?
+    %p
+      %strong Summary Image:
+      %br
+      = image_tag(@page.summary_image.url(:thumbnail))
 
-.form-actions
-  - back_link = (@page.class == NewsItem) ? admin_news_items_path : admin_pages_path
-  = link_to "Back", back_link, :class => 'btn'
-  = link_to "Edit", edit_admin_page_path(@page), :class => 'btn'
-  /= link_to "Destroy", [:admin, @page], :method => "delete", :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
+  - if @page.pdf?
+    %p
+      %strong PDF:
+      %br
+      = link_to "Click here to download", @page.pdf_url
+
+  .content
+    %strong= model_class.human_attribute_name(:content) + ':'
+    %br
+    = @page.content.html_safe
+
+  .form-actions
+    - back_link = (@page.class == NewsItem) ? admin_news_items_path : admin_pages_path
+    = link_to "Back", back_link, :class => 'btn btn-secondary'
+    = link_to "Edit", edit_admin_page_path(@page), :class => 'btn btn-secondary'
+    /= link_to "Destroy", [:admin, @page], :method => "delete", :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'

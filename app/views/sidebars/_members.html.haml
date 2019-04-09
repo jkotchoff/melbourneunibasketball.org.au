@@ -1,9 +1,6 @@
-%ul.nav.nav-list
-  %li{class: ('active' if params[:action] == 'index')}
-    = link_to "MUBC Membership", members_path
-  %li{class: ('active' if %w{ new create mubc_account_details review_paypal_payment confirm_paypal_purchase thankyou }.index(params[:action]))}
-    = link_to "Sign up for #{Date.today.year}", join_the_club_path
-  %li{class: ('active' if params[:action] == 'uniforms')}
-    = link_to Page::CONTACT_UNIFORMS, uniforms_path
-  %li{class: ('active' if params[:action] == 'documents_and_forms')}
-    = link_to Page::CONTACT_DOCUMENTS_AND_FORMS, documents_and_forms_path
+.card
+  %ul.list-group.list-group-flush
+    = link_to "MUBC Membership", members_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'index')]
+    = link_to "Sign up for #{Date.today.year}", join_the_club_path, class: ['list-group-item list-group-item-action', ('active' if %w{ new create mubc_account_details review_paypal_payment confirm_paypal_purchase thankyou }.index(params[:action]))]
+    = link_to Page::CONTACT_UNIFORMS, uniforms_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'uniforms')]
+    = link_to Page::CONTACT_DOCUMENTS_AND_FORMS, documents_and_forms_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'documents_and_forms')]

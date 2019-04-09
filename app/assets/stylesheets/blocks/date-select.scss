@@ -1,0 +1,11 @@
+.date-select {
+  display: flex;
+
+  .form-control {
+    margin-right: $spacer;
+
+    &:last-child {
+      margin-right: 0
+    }
+  }
+}

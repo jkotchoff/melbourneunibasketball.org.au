@@ -55,9 +55,9 @@ Page.create!(
       <p style="margin-top:10px; margin-bottom:0px;">
         <b>Season Fixtures</b>
         <ul class="unstyled">
-          <li><a href="#"><div class="muted">Big V (Saturdays, Victoria)</div>Div 1 Men</a></li>
+          <li><a href="#"><div class="text-muted">Big V (Saturdays, Victoria)</div>Div 1 Men</a></li>
           <li><a href="#">Div 2 Women</a><br/><br/></li>
-          <li><a href="#"><div class="muted">CYMS (Sundays, MSAC)</div>A Women 1</a></li>
+          <li><a href="#"><div class="text-muted">CYMS (Sundays, MSAC)</div>A Women 1</a></li>
           <li><a href="#">A Women 2</a></li>
           <li><a href="#">A Women 3</a></li>
           <li><a href="#">B Women</a></li>
@@ -69,10 +69,10 @@ Page.create!(
           <li><a href="#">D Men</a></li>
           <li><a href="#">E Men</a></li>
           <li><a href="#">G Men</a><br/><br/></li>
-          <li><a href="#"><div class="muted">Spartan League (Tuesdays, MSAC)</div>Spartan League B Women</a></li>
+          <li><a href="#"><div class="text-muted">Spartan League (Tuesdays, MSAC)</div>Spartan League B Women</a></li>
           <li><a href="#">Spartan League A Men</a><br/><br/></li>
-          <li><a href="#"><div class="muted">MMBL (Wednesdays, Melbourne)</div>Div 1 Women</a><br/><br/></li>
-          <li><a href="#"><div class="muted">VBHBA (Thursdays, MSAC)</div>A Men</a></li>
+          <li><a href="#"><div class="text-muted">MMBL (Wednesdays, Melbourne)</div>Div 1 Women</a><br/><br/></li>
+          <li><a href="#"><div class="text-muted">VBHBA (Thursdays, MSAC)</div>A Men</a></li>
         </ul>
       </p>
       <p>
@@ -83,16 +83,16 @@ Page.create!(
       </p>
       <p style="margin-top:10px; margin-bottom:0px;">
         <b>Training Times</b><br/>
-        <div class="muted">Domestic Women</div>Saturdays, 11am-12:30pm<br/><br/>
+        <div class="text-muted">Domestic Women</div>Saturdays, 11am-12:30pm<br/><br/>
 
-        <div class="muted">Domestic Men (grades A-B)</div>Saturdays, 9am-11am<br/><br/>
+        <div class="text-muted">Domestic Men (grades A-B)</div>Saturdays, 9am-11am<br/><br/>
 
-        <div class="muted">Domestic Men (grades C-G)</div>Saturdays, 11am-12:30pm<br/><br/>
+        <div class="text-muted">Domestic Men (grades C-G)</div>Saturdays, 11am-12:30pm<br/><br/>
         
-        <div class="muted">Big V Men</div> Mondays &amp; Thursdays, 8pm-10pm<br/><br/>
-        <div class="muted">Big V Women</div> Mondays &amp; Thursdays, 6:30pm-8:30pm<br/><br/>
+        <div class="text-muted">Big V Men</div> Mondays &amp; Thursdays, 8pm-10pm<br/><br/>
+        <div class="text-muted">Big V Women</div> Mondays &amp; Thursdays, 6:30pm-8:30pm<br/><br/>
         
-        <div class="muted">* All training is held at the Melbourne Uni Sports Center</div>
+        <div class="text-muted">* All training is held at the Melbourne Uni Sports Center</div>
       </p>  
   }
 )

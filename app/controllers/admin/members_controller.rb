@@ -3,7 +3,7 @@ class Admin::MembersController < Admin::BaseController
   before_action :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy]
 
   def index
-    @selected_year = member_params[:year].present? ? member_params[:year].to_i : Date.today.year
+    @selected_year = params[:year].present? ? params[:year].to_i : Date.today.year
     @members = Member.not_expiring_soon(@selected_year).order(:given_name)
     @expiring_members = Member.expiring_soon(@selected_year).order(:given_name)
     @member_count = @members.length
@@ -35,20 +35,20 @@ class Admin::MembersController < Admin::BaseController
   end
 
   def acknowledge_payment
-    @member = Member.find(member_params[:id])
-    @member.update_attributes(payment_confirmed: true, payment_acknowledgement: member_params[:payment_acknowledgement])
+    @member = Member.find(params[:id])
+    @member.update_attributes(payment_confirmed: true, payment_acknowledgement: params[:payment_acknowledgement])
     MemberMailer.signup_notification(@member).deliver
     redirect_to pending_admin_members_path, flash: {notice: "Payment acknowledged for #{@member.name}"}
   end
 
   def edit
-    @member = Member.find(member_params[:id])
+    @member = Member.find(params[:id])
   end
 
   def update
-    @member = Member.find(member_params[:id])
+    @member = Member.find(params[:id])
 
-    if @member.update_attributes(member_params[:member])
+    if @member.update_attributes(member_params)
       redirect_to [:admin, @member], notice: "#{@member.name} was successfully updated."
     else
       render action: "edit"
@@ -56,11 +56,11 @@ class Admin::MembersController < Admin::BaseController
   end
 
   def show
-    @member = Member.find(member_params[:id])
+    @member = Member.find(params[:id])
   end
 
   def destroy
-    @member = Member.find(member_params[:id])
+    @member = Member.find(params[:id])
     member_name = @member.name
     @member.destroy
 

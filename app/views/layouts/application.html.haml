@@ -6,6 +6,7 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %title= content_for?(:title) ? yield(:title) : "Melbourneunibasketball"
     = csrf_meta_tags
+    = tinymce_assets
     = stylesheet_link_tag "application", :media => "all"
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
     = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
@@ -17,39 +18,76 @@
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
 
-
   %body
-    .navbar.navbar-default.navbar-static-top
-      %a.navbar-brand(href="/")= image_tag "logo.png"
-      /%div#bigv_champs.visible-desktop
-      /  2004, 2009, 2010
-      /  %br
-      /  Big V Mens Champions
-      .container
-        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to "News Archive", archived_news_path
-            %li= link_to "Event Calendar", event_calendar_path
-            %li= link_to "About MUBC", about_path
-            %li= link_to "Membership", members_path
+    %nav.navbar.navbar-expand-md.navbar-dark.fixed-top
+      %a.navbar-brand(href="/")
+        = image_tag "logo.png"
 
-    .container
+      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+
+      .collapse.navbar-collapse#navbarSupportedContent
+        %ul.navbar-nav.mr-auto
+          - if @admin
+            - controller_name = params[:controller].split("/").last
+            %li{class: ['nav-item', ('active' if  controller_name == 'news_items' or @page.try(:class) == NewsItem)]}
+              = link_to "News Admin", admin_news_items_path, class: 'nav-link'
+            %li{class: ['nav-item', ('active' if  controller_name == 'pages' and @page.try(:class) != NewsItem)]}
+              = link_to "Pages Admin", admin_pages_path, class: 'nav-link'
+            %li{class: ['nav-item', ('active' if  controller_name == 'members' and params[:action] != 'pending')]}
+              = link_to "Members Admin", admin_members_path, class: 'nav-link'
+            %li{class: ['nav-item', ('active' if  controller_name == 'members' and params[:action] == 'pending')]}
+              = link_to "Pending Member Applications", pending_admin_members_path, class: 'nav-link'
+          - else
+            %li{class: ['nav-item', ('active' if params[:controller] == 'news' and !['dribbling_balls', 'index', 'event_calendar'].index(params[:action]))]}
+              = link_to "News Archive", archived_news_path, class: 'nav-link'
+            %li{class: ['nav-item', ('active' if params[:action] == 'event_calendar')]}
+              = link_to "Event Calendar", event_calendar_path, class: 'nav-link'
+            %li{class: ['nav-item', ('active' if params[:controller] == 'about')]}
+              = link_to "About MUBC", about_path, class: 'nav-link'
+            %li{class: ['nav-item', ('active' if params[:controller] == 'members')]}
+              = link_to "Membership", members_path, class: 'nav-link'
+
+      %span.navbar-text.small.d-none.d-lg-block
+        Big V Mens Champions 2004, 2009, 2010
+
+    .container-fluid
       .row
-        .col-lg-9
-          = bootstrap_flash
-          = yield
-        .col-lg-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
-      %footer
-        %p &copy; Company 2019
+        - if @left_sidebar
+          .col-md-3
+            = render partial: @left_sidebar
+
+        - if @left_sidebar || @right_sidebar
+          .col-md-9
+            = render 'alerts'
+            = yield
+        - else
+          .col-md-12
+            = render 'alerts'
+            = yield
+
+        .col-md-3
+          - if @right_sidebar
+            = @right_sidebar.content.html_safe
+
+      %footer.pt-4.my-md-5.pt-md-5.small.text-muted
+        .container-fluid
+          .d-flex.justify-content-between
+            .flex-grow-1
+              %p
+                © Melbourne University Basketball Club #{Date.today.year}.
+                - if @current_page
+                  This page was last updated
+                  - if @current_page.author?
+                    by #{@current_page.author}
+                  on #{@current_page.updated_at.to_s(:month_day_year)}.
+                %br
+                This page, its contents and style, are the responsibility of the author and do not necessarily represent the views, policies or opinions of The University of Melbourne.
+            %div
+              - if @current_page
+                Administer
+                = link_to "Page", edit_admin_page_path(@current_page)
+                |
+                = link_to "Site", admin_path
+              - else
+                = link_to "Administer Site", admin_path
