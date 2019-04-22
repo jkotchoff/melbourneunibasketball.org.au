@@ -20,7 +20,7 @@ gem 'pg'
 gem 'puma'                        # Heroku's recommended web server
 gem 'stripe' # For taking membership payments
 gem 'tinymce-rails'
-gem 'tinymce-rails-imageupload'
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem "workless"
 gem 'attr_encrypted'
 gem 'blind_index'
