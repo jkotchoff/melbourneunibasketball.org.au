@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.2.0'
+gem 'rails', '5.2.3'
 ruby '2.4.2'
 
 gem 'awesome_print'
