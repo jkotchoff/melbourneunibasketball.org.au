@@ -31,12 +31,11 @@ feature "Stripe Membership Payment" do
       fill_in "Given name", :with => "Phil"
       fill_in "Family name", :with => "Ashworth"
       find(:xpath, "//input[@id='member_email']").set users_email
-      find(:xpath, "//input[@id='member_gender']").set "Male"
+      find(:xpath, "//input[@id='member_gender_male']").set true
       find(:xpath, "//input[@id='member_amount_paid']", visible: false).set "110"
       fill_in "Date of birth", :with => "01/01/1940"
       fill_in "member[phone_number_mobile]", :with => "1800 PISTOLS"
       fill_in "member[phone_number_other]", :with => "1800 ERICA"
-      click_button 'gender_male'
       Timecop.freeze(april_3_2017) {
         click_button 'Submit'
       }
