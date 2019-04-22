@@ -11,7 +11,7 @@
  */
 
 $white: #FFFFFF;
-$primary: #24292e;
+$primary: #0000EE;
 $navbar-padding-y: 0;
 $navbar-brand-padding-y: 0;
 $navbar-dark-color: rgba($white, 1);
@@ -36,3 +36,4 @@ body {
   padding-top: 110px;
 }
 
+.container-fluid a:visited { color:#551A8B !important; }
