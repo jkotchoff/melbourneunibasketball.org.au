@@ -27,7 +27,7 @@
         %span.navbar-toggler-icon
 
       .collapse.navbar-collapse#navbarSupportedContent
-        %ul.navbar-nav.mr-auto
+        %ul.navbar-nav.mr-auto#topnav
           - if @admin
             - controller_name = params[:controller].split("/").last
             %li{class: ['nav-item', ('active' if  controller_name == 'news_items' or @page.try(:class) == NewsItem)]}
@@ -62,7 +62,7 @@
             = render 'alerts'
             = yield
         - else
-          .col-md-12
+          .col-md-12#page_content
             = render 'alerts'
             = yield
 

@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '5.2.0'
 ruby '2.4.2'
 
+gem 'awesome_print'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave'
@@ -55,7 +56,6 @@ group :test do
 end
 
 group :test, :development do
-  gem 'awesome_print'
   gem "rspec-rails"
   gem 'byebug'
 end

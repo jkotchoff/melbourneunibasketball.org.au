@@ -37,7 +37,7 @@
   .form-group.row
     = f.label :content, "Content", :class => 'col-sm-3 col-form-label', data: ({ help: t('view.inline_help.news_item.content_hint') } if @page.class == NewsItem)
     .col-sm-9
-      = f.text_area :content, :class => 'form-control tinymce', rows: 3
+      = f.text_area :content, :class => 'form-control tinymce', rows: 6
 
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'

@@ -24,7 +24,7 @@ class Member < ActiveRecord::Base
   LATE_FEE = 10
 
   def credit_card_details
-    if new_record? && !Rails.env.test? && amount_paid > 0
+    if new_record? && !Rails.env.test? && amount_paid.to_i > 0
       errors.add(:card_number) if card_number.blank?
       errors.add(:card_expiry_month) if card_expiry_month.blank?
       errors.add(:card_expiry_year) if card_expiry_year.blank?

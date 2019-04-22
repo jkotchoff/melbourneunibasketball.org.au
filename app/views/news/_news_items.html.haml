@@ -1,31 +1,28 @@
 %div
   - news_items.each_with_index do |news_item, i|
-    .row.mb-5
-      .col-sm-12
-        %h4
-          = link_to news_item.title, article_path(news_item.year, news_item)
-
+    .news_item
+      %h4
+        = link_to news_item.title, article_path(news_item.year, news_item)
       - if news_item.summary_image?
-        .col-sm-2{class: (i % 2 == 0) ? 'order-4' : 'order-3'}
+        .news_image{class: (i % 2 == 0 ? 'news_image_right' : 'news_image_left')}
           - if news_item.content.blank?
             = link_to image_tag(news_item.summary_image.url(:thumbnail, secure: true)), news_item.summary_image.url
           - else
             = link_to image_tag(news_item.summary_image.url(:thumbnail, secure: true)), article_path(news_item.year, news_item)
       - elsif news_item.has_pdf?
-        .col-sm-2.order-1
+        .news_image_left
           = link_to news_item.pdf_link, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{news_item.title}']);"} do
             = image_tag('pdf_icon.png', id: 'pdf')
             %br
             Click here to download
 
-      .col-sm-10.order-2
-        .text-muted
-          = news_item.created_at.to_s(:month_day_year)
-          - unless news_item.author.blank?
-            == - submitted by
-            = link_to(news_item.author, author_path(news_item.author))
+      .text-muted
+        = news_item.created_at.to_s(:month_day_year)
+        - unless news_item.author.blank?
+          == - submitted by
+          = link_to(news_item.author, author_path(news_item.author))
+      %br
+      = news_item.summary.try(:html_safe)
+      - if news_item.has_page?
         %br
-        = news_item.summary.try(:html_safe)
-        - if news_item.has_page?
-          %br
-          = link_to 'Read Full Article', article_path(news_item.year, news_item)
+        = link_to 'Read Full Article', article_path(news_item.year, news_item)

@@ -89,7 +89,7 @@
       = f.text_area :postal_address, :class => 'form-control', rows: 3
 
   .form-group.row
-    = f.label :gender, "Competition", class: 'col-sm-3 col-form-label'
+    = f.label :gender, "Competition", class: 'col-sm-3 col-form-label', style: ('color:red' if @member.errors[:gender].present? )
     .col-sm-9
       .btn-group.btn-group-toggle{"data-toggle-name" => "member[gender]", "data-toggle" => "buttons"}
         %label.btn.btn-secondary
