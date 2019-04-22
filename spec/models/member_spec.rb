@@ -8,6 +8,15 @@ describe Member do
     specify{ Timecop.freeze(july_2_2013) { subject.age_and_gender.should == '23yo male' }}
   end
 
+  describe "#payment_confirmed" do
+    context "when creating a life member or committee member" do
+      it "sets to true" do
+        expect(Member.make!(eligibility_clause: "life_member").payment_confirmed).to eq (true)
+        expect(Member.make!(eligibility_clause: "committee_member").payment_confirmed).to eq (true)
+      end
+    end
+  end
+
   context "when members exist for multiple years" do
     let(:jan_31_2012){ Date.new(2012,  1, 31) }
     let(:mar_31_2012){ Date.new(2012,  3, 31) }

@@ -12,6 +12,8 @@ class Member < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   process_in_background :photo
 
+  before_validation :activate_club_volunteers
+
   scope :for_year, lambda{|year| where("created_at >= ? and created_at < ?", self.club_year_start(year), self.club_year_end(year))}
   scope :for_calendar_year, lambda{|year| where("created_at >= ? and created_at < ?", DateTime.parse("Jan 1 #{year}"), DateTime.parse("Dec 31 #{year}").end_of_day)}
   scope :current, lambda{ for_year(Date.today.year) }
@@ -159,4 +161,12 @@ d) Engage in a serious breach of a University or MU Sport policy
 That MU Sport may act against me to suspend or terminate my membership, and in the event that I am a University staff member or student, that MU Sport reserves the right to take further disciplinary action under the relevant University statutes, regulations, policies and procedures.
     }
   end
+
+private
+  def activate_club_volunteers
+    if new_record? && %w{ life_member committee_member }.include?(eligibility_clause)
+      self.payment_confirmed = true
+    end
+  end
+
 end
