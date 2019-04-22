@@ -30,7 +30,7 @@ class NewsController < ApplicationController
   end
 
   def news_item
-    @page = Page.find(params[:article])
+    @current_page = Page.friendly.find(params[:article])
     render "pages/show"
   end
 
