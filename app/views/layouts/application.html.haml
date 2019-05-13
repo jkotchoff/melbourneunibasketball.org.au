@@ -91,3 +91,12 @@
                 = link_to "Site", admin_path
               - else
                 = link_to "Administer Site", admin_path
+
+- if Rails.env.production?
+  %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-38749659-1"}
+  :javascript
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-38749659-1');
