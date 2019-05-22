@@ -1,6 +1,6 @@
 class Admin::MembersController < Admin::BaseController
 
-  before_action :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy]
+  before_action :require_superadmin, only: [:acknowledge_payment, :edit, :update, :destroy, :refund]
 
   def index
     @selected_year = params[:year].present? ? params[:year].to_i : Date.today.year
@@ -57,6 +57,18 @@ class Admin::MembersController < Admin::BaseController
 
   def show
     @member = Member.find(params[:id])
+  end
+
+  def refund
+    @member = Member.find(params[:id])
+
+    stripe_service = StripeRefundService.new(@member)
+    if stripe_service.call
+      redirect_to [:admin, @member], notice: stripe_service.success_message
+    else
+      flash.now[:error] = stripe_service.error
+      render action: "show"
+    end
   end
 
   def destroy

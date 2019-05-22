@@ -50,5 +50,14 @@ feature "Stripe Membership Payment" do
     member.email.should == users_email
     member.stripe_customer_id.should_not be_nil
     member.payment_confirmed.should == true
+
+    # Try refunding the membership
+    lambda {
+      visit admin_member_path(member)
+      click_link 'Refund'
+    }.should change{ Member.paid.count }.by(-1)
+    page.should have_content("Phil Ashworth's $110 membership fee has been refunded")
+    member.reload.payment_acknowledgement.should == "$110 Stripe fee was refunded"
+
   end
 end

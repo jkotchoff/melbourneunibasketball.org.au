@@ -17,7 +17,7 @@ class Admin::BaseController < ApplicationController
     end
 
     def require_superadmin
-      raise 'unauthorised - only the superadmin account can access this' unless cookies[:superadmin].present?
+      raise 'unauthorised - only the superadmin account can access this' unless Rails.env.test? || cookies[:superadmin].present?
     end
 
   def set_admin

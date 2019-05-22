@@ -16,7 +16,7 @@ NewsItem.blueprint do
 end
 
 Member.blueprint do
-  eligibility_clause     { "life_member" }
+  eligibility_clause     { "enrolled_student_mu" }
   payment_method         { "paypal" }
   given_name             { "John" }
   family_name            { "Smith" }

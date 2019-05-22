@@ -78,6 +78,10 @@
     %br
     = @member.amount_paid
   %p
+    %strong= model_class.human_attribute_name(:stripe_customer_id) + ':'
+    %br
+    = @member.stripe_customer_id
+  %p
     %strong= model_class.human_attribute_name(:payment_confirmed) + ':'
     %br
     = @member.payment_confirmed
@@ -94,3 +98,11 @@
     = link_to "Back", admin_members_path, :class => 'btn btn-secondary'
     = link_to "Edit", edit_admin_member_path(@member), :class => 'btn btn-secondary'
     /= link_to "Destroy", [:admin, @member], :method => "delete", :data => { :confirm => t('.confirm', :default => 'Are you sure?' }, :class => 'btn btn-danger'
+
+  - if @member.amount_paid.to_f > 0
+    %br
+    %br
+    %br
+    %br
+    %br
+    = link_to "Refund", refund_admin_member_path(@member), method: :post, class: 'btn btn-danger', data: {confirm: "Are you sure? This will refund #{@member.given_name}'s membership payment."}

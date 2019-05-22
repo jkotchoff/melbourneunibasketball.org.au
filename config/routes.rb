@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :members do
       member do
         get 'acknowledge_payment'
+        post 'refund'
       end
 
       collection do
