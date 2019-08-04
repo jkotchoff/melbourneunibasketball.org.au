@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2017_09_17_033544) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "content_images", id: :serial, force: :cascade do |t|
     t.integer "page_id"
     t.string "image"

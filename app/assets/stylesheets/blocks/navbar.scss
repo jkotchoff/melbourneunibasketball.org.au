@@ -6,3 +6,8 @@
   background-color: #24292e;
 }
 
+
+/* work-around for dissapearing navbar background color */
+.navbar-nav li {
+  background-color: #24292e !important;
+}
