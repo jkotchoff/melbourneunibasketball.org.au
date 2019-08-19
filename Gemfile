@@ -15,7 +15,7 @@ gem "friendly_id"
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'listen'
-gem 'mini_magick'
+gem 'mini_magick', ">= 4.9.4"
 gem 'nokogiri'
 gem 'pg'
 gem 'puma'                        # Heroku's recommended web server
