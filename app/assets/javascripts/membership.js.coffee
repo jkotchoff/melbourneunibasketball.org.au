@@ -1,6 +1,7 @@
 #representative_fee = 20
 
 rebuild_price = ->
+  big_v_fee     = parseInt($('#annual_big_v_fee').val())
   student_fee     = parseInt($('#annual_student_fee').val())
   non_student_fee = parseInt($('#annual_non_student_fee').val())
   late_fee        = parseInt($('#late_fee').val())
@@ -19,6 +20,9 @@ rebuild_price = ->
     when "enrolled_student_mu"
       fee_breakdown.push('$' + student_fee + ' for a Melbourne Uni student')
       cost += student_fee
+    when "big_v_player"
+      fee_breakdown.push('$' + big_v_fee + ' for a Big V Player')
+      cost = big_v_fee
     else
       fee_breakdown.push('$' + non_student_fee + ' for an eligible non-student')
       cost += non_student_fee
@@ -40,7 +44,7 @@ rebuild_price = ->
      $('#membership_fee').hide()
 
 rebuild_eligibility_clause = ->
-  if ["life_member", "committee_member", "deferred_student", ""].indexOf($('#member_eligibility_clause').val()) >= 0
+  if ["life_member", "committee_member", "deferred_student", "big_v_player", ""].indexOf($('#member_eligibility_clause').val()) >= 0
     $('#member_eligibility_justification').hide()
     $('#eligibility_justification_label').hide()
   else

@@ -68,6 +68,7 @@ module PaypalExpressHelper
       'Enrolled Student at other tertiary institution' => 'enrolled_student_elsewhere',
       'University Graduate' => 'university_graduate',
       "University Staff" => "university_staff",
+      "Big V Player" => "big_v_player",
       "Working on a Melbourne Uni site" => "working_on_site",
       "Resident, Member or Staff at a Melbourne Uni affiliated college or hall of residence" => "college_affiliation",
       "Deferred Melbourne Uni Student" => "deferred_student",

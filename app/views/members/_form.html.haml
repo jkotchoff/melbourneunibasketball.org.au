@@ -13,6 +13,7 @@
   %br
 
 = form_for @member, :html => { id: 'membership_form' } do |f|
+  = hidden_field_tag "big_v_fee", Member.big_v_fee, { :id => "annual_big_v_fee" }
   = hidden_field_tag "annual_student_fee", Member.student_fee, { :id => "annual_student_fee" }
   = hidden_field_tag "annual_non_student_fee", Member.non_student_fee, { :id => "annual_non_student_fee" }
   = hidden_field_tag "late_fee", Member.late_fee, { :id => "late_fee" }

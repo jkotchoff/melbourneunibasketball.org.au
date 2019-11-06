@@ -38,19 +38,23 @@ class Member < ActiveRecord::Base
     for_calendar_year(year).paid.sum(&:amount_paid)
   end
 
+  def self.big_v_fee
+    650
+  end
+
   def self.student_fee
     if Date.today >= self.winter_season_start
-      40
+      50
     else
-      70
+      80
     end
   end
 
   def self.non_student_fee
     if Date.today >= self.winter_season_start
-      70
+      90
     else
-      130
+      150
     end
   end
 
