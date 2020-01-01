@@ -42,6 +42,6 @@
             %br
             %br
             %h4== #{@expiring_members.length} members Expiring on April 1st, #{Date.today.year}:
-            = link_to_function "Show", "$('.expiring').show(); $(this).hide();", :class => 'btn btn-primary right'
+            = link_to "Show", "#", onclick: "$('.expiring').show(); $(this).hide(); return false;", :class => 'btn btn-primary right'
 
         = render partial: 'list', locals: {members: @expiring_members, expiring: true}

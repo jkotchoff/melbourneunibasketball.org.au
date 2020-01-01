@@ -25,6 +25,6 @@
     %br
     %br
     %h3 Older transactions (> 1 week)
-    = link_to_function "Show", "$('#older_transactions').show(); $(this).hide();", :class => 'btn btn-primary'
+    = link_to "Show", "#", onclick: "$('#older_transactions').show(); $(this).hide(); return false;", :class => 'btn btn-primary'
     #older_transactions{style: "display:none"}
       = render partial: "pending", locals: { unpaid_members: @old_unpaid_members }
