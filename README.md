@@ -1,25 +1,41 @@
-# melbourneunibasketball.org.au
+<p align="center">
+  <img src="doc/mubc_logo.png"><br/>
+  <h2 align="center">melbourneunibasketball.org.au</h2>
+</p>
 
-This is the Ruby on Rails sourcecode behind melbourneunibasketball.org.au
+This is the Ruby on Rails source code for [melbourneunibasketball.org.au](https://melbourneunibasketball.org.au)
 
 ## Development Environment
 
-$ git clone git@github.com:cornflakesuperstar/melbourneunibasketball.org.au.git
-$ export PAYPAL_LOGIN="..."
-$ export PAYPAL_PASSWORD="..."
-$ export PAYPAL_SIGNATURE="..."
-$ export ADMIN_USERNAME="..."
-$ export ADMIN_PASSWORD="..."
+```
+git clone git@github.com:cornflakesuperstar/melbourneunibasketball.org.au.git
+export PAYPAL_LOGIN="..."
+export PAYPAL_PASSWORD="..."
+export PAYPAL_SIGNATURE="..."
+export ADMIN_USERNAME="..."
+export ADMIN_PASSWORD="..."
+```
 
 ## Deployment
 
-$ heroku config:add PAYPAL_LOGIN="..."
-$ heroku config:add PAYPAL_PASSWORD="..."
-$ heroku config:add PAYPAL_SIGNATURE="..."
-$ heroku config:add ADMIN_USERNAME="..."
-$ heroku config:add ADMIN_PASSWORD="..."
+```
+heroku config:add PAYPAL_LOGIN="..."
+heroku config:add PAYPAL_PASSWORD="..."
+heroku config:add PAYPAL_SIGNATURE="..."
+heroku config:add ADMIN_USERNAME="..."
+heroku config:add ADMIN_PASSWORD="..."
+```
 
-TODO:
+
+## Related links
+
+- Website URL: https://melbourneunibasketball.org.au
+- Staging Test environment: https://mubc-staging.herokuapp.com
+- Stripe: https://dashboard.stripe.com
+- Documentation: https://docs.google.com/document/d/1h4MdG9zwtAxqLCsRpVpgZdGaDhKGJvyI8zAL3rQoQiY/edit (viewable by the MUBC committee per the `..@melbourneuni.org.au` google domain administrative permissions)
+
+## TODO:
+- Automate newsletter uploading from a PDF document to S3 / website
 - Create a report that lists email addresses of last years members who are not signed up for this year yet
 - Make student number compulsory on the MUBC signups form
 - adjust the date for which membership prices are reduced? (currently august 1st - Phil sent an email about this on July 19th *2016?*
@@ -45,13 +61,7 @@ TODO:
 - add a 'favourite articles' link section to the homepage eg. http://espn.go.com/espn/story/_/page/Michael-Jordan/michael-jordan-not-left-building
 - face detection: https://devcenter.heroku.com/articles/cloudinary ?
 - Have life members automatically renewed each year (or some variation of this).
-NOT DOING - MUSA CAN PAY FOR THIS- Thanks for the membership data, could the club please adjust your online form for next year so current students can indicate whether they are engaged in under or post grad studies
-
-DONE - add 'date_payment_acknowledged' data to CSV spreadsheet
-DONE - changing email addresses in admin is setting amount paid to $0
-DONE - The $10 late fee be removed for the summer season. So, for example, people who sign up after 1 August don't pay the late fee
-
-Tasks for Waylyn:
+- MUSA request: Thanks for the membership data, could the club please adjust your online form for next year so current students can indicate whether they are engaged in under or post grad studies
 - administer and release a monthly 'dribbling balls' newsletter
 - update sponsors on website
 - manage game day programs and visiting/away team welcome notes
@@ -77,8 +87,6 @@ Tasks for Waylyn:
 - record, edit and publish domestic finals for youtube
 - formalise and document all administrative and volunteer roles for the club in google docs
 
-
-New tasks to mention:
-  keep an eye on stock levels
-  tournament promotion
-  social promotion
+DONE - add 'date_payment_acknowledged' data to CSV spreadsheet
+DONE - changing email addresses in admin is setting amount paid to $0
+DONE - The $10 late fee be removed for the summer season. So, for example, people who sign up after 1 August don't pay the late fee
