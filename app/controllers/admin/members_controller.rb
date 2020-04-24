@@ -5,6 +5,7 @@ class Admin::MembersController < Admin::BaseController
   def index
     @selected_year = params[:year].present? ? params[:year].to_i : Date.today.year
     @members = Member.not_expiring_soon(@selected_year).order(:given_name)
+    @refunded_members = Member.for_year(@selected_year).refunded.order(:given_name)
     @expiring_members = Member.expiring_soon(@selected_year).order(:given_name)
     @member_count = @members.length
     males = @members.select{|m| m.gender == "Male"}
@@ -66,7 +67,7 @@ class Admin::MembersController < Admin::BaseController
     if stripe_service.call
       redirect_to [:admin, @member], notice: stripe_service.success_message
     else
-      flash.now[:error] = stripe_service.error
+      flash.now[:error] = stripe_service.error_message
       render action: "show"
     end
   end

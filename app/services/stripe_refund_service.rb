@@ -1,4 +1,6 @@
 class StripeRefundService
+  ACKNOWLEDGEMENT = "Stripe fee was refunded"
+
   def initialize(member)
     @member = member
     @fee = @member.amount_paid
@@ -11,10 +13,11 @@ class StripeRefundService
     @member.update_attributes(
       amount_paid: 0,
       payment_confirmed: false,
-      payment_acknowledgement: "$#{@fee} Stripe fee was refunded"
+      payment_acknowledgement: "$#{@fee} #{ACKNOWLEDGEMENT}"
     )
   rescue Exception => e
     @error = e
+    false
   end
 
   def success_message

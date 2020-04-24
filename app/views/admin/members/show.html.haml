@@ -80,12 +80,16 @@
   %p
     %strong= model_class.human_attribute_name(:stripe_customer_id) + ':'
     %br
-    = @member.stripe_customer_id
+    - if @member.stripe_customer_id.present?
+      - if Rails.env.production?
+        = link_to @member.stripe_customer_id, "https://dashboard.stripe.com/customers/#{@member.stripe_customer_id}"
+      - else
+        = link_to @member.stripe_customer_id, "https://dashboard.stripe.com/test/customers/#{@member.stripe_customer_id}"
   %p
     %strong= model_class.human_attribute_name(:payment_confirmed) + ':'
     %br
     = @member.payment_confirmed
-  %p
+  %p{class: ("bg-danger text-white p-3" if @member.refunded?)}
     %strong= model_class.human_attribute_name(:payment_acknowledgement) + ':'
     %br
     = @member.payment_acknowledgement

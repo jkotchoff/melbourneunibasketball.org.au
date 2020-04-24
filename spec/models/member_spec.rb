@@ -17,6 +17,39 @@ describe Member do
     end
   end
 
+  describe "#refunded" do
+    context "when the member has been refunded" do
+      it "checks if a stripe refund exists" do
+        refunded_member = Member.new(
+          payment_acknowledgement: "$80 Stripe fee was refunded",
+          payment_confirmed: false,
+          amount_paid: 0,
+        )
+        expect(refunded_member.refunded?).to be true
+      end
+    end
+
+    context "when the member has NOT been refunded" do
+      it "is false for a paid up member" do
+        paid_member = Member.new(
+          payment_acknowledgement: "",
+          payment_confirmed: true,
+          amount_paid: 80,
+        )
+        expect(paid_member.refunded?).to be false
+      end
+
+      it "is false for an unpaid and un-refunded member" do
+        unpaid_member = Member.new(
+          payment_acknowledgement: nil,
+          payment_confirmed: false,
+          amount_paid: nil,
+        )
+        expect(unpaid_member.refunded?).to be false
+      end
+    end
+  end
+
   context "when members exist for multiple years" do
     let(:jan_31_2012){ Date.new(2012,  1, 31) }
     let(:mar_31_2012){ Date.new(2012,  3, 31) }

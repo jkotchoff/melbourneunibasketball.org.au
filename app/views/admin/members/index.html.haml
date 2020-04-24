@@ -45,3 +45,11 @@
             = link_to "Show", "#", onclick: "$('.expiring').show(); $(this).hide(); return false;", :class => 'btn btn-primary right'
 
         = render partial: 'list', locals: {members: @expiring_members, expiring: true}
+
+  - if @refunded_members.present?
+    %hr
+    Refunded Memberships:
+    %table.table.table-striped
+      %tbody
+        - @refunded_members.each do
+          = render partial: 'list', locals: {members: @refunded_members, expiring: false}

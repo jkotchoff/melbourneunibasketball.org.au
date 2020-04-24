@@ -21,6 +21,7 @@ class Member < ActiveRecord::Base
   scope :expiring_soon, lambda{|year| for_year(year).paid.where("created_at < ?", Date.new(year)) }
   scope :paid, -> { where(payment_confirmed: true).order('family_name ASC') }
   scope :unpaid, -> { where(payment_confirmed: false).order('created_at DESC') }
+  scope :refunded, -> { where("amount_paid = ? and payment_acknowledgement ilike ?", 0, '%' + StripeRefundService::ACKNOWLEDGEMENT) }
 
   # Note, this isn't being applied to winter season signups
   LATE_FEE = 10
@@ -121,6 +122,13 @@ class Member < ActiveRecord::Base
 
   def male?
     gender.to_s.downcase == "male"
+  end
+
+  def refunded?
+    acknowledged_refund = payment_acknowledgement.to_s.include?(
+      StripeRefundService::ACKNOWLEDGEMENT
+    )
+    acknowledged_refund && !payment_confirmed && amount_paid.to_f.zero?
   end
 
   def age_and_gender
