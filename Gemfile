@@ -5,7 +5,7 @@ ruby '2.5.7'
 
 gem 'awesome_print'
 gem 'bootsnap', require: false
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap', '~> 4.4.1'
 gem 'carrierwave'
 gem 'carrierwave_backgrounder', :github => 'lardawge/carrierwave_backgrounder'
 gem 'cloudinary'
@@ -19,7 +19,7 @@ gem 'mini_magick', ">= 4.9.4"
 gem 'nokogiri'
 gem 'pg'
 gem 'puma'                        # Heroku's recommended web server
-gem 'stripe' # For taking membership payments
+gem 'stripe', '~> 4.14.0' # For taking membership payments
 gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem "workless"
