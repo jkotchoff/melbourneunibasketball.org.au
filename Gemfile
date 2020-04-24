@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.2.3'
+gem 'rails', '5.2.4.2'
 ruby '2.5.7'
 
 gem 'awesome_print'
@@ -22,7 +22,6 @@ gem 'puma'                        # Heroku's recommended web server
 gem 'stripe', '~> 4.14.0' # For taking membership payments
 gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
-gem "workless"
 gem 'attr_encrypted'
 gem 'blind_index'
 
