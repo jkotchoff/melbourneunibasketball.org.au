@@ -51,5 +51,4 @@
     Refunded Memberships:
     %table.table.table-striped
       %tbody
-        - @refunded_members.each do
-          = render partial: 'list', locals: {members: @refunded_members, expiring: false}
+        = render partial: 'list', locals: {members: @refunded_members, expiring: false}
