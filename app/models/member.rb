@@ -40,7 +40,7 @@ class Member < ActiveRecord::Base
   end
 
   def self.big_v_fee
-    650
+    600
   end
 
   def self.student_fee
