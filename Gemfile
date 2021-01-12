@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '5.2.4.2'
-ruby '2.5.7'
+ruby '2.6.6'
 
 gem 'awesome_print'
 gem 'bootsnap', require: false
