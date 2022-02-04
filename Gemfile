@@ -29,6 +29,8 @@ gem 'tinymce-rails'
 #gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'attr_encrypted'
 gem 'blind_index'
+gem 'net-imap', require: false     # Required by Ruby 3.1
+gem 'net-pop', require: false     # Required by Ruby 3.1
 gem 'net-smtp', require: false    # Required by Ruby 3.1
 
 # Gems used only for assets and not required
