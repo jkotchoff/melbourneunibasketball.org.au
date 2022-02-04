@@ -10,7 +10,7 @@ class StripeRefundService
     Stripe::Refund.create({
       charge: charge.id,
     })
-    @member.update_attributes(
+    @member.update(
       amount_paid: 0,
       payment_confirmed: false,
       payment_acknowledgement: "$#{@fee} #{ACKNOWLEDGEMENT}"
@@ -30,10 +30,6 @@ class StripeRefundService
 
 private
   def charge
-    customer.charges.data.last
-  end
-
-  def customer
-    Stripe::Customer.retrieve(@member.stripe_customer_id)
+    Stripe::Charge.list(customer: @member.stripe_customer_id).data.last
   end
 end

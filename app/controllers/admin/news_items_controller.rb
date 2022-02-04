@@ -26,7 +26,7 @@ class Admin::NewsItemsController < Admin::PagesController
     @page = NewsItem.friendly.find(params[:id])
 
     respond_to do |format|
-      if @page.update_attributes(news_item_params)
+      if @page.update(news_item_params)
         format.html { redirect_to admin_page_path(@page), notice: 'News Item was successfully updated.' }
         format.json { head :no_content }
       else

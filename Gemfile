@@ -1,7 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.2.4.2'
-ruby '2.6.6'
+gem 'rails', '~> 6.1.4'
+ruby '3.1.0'
+
+git 'https://github.com/rails/sprockets.git', ref: '4aa1c55e66463f982c05cc85b94375be52d0d3f9' do
+  gem 'sprockets' # NOTE: temporarily use the master branch till a sprockets release is compatible with Ruby 3.1
+end
+gem 'sprockets-rails'
 
 gem 'awesome_print'
 gem 'bootsnap', require: false
@@ -19,11 +24,12 @@ gem 'mini_magick', ">= 4.9.4"
 gem 'nokogiri'
 gem 'pg'
 gem 'puma'                        # Heroku's recommended web server
-gem 'stripe', '~> 4.14.0' # For taking membership payments
+gem 'stripe'
 gem 'tinymce-rails'
-gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+#gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'attr_encrypted'
 gem 'blind_index'
+gem 'net-smtp', require: false    # Required by Ruby 3.1
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -50,7 +56,8 @@ group :test do
   gem "fakeweb"
   gem "launchy"
   gem 'machinist', '>= 2.0.0.beta2'
-  gem 'stripe-ruby-mock', '>= 2.5.0', :require => 'stripe_mock'
+#  gem 'stripe-ruby-mock', '>= 3.0.1', :require => 'stripe_mock'
+  gem 'stripe-ruby-mock', '~> 3.1.0.rc2', require: 'stripe_mock'
   gem "timecop"
 end
 

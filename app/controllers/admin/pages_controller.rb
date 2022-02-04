@@ -63,7 +63,7 @@ class Admin::PagesController < Admin::BaseController
     @page = Page.friendly.find(params[:id])
 
     respond_to do |format|
-      if @page.update_attributes(page_params)
+      if @page.update(page_params)
         format.html { redirect_to [:admin, @page], notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else

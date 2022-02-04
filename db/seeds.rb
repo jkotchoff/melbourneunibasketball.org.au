@@ -97,7 +97,7 @@ Page.create!(
   }
 )
 
-Page.find_by_title(Page::CONTACT_JOIN_THE_CLUB).update_attributes(:content => %Q{
+Page.find_by_title(Page::CONTACT_JOIN_THE_CLUB).update(:content => %Q{
   <p>MUBC is a fun place to play basketball, and party!</p>
   <p>As Australia's largest senior domestic basketball club, MUBC offers opportunities to pursue an elite or casual playing career in a non-junior program.</p>
   <p>There are numerous eligibility clauses in regard to Membership.</p>
@@ -109,7 +109,7 @@ Page.find_by_title(Page::CONTACT_JOIN_THE_CLUB).update_attributes(:content => %Q
   <p>&nbsp;</p>
 })
 
-Page.find_by_title(Page::EVENT_CALENDAR).update_attributes(:content => %Q{
+Page.find_by_title(Page::EVENT_CALENDAR).update(:content => %Q{
   <table border="1" cellpadding="3">
   <tbody>
   <tr valign="top">

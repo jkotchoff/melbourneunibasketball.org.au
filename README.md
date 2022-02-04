@@ -8,7 +8,7 @@ This is the Ruby on Rails source code for [melbourneunibasketball.org.au](https:
 ## Development Environment
 
 ```
-git clone git@github.com:cornflakesuperstar/melbourneunibasketball.org.au.git
+git clone git@github.com:jkotchoff/melbourneunibasketball.org.au.git
 export PAYPAL_LOGIN="..."
 export PAYPAL_PASSWORD="..."
 export PAYPAL_SIGNATURE="..."
