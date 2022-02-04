@@ -52,9 +52,9 @@ rebuild_eligibility_clause = ->
     $('#member_eligibility_justification').show()
     switch $('#member_eligibility_clause').val()
       when "enrolled_student_mu"
-        $('#eligibility_justification_label').text("Student number")
+        $('#eligibility_justification_label').text("Student number, enrolled course and if applicable, college name")
       when "enrolled_student_elsewhere"
-        $('#eligibility_justification_label').text("Institution name")
+        $('#eligibility_justification_label').text("Institution name and enrolled course")
       when "university_graduate"
         $('#eligibility_justification_label').text('University, Degree and Final Year')
       when "university_staff"
