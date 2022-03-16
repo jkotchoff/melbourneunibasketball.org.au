@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :pages
-    resources :news_items
+    resources :news_items do
+      collection do
+        post 'upload_image'
+      end
+    end
     resources :members do
       member do
         get 'acknowledge_payment'

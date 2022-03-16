@@ -9,6 +9,7 @@ end
 gem 'sprockets-rails'
 
 gem 'awesome_print'
+gem "aws-sdk-s3", require: false
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'carrierwave'
