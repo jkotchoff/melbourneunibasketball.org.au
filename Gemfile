@@ -34,6 +34,8 @@ gem 'net-imap', require: false     # Required by Ruby 3.1
 gem 'net-pop', require: false     # Required by Ruby 3.1
 gem 'net-smtp', require: false    # Required by Ruby 3.1
 
+gem 'terser'  # try this instead of uglifier in staging to fix the tinymce image upload
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

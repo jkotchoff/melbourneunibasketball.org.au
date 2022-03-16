@@ -335,6 +335,8 @@ GEM
     strscan (3.0.1)
     syntax (1.2.2)
     temple (0.8.2)
+    terser (1.1.8)
+      execjs (>= 0.3.0, < 3)
     thor (1.2.1)
     tilt (2.0.10)
     timecop (0.9.5)
@@ -398,6 +400,7 @@ DEPENDENCIES
   stripe
   stripe-ruby-mock (~> 3.1.0.rc2)
   syntax
+  terser
   timecop
   tinymce-rails
   uglifier
