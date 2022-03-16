@@ -27,7 +27,6 @@ gem 'pg'
 gem 'puma'                        # Heroku's recommended web server
 gem 'stripe'
 gem 'tinymce-rails'               # https://stackoverflow.com/questions/70305174/trestle-tinymce-gem-uncaught-typeerror-cannot-read-properties-of-undefined-rea
-gem 'uglifier'
 gem 'attr_encrypted'
 gem 'blind_index'
 gem 'net-imap', require: false     # Required by Ruby 3.1
@@ -43,6 +42,7 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
+  gem 'uglifier'
 end
 
 # To use ActiveModel has_secure_password
