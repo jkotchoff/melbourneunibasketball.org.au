@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 6.1.4.6'
 ruby '3.1.0'
 
 git 'https://github.com/rails/sprockets.git', ref: '4aa1c55e66463f982c05cc85b94375be52d0d3f9' do
