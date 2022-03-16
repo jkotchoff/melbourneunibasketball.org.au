@@ -1,4 +1,6 @@
 class Admin::NewsItemsController < Admin::PagesController
+  protect_from_forgery except: :upload_image
+
   def index
     @archived_year = (params[:archived_year] || Date.today.year).to_i
     @archived_years = NewsItem.archived_years
