@@ -6,9 +6,9 @@
       - if news_item.default_image_url.present?
         .news_image{class: (i % 2 == 0 ? 'news_image_right' : 'news_image_left')}
           - if news_item.content.blank?
-            = link_to image_tag(news_item.default_image_url, style: "max-width:200px; max-height: 150px;"), news_item.default_image_url
+            = link_to image_tag(news_item.default_image_url, style: "max-width:450px; max-height: 300px;"), news_item.default_image_url
           - else
-            = link_to image_tag(news_item.default_image_url, style: "max-width:200px; max-height: 150px;"), article_path(news_item.year, news_item)
+            = link_to image_tag(news_item.default_image_url, style: "max-width:450px; max-height: 300px;"), article_path(news_item.year, news_item)
       - elsif news_item.has_pdf?
         .news_image_left
           = link_to news_item.pdf_link, {onclick: "_gaq.push(['_trackEvent', 'PDF', 'Open', '#{news_item.title}']);"} do
