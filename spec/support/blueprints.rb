@@ -8,6 +8,13 @@ require 'machinist/active_record'
 #     body  { "Lorem ipsum..." }
 #   end
 
+Page.blueprint do
+  title          { "Page #{sn}" }
+  author         { "Author #{sn}" }
+  synopsis       { "Synopsis #{sn}" }
+  created_at     { Time.now }
+end
+
 NewsItem.blueprint do
   title          { "Post #{sn}" }
   author         { "Author #{sn}" }

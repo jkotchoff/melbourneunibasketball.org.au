@@ -37,6 +37,7 @@ class Admin::NewsItemsController < Admin::PagesController
   end
 
   def upload_image
+    # https://blog.saeloun.com/2019/11/04/rails-6-active-storage-updates.html
     # https://medium.com/@kristina.kabosiene/manual-upload-rails-6-active-storage-tinymce-5-and-aws-s3-2f139c0b5df4
     # https://objectivefs.com/howto/how-to-restrict-s3-bucket-policy-to-only-one-aws-s3-bucket
     blob = ActiveStorage::Blob.create_after_upload!(

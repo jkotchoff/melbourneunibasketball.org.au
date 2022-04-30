@@ -166,6 +166,7 @@ GEM
       i18n (>= 1.8.11, < 2)
     fakeweb (1.3.0)
     ffi (1.15.5)
+    foreman (0.87.2)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     globalid (1.0.0)
@@ -376,6 +377,7 @@ DEPENDENCIES
   delayed_job_active_record
   faker
   fakeweb
+  foreman
   friendly_id
   haml-rails
   jquery-rails

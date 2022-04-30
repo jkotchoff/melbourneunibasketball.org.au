@@ -69,5 +69,6 @@ group :test, :development do
 end
 
 group :development do
+  gem "foreman"
   gem "syntax"
 end

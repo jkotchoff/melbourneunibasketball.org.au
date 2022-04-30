@@ -3,6 +3,8 @@ class Page < ActiveRecord::Base
 
   mount_uploader :pdf, PdfUploader
 
+  #TODO: introduce `images` via active storage and then deprecate `content_images`
+  # We probably also need to create a new s3 bucket or folder to separate things better
   has_many :content_images, dependent: :destroy
   #TODO: process_in_background :content_images
 
@@ -51,12 +53,29 @@ class Page < ActiveRecord::Base
 
   PANEL_HOME_SIDEBAR              = "Home Side Panel"
 
+  before_save :clean_s3_urls
+  
+  def clean_s3_urls
+    html = Nokogiri::HTML.fragment(content)
+    html.css('img').each do |img|
+      s3_url = img.attr("src")
+      if s3_url.starts_with?("../")
+        img.set_attribute("src", "/" + s3_url.gsub(/(\.\.\/)/, ""))
+      end
+    end
+    self.content = html.to_s
+  end
+
   def has_pdf?
     pdf? or dribbling_balls_link.present?
   end
 
   def pdf_link
     pdf? ? pdf_url : dribbling_balls_link
+  end
+
+  def default_image_url
+    Nokogiri::HTML.fragment(content).css("img").first&.attr("src")
   end
 
   def summary_image
