@@ -26,7 +26,8 @@ gem 'nokogiri'
 gem 'pg'
 gem 'puma'                        # Heroku's recommended web server
 gem 'stripe'
-gem 'tinymce-rails'               # https://stackoverflow.com/questions/70305174/trestle-tinymce-gem-uncaught-typeerror-cannot-read-properties-of-undefined-rea
+gem 'tinymce-rails', '~> 5.10.4'               # https://stackoverflow.com/questions/70305174/trestle-tinymce-gem-uncaught-typeerror-cannot-read-properties-of-undefined-rea
+gem 'terser'
 gem 'attr_encrypted'
 gem 'blind_index'
 gem 'net-imap', require: false     # Required by Ruby 3.1
