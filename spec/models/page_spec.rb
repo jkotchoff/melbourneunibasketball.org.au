@@ -16,7 +16,7 @@ describe Page do
       content = "This season's team:<br/><img src=\"IMAGE_PATH_1\">"
       content += "Next season's team:<br/><img src=\"IMAGE_PATH_2\">"
       page = Page.make(content: content)
-      expect(page.summary_image).to eq("IMAGE_PATH_1")
+      expect(page.default_image_url).to eq("IMAGE_PATH_1")
     end
   end
 end  
