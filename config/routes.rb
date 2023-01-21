@@ -1,4 +1,4 @@
-#Melbourneunibasketball::Application.routes.draw do
+# Melbourneunibasketball::Application.routes.draw do
 Rails.application.routes.draw do
   # http://guides.rubyonrails.org/routing.html
 
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   match 'admin' => 'admin/news_items#index', via: [:get]
 
-  resources :members, only: [:index, :new, :create] do
+  resources :members, only: %i[index new create] do
     member do
       get 'mubc_account_details'
       post 'confirm_paypal_purchase'
@@ -39,11 +39,12 @@ Rails.application.routes.draw do
 
   post '/tinymce_assets' => 'admin/tinymce_assets#create'
 
-#  match 'members' => 'members#index', via: [:get]
+  #  match 'members' => 'members#index', via: [:get]
   match 'membership' => 'members#new', via: [:get]
   match 'members/join_the_club' => 'members#new', :as => :join_the_club, via: [:get]
   match 'members/documents_and_forms' => 'members#documents_and_forms', :as => :documents_and_forms, via: [:get]
   match 'members/uniforms' => 'members#uniforms', :as => :uniforms, via: [:get]
+  match 'members/policies' => 'members#policies', :as => :policies, via: [:get]
 
   match 'news' => 'news#archived', :as => :archived_news, via: [:get]
   match 'news/:archived_year' => 'news#archived', :as => :archived_news_for_year, via: [:get]
@@ -71,11 +72,11 @@ Rails.application.routes.draw do
   match 'about/green_and_gold_winners' => 'about#green_and_gold_winners', :as => :green_and_gold_winners, via: [:get]
   match 'about/committee' => 'about#committee', :as => :committee, via: [:get]
   match 'about/social_awards' => 'about#social_awards', :as => :social_awards, via: [:get]
-  match 'about/distinguished_service_awards' => 'about#distinguished_service_awards', :as => :distinguished_service_awards, via: [:get]
+  match 'about/distinguished_service_awards' => 'about#distinguished_service_awards',
+        :as => :distinguished_service_awards, via: [:get]
   match 'about/life_members' => 'about#life_members', :as => :life_members, via: [:get]
 
-  root :to => 'news#index', via: [:get]
-
+  root to: 'news#index', via: [:get]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

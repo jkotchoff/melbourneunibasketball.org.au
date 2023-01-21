@@ -26,6 +26,11 @@ class Member < ActiveRecord::Base
   # Note, this isn't being applied to winter season signups
   LATE_FEE = 10
 
+  ALL_YEAR_STUDENT_FEE = 75
+  ALL_YEAR_NON_STUDENT_FEE = 150
+  WINTER_SEASON_STUDENT_FEE = 50
+  WINTER_SEASON_NON_STUDENT_FEE = 90
+
   def credit_card_details
     if new_record? && !Rails.env.test? && amount_paid.to_i > 0
       errors.add(:card_number) if card_number.blank?
@@ -45,17 +50,17 @@ class Member < ActiveRecord::Base
 
   def self.student_fee
     if Date.today >= self.winter_season_start
-      50
+      WINTER_SEASON_STUDENT_FEE
     else
-      80
+      ALL_YEAR_STUDENT_FEE
     end
   end
 
   def self.non_student_fee
     if Date.today >= self.winter_season_start
-      90
+      WINTER_SEASON_NON_STUDENT_FEE
     else
-      150
+      ALL_YEAR_NON_STUDENT_FEE
     end
   end
 
