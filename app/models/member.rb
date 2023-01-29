@@ -26,8 +26,8 @@ class Member < ActiveRecord::Base
   # Note, this isn't being applied to winter season signups
   LATE_FEE = 10
 
-  ALL_YEAR_STUDENT_FEE = 75
-  ALL_YEAR_NON_STUDENT_FEE = 150
+  ALL_YEAR_STUDENT_FEE = 80
+  ALL_YEAR_NON_STUDENT_FEE = 155
   WINTER_SEASON_STUDENT_FEE = 50
   WINTER_SEASON_NON_STUDENT_FEE = 90
 
