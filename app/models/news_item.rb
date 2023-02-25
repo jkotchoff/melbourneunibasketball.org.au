@@ -9,7 +9,9 @@ class NewsItem < Page
 
   def self.archived_years
     # Postgres-specific, refer: http://stackoverflow.com/questions/6942986/how-to-find-distinct-years-from-a-table-with-multiple-years-in-rails
-    self.select("distinct(extract(year from created_at))").collect(&:date_part).collect(&:to_i).sort.reverse
+    # Stopped working feb 25th, 2023? Maybe because of a postgres upgrade?
+    #self.select("distinct(extract(year from created_at))").collect(&:date_part).collect(&:to_i).sort.reverse
+    self.all.collect(&:created_at).collect(&:year).uniq.sort.reverse
   end
 
   def has_page?
