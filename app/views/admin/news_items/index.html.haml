@@ -23,7 +23,7 @@
         %th Created
         %th{width:100}=t '.actions', :default => t("helpers.actions")
     %tbody
-      - @news_items.each do |page|
+      - @news_items.reject{|n| n.instance_of?(NewsletterArticle)}.each do |page|
         %tr
           /%td= link_to page.id, [:admin, page]
           %td= link_to page.title, [:admin, page]
