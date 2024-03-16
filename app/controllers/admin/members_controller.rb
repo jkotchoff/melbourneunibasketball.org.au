@@ -19,12 +19,6 @@ class Admin::MembersController < Admin::BaseController
     @available_membership_years = Member.available_membership_years
   end
 
-  def pending
-    unpaid_members = Member.current.unpaid
-    @recent_unpaid_members = unpaid_members.where("created_at >= ?", 1.weeks.ago)
-    @old_unpaid_members = unpaid_members.where("created_at < ?", 1.weeks.ago)
-  end
-
   def csv_export
     report_path = MemberDatabase.export_csv
     send_file report_path, :type => 'text/csv; charset=iso-8859-1; header=presen', :disposition => 'attachment'
@@ -33,13 +27,6 @@ class Admin::MembersController < Admin::BaseController
   def uniforms_export
     report_path = MemberDatabase.uniforms_csv
     send_file report_path, :type => 'text/csv; charset=iso-8859-1; header=presen', :disposition => 'attachment'
-  end
-
-  def acknowledge_payment
-    @member = Member.find(params[:id])
-    @member.update(payment_confirmed: true, payment_acknowledgement: params[:payment_acknowledgement])
-    MemberMailer.signup_notification(@member).deliver
-    redirect_to pending_admin_members_path, flash: {notice: "Payment acknowledged for #{@member.name}"}
   end
 
   def edit
@@ -77,7 +64,7 @@ class Admin::MembersController < Admin::BaseController
     member_name = @member.name
     @member.destroy
 
-    redirect_to pending_admin_members_path, notice: "#{member_name} was destroyed."
+    redirect_to admin_members_path, notice: "#{member_name} was destroyed."
   end
 
 end

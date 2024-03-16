@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :pages
+
     resources :news_items do
       collection do
         post 'upload_image'
@@ -11,12 +12,10 @@ Rails.application.routes.draw do
     end
     resources :members do
       member do
-        get 'acknowledge_payment'
         post 'refund'
       end
 
       collection do
-        get 'pending'
         get 'csv_export'
         get 'uniforms_export'
       end
@@ -28,12 +27,7 @@ Rails.application.routes.draw do
   resources :members, only: %i[index new create] do
     member do
       get 'mubc_account_details'
-      post 'confirm_paypal_purchase'
       get 'thankyou'
-    end
-
-    collection do
-      get 'review_paypal_payment'
     end
   end
 

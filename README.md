@@ -43,7 +43,6 @@ heroku config:add ADMIN_PASSWORD="..."
 - show old photos for members
 - show undergraduate / postgrad fields
 - Allow member approval to adjust the amount paid (ie. for big v players)
-- When deleting pending members, send an email to an admin account with the members details. I accidentally deleted a pending member for some reason and a subsequent payment has come through the system which I'm now unable to reconcile.
 - Introduce a 'six month' membership for anyone who signs up after july 1
 - Introduce a $20 'social' membership for anyone who just wants to train (this shouldn't be used in team list selection), refer 'So Sum' in 2017
 - Import: http://web.archive.org/web/20060821203255/http://basketball.musa.net.au/contact/index.php

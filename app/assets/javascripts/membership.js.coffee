@@ -70,16 +70,6 @@ rebuild_eligibility_clause = ->
     if !$('#member_eligibility_justification').val()
       $('#member_eligibility_justification').focus()
 
-rebuild_steps = (button_value) ->
-  if button_value == 'paypal'
-    $('#bank_transfer_instructions, #postal_address_row').hide()
-    $('#paypal_instructions').show()
-    $('#submit_button').val('Take me to Paypal')
-  else if button_value == 'bank_transfer'
-    $('#paypal_instructions').hide()
-    $('#bank_transfer_instructions, #postal_address_row').show()
-    $('#submit_button').val('Submit')
-
 jQuery ($) ->
   if($("#admin_member_form").length > 0)
     return
@@ -112,10 +102,6 @@ jQuery ($) ->
           rebuild_price()
         else if($(this).attr('id') == 'non_representative_button')
           rebuild_price()
-
-  rebuild_steps jQuery("#payment_controls input:checked").val()
-  $('#payment_controls input:radio').change ->
-    rebuild_steps $(this).val()
 
   rebuild_eligibility_clause()
   rebuild_price()

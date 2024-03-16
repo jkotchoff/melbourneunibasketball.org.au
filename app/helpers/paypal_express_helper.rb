@@ -1,49 +1,4 @@
 module PaypalExpressHelper
-  def get_setup_purchase_params(total, request)
-    return to_cents(total), {
-      :ip => request.remote_ip,
-      :return_url => url_for(:action => 'review_paypal_payment', :only_path => false),
-      :currency => "AUD",
-      :cancel_return_url => membership_url,
-      :subtotal => to_cents(total),
-      :shipping => 0,
-      :handling => 0,
-      :tax =>      0,
-      :allow_note =>  false,
-      :items => [{ name: "MUBC Annual Membership - #{Date.today.year}", number: 1, quantity: 1, amount: to_cents(total) }],
-    }
-  end
-
-  def get_purchase_params(total, token, payer_id)
-    return to_cents(total), {
-      :ip => request.remote_ip,
-      :token => token,
-      :payer_id => payer_id,
-      :currency => "AUD",
-      :subtotal => to_cents(total),
-      :shipping => 0,
-      :handling => 0,
-      :tax =>      0,
-      :items => [{ name: "MUBC Annual Membership - #{Date.today.year}", number: 1, quantity: 1, amount: to_cents(total) }],
-    }
-  end
-
-=begin
-  def get_order_info(gateway_response, cart)
-    subtotal, shipping, total = get_totals(cart)
-    {
-      shipping_address: gateway_response.address,
-      email: gateway_response.email,
-      gateway_details: {
-        :token => gateway_response.token,
-        :payer_id => gateway_response.payer_id,
-      },
-      subtotal: subtotal,
-      shipping: shipping,
-      total: total,
-    }
-  end
-=end
   def to_cents(money)
     (money.to_f*100).round
   end
