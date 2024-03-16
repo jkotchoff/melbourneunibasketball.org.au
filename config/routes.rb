@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :pages
 
+    resources :newsletters, only: [:index, :new, :create, :destroy]
+
     resources :news_items do
       collection do
         post 'upload_image'

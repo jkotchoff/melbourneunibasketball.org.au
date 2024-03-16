@@ -8,3 +8,6 @@ Date::DATE_FORMATS.merge!(:abbr_month_day_year => lambda { |time| time.strftime(
 Time::DATE_FORMATS.merge!(:abbr_month_day_year => lambda { |time| time.strftime("%b #{time.day.ordinalize}, %Y") })
 
 Time::DATE_FORMATS.merge!(:file_timestamp => "%Y-%m-%d_%H.%M%P")
+
+
+Time::DATE_FORMATS.merge!(:newsletter_timestamp => "%Y_%m_%d")

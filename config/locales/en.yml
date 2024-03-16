@@ -46,3 +46,5 @@ en:
         written_hint: "Try and get this date as close to this articles original date as possible. It is used to categorise the article in the appropriate section of the news archive"
         title_hint: "The Title is used as the page/article heading\n\neg.\nUnigames Men win 2012 Silver, Women take home Bronze"
         content_hint: "If the content field contains more than 255 characters of text, the content will link through to it's own dedicated page (otherwise it will be listed just as a news item).\n\n If you are uploading any photos into the content field, save it first, open it up again for editing, upload them at the top of this field and they will be automatically formatted to sit to the right of your textual content."
+        volume_number_hint: "Every calendar year, the club newsletter is incremented by 1. eg. in 2023, it was Volume 33"
+        edition_number_hint: "This is the number of the newsletter within the calendar year. eg. 1, 2 etc."

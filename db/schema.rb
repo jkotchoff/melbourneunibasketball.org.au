@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_16_113934) do
+ActiveRecord::Schema.define(version: 2024_03_16_205216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_113934) do
     t.string "slug"
     t.boolean "sticky"
     t.string "dribbling_balls_link"
+    t.string "newsletter"
     t.index ["slug"], name: "index_pages_on_slug", unique: true
     t.index ["sticky"], name: "index_pages_on_sticky"
   end

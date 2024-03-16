@@ -1,0 +1,48 @@
+.container
+  .pb-2.mt-2.mb-4.border-bottom
+    %h1 Create a Newsletter
+
+  = form_with model: @newsletter, url: admin_newsletters_path(@newsletter), :html => { :class => 'form-horizontal' } do |f|
+    - if @newsletter.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@newsletter.errors.count, "error")} prohibited this page from being saved:"
+        %ul
+          - @newsletter.errors.full_messages.each do |msg|
+            %li= msg
+
+    .form-group.row
+      = f.label :volume_number, :class => 'col-sm-3 col-form-label', data: { help: t('view.inline_help.news_item.volume_number_hint') }
+      .col-sm-9
+        = f.text_field :volume_number, :class => 'form-control'
+
+    .form-group.row
+      = f.label :edition_number, :class => 'col-sm-3 col-form-label', data: { help: t('view.inline_help.news_item.edition_number_hint') }
+      .col-sm-9
+        = f.text_field :edition_number, :class => 'form-control'
+
+    .form-group.row
+      = f.label :created_at, "Written", :class => 'col-sm-3 col-form-label', data: { help: t('view.inline_help.news_item.written_hint') }
+      .col-sm-9
+        .date-select
+          = f.date_select :created_at, {include_blank: false, :order => [:day, :month, :year], :use_short_month => true, :start_year => 1945, :end_year => Time.now.year, :datetime_separator => ""}, { class: 'form-control' }
+
+    .form-group.row
+      = f.label :author, :class => 'col-sm-3 col-form-label', data: { help: t('view.inline_help.news_item.author_hint') }
+      .col-sm-9
+        = f.text_field :author, :class => 'form-control'
+
+    .form-group.row
+      = f.label :synopsis, :class => 'col-sm-3 col-form-label', data: { help: t('view.inline_help.news_item.synopsis_hint') }
+      .col-sm-9
+        = f.text_area :synopsis, :class => 'form-control', rows: 3
+
+    .form-group.row
+      = f.label :newsletter, class: 'col-sm-3 col-form-label'
+      .col-sm-9
+        = f.file_field(:newsletter)
+
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to "Cancel", admin_pages_path, :class => 'btn btn-secondary'
+
+  = tinymce

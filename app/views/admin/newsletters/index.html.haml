@@ -1,0 +1,27 @@
+.container
+  = link_to "Create a Newsletter", new_admin_newsletter_path, :class => 'btn btn-primary right', style: 'margin-top:30px', id: "create-newsletter"
+
+  .container
+    - model_class = NewsletterArticle
+    .pb-2.mt-2.mb-4.border-bottom
+      %h3 Newsletter Admin
+    %table.table.table-striped
+      %thead
+        %tr
+          /%th= model_class.human_attribute_name(:id)
+          %th= model_class.human_attribute_name(:title)
+          %th= model_class.human_attribute_name(:synopsis)
+          %th Updated
+          %th=t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @newsletters.each do |page|
+          %tr
+            /%td= link_to page.id, [:admin, page]
+            %td= page.title
+            %td= truncate(page.synopsis, length: 50)
+            %td
+              = page.updated_at.to_s(:abbr_month_day_year)
+              - if page.author?
+                == (#{page.author})
+            %td
+              = link_to "Destroy", admin_newsletter_path(page.id), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'  

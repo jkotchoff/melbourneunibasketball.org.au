@@ -36,8 +36,8 @@
               = link_to "Pages Admin", admin_pages_path, class: 'nav-link'
             %li{class: ['nav-item', ('active' if  controller_name == 'members' and params[:action] != 'pending')]}
               = link_to "Members Admin", admin_members_path, class: 'nav-link'
-            %li{class: ['nav-item', ('active' if  controller_name == 'members' and params[:action] == 'pending')]}
-              = link_to "Pending Member Applications", pending_admin_members_path, class: 'nav-link'
+            %li{class: ['nav-item', ('active' if  controller_name == 'newsletters')]}
+              = link_to "Newsletters", admin_newsletters_path, class: 'nav-link'
           - else
             %li{class: ['nav-item', ('active' if params[:controller] == 'news' and !['dribbling_balls', 'index', 'event_calendar'].index(params[:action]))]}
               = link_to "News Archive", archived_news_path, class: 'nav-link'
