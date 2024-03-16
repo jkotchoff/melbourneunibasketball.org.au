@@ -9,10 +9,9 @@ class Admin::NewslettersController < Admin::BaseController
 
   def create
     @newsletter = NewsletterArticle.new(news_item_params)
-
     respond_to do |format|
       if @newsletter.save
-        @newsletter.update!(dribbling_balls_link: @newsletter.newsletter.url)
+        @newsletter.update!(dribbling_balls_link: rails_blob_url(@newsletter.newsletter, only_path: !Rails.env.production?))
         format.html { redirect_to [:admin, :newsletters], notice: "Newsletter '#{@newsletter.title}' was successfully created." }
       else
         format.html { render action: "new" }

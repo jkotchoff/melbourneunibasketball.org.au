@@ -39,7 +39,7 @@
     .form-group.row
       = f.label :newsletter, class: 'col-sm-3 col-form-label'
       .col-sm-9
-        = f.file_field(:newsletter)
+        = f.file_field(:newsletter, direct_upload: true)
 
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'

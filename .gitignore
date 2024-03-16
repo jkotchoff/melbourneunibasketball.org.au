@@ -9,6 +9,7 @@ capybara-*.html
 /vendor/bundle
 /log/*
 /tmp/*
+/storage/*
 /db/development_structure.sql
 /db/structure.sql
 /public/system/*

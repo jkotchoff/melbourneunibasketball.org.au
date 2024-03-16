@@ -1,5 +1,7 @@
 class NewsletterArticle < NewsItem
-  mount_uploader :newsletter, NewsletterUploader
+  has_one_attached :newsletter
+
+  include Rails.application.routes.url_helpers
 
   attr_accessor :volume_number, :edition_number
 
