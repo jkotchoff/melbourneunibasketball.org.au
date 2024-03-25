@@ -21,7 +21,8 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params.merge(payment_method: "stripe"))
     stripe_service = StripeChargesService.new(@member)
-    if @member.valid? && stripe_service.call
+
+    if @member.valid? && !duplicate_signup?(@member) && stripe_service.call
       @member.save
       redirect_to thankyou_member_path(@member)
     else
@@ -44,6 +45,16 @@ class MembersController < ApplicationController
   end
 
 private
+  def duplicate_signup?(member)
+    existing_member = Member.where(email: member.email, amount_paid: member.amount_paid)
+                            .where("created_at > ?", 1.week.ago).exists?
+    if existing_member
+      flash.now[:error] = "You already signed up for this year successfully, did you not receive a confirmation message? You can email treasurer@melbourneunibasketball.org.au if you have any questions."
+    end
+    existing_member
+  end
+
+
   def load_sidebar
     @left_sidebar = "sidebars/members"
   end

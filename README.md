@@ -7,11 +7,12 @@ This is the Ruby on Rails source code for [melbourneunibasketball.org.au](https:
 
 ## Development Environment
 
+Refer to the [Stripe Development keys](https://dashboard.stripe.com/test/apikeys) in the treasurer's stripe account.
+
 ```
 git clone git@github.com:jkotchoff/melbourneunibasketball.org.au.git
-export PAYPAL_LOGIN="..."
-export PAYPAL_PASSWORD="..."
-export PAYPAL_SIGNATURE="..."
+export STRIPE_MUBC_PUBLISHABLE_KEY_TEST="..."
+export STRIPE_MUBC_SECRET_KEY_TEST="..."
 export ADMIN_USERNAME="..."
 export ADMIN_PASSWORD="..."
 ```
@@ -19,9 +20,8 @@ export ADMIN_PASSWORD="..."
 ## Deployment
 
 ```
-heroku config:add PAYPAL_LOGIN="..."
-heroku config:add PAYPAL_PASSWORD="..."
-heroku config:add PAYPAL_SIGNATURE="..."
+heroku config:add STRIPE_MUBC_PUBLISHABLE_KEY_TEST="..."
+heroku config:add STRIPE_MUBC_SECRET_KEY_TEST="..."
 heroku config:add ADMIN_USERNAME="..."
 heroku config:add ADMIN_PASSWORD="..."
 ```
@@ -49,7 +49,6 @@ heroku config:add ADMIN_PASSWORD="..."
 - fix signup form to make email address mandatory
 - fix signup form for IE8
 - add filesize to PDF links
-- consider using stripe instead of paypal
 - add recent facebook comments widget on homepage
 - make the homepage news items links work
 - add a 'more articles' link at the bottom of the homepage news
