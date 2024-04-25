@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 6.1.4.6'
-ruby '3.1.0'
+ruby '3.3.0'
 
 git 'https://github.com/rails/sprockets.git', ref: '4aa1c55e66463f982c05cc85b94375be52d0d3f9' do
   gem 'sprockets' # NOTE: temporarily use the master branch till a sprockets release is compatible with Ruby 3.1
@@ -58,7 +58,7 @@ group :test do
   gem "faker"
   gem "fakeweb"
   gem "launchy"
-  gem 'machinist', '>= 2.0.0.beta2'
+  gem 'machinist_redux'
 #  gem 'stripe-ruby-mock', '>= 3.0.1', :require => 'stripe_mock'
   gem 'stripe-ruby-mock', '~> 3.1.0.rc2', require: 'stripe_mock'
   gem "timecop"
