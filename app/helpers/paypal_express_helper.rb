@@ -19,18 +19,18 @@ module PaypalExpressHelper
     selected = (@member)? @member.eligibility_clause : params[:member][:eligibility_clause] rescue nil
     options_for_select({
       'None' => '',
-      'Enrolled Melbourne Uni Student' => 'enrolled_student_mu',
-      'Enrolled Student at other tertiary institution' => 'enrolled_student_elsewhere',
-      'University Graduate' => 'university_graduate',
-      "University Staff" => "university_staff",
-      "Big V Player" => "big_v_player",
-      "Working on a Melbourne Uni site" => "working_on_site",
-      "Resident, Member or Staff at a Melbourne Uni affiliated college or hall of residence" => "college_affiliation",
-      "Deferred Melbourne Uni Student" => "deferred_student",
-      "Immediate family of current student or eligible non student" => "immediate_family",
-      "MUBC Life member" => 'life_member',
-      "MUBC Committee member" => 'committee_member',
-      "Eligible under Director's discretion" => 'directors_discretion',
+      'Domestic: Enrolled Melbourne Uni Student' => 'enrolled_student_mu',
+      'Domestic: Melbourne Uni Alumni' => 'university_graduate',
+      'Domestic: Melbourne Uni Staff' => 'university_staff',
+      'Domestic: Other' => 'other_domestic',
+      'Big V: Rostered Player' => 'big_v_player',
+      'Big V: Development Player' => 'big_v_development_player',
+      'MUBC Life Member' => 'life_member',
+      'MUBC Committee Member' => 'committee_member',
+      'Miscellaneous: Tier 1 (Big V)' => 'big_v_tier_1',
+      'Miscellaneous: Tier 2 (Big V)' => 'big_v_tier_2',
+      'Miscellaneous: Tier 3 (Big V)' => 'big_v_tier_3',
+      'Miscellaneous: Tier 4 (Big V)' => 'big_v_tier_4',
     }, selected)
   end
 end

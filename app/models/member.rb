@@ -48,6 +48,26 @@ class Member < ActiveRecord::Base
     600
   end
 
+  def self.big_v_development_fee
+    250
+  end
+
+  def self.big_v_tier_1_fee
+    350
+  end
+
+  def self.big_v_tier_2_fee
+    300
+  end
+
+  def self.big_v_tier_3_fee
+    150
+  end
+
+  def self.big_v_tier_4_fee
+    0
+  end
+
   def self.student_fee
     if Date.today >= self.winter_season_start
       WINTER_SEASON_STUDENT_FEE

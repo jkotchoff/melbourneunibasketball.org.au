@@ -14,6 +14,11 @@
 
 = form_for @member, :html => { id: 'membership_form' } do |f|
   = hidden_field_tag "big_v_fee", Member.big_v_fee, { :id => "annual_big_v_fee" }
+  = hidden_field_tag "big_v_development_fee", Member.big_v_development_fee, { :id => "annual_big_v_development_fee" }
+  = hidden_field_tag "big_v_tier_1_fee", Member.big_v_tier_1_fee, { :id => "annual_big_v_tier_1_fee" }
+  = hidden_field_tag "big_v_tier_2_fee", Member.big_v_tier_2_fee, { :id => "annual_big_v_tier_2_fee" }
+  = hidden_field_tag "big_v_tier_3_fee", Member.big_v_tier_3_fee, { :id => "annual_big_v_tier_3_fee" }
+  = hidden_field_tag "big_v_tier_4_fee", Member.big_v_tier_4_fee, { :id => "annual_big_v_tier_4_fee" }
   = hidden_field_tag "annual_student_fee", Member.student_fee, { :id => "annual_student_fee" }
   = hidden_field_tag "annual_non_student_fee", Member.non_student_fee, { :id => "annual_non_student_fee" }
   = hidden_field_tag "late_fee", Member.late_fee, { :id => "late_fee" }

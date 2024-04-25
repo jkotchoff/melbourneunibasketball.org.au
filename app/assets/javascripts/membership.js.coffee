@@ -1,7 +1,12 @@
 #representative_fee = 20
 
 rebuild_price = ->
-  big_v_fee     = parseInt($('#annual_big_v_fee').val())
+  big_v_fee = parseInt($('#annual_big_v_fee').val());
+  big_v_development_fee = parseInt($('#annual_big_v_development_fee').val());
+  big_v_tier_1_fee = parseInt($('#annual_big_v_tier_1_fee').val());
+  big_v_tier_2_fee = parseInt($('#annual_big_v_tier_2_fee').val());
+  big_v_tier_3_fee = parseInt($('#annual_big_v_tier_3_fee').val());
+  big_v_tier_4_fee = parseInt($('#annual_big_v_tier_4_fee').val());
   student_fee     = parseInt($('#annual_student_fee').val())
   non_student_fee = parseInt($('#annual_non_student_fee').val())
   late_fee        = parseInt($('#late_fee').val())
@@ -23,6 +28,21 @@ rebuild_price = ->
     when "big_v_player"
       fee_breakdown.push('$' + big_v_fee + ' for a Big V Player')
       cost = big_v_fee
+    when "big_v_development_player"
+      fee_breakdown.push('$' + big_v_development_fee + ' for a Big V Development Player')
+      cost = big_v_development_fee
+    when "big_v_tier_1"
+      fee_breakdown.push('$' + big_v_tier_1_fee + ' for a Big V Tier 1 Player')
+      cost = big_v_tier_1_fee
+    when "big_v_tier_2"
+      fee_breakdown.push('$' + big_v_tier_2_fee + ' for a Big V Tier 2 Player')
+      cost = big_v_tier_2_fee
+    when "big_v_tier_3"
+      fee_breakdown.push('$' + big_v_tier_3_fee + ' for a Big V Tier 3 Player')
+      cost = big_v_tier_3_fee
+    when "big_v_tier_4"
+      fee_breakdown.push('$' + big_v_tier_4_fee + ' for a Big V Tier 4 Player')
+      cost = big_v_tier_4_fee      
     else
       fee_breakdown.push('$' + non_student_fee + ' for an eligible non-student')
       cost += non_student_fee
@@ -44,7 +64,7 @@ rebuild_price = ->
      $('#membership_fee').hide()
 
 rebuild_eligibility_clause = ->
-  if ["life_member", "committee_member", "deferred_student", "big_v_player", ""].indexOf($('#member_eligibility_clause').val()) >= 0
+  if ["life_member"].indexOf($('#member_eligibility_clause').val()) >= 0
     $('#member_eligibility_justification').hide()
     $('#eligibility_justification_label').hide()
   else
@@ -53,20 +73,16 @@ rebuild_eligibility_clause = ->
     switch $('#member_eligibility_clause').val()
       when "enrolled_student_mu"
         $('#eligibility_justification_label').text("Student number, enrolled course and if applicable, college name")
-      when "enrolled_student_elsewhere"
-        $('#eligibility_justification_label').text("Institution name and enrolled course")
       when "university_graduate"
-        $('#eligibility_justification_label').text('University, Degree and Final Year')
+        $('#eligibility_justification_label').text("Degree and Final Year")
       when "university_staff"
-        $('#eligibility_justification_label').text('Department')
-      when "working_on_site"
-        $('#eligibility_justification_label').text('Employed by')
-      when "college_affiliation"
-        $('#eligibility_justification_label').text('College')
-      when "immediate_family"
-        $('#eligibility_justification_label').text('Eligible Family Member\'s name')
-      when "directors_discretion"
-        $('#eligibility_justification_label').text('Director\'s name and justification')
+        $('#eligibility_justification_label').text("Department")
+      when "committee_member"
+        $('#eligibility_justification_label').text("Role")
+      when "other_domestic"
+        $('#eligibility_justification_label').text("Vocation")
+      when "big_v_player", "big_v_development_player", "big_v_tier_1", "big_v_tier_2", "big_v_tier_3", "big_v_tier_4"
+        $('#eligibility_justification_label').text("Team you are registering for")
     if !$('#member_eligibility_justification').val()
       $('#member_eligibility_justification').focus()
 

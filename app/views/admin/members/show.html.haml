@@ -10,6 +10,10 @@
       = image_tag @member.photo_url(:thumbnail)
 
   %p
+    %strong= model_class.human_attribute_name(:created_at) + ':'
+    %br
+    = @member.created_at
+  %p
     %strong= model_class.human_attribute_name(:eligibility_clause) + ':'
     %br
     = @member.eligibility_clause

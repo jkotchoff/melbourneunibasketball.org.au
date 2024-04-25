@@ -19,7 +19,7 @@ feature "Stripe Membership Payment" do
   after { StripeMock.stop }
 
   def populate_details
-    select 'University Graduate', from: 'member_eligibility_clause'
+    select 'Domestic: Enrolled Melbourne Uni Student', from: 'member_eligibility_clause'
 
     fill_in "Credit Card Number", with: "4242424242424242"
     find(:xpath, "//select[@id='member_card_expiry_month']").set '10'
