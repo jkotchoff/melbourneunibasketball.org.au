@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   match 'membership' => 'members#new', via: [:get]
   match 'members/join_the_club' => 'members#new', :as => :join_the_club, via: [:get]
   match 'members/documents_and_forms' => 'members#documents_and_forms', :as => :documents_and_forms, via: [:get]
-  match 'members/uniforms' => 'members#uniforms', :as => :uniforms, via: [:get]
   match 'members/policies' => 'members#policies', :as => :policies, via: [:get]
 
   match 'news' => 'news#archived', :as => :archived_news, via: [:get]
@@ -49,13 +48,27 @@ Rails.application.routes.draw do
 
   match 'dribbling_balls_newsletter' => 'news#dribbling_balls', as: :dribbling_balls, via: [:get]
 
-  match 'event_calendar' => 'news#event_calendar', :as => :event_calendar, via: [:get]
+  match 'domestic' => 'domestic#index', :as => :domestic, via: [:get]
+  match 'domestic/uniforms' => 'domestic#uniforms', :as => :uniforms, via: [:get]
+
+  match 'bigv' => 'bigv#index', :as => :bigv, via: [:get]
+  match 'bigv/fixtures' => 'bigv#fixtures', :as => :bigv_fixtures, via: [:get]
+  match 'bigv/teams' => 'bigv#teams', :as => :bigv_teams, via: [:get]
+
+  match 'faq' => 'faq#index', :as => :faq, via: [:get]
 
   match 'about' => 'about#index', :as => :about, via: [:get]
-  match 'about/bigv' => 'about#big_v', :as => :big_v, via: [:get]
+  match 'about/contact_us' => 'about#contact_us', :as => :contact_us, via: [:get]
+  match 'about/event_calendar' => 'about#event_calendar', :as => :event_calendar, via: [:get]
+  match 'about/walkover_policy' => 'about#walkover_policy', :as => :walkover_policy, via: [:get]
+  match 'about/insurance_claims_policy' => 'about#insurance_claims_policy', :as => :insurance_claims_policy, via: [:get]
+  match 'about/code_of_conduct' => 'about#code_of_conduct', :as => :code_of_conduct, via: [:get]
+
   match 'about/sponsors' => 'about#sponsors', :as => :sponsors, via: [:get]
   match 'about/constitution' => 'about#constitution', :as => :constitution, via: [:get]
-  match 'about/competition_titles' => 'about#competition_titles', :as => :competition_titles, via: [:get]
+  match 'about/competition_titles_domestic' => 'about#competition_titles_domestic', :as => :competition_titles_domestic, via: [:get]
+  match 'about/competition_results_big_v' => 'about#competition_results_big_v', :as => :competition_results_big_v, via: [:get]
+  match 'about/competition_results_students' => 'about#competition_results_students', :as => :competition_results_students, via: [:get]
   match 'about/representative_mvps' => 'about#representative_mvps', :as => :representative_mvps, via: [:get]
   match 'about/team_mvps' => 'about#team_mvps', :as => :team_mvps, via: [:get]
   match 'about/most_improved_players' => 'about#most_improved_players', :as => :most_improved_players, via: [:get]

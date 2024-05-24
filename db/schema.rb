@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_03_16_205216) do
+ActiveRecord::Schema.define(version: 2024_08_14_120146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2024_03_16_205216) do
 
   create_table "content_images", id: :serial, force: :cascade do |t|
     t.integer "page_id"
-    t.string "image"
+    t.string "image", limit: 255
     t.date "created_at"
   end
 
@@ -57,54 +57,54 @@ ActiveRecord::Schema.define(version: 2024_03_16_205216) do
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
-    t.string "locked_by"
-    t.string "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "locked_by", limit: 255
+    t.string "queue", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "members", id: :serial, force: :cascade do |t|
-    t.string "eligibility_clause"
-    t.string "eligibility_justification"
-    t.string "payment_method"
-    t.string "paypal_payer_id"
-    t.string "paypal_token"
-    t.string "given_name"
-    t.string "family_name"
-    t.string "postal_address"
-    t.string "phone_number_mobile"
-    t.string "phone_number_other"
-    t.string "email"
+    t.string "eligibility_clause", limit: 255
+    t.string "eligibility_justification", limit: 255
+    t.string "payment_method", limit: 255
+    t.string "paypal_payer_id", limit: 255
+    t.string "paypal_token", limit: 255
+    t.string "given_name", limit: 255
+    t.string "family_name", limit: 255
+    t.string "postal_address", limit: 255
+    t.string "phone_number_mobile", limit: 255
+    t.string "phone_number_other", limit: 255
+    t.string "email", limit: 255
     t.date "date_of_birth"
-    t.string "gender"
+    t.string "gender", limit: 255
     t.boolean "new_member", default: true
-    t.string "your_existing_mubc_singlet_numbers"
+    t.string "your_existing_mubc_singlet_numbers", limit: 255
     t.text "how_did_you_hear_about_the_club"
     t.integer "amount_paid"
     t.boolean "payment_confirmed", default: false
-    t.string "payment_acknowledgement"
-    t.string "photo"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "payment_acknowledgement", limit: 255
+    t.string "photo", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "photo_processing"
     t.boolean "international_student", default: false
-    t.string "availability"
-    t.string "stripe_customer_id"
+    t.string "availability", limit: 255
+    t.string "stripe_customer_id", limit: 255
   end
 
   create_table "pages", id: :serial, force: :cascade do |t|
-    t.string "type"
-    t.string "title"
-    t.string "author"
+    t.string "type", limit: 255
+    t.string "title", limit: 255
+    t.string "author", limit: 255
     t.text "synopsis"
     t.text "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string "pdf"
-    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "pdf", limit: 255
+    t.string "slug", limit: 255
     t.boolean "sticky"
-    t.string "dribbling_balls_link"
+    t.string "dribbling_balls_link", limit: 255
     t.string "newsletter"
     t.index ["slug"], name: "index_pages_on_slug", unique: true
     t.index ["sticky"], name: "index_pages_on_sticky"

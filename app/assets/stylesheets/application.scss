@@ -54,3 +54,24 @@ body {
 #error_explanation{ color:#cc0000;border:1px solid #cc0000;background-color:#f3caca; padding: 10px; }
 
 table, tr, td{height: auto !important;}
+
+
+.navbar-dark .dropdown-menu {
+  padding: 0;
+  margin-top: -10px;
+
+  .dropdown-item {
+    color: $white;
+
+    &:hover,
+    &:focus {
+      color: $navbar-dark-hover-color;
+      background-color: darken($primary, 10%);
+    }
+
+    &:active {
+      color: $navbar-dark-active-color;
+      background-color: darken($primary, 15%);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.card.mb-3
+  .card-header
+    %h6 Big V
+  .list-group.list-group-flush
+    = link_to Page::BIG_V, bigv_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'index')]
+    = link_to Page::BIG_V_FIXTURES, bigv_fixtures_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'fixtures')]
+    = link_to "Results", "https://www.basketballvictoria.com.au/bigv/fixtures", class: ['list-group-item list-group-item-action']
+    = link_to Page::BIG_V_TEAMS, bigv_teams_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'teams')]
+.d-flex.justify-content-center.mt-4
+  = link_to "Join Us", members_path, class: 'btn btn-lg btn-primary'

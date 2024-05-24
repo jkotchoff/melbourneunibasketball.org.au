@@ -5,14 +5,6 @@ class MembersController < ApplicationController
     render_page(Page::CONTACT_JOIN_THE_CLUB)
   end
 
-  def uniforms
-    render_page(Page::CONTACT_UNIFORMS)
-  end
-
-  def documents_and_forms
-    render_page(Page::CONTACT_DOCUMENTS_AND_FORMS)
-  end
-
   def new
     @member = Member.new
     @member.payment_method = :paypal

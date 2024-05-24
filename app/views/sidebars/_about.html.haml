@@ -1,27 +1,36 @@
 .card.mb-3
   .list-group.list-group-flush
     = link_to Page::ABOUT_THE_CLUB, about_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'index')]
-    = link_to Page::BIG_V, big_v_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'big_v')]
+    = link_to Page::EVENT_CALENDAR, event_calendar_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'event_calendar')]
     = link_to Page::SPONSORS, sponsors_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'sponsors')]
-    = link_to Page::CONSTITUTION, constitution_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'constitution')]
+    = link_to Page::CONTACT_US, contact_us_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'contact_us')]
 
 .card.mb-3
   .card-header
-    %h6 Major Results & Player Titles
+    %h6 Documents
   .list-group.list-group-flush
-    = link_to Page::AWARDS_TITLES, competition_titles_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'competition_titles')]
-    = link_to Page::AWARDS_REPRESENTATIVE_MVPS, representative_mvps_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'representative_mvps')]
-    = link_to Page::AWARDS_TEAM_MVPS, team_mvps_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'team_mvps')]
+    = link_to Page::CONSTITUTION, constitution_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'constitution')]
+    = link_to Page::WALKOVER_POLICY, walkover_policy_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'walkover_policy')]
+    = link_to Page::INSURANCE_CLAIMS_POLICY, insurance_claims_policy_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'insurance_claims_policy')]
+
+.card.mb-3
+  .card-header
+    %h6 Season Results
+  .list-group.list-group-flush
+    = link_to "Domestic & Tournament Titles", competition_titles_domestic_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'competition_titles_domestic')]
+    = link_to "Big V Competition Results", competition_results_big_v_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'competition_results_big_v')]
+    = link_to "Student Basketball Results", competition_results_students_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'competition_results_students')]
+
+.card.mb-3
+  .card-header
+    %h6 Award Winners
+  .list-group.list-group-flush
+    = link_to "Big V MVP's", representative_mvps_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'representative_mvps')]
+    = link_to "Domestic MVP's", team_mvps_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'team_mvps')]
     = link_to Page::AWARDS_MOST_IMPROVED_PLAYERS, most_improved_players_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'most_improved_players')]
     = link_to Page::AWARDS_BEST_FIRST_YEAR_PLAYERS, best_first_year_players_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'best_first_year_players')]
     = link_to Page::AWARDS_COACHES_AWARDS, coaches_awards_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'coaches_awards')]
-
-.card.mb-3
-  .card-header
-    %h6 Big V
-  .list-group.list-group-flush
     = link_to "League Awards", bigv_league_awards_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'bigv_league_awards')]
-    = link_to "Season Results", bigv_seasons_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'bigv_seasons')]
 
 .card.mb-3
   .card-header

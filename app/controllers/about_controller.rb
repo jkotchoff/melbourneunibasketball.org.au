@@ -10,6 +10,22 @@ class AboutController < ApplicationController
     render_page(Page::BIG_V)
   end
 
+  def contact_us
+    render_page(Page::CONTACT_US)
+  end
+
+  def event_calendar
+    render_page(Page::EVENT_CALENDAR)
+  end
+
+  def walkover_policy
+    render_page(Page::WALKOVER_POLICY)
+  end
+
+  def insurance_claims_policy
+    render_page(Page::INSURANCE_CLAIMS_POLICY)
+  end
+
   def sponsors
     render_page(Page::SPONSORS)
   end
@@ -18,8 +34,16 @@ class AboutController < ApplicationController
     render_page(Page::CONSTITUTION)
   end
 
-  def competition_titles
-    render_page(Page::AWARDS_TITLES)
+  def competition_titles_domestic
+    render_page(Page::COMPETITION_TITLES_DOMESTIC_AND_TOURNAMENTS)
+  end
+
+  def competition_results_big_v
+    render_page(Page::COMPETITION_RESULTS_BIG_V)
+  end
+
+  def competition_results_students
+    render_page(Page::COMPETITION_RESULTS_STUDENT_BASKETBALL)
   end
 
   def representative_mvps

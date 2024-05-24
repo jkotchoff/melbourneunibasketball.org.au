@@ -12,13 +12,18 @@ NewsItem.create!(author: 'smoke', title: 'Corporate Games win', synopsis: "Andy'
 
 {
   Page::EVENT_CALENDAR => "Event Calendar",
-  
+
   Page::ABOUT_THE_CLUB => "Find out why MUBC is a great place to play basketball",
   Page::BIG_V => "Melbourne Uni have both a mens and a womens representantive Big V program for elite players",
   Page::SPONSORS => "Big props to all our fantastic sponsors!",
   Page::CONSTITUTION => "The constitution of Melbourne University Basketball Club",
-
-  
+  Page::DOMESTIC => "Melbourne Uni is one of the biggest domestic clubs for adult members",
+  Page::WALKOVER_POLICY => "Domestic Walkover policy",
+  Page::DOMESTIC => "Adult basketball teams in Melbourne in Men's and Women's divisions for all levels of skill",
+  Page::BIG_V_FIXTURES => "The Melbourne University Big V Fixtures and home games",
+  Page::BIG_V_TEAMS => "The players in our Big V program",
+  Page::FAQ => "Frequently Asked Questions",
+  PAGE::CONTACT_US => "Contact Us",
 #  Page::AWARDS_TITLES => "Team Lists for Premierships & Runner Up finishes (VBL, University Games, MMBL, Sunday Night MSAC, Tournaments)",
   Page::AWARDS_REPRESENTATIVE_MVPS => "Male & Female players of the year in our top Mens and Womens teams",
   Page::AWARDS_TEAM_MVPS => "Male & Female players of the year across all teams",
@@ -36,15 +41,16 @@ NewsItem.create!(author: 'smoke', title: 'Corporate Games win', synopsis: "Andy'
 
   Page::CONTACT_JOIN_THE_CLUB => "MUBC Membership",
   Page::CONTACT_DOCUMENTS_AND_FORMS => "Club Specific Documents and Forms (eg. the membership form)",
-  Page::CONTACT_UNIFORMS => "Uniform ordering guide for MUBC playing shorts, singlets and club hoodies"
-
+  Page::DOMESTIC_UNIFORMS => "Uniform ordering guide for MUBC playing shorts, singlets and club hoodies",
+  COMPETITION_RESULTS_BIG_V => "Big V Competition Results",
+  COMPETITION_RESULTS_STUDENT_BASKETBALL => "Student Basketball Competition Results",
 }.each_pair do |page_title, synopsis|
   Page.create!(title: page_title, synopsis: synopsis, content: "TODO: administrate!")
 end
 
 Page.create!(
-  title: Page::PANEL_HOME_SIDEBAR, 
-  synopsis: "Content for the sidebar on the homepage", 
+  title: Page::PANEL_HOME_SIDEBAR,
+  synopsis: "Content for the sidebar on the homepage",
   content: %Q{
       <p>
         <b>Upcoming Events</b><br/>
@@ -88,12 +94,12 @@ Page.create!(
         <div class="text-muted">Domestic Men (grades A-B)</div>Saturdays, 9am-11am<br/><br/>
 
         <div class="text-muted">Domestic Men (grades C-G)</div>Saturdays, 11am-12:30pm<br/><br/>
-        
+
         <div class="text-muted">Big V Men</div> Mondays &amp; Thursdays, 8pm-10pm<br/><br/>
         <div class="text-muted">Big V Women</div> Mondays &amp; Thursdays, 6:30pm-8:30pm<br/><br/>
-        
+
         <div class="text-muted">* All training is held at the Melbourne Uni Sports Center</div>
-      </p>  
+      </p>
   }
 )
 
@@ -134,15 +140,15 @@ Page.find_by_title(Page::EVENT_CALENDAR).update(:content => %Q{
 
 
 Page.create!(
-  title: Page::AWARDS_TITLES, 
-  synopsis: "Team Lists for Premierships & Runner Up finishes (VBL, University Games, MMBL, Sunday Night MSAC, Tournaments)", 
+  title: Page::COMPETITION_TITLES_DOMESTIC_AND_TOURNAMENTS,
+  synopsis: "Team Lists for Premierships & Runner Up finishes (VBL, University Games, MMBL, Sunday Night MSAC, Tournaments)",
   content: %Q{
   <table cellpadding="2" cellspacing="0" class="sortable" id="mubcTitles">
     <caption style="">
-    Melbourne University Basketball Titles (<em>Click column headers to sort</em>) 
+    Melbourne University Basketball Titles (<em>Click column headers to sort</em>)
     </caption>
     <thead style="">
-      <tr style=""> 
+      <tr style="">
         <th width="34">Year</th>
 
         <th width="147">Competition</th>
@@ -155,7 +161,7 @@ Page.create!(
       </tr>
     </thead>
     <tbody style="vertical-align:top;">
-      <tr> 
+      <tr>
         <td>2010</td>
         <td>Australian University Games</td>
         <td>Men</td>
@@ -164,7 +170,7 @@ Page.create!(
         <td>Andrew Walker</td>
         <td>Jimmy Hassett, Peter Rossiter, Daniel Sneddon, Matt Slaven, Callum Repper, Stefan Pomasan, Hunter Santamaria, Tom Bicknell, Jason Conway, Scott Drysdale, Tom Stephens, Tim Clarke</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2010</td>
         <td>Big V</td>
         <td>Division 1 Men</td>
@@ -173,7 +179,7 @@ Page.create!(
         <td>Andrew Walker, Stuart Black (assistant), Bernie Thompson (assistant)</td>
         <td>Scott Cuffe, Justin Turnley, Jamie Thiessen, Dan Nelson, Nick Masunda, Andrew Webb, Liam Norton, Emel Rowe, Mason Clarke-Jones, Jacob Philpot, Stefan Pomasan, Nathan Luke</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2009</td>
         <td>Tuesday Nights MSAC A Grade</td>
         <td>Men</td>
@@ -182,7 +188,7 @@ Page.create!(
         <td>-</td>
         <td>Paul Mason, Adriano Leti, Jared Fetherston, Justin Turnley, Matthew Hilbrich, James Fidler, Morgan Arundal</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2009</td>
         <td>Australian University Games</td>
         <td>Women</td>
@@ -191,7 +197,7 @@ Page.create!(
         <td>Jason Kotchoff</td>
         <td>Melanie Fidler, Charlotte McNamara, Laura Salzone, Bec Wardle, Maree DeWijn, Caitlyn Mackenzie, Nicole Dadswell, Claire Mehrtens, Jess McDonald, Charlotte Ross-Harris, Charlotte Righetti, Steph Righetti</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2009</td>
         <td>Australian University Games</td>
         <td>Men</td>
@@ -200,7 +206,7 @@ Page.create!(
         <td>Stuart Black</td>
         <td>Thomas Bicknell, Jacob Philpot, Tom Stephens, Jason Conway, Paul Kopanidis, Peter Rossiter, Callum Repper, Snedden Claw, Scott Drysdale, Tim Clark, Vukas, Jimmy Hassett</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2009</td>
         <td>Big V</td>
         <td>Division 2 Men</td>
@@ -209,7 +215,7 @@ Page.create!(
         <td>Andrew Walker, Stuart Black (assistant), Bernie Thompson (assistant)</td>
         <td>Scott Cuffe, Matt Rafton, Tom Bicknell, Justin Turnley, Chris Giosis, Chris Neale, Jamie Thiessen, Dan Nelson, Nick Masunda, Robbie McCoy, Jason Kotchoff, Andrew Webb</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2009</td>
         <td>Big V</td>
         <td>Division 2 Women</td>
@@ -218,7 +224,7 @@ Page.create!(
         <td>James Fidler, Daisy Adams (assistant)</td>
         <td>Rhia Mikkor, Mel Fidler, Claire Pownell, Simone Steele, Kylie Turnley, Shannyn Kelly, Kemperly Dynon, Caitlin Delahunty, Emily Voight, Laura Salsone, </td>
       </tr>
-      <tr> 
+      <tr>
         <td>2008</td>
         <td>Australian University Games</td>
         <td>Women</td>
@@ -227,7 +233,7 @@ Page.create!(
         <td>Chris Owen</td>
         <td>Kemperly Dynon, Melanie Fidler, Sophie Hofferberth, Mel Ng, Nicole ?, Jessica Patti, Ellen Heyting, Claire Grady</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2008</td>
         <td>Big V</td>
         <td>Division 2 Men</td>
@@ -254,7 +260,7 @@ Page.create!(
   <td>Brendan Greene</td>
   <td>Paul Mason, Justin Turnley, James Rapley, Adriano Leti, Jared Fetherston, Morgan Arundell, Matthew Hillbrich, PJ Estorque, Will Hart</td>
   </tr>
-      <tr> 
+      <tr>
         <td>2005</td>
         <td>Big V (formerly VBL)</td>
         <td>Division 2 Women</td>
@@ -262,8 +268,8 @@ Page.create!(
 
         <td>Diamond Valley</td>
         <td>Jim Kondos, Brendan Green (assistant)</td>
-        <td>Bree Sherry, Brigid Howell, Claire Pownell, Elizabeth Anderson, Emily 
-          Evans, Jayne Bruce, Kirsten Daly, Lauren Donley, Louise Pownell, Meagan 
+        <td>Bree Sherry, Brigid Howell, Claire Pownell, Elizabeth Anderson, Emily
+          Evans, Jayne Bruce, Kirsten Daly, Lauren Donley, Louise Pownell, Meagan
           Shields, Nat Kondos, Renee Tuck, Sarah Thompson, Simone Steele </td>
       </tr>
       <tr>
@@ -274,11 +280,11 @@ Page.create!(
         <td>Premier</td>
         <td>Growlers</td>
         <td>Brendan Green</td>
-        <td>Melissa 'Joy' Pearson, Lucy Williams, Melanie Fidler, Rhia Mikkor, 
+        <td>Melissa 'Joy' Pearson, Lucy Williams, Melanie Fidler, Rhia Mikkor,
           Danielle Winkelman, Ebonie Delahunty, Caitlyn Delahunty, Eiko Anderson</td>
       </tr>
 
-      <tr> 
+      <tr>
         <td>2005</td>
         <td>CYMS</td>
         <td>B Grade Men</td>
@@ -286,7 +292,7 @@ Page.create!(
         <td>Old Xavierians</td>
         <td>Kuhn Ip</td>
 
-        <td>James Hillier, James Love, Brendan, Rana Dhillon, Morgan Arundell, 
+        <td>James Hillier, James Love, Brendan, Rana Dhillon, Morgan Arundell,
           Lachlan Arundell, Cj Ruggles, Tom Leong, Jeremy, Gerry</td>
   </tr><tr>
         <td>2005</td>
@@ -298,7 +304,7 @@ Page.create!(
         <td>-</td>
         <td>Scott Cuffe, Jason Kotchoff, Matthew Hillbrich, Raef Akehurst, Ben Barnett, Brendan Green, Joel Berry</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2004</td>
         <td>Victorian Basketball League</td>
 
@@ -306,12 +312,12 @@ Page.create!(
         <td>Champions</td>
         <td>Southern Peninsula</td>
         <td>Dean Vickerman, Glenda De Marinis (assistant)</td>
-        <td>Scott Cuffe, James Huttom, James Pescott, Liam Norton, Anthony Nantes, 
-          Matthew Rafton, Ben Dewer, Jamie Hagan, Nicholas Masunda, Adrian Sturt, 
+        <td>Scott Cuffe, James Huttom, James Pescott, Liam Norton, Anthony Nantes,
+          Matthew Rafton, Ben Dewer, Jamie Hagan, Nicholas Masunda, Adrian Sturt,
           Lucien Boland</td>
       </tr>
 
-      <tr> 
+      <tr>
         <td>2004</td>
         <td>Australian University Games</td>
         <td>Women</td>
@@ -319,10 +325,10 @@ Page.create!(
         <td></td>
         <td>Jim Kondos</td>
 
-        <td>Claire Pownell, Jayne Bruce, Simone Steele, Renee Tuck, Kemperley 
+        <td>Claire Pownell, Jayne Bruce, Simone Steele, Renee Tuck, Kemperley
           Dynon, Megan Reeve, Bree Sherry</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2004</td>
         <td>Melbourne Metropolitan Basketball League</td>
         <td>Premier Division - Men</td>
@@ -330,10 +336,10 @@ Page.create!(
 
         <td>Whitehorse</td>
         <td>Glenda De Marinis</td>
-        <td>Sean Powell, Lang Ip, Jason Kotchoff, Lachlan Strong, Liam Norton, 
+        <td>Sean Powell, Lang Ip, Jason Kotchoff, Lachlan Strong, Liam Norton,
           Nicholas Masunda, Jamie Hagan, Ben Dewer, James Fidler</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2003</td>
         <td>Victorian Basketball League</td>
 
@@ -341,12 +347,12 @@ Page.create!(
         <td>Runner-Up</td>
         <td>Werribee</td>
         <td>Martin DeLange, Daisy Adams (assistant)</td>
-        <td>Martin DeLange, Scott Cuffe, James Hutton, James Pescott, Liam Norton, 
-          Matthew Rafton, Anthony Nantes, Lucien Boland, Nick Rintoul, Jason Kotchoff, 
+        <td>Martin DeLange, Scott Cuffe, James Hutton, James Pescott, Liam Norton,
+          Matthew Rafton, Anthony Nantes, Lucien Boland, Nick Rintoul, Jason Kotchoff,
           Matt Dunn</td>
       </tr>
 
-      <tr> 
+      <tr>
         <td>2003</td>
         <td>Melbourne Metropolitan Basketball League</td>
         <td>Division Two - Men</td>
@@ -354,10 +360,10 @@ Page.create!(
         <td>Coburg</td>
         <td>Martin DeLange</td>
 
-        <td>Martin DeLange, Jason Kotchoff, James Fidler, Sean Powell, Lang Ip, 
+        <td>Martin DeLange, Jason Kotchoff, James Fidler, Sean Powell, Lang Ip,
           Lachlan Strong, Matthew Bell</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2003</td>
         <td>CYMS</td>
         <td>A Grade</td>
@@ -365,10 +371,10 @@ Page.create!(
 
         <td>Moonee Ponds</td>
         <td>Glenda De Marinis</td>
-        <td>Shoane Ip, Kuhn Ip, Peter Betros, Aaron McGovern, Raef Akehurst, Nigel 
+        <td>Shoane Ip, Kuhn Ip, Peter Betros, Aaron McGovern, Raef Akehurst, Nigel
           Seear, James Fidler, Justin Turnley</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2003</td>
         <td>Albury Tournament</td>
 
@@ -376,11 +382,11 @@ Page.create!(
         <td>Champions</td>
         <td>NSW Select</td>
         <td>Martin DeLange</td>
-        <td>Martin DeLange, Scott Cuffe, James Hutton, Dan Tully, Sean Powell, 
+        <td>Martin DeLange, Scott Cuffe, James Hutton, Dan Tully, Sean Powell,
           Lang Ip, Jason Kotchoff</td>
       </tr>
 
-      <tr> 
+      <tr>
         <td>2002</td>
         <td>Victorian Basketball League</td>
         <td>Premier Division Men</td>
@@ -388,11 +394,11 @@ Page.create!(
         <td>Nunawading</td>
         <td>Tony Holden</td>
 
-        <td>Scott Cuffe, Martin De Lange, James Pescott, James Hutton, Liam Norton, 
-          Ross McNeil, Matt Dunn, Anthony Nantes, Matt Rafton, Lach Strong, Dan 
+        <td>Scott Cuffe, Martin De Lange, James Pescott, James Hutton, Liam Norton,
+          Ross McNeil, Matt Dunn, Anthony Nantes, Matt Rafton, Lach Strong, Dan
           Tully</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2002</td>
         <td>Australian University Games</td>
         <td>Men</td>
@@ -400,10 +406,10 @@ Page.create!(
 
         <td>-</td>
         <td>Tony Holden</td>
-        <td>Scott Cuffe, James Pescott, Liam Norton, Matt Dunn, Nigel Seear, Lach 
+        <td>Scott Cuffe, James Pescott, Liam Norton, Matt Dunn, Nigel Seear, Lach
           Strong, </td>
       </tr>
-      <tr> 
+      <tr>
         <td>2002</td>
         <td>Australian University Games</td>
 
@@ -414,7 +420,7 @@ Page.create!(
         <td>-</td>
       </tr>
 
-      <tr> 
+      <tr>
         <td>2001</td>
         <td>Australian University Games</td>
         <td>Women</td>
@@ -424,7 +430,7 @@ Page.create!(
 
         <td>-</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2001</td>
         <td>Australian University Games</td>
         <td>Men</td>
@@ -434,7 +440,7 @@ Page.create!(
         <td>-</td>
         <td>-</td>
       </tr>
-      <tr> 
+      <tr>
         <td>2000</td>
         <td>Australian University Games</td>
 
@@ -456,7 +462,7 @@ Page.create!(
         <td>Mike Woolrich, Raef Akehurst, Lach Strong, Tommy Sim, Vlade Angelovski, Karl Edwards, Toby Wallace-Crabbe, Mayur</td>
       </tr>
 
-      <tr> 
+      <tr>
         <td>2000</td>
         <td>Victorian Basketball League</td>
         <td>Division One - Men</td>
@@ -464,11 +470,11 @@ Page.create!(
         <td>Horsham</td>
         <td>Tony Holden, Marc Howard (assistant)</td>
 
-        <td>Lucien Boland, Mark Boland, Jamie Cemm, Pete Furlong, Anthony Michielin, 
-          Anthony Nantes, James Pescott, Matthew Rafton, Nick Rintoul, Stuart 
+        <td>Lucien Boland, Mark Boland, Jamie Cemm, Pete Furlong, Anthony Michielin,
+          Anthony Nantes, James Pescott, Matthew Rafton, Nick Rintoul, Stuart
           Verrier</td>
       </tr>
-      <tr> 
+      <tr>
         <td>1998</td>
         <td>Australian University Games</td>
         <td>Men</td>
@@ -476,24 +482,24 @@ Page.create!(
 
         <td>Monash University</td>
         <td>Tony Goodwin, Marc Howard (assistant), Herman Tokatlidis (assistant)</td>
-        <td>Lucien Boland, Jamie Cemm, Scott Cuffe, Elliot Dean, Stuart Forsyth, 
-          Paul Gregorevic, Nick Rintoul, Ken Santamaria, Liam Santamaria, Tim 
+        <td>Lucien Boland, Jamie Cemm, Scott Cuffe, Elliot Dean, Stuart Forsyth,
+          Paul Gregorevic, Nick Rintoul, Ken Santamaria, Liam Santamaria, Tim
           Sturrock, James Hutton</td>
       </tr>
-      <tr> 
+      <tr>
         <td>1998</td>
         <td>Melbourne Metropolitan Basketball League</td>
 
         <td>Premier Division - Men</td>
         <td>Runners-Up</td>
         <td>Blackburn</td>
-        <td>Tony Goodwin, Marc Howard (assistant), Herman Tokatlidis (assistant) 
+        <td>Tony Goodwin, Marc Howard (assistant), Herman Tokatlidis (assistant)
         </td>
-        <td>Lucien Boland, Jamie Cemm, Michael Crowe, Elliot Dean, Paul Gregorevic, 
+        <td>Lucien Boland, Jamie Cemm, Michael Crowe, Elliot Dean, Paul Gregorevic,
           Nick Rintoul, Ken Santamaria, Stuart Verrier</td>
       </tr>
 
-      <tr> 
+      <tr>
         <td>1998</td>
         <td>Melbourne Metropolitan Basketball League</td>
         <td>Premier Division - Women</td>
@@ -503,7 +509,7 @@ Page.create!(
 
         <td>Emily Cleeve, Tracy Dyt...-</td>
       </tr>
-      <tr> 
+      <tr>
         <td>1996</td>
         <td>Australian University Games</td>
         <td>Men</td>
@@ -512,12 +518,12 @@ Page.create!(
         <td>Canberra University</td>
         <td>Tony Goodwin, Marc Howard (assistant)</td>
         <td>
-    Anthony Michelin, Elliot Dean, Michael Crowe, Luke Gatuso, 
-    Scott Cuffe, Mark Boland, James Hutton, Lucien Boland, 
+    Anthony Michelin, Elliot Dean, Michael Crowe, Luke Gatuso,
+    Scott Cuffe, Mark Boland, James Hutton, Lucien Boland,
     Daniel Forster, Chris Clarke, Ken Santamaria
   </td>
       </tr>
-      <tr> 
+      <tr>
         <td>1988</td>
 
         <td>Australian University Games</td>
@@ -525,12 +531,12 @@ Page.create!(
         <td>Champions</td>
         <td>-</td>
         <td>Rob Sweetten, Gillian Payne (team manager) </td>
-        <td>Samantha Macleod, Donna Watt, Debbie Kool, Tania Luders, Jo Storer, 
-          Narelle Frohling, Sally Bickerton, Lisa Swartz, Rebecca Stockdale, Fiona 
+        <td>Samantha Macleod, Donna Watt, Debbie Kool, Tania Luders, Jo Storer,
+          Narelle Frohling, Sally Bickerton, Lisa Swartz, Rebecca Stockdale, Fiona
           Bird, Kim Jachno</td>
 
       </tr>
-      <tr> 
+      <tr>
         <td>1985</td>
         <td>Australian University Games</td>
         <td>Women</td>
@@ -538,11 +544,11 @@ Page.create!(
         <td>-</td>
 
         <td>John Campbell, Trevor Smith (team manager)</td>
-        <td>Bridget Grounds, Lindy (Spike) Barrett, Anne Cantwell, Kylie O'Brien, 
-          Debbie Kool, Tracey Nero, Ellen Maxwell, Gillian Payne, Lisa Swartz, 
+        <td>Bridget Grounds, Lindy (Spike) Barrett, Anne Cantwell, Kylie O'Brien,
+          Debbie Kool, Tracey Nero, Ellen Maxwell, Gillian Payne, Lisa Swartz,
           Sally Bickerton</td>
       </tr>
-      <tr> 
+      <tr>
         <td>1984</td>
         <td>South Pacific Universities Championships</td>
         <td>Men</td>
@@ -550,12 +556,11 @@ Page.create!(
         <td>Runner-Up</td>
         <td>Monash</td>
         <td>n/a</td>
-        <td>Trevor Andrew, Geoff Bowles, Simon Brown-Greaves, John Campbell, Brian 
-          Connors, Henry Cooper, Dave Crombie, Dave Davies, Graeme Jane, Tony 
+        <td>Trevor Andrew, Geoff Bowles, Simon Brown-Greaves, John Campbell, Brian
+          Connors, Henry Cooper, Dave Crombie, Dave Davies, Graeme Jane, Tony
           Lewis</td>
       </tr>
     </tbody>
   </table>
   }
 )
-  

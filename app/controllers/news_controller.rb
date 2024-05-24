@@ -33,8 +33,4 @@ class NewsController < ApplicationController
     @current_page = Page.friendly.find(params[:article])
     render "pages/show"
   end
-
-  def event_calendar
-    render_page(Page::EVENT_CALENDAR)
-  end
 end

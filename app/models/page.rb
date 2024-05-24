@@ -20,15 +20,30 @@ class Page < ActiveRecord::Base
   # config/routes.rb
   # app/controllers/application_controller
 
-  EVENT_CALENDAR                  = "Event Calendar"
+  LINK_DOMESTIC_FIXTURES = "https://www.playhq.com/basketball-victoria/org/melbourne-university-basketball-club/57a64b90"
 
   ABOUT_THE_CLUB                  = "About The Club"
-  BIG_V                           = "Big V Program"
+  CONTACT_US                      = "Contact Us"
+  EVENT_CALENDAR                  = "Event Calendar"
   SPONSORS                        = "Sponsors"
-  CONSTITUTION                    = "Constitution"
   SPONSORSHIP                     = "Sponsors"
+  CONSTITUTION                    = "Constitution"
+  WALKOVER_POLICY                 = "Walkover Policy"
+  INSURANCE_CLAIMS_POLICY         = "Insurance Claims Policy"
 
-  AWARDS_TITLES                   = "Competition Titles"
+  DOMESTIC                        = "Play Basketball at MUBC"
+  DOMESTIC_UNIFORMS               = "Uniforms"
+
+  BIG_V                           = "About Big V at MUBC"
+  BIG_V_FIXTURES                  = "Home Fixture"
+  BIG_V_TEAMS                     = "Big V Teams"
+
+  FAQ                             = "FAQ"
+
+  COMPETITION_TITLES_DOMESTIC_AND_TOURNAMENTS = "Competition Titles"
+  COMPETITION_RESULTS_BIG_V = "Big V Competition Results"
+  COMPETITION_RESULTS_STUDENT_BASKETBALL = "Big V Competition Results"
+
   AWARDS_REPRESENTATIVE_MVPS      = "Representative MVP's"
   AWARDS_TEAM_MVPS                = "Team MVP's"
   AWARDS_MOST_IMPROVED_PLAYERS    = "Most Improved Players"
@@ -48,13 +63,11 @@ class Page < ActiveRecord::Base
   AWARDS_LIFERS                   = "Life Members"
 
   CONTACT_JOIN_THE_CLUB           = "Join the Club"
-  CONTACT_DOCUMENTS_AND_FORMS     = "Documents and Forms"
-  CONTACT_UNIFORMS                = "Uniforms"
 
   PANEL_HOME_SIDEBAR              = "Home Side Panel"
 
   before_save :clean_s3_urls
-  
+
   def clean_s3_urls
     html = Nokogiri::HTML.fragment(content)
     html.css('img').each do |img|

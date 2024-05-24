@@ -39,14 +39,44 @@
             %li{class: ['nav-item', ('active' if  controller_name == 'newsletters')]}
               = link_to "Newsletters", admin_newsletters_path, class: 'nav-link'
           - else
-            %li{class: ['nav-item', ('active' if params[:controller] == 'news' and !['dribbling_balls', 'index', 'event_calendar'].index(params[:action]))]}
-              = link_to "News Archive", archived_news_path, class: 'nav-link'
-            %li{class: ['nav-item', ('active' if params[:action] == 'event_calendar')]}
-              = link_to "Event Calendar", event_calendar_path, class: 'nav-link'
-            %li{class: ['nav-item', ('active' if params[:controller] == 'about')]}
-              = link_to "About MUBC", about_path, class: 'nav-link'
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", class: ['nav-item', ('active' if params[:controller] == 'domestic')], :role => "button"} Domestic
+              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+                %li{class: ['nav-item', ('active' if params[:action] == 'faq')]}
+                  = link_to Page::DOMESTIC, domestic_path, class: ['dropdown-item', ('active' if params[:action] == 'faq')]
+                %li{class: ['nav-item', ('active' if params[:action] == 'fixtures')]}
+                  = link_to "Domestic Fixtures / Ladders", Page::LINK_DOMESTIC_FIXTURES, class: ['dropdown-item']
+                %li{class: ['nav-item', ('active' if params[:action] == 'uniforms')]}
+                  = link_to Page::DOMESTIC_UNIFORMS, uniforms_path, class: ['dropdown-item', ('active' if params[:action] == 'uniforms')]
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", class: ['nav-item', ('active' if params[:controller] == 'big_v')], :role => "button"} Big V
+              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+                %li{class: ['nav-item']}
+                  = link_to Page::BIG_V, bigv_path, class: ['dropdown-item']
+                %li{class: ['nav-item', ('active' if params[:action] == 'fixtures')]}
+                  = link_to Page::BIG_V_FIXTURES, bigv_fixtures_path, class: ['dropdown-item', ('active' if params[:action] == 'fixtures' && params[:controller] == 'big_v')]
+                %li{class: ['nav-item']}
+                  = link_to "Results", "https://www.basketballvictoria.com.au/bigv/fixtures", class: ['dropdown-item']
+                %li{class: ['nav-item', ('active' if params[:action] == 'teams')]}
+                  = link_to Page::BIG_V_TEAMS, bigv_teams_path, class: ['dropdown-item', ('active' if params[:action] == 'teams')]
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", class: ['nav-item', ('active' if params[:controller] == 'about')], :role => "button"} About Us
+              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+                %li{class: ['nav-item']}
+                  = link_to Page::ABOUT_THE_CLUB, about_path, class: ['dropdown-item']
+                %li{class: ['nav-item', ('active' if params[:action] == 'event_calendar')]}
+                  = link_to Page::EVENT_CALENDAR, event_calendar_path, class: ['dropdown-item', ('active' if params[:action] == 'event_calendar')]
+                %li{class: ['nav-item', ('active' if params[:action] == 'sponsors')]}
+                  = link_to Page::SPONSORS, sponsors_path, class: ['dropdown-item', ('active' if params[:action] == 'sponsors')]
+                %li{class: ['nav-item', ('active' if params[:action] == 'contact_us')]}
+                  = link_to Page::CONTACT_US, contact_us_path, class: ['dropdown-item', ('active' if params[:action] == 'contact_us')]
+                %li{class: ['nav-item']}
+                  = link_to "More", about_path, class: ['dropdown-item']
+            %li.nav-item.dropdown
+              = link_to Page::FAQ, faq_path, class: ["nav-link", "nav-item", ('active' if params[:controller] == 'faq')]
+              -# %a.nav-link{"aria-expanded" => "false", "data-toggle" => "dropdown", class: ['nav-item', ('active' if params[:controller] == 'faq')], :role => "button"} FAQ
             %li{class: ['nav-item', ('active' if params[:controller] == 'members')]}
-              = link_to "Membership", members_path, class: 'nav-link'
+              = link_to "Membership", members_path, class: 'nav-link btn btn-primary'
 
       %span.navbar-text.small.d-none.d-lg-block.text-center
         /Big V Champions 2004, 2009, 2010 (Men) and 2019 (Women)
