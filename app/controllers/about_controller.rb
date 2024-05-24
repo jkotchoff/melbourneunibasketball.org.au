@@ -10,6 +10,26 @@ class AboutController < ApplicationController
     render_page(Page::BIG_V)
   end
 
+  def contact_us
+    render_page(Page::CONTACT_US)
+  end
+
+  def event_calendar
+    render_page(Page::EVENT_CALENDAR)
+  end
+
+  def walkover_policy
+    render_page(Page::WALKOVER_POLICY)
+  end
+
+  def insurance_claims_policy
+    render_page(Page::INSURANCE_CLAIMS_POLICY)
+  end
+
+  def code_of_conduct
+    render_page(Page::CODE_OF_CONDUCT)
+  end
+
   def sponsors
     render_page(Page::SPONSORS)
   end

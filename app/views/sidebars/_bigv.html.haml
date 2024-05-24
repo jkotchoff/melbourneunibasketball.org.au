@@ -1,0 +1,10 @@
+.card.mb-3
+  .card-header
+    %h6 Big V
+  .list-group.list-group-flush
+    = link_to "About our program", bigv_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'index')]
+    = link_to "Fixtures", bigv_fixtures_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'fixtures')]
+    = link_to "Results", bigv_results_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'results')]
+    = link_to "Teams", bigv_players_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'players')]
+.d-flex.justify-content-center.mt-4
+  = link_to "Join Us", members_path, class: 'btn btn-lg btn-primary'

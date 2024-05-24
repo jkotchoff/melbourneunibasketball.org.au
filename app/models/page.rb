@@ -20,13 +20,26 @@ class Page < ActiveRecord::Base
   # config/routes.rb
   # app/controllers/application_controller
 
-  EVENT_CALENDAR                  = "Event Calendar"
 
   ABOUT_THE_CLUB                  = "About The Club"
-  BIG_V                           = "Big V Program"
+  CONTACT_US                      = "Contact Us"
+  EVENT_CALENDAR                  = "Event Calendar"
   SPONSORS                        = "Sponsors"
-  CONSTITUTION                    = "Constitution"
   SPONSORSHIP                     = "Sponsors"
+  CONSTITUTION                    = "Constitution"
+  WALKOVER_POLICY                 = "Walkover Policy"
+  INSURANCE_CLAIMS_POLICY         = "Insurance Claims Policy"
+  CODE_OF_CONDUCT                 = "Code of Conduct"
+
+  DOMESTIC                        = "Domestic Program"
+  DOMESTIC_FIXTURES               = "Domestic Fixtures"
+  DOMESTIC_UNIFORMS               = "Uniforms"
+  DOMESTIC_FAQ                    = "Domestic FAQs"
+
+  BIG_V                           = "Big V Program"
+  BIG_V_FIXTURES                  = "Big V Fixtures"
+  BIG_V_RESULTS                   = "Big V Results"
+  BIG_V_TEAMS                     = "Big V Teams"
 
   AWARDS_TITLES                   = "Competition Titles"
   AWARDS_REPRESENTATIVE_MVPS      = "Representative MVP's"
@@ -48,13 +61,11 @@ class Page < ActiveRecord::Base
   AWARDS_LIFERS                   = "Life Members"
 
   CONTACT_JOIN_THE_CLUB           = "Join the Club"
-  CONTACT_DOCUMENTS_AND_FORMS     = "Documents and Forms"
-  CONTACT_UNIFORMS                = "Uniforms"
 
   PANEL_HOME_SIDEBAR              = "Home Side Panel"
 
   before_save :clean_s3_urls
-  
+
   def clean_s3_urls
     html = Nokogiri::HTML.fragment(content)
     html.css('img').each do |img|

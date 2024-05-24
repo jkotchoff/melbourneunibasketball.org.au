@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   match 'membership' => 'members#new', via: [:get]
   match 'members/join_the_club' => 'members#new', :as => :join_the_club, via: [:get]
   match 'members/documents_and_forms' => 'members#documents_and_forms', :as => :documents_and_forms, via: [:get]
-  match 'members/uniforms' => 'members#uniforms', :as => :uniforms, via: [:get]
   match 'members/policies' => 'members#policies', :as => :policies, via: [:get]
 
   match 'news' => 'news#archived', :as => :archived_news, via: [:get]
@@ -49,10 +48,23 @@ Rails.application.routes.draw do
 
   match 'dribbling_balls_newsletter' => 'news#dribbling_balls', as: :dribbling_balls, via: [:get]
 
-  match 'event_calendar' => 'news#event_calendar', :as => :event_calendar, via: [:get]
+  match 'domestic' => 'domestic#index', :as => :domestic, via: [:get]
+  match 'domestic/fixtures' => 'domestic#fixtures', :as => :domestic_fixtures, via: [:get]
+  match 'domestic/uniforms' => 'domestic#uniforms', :as => :uniforms, via: [:get]
+  match 'domestic/faq' => 'domestic#faq', :as => :domestic_faq, via: [:get]
+
+  match 'bigv' => 'bigv#index', :as => :bigv, via: [:get]
+  match 'bigv/fixtures' => 'bigv#fixtures', :as => :bigv_fixtures, via: [:get]
+  match 'bigv/players' => 'bigv#players', :as => :bigv_players, via: [:get]
+  match 'bigv/results' => 'bigv#results', :as => :bigv_results, via: [:get]
 
   match 'about' => 'about#index', :as => :about, via: [:get]
-  match 'about/bigv' => 'about#big_v', :as => :big_v, via: [:get]
+  match 'about/contact_us' => 'about#contact_us', :as => :contact_us, via: [:get]
+  match 'about/event_calendar' => 'about#event_calendar', :as => :event_calendar, via: [:get]
+  match 'about/walkover_policy' => 'about#walkover_policy', :as => :walkover_policy, via: [:get]
+  match 'about/insurance_claims_policy' => 'about#insurance_claims_policy', :as => :insurance_claims_policy, via: [:get]
+  match 'about/code_of_conduct' => 'about#code_of_conduct', :as => :code_of_conduct, via: [:get]
+
   match 'about/sponsors' => 'about#sponsors', :as => :sponsors, via: [:get]
   match 'about/constitution' => 'about#constitution', :as => :constitution, via: [:get]
   match 'about/competition_titles' => 'about#competition_titles', :as => :competition_titles, via: [:get]
