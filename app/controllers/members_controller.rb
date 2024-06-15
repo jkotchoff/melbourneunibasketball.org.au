@@ -24,6 +24,7 @@ class MembersController < ApplicationController
 
     if @member.valid? && !duplicate_signup?(@member) && stripe_service.call
       @member.save
+      MemberMailer.signup_notification(@member).deliver
       redirect_to thankyou_member_path(@member)
     else
       render action: "new"

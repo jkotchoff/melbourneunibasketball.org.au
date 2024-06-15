@@ -8,8 +8,10 @@ class MemberMailer < ActionMailer::Base
     # sent_on    Time.now
     @name = member.name
     @year = member.created_at.year
+    @eligibility_clause = member.eligibility_clause
+    @amount_paid = member.amount_paid
     @payment_method = member.payment_method
-    mail to: recipient, subject: "Your MUBC membership payment for #{@year} has been acknowledged"
+    mail to: recipient, bcc: "treasurer@melbourneunibasketball.org.au", subject: "MUBC  #{@year} membership payment for #{member.name} has been acknowledged"
   end
 
 end
