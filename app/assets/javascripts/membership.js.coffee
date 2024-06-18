@@ -6,7 +6,6 @@ rebuild_price = ->
   big_v_tier_1_fee = parseInt($('#annual_big_v_tier_1_fee').val());
   big_v_tier_2_fee = parseInt($('#annual_big_v_tier_2_fee').val());
   big_v_tier_3_fee = parseInt($('#annual_big_v_tier_3_fee').val());
-  big_v_tier_4_fee = parseInt($('#annual_big_v_tier_4_fee').val());
   student_fee     = parseInt($('#annual_student_fee').val())
   non_student_fee = parseInt($('#annual_non_student_fee').val())
   late_fee        = parseInt($('#late_fee').val())
@@ -20,6 +19,9 @@ rebuild_price = ->
       cost = 0
       $('#member_payment_method_bank_transfer').click()
     when "life_member"
+      cost = 0
+      $('#member_payment_method_bank_transfer').click()
+    when "big_v_tier_4"
       cost = 0
       $('#member_payment_method_bank_transfer').click()
     when "enrolled_student_mu"
@@ -40,9 +42,6 @@ rebuild_price = ->
     when "big_v_tier_3"
       fee_breakdown.push('$' + big_v_tier_3_fee + ' for a Big V Tier 3 Player')
       cost = big_v_tier_3_fee
-    when "big_v_tier_4"
-      fee_breakdown.push('$' + big_v_tier_4_fee + ' for a Big V Tier 4 Player')
-      cost = big_v_tier_4_fee      
     else
       fee_breakdown.push('$' + non_student_fee + ' for an eligible non-student')
       cost += non_student_fee
@@ -64,12 +63,14 @@ rebuild_price = ->
      $('#membership_fee').hide()
 
 rebuild_eligibility_clause = ->
-  if ["life_member"].indexOf($('#member_eligibility_clause').val()) >= 0
+  if ["committee_member", "big_v_tier_4", "life_member"].indexOf($('#member_eligibility_clause').val()) >= 0 
     $('#member_eligibility_justification').hide()
     $('#eligibility_justification_label').hide()
+    $('#payment_details').hide()
   else
     $('#eligibility_justification_label').show()
     $('#member_eligibility_justification').show()
+    $('#payment_details').show()
     switch $('#member_eligibility_clause').val()
       when "enrolled_student_mu"
         $('#eligibility_justification_label').text("Student number, enrolled course and if applicable, college name")
