@@ -47,7 +47,7 @@ class MembersController < ApplicationController
 
 private
   def duplicate_signup?(member)
-    existing_member = Member.where(email: member.email, amount_paid: member.amount_paid)
+    existing_member = Member.where("lower(email) = ?", member.email).where(amount_paid: member.amount_paid)
                             .where("created_at > ?", 1.week.ago).exists?
     if existing_member
       flash.now[:error] = "You already signed up for this year successfully, did you not receive a confirmation message? You can email treasurer@melbourneunibasketball.org.au if you have any questions."
