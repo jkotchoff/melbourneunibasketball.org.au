@@ -12,7 +12,8 @@
   %p
     %strong= model_class.human_attribute_name(:created_at) + ':'
     %br
-    = @member.created_at
+    = @member.created_at.in_time_zone(ActiveSupport::TimeZone['Melbourne'])
+    (AEST)
   %p
     %strong= model_class.human_attribute_name(:eligibility_clause) + ':'
     %br
