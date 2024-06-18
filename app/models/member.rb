@@ -201,7 +201,7 @@ That MU Sport may act against me to suspend or terminate my membership, and in t
 
 private
   def activate_club_volunteers
-    if new_record? && %w{ life_member committee_member }.include?(eligibility_clause)
+    if new_record? && %w{ life_member committee_member big_v_tier_4 }.include?(eligibility_clause)
       self.payment_confirmed = true
     end
   end
