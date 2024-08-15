@@ -35,7 +35,6 @@ heroku config:add ADMIN_PASSWORD="..."
 - Documentation: https://docs.google.com/document/d/1h4MdG9zwtAxqLCsRpVpgZdGaDhKGJvyI8zAL3rQoQiY/edit (viewable by the MUBC committee per the `..@melbourneuni.org.au` google domain administrative permissions)
 
 ## TODO:
-- Automate newsletter uploading from a PDF document to S3 / website
 - Create a report that lists email addresses of last years members who are not signed up for this year yet
 - Make student number compulsory on the MUBC signups form
 - adjust the date for which membership prices are reduced? (currently august 1st - Phil sent an email about this on July 19th *2016?*
