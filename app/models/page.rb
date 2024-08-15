@@ -42,7 +42,7 @@ class Page < ActiveRecord::Base
 
   COMPETITION_TITLES_DOMESTIC_AND_TOURNAMENTS = "Competition Titles"
   COMPETITION_RESULTS_BIG_V = "Big V Competition Results"
-  COMPETITION_RESULTS_STUDENT_BASKETBALL = "Big V Competition Results"
+  COMPETITION_RESULTS_STUDENT_BASKETBALL = "Student Basketball Results"
 
   AWARDS_REPRESENTATIVE_MVPS      = "Representative MVP's"
   AWARDS_TEAM_MVPS                = "Team MVP's"
