@@ -45,7 +45,7 @@
                 %li{class: ['nav-item', ('active' if params[:action] == 'faq')]}
                   = link_to Page::DOMESTIC, domestic_path, class: ['dropdown-item', ('active' if params[:action] == 'faq')]
                 %li{class: ['nav-item', ('active' if params[:action] == 'fixtures')]}
-                  = link_to "Domestic Fixtures / Ladders", Page::LINK_DOMESTIC_FIXTURES, class: ['dropdown-item']
+                  = link_to "Domestic Fixtures / Ladders", Page::LINK_DOMESTIC_FIXTURES, class: ['dropdown-item'], target: '_blank'
                 %li{class: ['nav-item', ('active' if params[:action] == 'uniforms')]}
                   = link_to Page::DOMESTIC_UNIFORMS, uniforms_path, class: ['dropdown-item', ('active' if params[:action] == 'uniforms')]
             %li.nav-item.dropdown
@@ -56,7 +56,7 @@
                 %li{class: ['nav-item', ('active' if params[:action] == 'fixtures')]}
                   = link_to Page::BIG_V_FIXTURES, bigv_fixtures_path, class: ['dropdown-item', ('active' if params[:action] == 'fixtures' && params[:controller] == 'big_v')]
                 %li{class: ['nav-item']}
-                  = link_to "Results", "https://www.basketballvictoria.com.au/bigv/fixtures", class: ['dropdown-item']
+                  = link_to "Results", "https://www.basketballvictoria.com.au/bigv/fixtures", class: ['dropdown-item'], target: '_blank'
                 %li{class: ['nav-item', ('active' if params[:action] == 'teams')]}
                   = link_to Page::BIG_V_TEAMS, bigv_teams_path, class: ['dropdown-item', ('active' if params[:action] == 'teams')]
             %li.nav-item.dropdown
