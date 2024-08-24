@@ -1,31 +1,17 @@
-%h4 Membership Eligibility
-%p Any person who is currently enrolled at the University of Melbourne; or
-%p An eligible non-Melbourne University student. This category includes (and is not limited to) the following:
-%ul
-  %li University Students or Graduates (from any tertiary institution)
-  %li University Staff
-  %li Staff not University payroll but employed on site
-  %li Resident, member or staff of University's affiliated colleges and halls of residence.
-  %li Leave of absence and deferred students of Melbourne University
-  %li Immediate family of current students or eligible non-students (Siblings, parents, partners & children)
-  %li Life member, committee member or honorary member
-
-%h4 Membership Entitlements
-%p All (paid-up) members of MUBC are entitled to:
-%ul
-  %li Represent MUBC in a domestic competition (eg. CYMS)
-  %li Represent MUBC in a representative competition (MMBL/Big V)
-  %li Represent MUBC at tournaments
-  %li Nominate for a position on the MUBC Committee
-  %li Vote at an Annual General Meeting on motions and elections of office bearers
+%h4 Selecting your Membership Eligibility Clause
+%p All prospective and returning MUBC members must sign up via a "Domestic" eligibility clause unless directly told otherwise by an MUBC representative (e.g. Big V players, committee members, life members). 
+%p 
+  If you are not a 
+  %b currently enrolled 
+  Melbourne University student, Melbourne University alumni, or Melbourne University staff member, you must sign up via the "Domestic: Other" eligibility clause only."
 
 %h4 Membership Cost
 %p
   == For period #{Member.signup_start_date} - #{Member.new_membership_club_year_end.to_s(:month_day_year)}
 %p
-  == $#{Member.student_fee} for Melbourne University Students
+  == $#{Member.student_fee} for currently enrolled Melbourne University Students
 %p
-  == $#{Member.non_student_fee} for eligible non-students
+  == $#{Member.non_student_fee} for all other members
 %p.text-muted
   == A $#{Member::LATE_FEE} late fee applies if fees are not paid before #{Member.late_fee_cutoff.strftime("%b %d")}
 %p.text-muted
