@@ -11,7 +11,7 @@ gem 'sprockets-rails'
 gem 'awesome_print'
 gem "aws-sdk-s3", require: false
 gem 'bootsnap', require: false
-gem 'bootstrap', '~> 4.4.1'
+gem 'bootstrap', '~> 4.6.2'
 gem 'carrierwave'
 gem 'carrierwave_backgrounder', :github => 'lardawge/carrierwave_backgrounder'
 gem 'cloudinary'
