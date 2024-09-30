@@ -6,6 +6,8 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %title= content_for?(:title) ? yield(:title) : "Melbourneunibasketball"
     = csrf_meta_tags
+    - if Rails.env.production?
+      = Sentry.get_trace_propagation_meta.html_safe 
     = tinymce_assets
     = stylesheet_link_tag "application", :media => "all"
     /= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'

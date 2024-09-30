@@ -50,6 +50,9 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 group :production do
   gem 'newrelic_rpm'
+  gem 'stackprof'
+  gem 'sentry-ruby'
+  gem 'sentry-rails'
 end
 
 group :test do

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   post '/tinymce_assets' => 'admin/tinymce_assets#create'
 
+  match 'sentry-error' => 'about#sentry_error', via: [:get]
   #  match 'members' => 'members#index', via: [:get]
   match 'membership' => 'members#new', via: [:get]
   match 'members/join_the_club' => 'members#new', :as => :join_the_club, via: [:get]
@@ -65,7 +66,6 @@ Rails.application.routes.draw do
   match 'about/code_of_conduct' => 'about#code_of_conduct', :as => :code_of_conduct, via: [:get]
 
   match 'about/sponsors' => 'about#sponsors', :as => :sponsors, via: [:get]
-  match 'about/constitution' => 'about#constitution', :as => :constitution, via: [:get]
   match 'about/competition_titles_domestic' => 'about#competition_titles_domestic', :as => :competition_titles_domestic, via: [:get]
   match 'about/competition_results_big_v' => 'about#competition_results_big_v', :as => :competition_results_big_v, via: [:get]
   match 'about/competition_results_students' => 'about#competition_results_students', :as => :competition_results_students, via: [:get]

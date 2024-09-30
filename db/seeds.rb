@@ -16,7 +16,6 @@ NewsItem.create!(author: 'smoke', title: 'Corporate Games win', synopsis: "Andy'
   Page::ABOUT_THE_CLUB => "Find out why MUBC is a great place to play basketball",
   Page::BIG_V => "Melbourne Uni have both a mens and a womens representantive Big V program for elite players",
   Page::SPONSORS => "Big props to all our fantastic sponsors!",
-  Page::CONSTITUTION => "The constitution of Melbourne University Basketball Club",
   Page::DOMESTIC => "Melbourne Uni is one of the biggest domestic clubs for adult members",
   Page::WALKOVER_POLICY => "Domestic Walkover policy",
   Page::DOMESTIC => "Adult basketball teams in Melbourne in Men's and Women's divisions for all levels of skill",
