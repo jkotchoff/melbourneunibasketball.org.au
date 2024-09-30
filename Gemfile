@@ -24,7 +24,7 @@ gem 'listen'
 gem 'mini_magick', ">= 4.9.4"
 gem 'nokogiri'
 gem 'pg'
-gem 'puma', '~> 5.6.2'  # temporarily locked until configuration is correctly upgraded
+gem 'puma', '~> 5.6.9'  # temporarily locked until configuration is correctly upgraded
 gem 'stripe'
 gem 'tinymce-rails', '~> 5.10.4'               # https://stackoverflow.com/questions/70305174/trestle-tinymce-gem-uncaught-typeerror-cannot-read-properties-of-undefined-rea
 gem 'terser'
