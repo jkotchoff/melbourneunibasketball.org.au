@@ -30,10 +30,6 @@ class AboutController < ApplicationController
     render_page(Page::SPONSORS)
   end
 
-  def constitution
-    render_page(Page::CONSTITUTION)
-  end
-
   def competition_titles_domestic
     render_page(Page::COMPETITION_TITLES_DOMESTIC_AND_TOURNAMENTS)
   end
@@ -100,6 +96,16 @@ class AboutController < ApplicationController
 
   def life_members
     render_page(Page::AWARDS_LIFERS)
+  end
+
+  def sentry_error
+    begin
+      1 / 0
+    rescue ZeroDivisionError => exception
+      Sentry.capture_exception(exception)
+    end
+
+    Sentry.capture_message("test message")
   end
 
   protected

@@ -9,7 +9,7 @@
   .card-header
     %h6 Documents
   .list-group.list-group-flush
-    = link_to Page::CONSTITUTION, constitution_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'constitution')]
+    = link_to "Constitution", '/mubc-constitution-2024-02-17.pdf', class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'constitution')]
     = link_to Page::WALKOVER_POLICY, walkover_policy_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'walkover_policy')]
     = link_to Page::INSURANCE_CLAIMS_POLICY, insurance_claims_policy_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'insurance_claims_policy')]
 
