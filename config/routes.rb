@@ -76,11 +76,11 @@ Rails.application.routes.draw do
   match 'about/coaches_awards' => 'about#coaches_awards', :as => :coaches_awards, via: [:get]
   match 'about/bigv_league_awards' => 'about#bigv_league_awards', :as => :bigv_league_awards, via: [:get]
   match 'about/bigv_seasons' => 'about#bigv_seasons', :as => :bigv_seasons, via: [:get]
-  match 'about/unigames_teams' => 'about#unigames_teams', :as => :unigames_teams, via: [:get]
+  match 'about/best_defensive_players' => 'about#best_defensive_players', :as => :best_defensive_players, via: [:get]
+  match 'about/player_excellence_awards' => 'about#player_excellence_awards', :as => :player_excellence_awards, via: [:get]
   match 'about/blues_awards' => 'about#blues_awards', :as => :blues_awards, via: [:get]
   match 'about/green_and_gold_winners' => 'about#green_and_gold_winners', :as => :green_and_gold_winners, via: [:get]
   match 'about/committee' => 'about#committee', :as => :committee, via: [:get]
-  match 'about/social_awards' => 'about#social_awards', :as => :social_awards, via: [:get]
   match 'about/distinguished_service_awards' => 'about#distinguished_service_awards',
         :as => :distinguished_service_awards, via: [:get]
   match 'about/life_members' => 'about#life_members', :as => :life_members, via: [:get]

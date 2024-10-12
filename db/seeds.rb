@@ -34,9 +34,10 @@ NewsItem.create!(author: 'smoke', title: 'Corporate Games win', synopsis: "Andy'
   Page::AWARDS_BLUES => "Awarded by Melbourne University Sport for exemplary Inter-Varsity Contribution",
   Page::AWARDS_GREEN_AND_GOLD => "University Games Green and Gold All-Stars",
   Page::AWARDS_COMMITTEE => "The important (voluntary) folks who give us a place to play",
-  Page::AWARDS_SOCIAL => "The stand-out social performers",
   Page::AWARDS_DISTINGUISHED_SERVICE => "An annual award for noteworthy contribution to the club",
   Page::AWARDS_LIFERS => "For exemplary contribution to MUBC",
+  Page::AWARDS_DEFENSIVE_PLAYERS => "Best Defensive Player Award",
+  Page::AWARDS_PLAYER_EXCELLENCE => "Scott Cuffe award for Player Excellence Award",
 
   Page::CONTACT_JOIN_THE_CLUB => "MUBC Membership",
   Page::CONTACT_DOCUMENTS_AND_FORMS => "Club Specific Documents and Forms (eg. the membership form)",

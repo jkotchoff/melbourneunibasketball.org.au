@@ -54,6 +54,14 @@ class AboutController < ApplicationController
     render_page(Page::AWARDS_MOST_IMPROVED_PLAYERS)
   end
 
+  def best_defensive_players
+    render_page(Page::AWARDS_DEFENSIVE_PLAYERS)
+  end
+
+  def player_excellence_awards
+    render_page(Page::AWARDS_PLAYER_EXCELLENCE)
+  end
+
   def best_first_year_players
     render_page(Page::AWARDS_BEST_FIRST_YEAR_PLAYERS)
   end
@@ -76,10 +84,6 @@ class AboutController < ApplicationController
 
   def green_and_gold_winners
     render_page(Page::AWARDS_GREEN_AND_GOLD)
-  end
-
-  def unigames_teams
-    render_page(Page::UNIGAMES_TEAMS)
   end
 
   def committee

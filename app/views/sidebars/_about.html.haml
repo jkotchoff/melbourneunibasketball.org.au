@@ -29,14 +29,10 @@
     = link_to "Domestic MVP's", team_mvps_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'team_mvps')]
     = link_to Page::AWARDS_MOST_IMPROVED_PLAYERS, most_improved_players_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'most_improved_players')]
     = link_to Page::AWARDS_BEST_FIRST_YEAR_PLAYERS, best_first_year_players_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'best_first_year_players')]
+    = link_to Page::AWARDS_DEFENSIVE_PLAYERS, best_defensive_players_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'best_defensive_players')]
+    = link_to Page::AWARDS_PLAYER_EXCELLENCE, player_excellence_awards_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'player_excellence_awards')]
     = link_to Page::AWARDS_COACHES_AWARDS, coaches_awards_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'coaches_awards')]
     = link_to "League Awards", bigv_league_awards_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'bigv_league_awards')]
-
-.card.mb-3
-  .card-header
-    %h6 University Games
-  .list-group.list-group-flush
-    = link_to "Unigames Teams", unigames_teams_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'unigames_teams')]
     = link_to "Blues Winners", blues_awards_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'blues_awards')]
     = link_to "Green & Gold", green_and_gold_winners_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'green_and_gold_winners')]
 
@@ -45,6 +41,5 @@
     %h6 Club Awards
   .list-group.list-group-flush
     = link_to Page::AWARDS_COMMITTEE, committee_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'committee')]
-    = link_to Page::AWARDS_SOCIAL, social_awards_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'social_awards')]
     = link_to Page::AWARDS_DISTINGUISHED_SERVICE, distinguished_service_awards_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'distinguished_service_awards')]
     = link_to Page::AWARDS_LIFERS, life_members_path, class: ['list-group-item list-group-item-action', ('active' if params[:action] == 'life_members')]

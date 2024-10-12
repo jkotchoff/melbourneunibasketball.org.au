@@ -15,4 +15,4 @@
 %p.text-muted
   == A $#{Member::LATE_FEE} late fee applies if fees are not paid before #{Member.late_fee_cutoff.strftime("%b %d")}
 %p.text-muted
-  == After #{Member.winter_season_start.to_s(:month_day_year)}, our student fee for 'winter season only' drops to #{number_to_currency(Member::WINTER_SEASON_STUDENT_FEE)} and our non-student fee drops to #{number_to_currency(Member::WINTER_SEASON_NON_STUDENT_FEE)}
+  == After #{Member.winter_season_start.to_s(:month_day_year)}, our student fee for 'summer season only' drops to #{number_to_currency(Member::WINTER_SEASON_STUDENT_FEE)} and our non-student fee drops to #{number_to_currency(Member::WINTER_SEASON_NON_STUDENT_FEE)}

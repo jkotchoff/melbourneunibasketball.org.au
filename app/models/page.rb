@@ -48,23 +48,24 @@ class Page < ActiveRecord::Base
   AWARDS_TEAM_MVPS                = "Team MVP's"
   AWARDS_MOST_IMPROVED_PLAYERS    = "Most Improved Players"
   AWARDS_BEST_FIRST_YEAR_PLAYERS  = "Best First Year Players"
+  AWARDS_DEFENSIVE_PLAYERS        = "Best Defensive Players"
+  AWARDS_PLAYER_EXCELLENCE        = "Player Excellence Award"
   AWARDS_COACHES_AWARDS           = "Coaches Awards"
 
   AWARDS_BIGV_LEAGUE              = "Big V League Awards"
   AWARDS_BIGV_SEASON              = "Big V Season Results"
 
-  UNIGAMES_TEAMS                  = "University Games Teams"
   AWARDS_BLUES                    = "University Games Blues"
   AWARDS_GREEN_AND_GOLD           = "University Games Green and Gold"
 
   AWARDS_COMMITTEE                = "Executive Committee Members"
-  AWARDS_SOCIAL                   = "Social Performers of the year"
   AWARDS_DISTINGUISHED_SERVICE    = "Distinguished Service Award Winners"
   AWARDS_LIFERS                   = "Life Members"
 
   CONTACT_JOIN_THE_CLUB           = "Join the Club"
 
   PANEL_HOME_SIDEBAR              = "Home Side Panel"
+
 
   before_save :clean_s3_urls
 

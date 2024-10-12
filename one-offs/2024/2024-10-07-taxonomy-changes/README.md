@@ -1,0 +1,1 @@
+Per suggestions from Joel (Rimes) about new pages to administrate
