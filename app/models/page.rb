@@ -51,6 +51,7 @@ class Page < ActiveRecord::Base
   AWARDS_DEFENSIVE_PLAYERS        = "Best Defensive Players"
   AWARDS_PLAYER_EXCELLENCE        = "Player Excellence Award"
   AWARDS_COACHES_AWARDS           = "Coaches Awards"
+  AWARDS_TEAMS_OF_THE_DECADES     = "Teams of the Decades"
 
   AWARDS_BIGV_LEAGUE              = "Big V League Awards"
   AWARDS_BIGV_SEASON              = "Big V Season Results"

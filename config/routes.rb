@@ -78,6 +78,7 @@ Rails.application.routes.draw do
   match 'about/bigv_seasons' => 'about#bigv_seasons', :as => :bigv_seasons, via: [:get]
   match 'about/best_defensive_players' => 'about#best_defensive_players', :as => :best_defensive_players, via: [:get]
   match 'about/player_excellence_awards' => 'about#player_excellence_awards', :as => :player_excellence_awards, via: [:get]
+  match 'about/teams_of_the_decades' => 'about#teams_of_the_decades', :as => :teams_of_the_decades, via: [:get]
   match 'about/blues_awards' => 'about#blues_awards', :as => :blues_awards, via: [:get]
   match 'about/green_and_gold_winners' => 'about#green_and_gold_winners', :as => :green_and_gold_winners, via: [:get]
   match 'about/committee' => 'about#committee', :as => :committee, via: [:get]

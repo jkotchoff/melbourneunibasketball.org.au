@@ -62,6 +62,10 @@ class AboutController < ApplicationController
     render_page(Page::AWARDS_PLAYER_EXCELLENCE)
   end
 
+  def teams_of_the_decades
+    render_page(Page::AWARDS_TEAMS_OF_THE_DECADES)
+  end
+
   def best_first_year_players
     render_page(Page::AWARDS_BEST_FIRST_YEAR_PLAYERS)
   end

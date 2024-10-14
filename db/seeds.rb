@@ -38,6 +38,7 @@ NewsItem.create!(author: 'smoke', title: 'Corporate Games win', synopsis: "Andy'
   Page::AWARDS_LIFERS => "For exemplary contribution to MUBC",
   Page::AWARDS_DEFENSIVE_PLAYERS => "Best Defensive Player Award",
   Page::AWARDS_PLAYER_EXCELLENCE => "Scott Cuffe award for Player Excellence Award",
+  Page::AWARDS_TEAMS_OF_THE_DECADES => "Teams of the Decades",
 
   Page::CONTACT_JOIN_THE_CLUB => "MUBC Membership",
   Page::CONTACT_DOCUMENTS_AND_FORMS => "Club Specific Documents and Forms (eg. the membership form)",
